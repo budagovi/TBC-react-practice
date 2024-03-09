@@ -1,38 +1,158 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/* General */
+* {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper {
+  margin: 0;
+  padding: 0;
+  background-color: #f1faee;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 1.5rem;
+  background-color: #3a5a40;
+  color: #fefae0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header .title {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav a:hover {
+  color: #b5baac;
+}
+
+nav button {
+  border: 0;
+  border-radius: 5rem;
+  color: #3a5a40;
+  background-color: #f1faee;
+  padding: 0.3rem 0.7rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background-color: #e2ebdf;
+}
+
+/* Content */
+
+main {
+  background-color: #3a5a40;
+  --color: #dad7cd2e;
+  background: linear-gradient(var(--color), var(--color)), url("https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center fixed;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 1.5rem;
+  padding: 3rem 0;
+  flex-grow: 1;
 }
 
-.App-link {
-  color: #61dafb;
+main article {
+  width: 85%;
+  background-color: #f4f1dec7;
+  padding: 0.5rem 2rem;
+  color: #313131;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main article h1 {
+  color: #540b0e;
+  font-weight: 600;
+}
+
+/* Footer */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.8rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #3a5a40;
+  color: #fefae0;
+  font-size: 14px;
+}
+
+section.links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+section.links a {
+  font-size: 12px;
+  text-decoration: none;
+  color: #c1bda7;
+}
+
+div.subscription {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.input-wrapper {
+  border: #fefae0 1px solid;
+  border-radius: 0.25rem;
+  margin: 0.2rem 0;
+  overflow: hidden;
+}
+
+div.subscription input[type='text'] {
+  border: 0;
+  outline: 0;
+  background: 0;
+  font-size: 1rem;
+  padding-inline-start: 0.7rem;
+  color: #f4f4f4;
+}
+
+div.subscription input[type='text']::placeholder {
+  color: #f4f4f4;
+}
+
+div.subscription input[type='submit'] {
+  border: none;
+  outline: 0;
+  background: #fefae0;
+  color: #3a5a40;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 2rem;
+  padding-inline: 0.5rem;
+  cursor: pointer;
+}
+
+div.subscription input[type='submit']:hover {
+  background: #f1edd0;
 }
