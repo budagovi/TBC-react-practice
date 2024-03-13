@@ -1,0 +1,63 @@
+footer.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.8rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #3a5a40;
+  color: #fefae0;
+  font-size: 14px;
+}
+
+section.links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+section.links a {
+  font-size: 12px;
+  text-decoration: none;
+  color: #c1bda7;
+}
+
+div.subscription {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.inputWrapper {
+  border: #fefae0 1px solid;
+  border-radius: 0.25rem;
+  margin: 0.2rem 0;
+  overflow: hidden;
+}
+
+div.subscription input[type='text'] {
+  border: 0;
+  outline: 0;
+  background: 0;
+  font-size: 1rem;
+  padding-inline-start: 0.7rem;
+  color: #f4f4f4;
+}
+
+div.subscription input[type='text']::placeholder {
+  color: #f4f4f4;
+}
+
+div.subscription input[type='submit'] {
+  border: none;
+  outline: 0;
+  background: #fefae0;
+  color: #3a5a40;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 2rem;
+  padding-inline: 0.5rem;
+  cursor: pointer;
+}
+
+div.subscription input[type='submit']:hover {
+  background: #f1edd0;
+}
