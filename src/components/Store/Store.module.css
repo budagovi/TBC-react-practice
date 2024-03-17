@@ -1,0 +1,26 @@
+.wrapper {
+  background-color: #ffffffc1;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 90%;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #b6b6b6;
+}
+
+.actions h2 {
+  font-weight: 600;
+  color: var(--green);
+}
+
+.storeWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
