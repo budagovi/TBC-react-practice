@@ -1,6 +1,6 @@
 import style from './Store.module.css';
 import StoreItem from './StoreItem';
-import Search from '../../Icons/Search';
+import Search from '../Search';
 
 import products from '../../Products';
 
@@ -9,10 +9,7 @@ const Store = () => {
     <div className={style.wrapper}>
       <div className={style.actions}>
         <h2>Browse Products</h2>
-        <form action="#">
-          <input type="text" placeholder='Search for plants'/>
-          <button><Search className={style.searchIcon}/>  </button>
-        </form>
+        <Search />
       </div>
       <div className={style.storeWrapper}>
         <StoreItem {...products[0]} />

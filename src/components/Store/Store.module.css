@@ -19,40 +19,6 @@
   color: var(--green);
 }
 
-.actions form {
-  display: flex;
-  border-radius: 5rem;
-  overflow: hidden;
-  border: 1px solid transparent;
-}
-
-.actions form:has(input:focus) {
-  border: 1px solid var(--green);
-}
-
-.actions input {
-  width: 200px;
-  line-height: 2rem;
-  border: none;
-  outline: none;
-  padding-inline-start: 0.8rem;
-}
-
-.actions button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  padding: 0 0.6rem;
-  background-color: var(--green);
-}
-
-.searchIcon {
-  width: 16px;
-  height: 16px;
-  fill: var(--fore);
-}
-
 .storeWrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

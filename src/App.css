@@ -42,3 +42,16 @@ main {
 
   overflow-y: scroll;
 }
+
+main::-webkit-scrollbar {
+  width: 10px;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+  background: var(--green); 
+}
