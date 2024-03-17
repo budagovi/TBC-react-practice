@@ -1,16 +1,17 @@
 import style from './Header.module.css';
+import Cart from '../Icons/Cart';
 
 const Header = () => {
   return (
     <header className={style.wrapper}>
-      <span className={style.title}>Hotel Aurora</span>
+      <span className={style.title}>Aurora Store</span>
       <nav className={style.links}>
         <a href='#'>Home</a>
-        <a href='#'>Rooms and Suites</a>
-        <a href='#'>Facilities</a>
+        <a href='#'>Store</a>
+        <a href='#'>About Us</a>
         <a href='#'>Contact Us</a>
-        <a href='#'>Reviews</a>
-        <button>Book Now</button>
+        <a href='#'>My Account</a>
+        <Cart className={style.cartIcon} />
       </nav>
     </header>
   )

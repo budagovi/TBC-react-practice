@@ -2,14 +2,14 @@ import './App.css';
 import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import ReviewsContent from './components/Reviews/ReviewsContent';
+import Store from './components/Store/Store';
 
 function App() {
   return (
     <div className='wrapper'>
       <Header />
       <main>
-       <ReviewsContent />
+        <Store/>
       </main>
       <Footer />
     </div>
