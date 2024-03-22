@@ -13,7 +13,7 @@
   margin: 0;
   padding: 0;
   background-color: #f1faee;
-  height: 100dvh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
@@ -29,6 +29,7 @@
 /* Content */
 
 main {
+  width: 100%;
   background-color: var(--green);
   --color: #98b6af42;
   background: linear-gradient(var(--color), var(--color)), url("https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center fixed;
@@ -39,8 +40,6 @@ main {
   gap: 1.5rem;
   padding: 3rem 0;
   flex: 1;
-
-  overflow-y: scroll;
 }
 
 main::-webkit-scrollbar {

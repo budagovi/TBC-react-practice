@@ -1,7 +1,17 @@
-import Cart from '../../Icons/Cart';
+import CartIcon from '../../Icons/Cart';
 import style from './StoreItem.module.css';
 
-const StoreItem = ({ src, name, price, category, description }) => {
+const StoreItem = ({ src, name, price, category, sale }) => {
+
+  let priceTag = <span>${price.toFixed(2)}</span>
+  if (sale) {
+    priceTag = (
+      <span>
+        <span className={style.oldPrice}>${price.toFixed(2)} </span>
+        <span className={style.salePrice}>${sale.toFixed(2)}</span>
+      </span>
+    )
+  }
 
   return (
     <div className={style.wrapper}>
@@ -9,11 +19,10 @@ const StoreItem = ({ src, name, price, category, description }) => {
       <div className={style.description}>
         <span>{category}</span>
         <span>{name}</span>
-        <span>{description}</span>
-        <span>${price.toFixed(2)}</span>
+        {priceTag}
       </div>
       <button className={style.cartWrapper}>
-        <Cart className={style.cartIcon} />
+        <CartIcon className={style.cartIcon} />
       </button>
     </div>
   )

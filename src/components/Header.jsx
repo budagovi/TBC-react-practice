@@ -4,7 +4,7 @@ import Cart from '../Icons/Cart';
 const Header = () => {
   return (
     <header className={style.wrapper}>
-      <span className={style.title}>Aurora Store</span>
+      <span className={style.title}>Aurora Plants</span>
       <nav className={style.links}>
         <a href='#'>Home</a>
         <a href='#'>Store</a>

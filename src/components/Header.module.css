@@ -1,12 +1,15 @@
 /* Header */
 
 header.wrapper {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 2rem;
   background-color: var(--green);
   color: var(--fore);
+  /* position: sticky;
+  top: 0; */
 }
 
 .title {
