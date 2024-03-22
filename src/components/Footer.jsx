@@ -1,6 +1,6 @@
-import Envelope from '../Icons/Envelope';
-import Telephone from '../Icons/Telephone';
-import Location from '../Icons/Location';
+import EnvelopeIcon from '../Icons/Envelope';
+import TelephoneIcon from '../Icons/Telephone';
+import LocationIcon from '../Icons/Location';
 import style from './Footer.module.css';
 
 const Footer = () => {
@@ -9,15 +9,15 @@ const Footer = () => {
       <section className={style.links}>
         <span>Contact</span>
         <div className={style.contactLine}>
-          <Envelope className={style.icon}/>
+          <EnvelopeIcon className={style.icon}/>
           <a href='#'>aurora-store@example.com</a>
         </div>
         <div className={style.contactLine}>
-          <Telephone className={style.icon}/>
+          <TelephoneIcon className={style.icon}/>
           <a href='#'>+123 45 67 89</a>
         </div>
         <div className={style.contactLine}>
-          <Location className={style.icon}/>
+          <LocationIcon className={style.icon}/>
           <a href='#'>City, Example Street</a>
         </div>
       </section>

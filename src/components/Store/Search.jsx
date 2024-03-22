@@ -1,5 +1,5 @@
 import style from './Search.module.css';
-import SearchIcon from '../Icons/Search';
+import SearchIcon from '../../Icons/Search';
 
 const Search = () => {
   return (

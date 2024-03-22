@@ -1,6 +1,6 @@
 import style from './Store.module.css';
 import StoreItem from './StoreItem';
-import Search from '../Search';
+import Search from './Search';
 
 import products from '../../Products';
 
