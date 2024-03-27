@@ -12,12 +12,17 @@ const Store = () => {
         <Search />
       </div>
       <div className={style.storeWrapper}>
-        <StoreItem {...products[0]} />
-        <StoreItem {...products[1]} />
-        <StoreItem {...products[2]} />
-        <StoreItem {...products[3]} />
-        <StoreItem {...products[4]} />
-        <StoreItem {...products[5]} />
+        {products.map((item) => 
+          <StoreItem 
+            key={item.id}
+            src={item.src}
+            name={item.name}
+            price={item.price}
+            category={item.category}
+            sale={item.sale}
+          />
+        )}
+
       </div>
     </div>
   )

@@ -12,35 +12,31 @@ header.wrapper {
   top: 0; */
 }
 
-.title {
-  font-size: 2.2rem;
-  font-weight: 600;
-}
-
 nav.links {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 nav.links a {
   text-decoration: none;
   color: inherit;
   transition: .2s ease-in;
+  margin-inline: 0.3rem;
 }
 
 nav.links a:hover {
   color: var(--foreHover);
 }
 
-.wrapper svg.cartIcon {
-  --cartSize: 20px;
+.cartIcon {
+  --cartSize: 22px;
   width: var(--cartSize);
   height: var(--cartSize);
-  cursor: pointer;
-  transition: .2s ease-in;
 }
 
-nav.links svg:hover {
-  fill: var(--foreHover);
+.profileIcon {
+  --cartSize: 27px;
+  width: var(--cartSize);
+  height: var(--cartSize);
 }

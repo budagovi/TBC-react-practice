@@ -34,3 +34,23 @@ form.wrapper {
   line-height: normal;
   padding: 0.5rem 0.8rem;
 }
+
+
+.wrapper button {
+  align-self: flex-start;
+  padding: 0.3rem 1rem;
+  margin: 0.4rem 0;
+  border-radius: 5px;
+  background-color: var(--green);
+  border: 0;
+  outline: 0;
+  opacity: 0.95;
+  color: var(--fore);
+  transition: .2s ease-in-out;
+  cursor: pointer;
+}
+
+.wrapper button:hover {
+  opacity: 1;
+  scale: 1.02;
+}

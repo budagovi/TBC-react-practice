@@ -1,0 +1,57 @@
+.wrapper {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.imgWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.imgWrapper img {
+  border-radius: 50%;
+  border: var(--greyBorder);
+  height: 150px;
+}
+
+.imgWrapper button {
+  padding: 0.2rem 0.4rem;
+  font-size: 14px;
+  outline: 0;
+  border: 0;
+  background-color: var(--green);
+  opacity: 0.9;
+  cursor: pointer;
+  color: var(--fore);
+  border-radius: 7px;
+  transition: .2s ease-in-out;
+}
+
+.imgWrapper button:hover {
+  opacity: 1;
+  scale: 1.02;
+}
+
+.profileInformation {
+  display: flex;
+  gap: 3.5rem;
+  padding: 1rem 0;
+}
+
+.profileInformation .fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--foreDark);
+}
+
+.profileInformation .fields:nth-of-type(1) span {
+  font-weight: bold;
+}
+
+.profileInformation .fields span {
+  color: inherit;
+}
