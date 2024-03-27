@@ -3,6 +3,8 @@ import TelephoneIcon from '../Icons/Telephone';
 import LocationIcon from '../Icons/Location';
 import style from './Footer.module.css';
 
+import { NavLink } from 'react-router-dom';
+
 const Footer = () => {
   return (
     <footer className={style.wrapper}>
@@ -23,9 +25,9 @@ const Footer = () => {
       </section>
       <section className={style.links}>
         <span>Fast Links</span>
-        <a href='#'>About Us</a>
-        <a href='#'>Contact Us</a>
-        <a href='#'>Plants Store</a>
+        <NavLink to='/about'>About Us</NavLink>
+        <NavLink to='/contact'>Contact Us</NavLink>
+        <NavLink to='/store'>Store</NavLink>
       </section>
       <section className={style.links}>
         <span>Information</span>

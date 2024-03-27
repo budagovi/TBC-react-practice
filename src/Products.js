@@ -7,6 +7,7 @@ import soilLotus from './assets/soil-lotus.jpg';
 
 const products = [
   {
+    id: 0,
     src: aluminiumPlant,
     category: 'Plants',
     name: 'Aluminium Plant',
@@ -14,6 +15,7 @@ const products = [
     sale: 35,
   },
   {
+    id: 1,
     src: cleistoCactus,
     category: 'Cactus',
     name: 'cleisto cactus',
@@ -21,6 +23,7 @@ const products = [
     sale: null
   },
   {
+    id: 2,
     src: soilLotus,
     category: 'Plants',
     name: 'Green Soil Lotus',
@@ -28,6 +31,7 @@ const products = [
     sale: null
   },
   {
+    id: 3,
     src: secullant,
     category: 'Plants',
     name: 'Boncellensis Secullant',
@@ -35,6 +39,7 @@ const products = [
     sale: 29
   },
   {
+    id: 4,
     src: oldLadyCactus,
     category: 'Cactus',
     name: 'Old Lady Cactus',
@@ -42,6 +47,7 @@ const products = [
     sale: 8
   },
   {
+    id: 5,
     src: moneyPlant,
     category: 'Plants',
     name: 'Money Plant',

@@ -1,17 +1,24 @@
 import style from './Header.module.css';
-import Cart from '../Icons/Cart';
+import CartIcon from '../Icons/Cart';
+import ProfileIcon from '../Icons/Profile';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
     <header className={style.wrapper}>
-      <span className={style.title}>Aurora Plants</span>
+      <h1>Aurora Plants</h1>
       <nav className={style.links}>
-        <a href='#'>Home</a>
-        <a href='#'>Store</a>
-        <a href='#'>About Us</a>
-        <a href='#'>Contact Us</a>
-        <a href='#'>My Account</a>
-        <Cart className={style.cartIcon} />
+        <NavLink to='/'>Home</NavLink>
+        <NavLink to='/store'>Store</NavLink>
+        <NavLink to='/about'>About Us</NavLink>
+        <NavLink to='/contact'>Contact Us</NavLink>
+        <NavLink to='/reviews'>Blogs</NavLink>
+        <NavLink to='/cart'>
+          <CartIcon className={style.cartIcon} />
+        </NavLink>
+        <NavLink to='/profile'>
+          <ProfileIcon className={style.profileIcon} />
+        </NavLink>
       </nav>
     </header>
   )
