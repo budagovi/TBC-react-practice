@@ -1,14 +1,7 @@
-import aluminiumPlant from './assets/aluminium-plant.jpg';
-import cleistoCactus from './assets/cleistocactus.jpg';
-import moneyPlant from './assets/money-plant.jpg';
-import oldLadyCactus from './assets/old-lady-cactus.jpg';
-import secullant from './assets/secullant.jpg';
-import soilLotus from './assets/soil-lotus.jpg';
-
 const products = [
   {
     id: 0,
-    src: aluminiumPlant,
+    src: './images/products/aluminium-plant.jpg',
     category: 'Plants',
     name: 'Aluminium Plant',
     price: 45,
@@ -16,15 +9,15 @@ const products = [
   },
   {
     id: 1,
-    src: cleistoCactus,
+    src: '/images/products/cleistocactus.jpg',
     category: 'Cactus',
-    name: 'cleisto cactus',
+    name: 'Cleisto Cactus',
     price: 28,
     sale: null
   },
   {
     id: 2,
-    src: soilLotus,
+    src: '/images/products/soil-lotus.jpg',
     category: 'Plants',
     name: 'Green Soil Lotus',
     price: 54,
@@ -32,7 +25,7 @@ const products = [
   },
   {
     id: 3,
-    src: secullant,
+    src: '/images/products/secullant.jpg',
     category: 'Plants',
     name: 'Boncellensis Secullant',
     price: 34,
@@ -40,7 +33,7 @@ const products = [
   },
   {
     id: 4,
-    src: oldLadyCactus,
+    src: '/images/products/old-lady-cactus.jpg',
     category: 'Cactus',
     name: 'Old Lady Cactus',
     price: 15,
@@ -48,12 +41,60 @@ const products = [
   },
   {
     id: 5,
-    src: moneyPlant,
+    src: '/images/products/money-plant.jpg',
     category: 'Plants',
     name: 'Money Plant',
     price: 23,
     sale: null
-  }
+  },
+  {
+    id: 6,
+    src: '/images/products/ball-cactus.jpg',
+    category: 'Cactus',
+    name: 'Ball Cactus',
+    price: 25,
+    sale: 17
+  },
+  {
+    id: 7,
+    src: '/images/products/mini-astrophytum.jpg',
+    category: 'Cactus',
+    name: 'Mini Astrophytum',
+    price: 45,
+    sale: null
+  },
+  {
+    id: 8,
+    src: '/images/products/piorro-quisquam.jpg',
+    category: 'Plants',
+    name: 'Piorro Quisquam',
+    price: 32,
+    sale: null
+  },
+  {
+    id: 9,
+    src: '/images/products/rattle-snake-tail.jpg',
+    category: 'Plants',
+    name: 'Rattle Snake Tail',
+    price: 45,
+    sale: 38
+  },
+  {
+    id: 10,
+    src: '/images/products/san-pedro-cactus.jpg',
+    category: 'Cactus',
+    name: 'Mini San Pedro Cactus',
+    price: 32,
+    sale: 26
+  },
+  {
+    id: 11,
+    src: '/images/products/star-cactus.jpg',
+    category: 'Cactus',
+    name: 'Star Cactus',
+    price: 34,
+    sale: 30
+  },
 ]
 
 export default products;

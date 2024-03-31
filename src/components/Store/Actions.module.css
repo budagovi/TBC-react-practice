@@ -1,0 +1,68 @@
+.wrapper {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.inputWrapper {
+  background-color: #fff;
+  padding-inline: 0.8rem;
+  display: flex;
+  align-items: center;
+  border-radius: 5rem;
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: .2s ease-in;
+}
+
+.inputWrapper:has(input:focus) {
+  border: 1px solid var(--green);
+}
+
+.inputWrapper input {
+  width: 200px;
+  padding: 0.4rem 0;
+  border: none;
+  outline: none;
+}
+
+.inputWrapper label {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.searchIcon {
+  width: 16px;
+  height: 16px;
+  fill: #aaaaaa;
+  transform: translateY(-2px);
+  transition: .2s ease-in;
+}
+
+.inputWrapper:hover .searchIcon,
+.inputWrapper:has(input:focus) .searchIcon {
+  fill: var(--green);
+}
+
+.sortBtn {
+  border: 1px solid transparent;
+  border-radius: 5rem;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  overflow: hidden;
+  transition: .15s ease-in-out;
+  background-color: #ebebeb;
+  color: var(--foreDark);
+}
+
+.sortBtn.active {
+  background-color: var(--green);
+  opacity: 0.9;
+  color: var(--fore);
+}
+
+.sortBtn.active:hover {
+  opacity: 1;
+}
+

@@ -1,18 +1,45 @@
 import style from './Store.module.css';
 import StoreItem from './StoreItem';
-import Search from './Search';
+import Actions from './Actions';
 
 import products from '../../Products';
+import { useState } from 'react';
 
 const Store = () => {
+
+  console.log('rendering store')
+  const [filteredList, setFilteredList] = useState([...products]);
+  const [sorted, setSorted] = useState(false);
+
+  // filter by query
+  const searchItems = (searchText) => {
+    setFilteredList(products
+      .filter(product => product.name.toLowerCase().includes(searchText))
+    )
+  }
+
+  // sort
+  const sortItems = (bool) => {
+    setSorted(bool)
+  }
+
+  let list = [...filteredList]
+  if(sorted) {
+    list.sort((a,b) => {
+      const aPrice = a.sale ? a.sale : a.price
+      const bPrice = b.sale ? b.sale : b.price
+      return aPrice - bPrice
+    })
+  }
+
   return (
-    <div className={style.wrapper}>
+    <section className={style.wrapper}>
       <div className={style.actions}>
         <h2>Browse Products</h2>
-        <Search />
+        <Actions search={searchItems} sort={sortItems}/>        
       </div>
       <div className={style.storeWrapper}>
-        {products.map((item) => 
+        {list.map((item) => 
           <StoreItem 
             key={item.id}
             src={item.src}
@@ -20,11 +47,10 @@ const Store = () => {
             price={item.price}
             category={item.category}
             sale={item.sale}
-          />
-        )}
-
+          />)
+        }
       </div>
-    </div>
+    </section>
   )
 }
 

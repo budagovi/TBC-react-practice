@@ -1,12 +1,23 @@
 import style from './Profile.module.css';
-import avatarImg from '../../assets/profile.png';
 import ChangePassForm from './ChangePassForm';
 
-const Profile = () => {
+const sampleUser = {
+    firstName: 'John',
+    lastName: 'White',
+    mobile: '+1234-56-78-90',
+    address: 'City, Example Street',
+    email: 'jwhite@example.com',
+    password: 'password123'
+}
+
+const Profile = ({user = sampleUser}) => {
+  
+
+
   return (
     <div className={style.wrapper}>
       <div className={style.imgWrapper}>
-        <img src={avatarImg} />
+        <img src='./images/profile.png' />
         <button>upload picture</button>
       </div>
       <div className={style.profileDescription}>
@@ -20,15 +31,15 @@ const Profile = () => {
             <span>Email:</span>
           </section>
           <section className={style.fields}>
-            <span>John</span>
-            <span>White</span>
-            <span>+1234-56-78-90</span>
-            <span>City, Example Street</span>
-            <span>jwhite@example.com</span>
+            <span>{user.firstName}</span>
+            <span>{user.lastName}</span>
+            <span>{user.mobile}</span>
+            <span>{user.address}</span>
+            <span>{user.email}</span>
           </section>
         </div>
         <h2>Change Password</h2>
-        <ChangePassForm />
+        <ChangePassForm password={user.password}/>
       </div>
     </div>
   )
