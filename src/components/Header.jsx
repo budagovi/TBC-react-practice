@@ -12,7 +12,6 @@ const Header = () => {
         <NavLink to='/store'>Store</NavLink>
         <NavLink to='/about'>About Us</NavLink>
         <NavLink to='/contact'>Contact Us</NavLink>
-        <NavLink to='/reviews'>Blogs</NavLink>
         <NavLink to='/cart'>
           <CartIcon className={style.cartIcon} />
         </NavLink>
