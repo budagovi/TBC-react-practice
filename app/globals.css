@@ -17,6 +17,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: #f1faee;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 code {
@@ -40,7 +45,7 @@ code {
   color: #fff;
 }
 
-/* HEADERS*/
+/* HEADERS */
 
 h1 {
   font-size: 2.4rem;
@@ -50,4 +55,26 @@ h1 {
 h2 {
   font-weight: 600;
   color: var(--green);
+}
+
+/* CONTENT */
+main {
+  width: 100%;
+  background-color: var(--green);
+  --color: #98b6af42;
+  background: linear-gradient(var(--color), var(--color)), url("https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 3rem 0;
+  flex: 1;
+}
+
+.main-wrapper {
+  background-color: #ffffffc1;
+  padding: 2rem 2.5rem;
+  width: 90%;
+  border-radius: 4px;
 }

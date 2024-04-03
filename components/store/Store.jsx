@@ -1,3 +1,5 @@
+'use client'
+
 import style from './Store.module.css';
 import StoreItem from './StoreItem';
 import Actions from './Actions';

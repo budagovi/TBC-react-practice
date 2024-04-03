@@ -11,9 +11,6 @@ const sampleUser = {
 }
 
 const Profile = ({user = sampleUser}) => {
-  
-
-
   return (
     <div className={style.wrapper}>
       <div className={style.imgWrapper}>
