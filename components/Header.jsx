@@ -1,23 +1,24 @@
 import style from './Header.module.css';
 import CartIcon from '../Icons/Cart';
 import ProfileIcon from '../Icons/Profile';
-import { NavLink } from 'react-router-dom';
+
+import Link from 'next/link';
 
 const Header = () => {
   return (
     <header className={style.wrapper}>
       <h1>Aurora Plants</h1>
       <nav className={style.links}>
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/store'>Store</NavLink>
-        <NavLink to='/about'>About Us</NavLink>
-        <NavLink to='/contact'>Contact Us</NavLink>
-        <NavLink to='/cart'>
+        <Link href='/'>Home</Link>
+        <Link href='/store'>Store</Link>
+        <Link href='/about'>About Us</Link>
+        <Link href='/contact'>Contact Us</Link>
+        <Link href='/cart'>
           <CartIcon className={style.cartIcon} />
-        </NavLink>
-        <NavLink to='/profile'>
+        </Link>
+        <Link href='/profile'>
           <ProfileIcon className={style.profileIcon} />
-        </NavLink>
+        </Link>
       </nav>
     </header>
   )

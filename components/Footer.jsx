@@ -3,7 +3,7 @@ import TelephoneIcon from '../Icons/Telephone';
 import LocationIcon from '../Icons/Location';
 import style from './Footer.module.css';
 
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -25,9 +25,9 @@ const Footer = () => {
       </section>
       <section className={style.links}>
         <span>Fast Links</span>
-        <NavLink to='/about'>About Us</NavLink>
-        <NavLink to='/contact'>Contact Us</NavLink>
-        <NavLink to='/store'>Store</NavLink>
+        <Link href='/about'>About Us</Link>
+        <Link href='/contact'>Contact Us</Link>
+        <Link href='/store'>Store</Link>
       </section>
       <section className={style.links}>
         <span>Information</span>
