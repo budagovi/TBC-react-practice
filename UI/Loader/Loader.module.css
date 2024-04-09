@@ -1,0 +1,37 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.loader {
+  width: 6px;
+  height: 36px;
+  display: inline-block;
+  position: relative;
+  border-radius: 4px;
+  color: var(--green);
+  box-sizing: border-box;
+  animation: animloader 0.9s linear infinite;
+  transform: translateX(-60px);
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: 20px -10px, 40px 10px, 60px 0px;
+  }
+  25% {
+    box-shadow: 20px 0px, 40px  0px, 60px 10px;
+  }
+  50% {
+    box-shadow: 20px 10px, 40px -10px, 60px 0px;
+  }
+  75% {
+    box-shadow: 20px 0px, 40px 0px, 60px -10px;
+  }
+  100% {
+    box-shadow: 20px -10px, 40px 10px, 60px 0px;
+  }
+}
+    
