@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import style from './Layout.module.css'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer';
@@ -16,11 +17,11 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       <body className={inter.className}>
         <Header />
-          <main>
-            <div className="main-wrapper">
+          <div className={style.mainWrapper}>
+            <main className={style.mainContent}>
               {children}
-            </div>
-          </main>
+            </main>
+          </div>
         <Footer />
       </body>
     </html>

@@ -4,13 +4,26 @@ import style from './Store.module.css';
 import StoreItem from './StoreItem';
 import Actions from './Actions';
 
-import products from '../../Products';
-import { useState } from 'react';
+//import products from '../../Products';
+import { useEffect, useState } from 'react';
+import Loader from '@/UI/Loader/Loader';
 
 const Store = () => {
 
-  console.log('rendering store')
-  const [filteredList, setFilteredList] = useState([...products]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('https://dummyjson.com/products');
+      if (response.ok) {
+        const data = await response.json();
+        setFilteredList(data.products)
+      }
+      return [];
+    }
+
+    fetchData();
+  }, [])
+
+  const [filteredList, setFilteredList] = useState([]);
   const [sorted, setSorted] = useState(false);
 
   // filter by query
@@ -20,36 +33,38 @@ const Store = () => {
     )
   }
 
-  // sort
-  const sortItems = (bool) => {
-    setSorted(bool)
-  }
-
-  let list = [...filteredList]
-  if(sorted) {
-    list.sort((a,b) => {
-      const aPrice = a.sale ? a.sale : a.price
-      const bPrice = b.sale ? b.sale : b.price
-      return aPrice - bPrice
-    })
-  }
-
   return (
     <section className={style.wrapper}>
       <div className={style.actions}>
         <h2>Browse Products</h2>
-        <Actions search={searchItems} sort={sortItems}/>        
+        <Actions search={searchItems} sort={(bool) => setSorted(bool)} />
       </div>
+      {filteredList.length === 0 && <Loader />}
       <div className={style.storeWrapper}>
-        {list.map((item) => 
-          <StoreItem 
+        {filteredList !== 0 && [...filteredList].sort((a, b) => {
+          // const aPrice = a.sale ? a.sale : a.price
+          // const bPrice = b.sale ? b.sale : b.price
+          const aPrice = a.discountPercentage ? a.price * (100 - a.discountPercentage) / 100 : a.price
+          const bPrice = b.discountPercentage ? b.price * (100 - b.discountPercentage) / 100 : b.price
+          if (sorted)
+            return aPrice - bPrice
+        }).map((item) =>
+          // <StoreItem
+          //   key={item.id}
+          //   src={item.src}
+          //   name={item.name}
+          //   price={item.price}
+          //   category={item.category}
+          //   sale={item.sale}/>
+          <StoreItem
             key={item.id}
-            src={item.src}
-            name={item.name}
+            id={item.id}
+            src={item.thumbnail}
+            name={item.title}
             price={item.price}
             category={item.category}
-            sale={item.sale}
-          />)
+            sale={item.discountPercentage} />
+        )
         }
       </div>
     </section>
