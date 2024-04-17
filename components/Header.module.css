@@ -29,6 +29,10 @@ nav.links a:hover {
   color: var(--foreHover);
 }
 
+nav.links > span {
+  cursor: pointer;
+}
+
 .cartIcon {
   --cartSize: 22px;
   width: var(--cartSize);
