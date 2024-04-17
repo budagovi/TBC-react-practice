@@ -18,9 +18,7 @@ const RootLayout = ({ children }) => {
       <body className={inter.className}>
         <Header />
           <div className={style.mainWrapper}>
-            <main className={style.mainContent}>
-              {children}
-            </main>
+            {children}
           </div>
         <Footer />
       </body>

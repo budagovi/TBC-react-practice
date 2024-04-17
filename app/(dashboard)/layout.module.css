@@ -1,0 +1,7 @@
+main.mainContent {
+  background-color: #ffffffc1;
+  padding: 2rem 2.5rem;
+  width: 90%;
+  border-radius: 4px;
+  flex-grow: 1;
+}
