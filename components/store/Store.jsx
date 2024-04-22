@@ -8,6 +8,7 @@ import Actions from './Actions';
 import { useEffect, useState } from 'react';
 import Loader from '@/UI/Loader/Loader';
 
+
 const Store = () => {
 
   useEffect(() => {
