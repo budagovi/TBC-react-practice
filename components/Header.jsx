@@ -8,22 +8,25 @@ import { cookies } from 'next/headers';
 import { AUTH_COOKIE_KEY } from '../constants';
 import LogoutBtn from './LogoutBtn';
 
-const Header = () => {
+import { getDictionary } from '../app/[lang]/dictionaries'
+
+const Header = async ({lang}) => {
 
   const cookieStore = cookies();
   const flag = cookieStore.get(AUTH_COOKIE_KEY);
 
+  const dict = await getDictionary(lang)
 
   return (
     <header className={style.wrapper}>
       <h1>Aurora Plants</h1>
       {
         flag && <nav className={style.links}>
-          <Link href='/'>Home</Link>
-          <Link href='/store'>Store</Link>
-          <Link href='/about'>About Us</Link>
-          <Link href='/contact'>Contact Us</Link>
-          <Link href='/blogs'>Blogs</Link>
+          <Link href='/'>{dict.home}</Link>
+          <Link href='/store'>{dict.store}</Link>
+          <Link href='/about'>{dict.about}</Link>
+          <Link href='/contact'>{dict.contact}</Link>
+          <Link href='/blogs'>{dict.blogs}</Link>
           <Link href='/cart'>
             <CartIcon className={style.cartIcon} />
           </Link>

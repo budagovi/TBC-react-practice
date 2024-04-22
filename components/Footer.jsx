@@ -5,11 +5,15 @@ import style from './Footer.module.css';
 
 import Link from 'next/link';
 
-const Footer = () => {
+import { getDictionary } from '@/app/[lang]/dictionaries';
+
+const Footer = async ({lang}) => {
+
+  const dict = await getDictionary(lang)
   return (
     <footer className={style.wrapper}>
       <section className={style.links}>
-        <span>Contact</span>
+        <span>{dict.contact}</span>
         <div className={style.contactLine}>
           <EnvelopeIcon className={style.icon}/>
           <a href='#'>aurora-store@example.com</a>
@@ -20,19 +24,19 @@ const Footer = () => {
         </div>
         <div className={style.contactLine}>
           <LocationIcon className={style.icon}/>
-          <a href='#'>City, Example Street</a>
+          <a href='#'>{dict.address}</a>
         </div>
       </section>
       <section className={style.links}>
-        <span>Fast Links</span>
-        <Link href='/about'>About Us</Link>
-        <Link href='/contact'>Contact Us</Link>
-        <Link href='/store'>Store</Link>
+        <span>{dict.fastLinks}</span>
+        <Link href='/about'>{dict.about}</Link>
+        <Link href='/contact'>{dict.contact}</Link>
+        <Link href='/store'>{dict.store}</Link>
       </section>
       <section className={style.links}>
-        <span>Information</span>
-        <a href='#'>Terms and Conditions</a>
-        <a href='#'>Privacy Policy</a>
+        <span>{dict.information}</span>
+        <a href='#'>{dict.tac}</a>
+        <a href='#'>{dict.pp}</a>
       </section>
     </footer>
   )
