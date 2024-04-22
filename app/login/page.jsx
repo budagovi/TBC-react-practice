@@ -1,7 +1,7 @@
-import Login from "@/components/Login Page/Login";
-import { login } from "./actions";
+import Login from "../../components/Login Page/Login";
+
 const page = () => {
-  return <><Login loginUser={login} /></>
+  return <><Login/></>
 }
 
 export default page;

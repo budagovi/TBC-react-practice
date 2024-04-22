@@ -17,22 +17,20 @@ const Header = () => {
   return (
     <header className={style.wrapper}>
       <h1>Aurora Plants</h1>
-      {
-        flag && <nav className={style.links}>
-          <Link href='/'>Home</Link>
-          <Link href='/store'>Store</Link>
-          <Link href='/about'>About Us</Link>
-          <Link href='/contact'>Contact Us</Link>
-          <Link href='/blogs'>Blogs</Link>
-          <Link href='/cart'>
-            <CartIcon className={style.cartIcon} />
-          </Link>
-          <Link href='/profile'>
-            <ProfileIcon className={style.profileIcon} />
-          </Link>
-          <LogoutBtn/>
-        </nav>
-      }
+      <nav className={style.links}>
+        <Link href='/'>Home</Link>
+        <Link href='/store'>Store</Link>
+        <Link href='/about'>About Us</Link>
+        <Link href='/contact'>Contact Us</Link>
+        <Link href='/blogs'>Blogs</Link>
+        <Link href='/cart'>
+          <CartIcon className={style.cartIcon} />
+        </Link>
+        <Link href='/profile'>
+          <ProfileIcon className={style.profileIcon} />
+        </Link>
+        <LogoutBtn />
+      </nav>
     </header>
   )
 }

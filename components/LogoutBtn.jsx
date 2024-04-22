@@ -1,17 +1,20 @@
 'use client'
 
-import { logout } from '@/app/login/actions';
 import { useRouter } from 'next/navigation';
 
 const LogoutBtn = () => {
 
   const router = useRouter();
-  return <span onClick={async () => {
-    await logout();
-    router.push('/login');
-    window.location.reload();
+
+  const logoutHandler = async () => {
+    const res = await fetch('/api/logout');
+
+    if (res.ok) {
+      router.push('/login')
+    }
   }
-  }>Log Out</span>
+
+  return <span onClick={logoutHandler}>Log Out</span>
 }
 
 export default LogoutBtn;
