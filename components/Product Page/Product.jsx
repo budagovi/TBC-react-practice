@@ -41,7 +41,7 @@ function Product({ id }) {
           </div>
           <span>pictures:</span>
           <aside className={style.productGallery}>
-            {product.images.map(item => <div className={style.galleryItemWrapper}><img src={item}/></div>)}
+            {product.images.map((item, idx) => <div className={style.galleryItemWrapper} key={idx}><img src={item}/></div>)}
           </aside>
         </div>
       </div>
