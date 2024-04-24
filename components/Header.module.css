@@ -21,6 +21,7 @@ nav.links {
 nav.links a {
   text-transform: capitalize;
   text-decoration: none;
+  text-transform: capitalize;
   color: inherit;
   transition: .2s ease-in;
   margin-inline: 0.3rem;

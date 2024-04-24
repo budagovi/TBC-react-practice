@@ -7,24 +7,24 @@ import Link from 'next/link';
 import { Locale } from '@/i18n.config';
 import { getDictionary } from '@/dictionaries/dictionary';
 
-const Footer = async ({lang}: {lang:Locale}) => {
+const Footer = async ({ lang }: { lang: Locale }) => {
 
-  const {footer: dict} = await getDictionary(lang);
+  const { footer: dict } = await getDictionary(lang);
 
   return (
     <footer className={style.wrapper}>
       <section className={style.links}>
         <span>{dict.contactTitle}</span>
         <div className={style.contactLine}>
-          <EnvelopeIcon className={style.icon}/>
+          <EnvelopeIcon className={style.icon} />
           <a href='#'>aurora-store@example.com</a>
         </div>
         <div className={style.contactLine}>
-          <TelephoneIcon className={style.icon}/>
+          <TelephoneIcon className={style.icon} />
           <a href='#'>+123 45 67 89</a>
         </div>
         <div className={style.contactLine}>
-          <LocationIcon className={style.icon}/>
+          <LocationIcon className={style.icon} />
           <a href='#'>{dict.address}</a>
         </div>
       </section>
