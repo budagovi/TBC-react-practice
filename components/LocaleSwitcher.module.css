@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  align-self: flex-start;
+  list-style: none;
+}
+
+.wrapper li a {
+  text-transform: uppercase;
+  font-size: 12px;
+}

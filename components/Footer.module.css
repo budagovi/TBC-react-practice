@@ -15,7 +15,12 @@ section.links {
   gap: 0.3rem;
 }
 
+section.links:not(:nth-child(1)){
+  text-transform: capitalize;
+}
+
 section.links span {
+  text-transform: capitalize;
   font-size: 22px;
   font-weight: 600;
   color: var(--fore)

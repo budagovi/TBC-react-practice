@@ -19,6 +19,7 @@ nav.links {
 }
 
 nav.links a {
+  text-transform: capitalize;
   text-decoration: none;
   color: inherit;
   transition: .2s ease-in;
