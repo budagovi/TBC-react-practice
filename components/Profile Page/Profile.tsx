@@ -1,7 +1,7 @@
 import style from './Profile.module.css';
 import ChangePassForm from './ChangePassForm';
-
-
+import img from '@/public/images/profile.png'
+import Image from 'next/image';
 
 const Profile = ({ dict }: { dict: any }) => {
 
@@ -17,7 +17,7 @@ const Profile = ({ dict }: { dict: any }) => {
   return (
     <div className={style.wrapper}>
       <div className={style.imgWrapper}>
-        <img src='./images/profile.png' />
+        <Image src={img}  alt='profile picture'/>
         <button>{dict.pictureBtn}</button>
       </div>
       <div className={style.profileDescription}>
