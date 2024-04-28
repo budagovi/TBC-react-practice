@@ -5,7 +5,7 @@ const layout = ({ children }: { children: ReactNode }) => {
   return (
     <main className= { style.mainContent } >
     { children }
-    < /main>
+    </main>
   )
 }
 
