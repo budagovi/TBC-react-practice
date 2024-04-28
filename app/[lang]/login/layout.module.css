@@ -1,5 +1,5 @@
 main.mainContent {
-  background-color: #ffffffc1;
+  background-color: var(--contentBackground);
   padding: 2rem 2.5rem;
   width: 460px;
   border-radius: 4px;

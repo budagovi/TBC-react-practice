@@ -1,0 +1,72 @@
+{
+  "navLinks": {
+    "home": "home",
+    "store": "store",
+    "about": "about us",
+    "contact": "contact us",
+    "blogs": "blogs",
+    "logout": "log out"
+  },
+  "footer": {
+    "contactTitle": "contact",
+    "address": "city, example street",
+    "linksTitle": "fast links",
+    "store": "store",
+    "about": "about us",
+    "contact": "contact us",
+    "infoTitle": "information",
+    "terms&conditions": "terms and conditions",
+    "privacyPolicy": "privacy policy"
+  },
+  "loginPage": {
+    "title": "Sign in to your account",
+    "btnText": "Sign in"
+  },
+  "storePage": {
+    "title": "Browse Products",
+    "searchText": "Search for plants",
+    "sortBtnText": "Sort by price"
+  },
+  "contactPage": {
+    "form": {
+      "title": "Send us a message",
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "nameSpaceHolder": "John",
+      "subjectSpaceHolder": "Purchase Status",
+      "messageSpaceHolder": "Your Message",
+      "btnText": "send message"
+    },
+    "info": {
+      "title": "How to reach us",
+      "email": "Email",
+      "telephone": "Telephone",
+      "location": "Location",
+      "address": "city, example street",
+      "country": "Country"
+    }
+  },
+  "blogsPage": {
+
+  },
+  "profilePage": {
+    "pictureBtn": "upload picture",
+    "title": "Profile Information",
+    "name": "First Name",
+    "lastname": "Last Name",
+    "mobile": "Mobile Number",
+    "address": "Address",
+    "email": "Email",
+    "passForm": {
+      "title": "Change Password",
+      "old": "Old Password",
+      "new": "New Password",
+      "confirm": "Confirm Password",
+      "btnText": "change"
+    }
+
+  }
+    
+}

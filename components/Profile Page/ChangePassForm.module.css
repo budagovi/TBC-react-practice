@@ -26,7 +26,7 @@ form.wrapper {
 
 .formControl input:focus,
 .formControl textarea:focus {
-  border: 1px solid var(--green);
+  border: 1px solid var(--greenBg);
 }
 
 .formControl textarea {
@@ -39,7 +39,7 @@ form.wrapper {
   padding: 0.3rem 1rem;
   margin: 0.4rem 0;
   border-radius: 5px;
-  background-color: var(--green);
+  background-color: var(--greenBg);
   border: 0;
   outline: 0;
   opacity: 0.95;

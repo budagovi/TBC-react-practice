@@ -17,7 +17,7 @@ export const metadata = {
 const RootLayout = async ({ children, params: { lang } }: { children: ReactNode, params: { lang: Locale } }) => {
 
   return (
-    <html lang={lang}>
+    <html lang={lang} data-theme='dark'>
       <body className={inter.className}>
         <Header lang={lang} />
         <div className={style.mainWrapper}>

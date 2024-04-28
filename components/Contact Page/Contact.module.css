@@ -5,6 +5,7 @@
 
 .wrapper h2 {
   padding-bottom: 1rem;
+  color: var(--greenFore);
 }
 
 .wrapper h2:nth-of-type(2) {
@@ -38,7 +39,7 @@
 .contactItemText > span:nth-of-type(1) {
   font-size: 1.3rem;
   font-weight: 800;
-  color: var(--green);
+  color: var(--greenFore);
 }
 
 /* style all spans except first one*/
@@ -51,7 +52,7 @@
 svg.icon {
   width: 55px;
   height: 55px;
-  background-color: var(--green);
+  background-color: var(--greenBg);
   fill: #f4f4f4;
   padding: 0.7rem;
   border-radius: 2rem;

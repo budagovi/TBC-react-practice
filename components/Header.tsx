@@ -7,6 +7,7 @@ import LogoutBtn from './LogoutBtn';
 import { Locale } from '@/i18n.config';
 import { getDictionary } from '@/dictionaries/dictionary';
 import LocalSwitcher from './LocaleSwitcher';
+import ThemeToggle from './ThemeToggle';
 
 const Header = async ({lang}: {lang:Locale}) => {
 
@@ -29,6 +30,7 @@ const Header = async ({lang}: {lang:Locale}) => {
         </Link>
         <LogoutBtn dict={dict}/>
         <LocalSwitcher/>
+        <ThemeToggle />
       </nav>
     </header>
   )

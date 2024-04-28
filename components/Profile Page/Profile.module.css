@@ -11,6 +11,10 @@
   gap: 1rem;
 }
 
+.wrapper h2 {
+  color: var(--greenFore);
+}
+
 .imgWrapper img {
   border-radius: 50%;
   border: var(--greyBorder);
@@ -23,7 +27,7 @@
   font-size: 14px;
   outline: 0;
   border: 0;
-  background-color: var(--green);
+  background-color: var(--greenBg);
   opacity: 0.9;
   cursor: pointer;
   color: var(--fore);

@@ -4,7 +4,7 @@ footer.wrapper {
   align-items: flex-start;
   gap: 10rem;
   padding: 0.7rem 2rem;
-  background-color: var(--green);
+  background-color: var(--greenBg);
   color: var(--fore);
   font-size: 14px;
 }
