@@ -15,7 +15,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   padding: 1rem;
-  border: 1px solid var(--green);
+  border: 1px solid var(--greenBg);
 }
 
 .desc {
@@ -27,7 +27,7 @@
 }
 
 .desc h2 {
-  border-bottom: 1px solid var(--green);
+  border-bottom: 1px solid var(--greenFore);
 }
 
 .desc p {

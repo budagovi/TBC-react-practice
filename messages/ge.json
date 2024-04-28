@@ -1,0 +1,72 @@
+{
+  "navLinks": {
+    "home": "მთავარი",
+    "store": "პროდუქტები",
+    "about": "ჩვენს შესახებ",
+    "contact": "კონტაქტი",
+    "blogs": "ბლოგები",
+    "logout": "გასვლა"
+  },
+  "footer": {
+    "contactTitle": "კონტაქტი",
+    "address": "ქალაქი, ქუჩა",
+    "linksTitle": "სწრაფი ბმულები",
+    "store": "პროდუქტები",
+    "about": "ჩვენს შესახებ",
+    "contact": "კონტაქტი",
+    "infoTitle": "ინფორმაცია",
+    "terms&conditions": "წესები და პირობები",
+    "privacyPolicy": "უსაფრთხოება და კონფიდენციალურობა"
+  },
+  "loginPage": {
+    "title": "ექაუნთზე შესვლა",
+    "btnText": "შესვლა"
+  },
+  "storePage": {
+    "title": "პროდუქტები",
+    "searchText": "მოძებნეთ პროდუქტი",
+    "sortBtnText": "სორტირება ფასით"
+  },
+  "contactPage": {
+    "form": {
+      "title": "დაგვიკავშირდით",
+      "name": "სახელი",
+      "email": "ელ-ფოსტა",
+      "subject": "თემა",
+      "message": "ტექსი",
+      "nameSpaceHolder": "დემეტრე",
+      "subjectSpaceHolder": "შეკვეთის სტატუსი",
+      "messageSpaceHolder": "შეიყვანეთ ტექსტი",
+      "btnText": "გაგზავნა"
+    },
+    "info": {
+      "title": "კონტაქტი",
+      "email": "ელ-ფოსტა",
+      "telephone": "ტელეფონი",
+      "location": "ლოკაცია",
+      "address": "ქალაქი, ქუჩა",
+      "country": "ქვეყანა"
+    }
+  },
+  "blogsPage": {
+
+  },
+  "profilePage": {
+    "pictureBtn": "ატვირთეთ ფოტო",
+    "title": "პროფილის ინფორმაცია",
+    "name": "სახელი",
+    "lastname": "გვარი",
+    "mobile": "მობილურის ნომერი",
+    "address": "მისამართი",
+    "email": "ელ-ფოსტა",
+    "passForm": {
+      "title": "პაროლის შეცვლა",
+      "old": "ძველი პაროლი",
+      "new": "ახალი პაროლი",
+      "confirm": "დაადასტურეთ ახალი პაროლი",
+      "btnText": "შეცვლა"
+    }
+
+  }
+    
+}

@@ -29,8 +29,9 @@ code {
     monospace;
 }
 
-:root {
-  --green: #1b3c35;
+:root[data-theme='light'] {
+  --greenBg: #1b3c35;
+  --greenFore: #1b3c35;
   --fore: #ebebeb;
   --foreHover: #cacaca;
   --foreDark: #4d4d4d;
@@ -38,6 +39,24 @@ code {
   --bloodyRed: #540b0e;
 
   --greyBorder: 1px solid #b6b6b6;
+  --contentBackground: #ffffffc1;
+  --boxShadow: #8a8a8a;
+}
+
+:root[data-theme='dark'] {
+
+  --greenBg: #202020;
+  --greenFore: #858585;
+  
+  /* --primary-bright: #ffffff;
+  --primary: #d9d9d9;
+  --primary-dim: #666666;
+  --secondary: #ffed7f;
+  --secondary-bright: #ffea5f; */
+  --contentBackground: #060708aa;
+  --boxShadow: #383838;
+
+  color-scheme: dark;
 }
 
 ::selection {

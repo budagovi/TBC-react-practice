@@ -14,6 +14,11 @@
   transition: .2s ease-in;
 }
 
+:root[data-theme='dark'] .inputWrapper { 
+  background-color: #3b3b3b;
+}
+
+
 .inputWrapper:has(input:focus) {
   border: 1px solid var(--green);
 }
@@ -56,8 +61,19 @@
   color: var(--foreDark);
 }
 
+:root[data-theme='dark'] .sortBtn {
+  background-color: #3b3b3b;
+  color: #f4f4f4;
+}
+
+:root[data-theme='dark'] .sortBtn.active {
+  background-color: #f4f4f4;
+  color: #3b3b3b;
+}
+
+
 .sortBtn.active {
-  background-color: var(--green);
+  background-color: var(--greenBg);
   opacity: 0.9;
   color: var(--fore);
 }
