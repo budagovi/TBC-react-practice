@@ -1,6 +1,6 @@
-import EnvelopeIcon from '../../Icons/Envelope';
-import TelephoneIcon from '../../Icons/Telephone';
-import LocationIcon from '../../Icons/Location';
+import EnvelopeIcon from '../../icons/Envelope';
+import TelephoneIcon from '../../icons/Telephone';
+import LocationIcon from '../../icons/Location';
 import ContactForm from './ContactForm';
 import style from './Contact.module.css';
 

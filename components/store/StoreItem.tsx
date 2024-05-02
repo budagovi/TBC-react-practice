@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import CartIcon from '../../Icons/Cart';
+import CartIcon from '../../icons/Cart';
 import style from './StoreItem.module.css';
 
 // const StoreItem = ({ src, name, price, category, sale }) => {

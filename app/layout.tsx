@@ -1,11 +1,12 @@
 import { Inter } from "next/font/google";
-import "../globals.css";
+import "./globals.css";
 import style from './Layout.module.css'
 
-import Header from '../../components/Header'
-import Footer from '../../components/Footer';
+import Header from '../components/Header'
+import Footer from '../components/Footer';
 import { ReactNode } from "react";
 import { Locale } from "@/i18n.config";
+import { cookies } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,10 +15,13 @@ export const metadata = {
   description: "Online plants shopping platform",
 };
 
-const RootLayout = async ({ children, params: { lang } }: { children: ReactNode, params: { lang: Locale } }) => {
+const RootLayout = async ({ children }: { children: ReactNode, params: { lang: Locale } }) => {
 
+
+  let lang = cookies().get('locale')
+  
   return (
-    <html lang={lang} data-theme='dark'>
+    <html lang={lang ? lang.value : 'en'} data-theme='dark'>
       <body className={inter.className}>
         <Header lang={lang} />
         <div className={style.mainWrapper}>

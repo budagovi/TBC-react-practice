@@ -1,13 +1,14 @@
-import EnvelopeIcon from '../Icons/Envelope';
-import TelephoneIcon from '../Icons/Telephone';
-import LocationIcon from '../Icons/Location';
+import EnvelopeIcon from '../icons/Envelope';
+import TelephoneIcon from '../icons/Telephone';
+import LocationIcon from '../icons/Location';
 import style from './Footer.module.css';
 
 import Link from 'next/link';
 import { Locale } from '@/i18n.config';
 import { getDictionary } from '@/dictionaries/dictionary';
+import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 
-const Footer = async ({ lang }: { lang: Locale }) => {
+const Footer = async ({ lang }: { lang: RequestCookie | undefined }) => {
 
   const { footer: dict } = await getDictionary(lang);
 
@@ -30,9 +31,9 @@ const Footer = async ({ lang }: { lang: Locale }) => {
       </section>
       <section className={style.links}>
         <span>{dict.linksTitle}</span>
-        <Link href={`/${lang}/about`} >{dict.about}</Link>
-        <Link href={`/${lang}/contact`}>{dict.contact}</Link>
-        <Link href={`/${lang}/store`}>{dict.store}</Link>
+        <Link href={`/about`} >{dict.about}</Link>
+        <Link href={`/contact`}>{dict.contact}</Link>
+        <Link href={`/store`}>{dict.store}</Link>
       </section>
       <section className={style.links}>
         <span>{dict.infoTitle}</span>

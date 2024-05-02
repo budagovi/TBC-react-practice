@@ -1,5 +1,5 @@
 import style from './Actions.module.css';
-import SearchIcon from '../../Icons/Search';
+import SearchIcon from '../../icons/Search';
 import { ChangeEvent, MouseEvent } from 'react';
 
 const Actions = ({ search, sort, dict }: {

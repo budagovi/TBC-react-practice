@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { AUTH_COOKIE_KEY } from "./constants";
 import { NextResponse } from "next/server";
 import { i18n } from "./i18n.config";
+import { cookies } from "next/headers";
 
 export function middleware(request: NextRequest) {
   console.log("middleware executes on " + request.nextUrl.pathname)
@@ -13,18 +14,24 @@ export function middleware(request: NextRequest) {
   }
 
   // internationalization
-  const currLocale = (() => { //cuurent lang value
-    for (let locale of i18n.locales) {
-      if (pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`) {
-        return locale;
-      }
-    }
-    return null;
-  })();
+  // const currLocale = (() => { //cuurent lang value
+  //   for (let locale of i18n.locales) {
+  //     if (pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`) {
+  //       return locale;
+  //     }
+  //   }
+  //   return null;
+  // })();
+
+  const currLocale = cookies().get('locale')?.value;
 
   if (!currLocale) {
-    request.nextUrl.pathname = `/${i18n.defaultLocale}${pathname}`
-    return NextResponse.redirect(request.nextUrl)
+    // request.nextUrl.pathname = `/${i18n.defaultLocale}${pathname}`
+    // return NextResponse.redirect(request.nextUrl)
+
+    const response = NextResponse.next()
+    response.cookies.set('locale', i18n.defaultLocale)
+    return response;
   }
 
   // extract token for checking authorized user existence

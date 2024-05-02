@@ -1,6 +1,6 @@
 import style from './Header.module.css';
-import CartIcon from '../Icons/Cart';
-import ProfileIcon from '../Icons/Profile';
+import CartIcon from '../icons/Cart';
+import ProfileIcon from '../icons/Profile';
 import Link from 'next/link';
 
 import LogoutBtn from './LogoutBtn';
@@ -8,24 +8,26 @@ import { Locale } from '@/i18n.config';
 import { getDictionary } from '@/dictionaries/dictionary';
 import LocalSwitcher from './LocaleSwitcher';
 import ThemeToggle from './ThemeToggle';
+import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 
-const Header = async ({lang}: {lang:Locale}) => {
+const Header = async ({lang}: {lang:RequestCookie | undefined}) => {
 
   
   const {navLinks: dict} = await getDictionary(lang)
+
   return (
     <header className={style.wrapper}>
       <h1>Aurora Plants</h1>
       <nav className={style.links}>
-        <Link href={`/${lang}/`}>{dict.home}</Link>
-        <Link href={`/${lang}/store`}>{dict.store}</Link>
-        <Link href={`/${lang}/about`}>{dict.about}</Link>
-        <Link href={`/${lang}/contact`}>{dict.contact}</Link>
-        <Link href={`/${lang}/blogs`}>{dict.blogs}</Link>
-        <Link href={`/${lang}/cart`}>
+        <Link href={`/`}>{dict.home}</Link>
+        <Link href={`/store`}>{dict.store}</Link>
+        <Link href={`/about`}>{dict.about}</Link>
+        <Link href={`/contact`}>{dict.contact}</Link>
+        <Link href={`/blogs`}>{dict.blogs}</Link>
+        <Link href={`/cart`}>
           <CartIcon className={style.cartIcon} />
         </Link>
-        <Link href={`/${lang}/profile`}>
+        <Link href={`/profile`}>
           <ProfileIcon className={style.profileIcon} />
         </Link>
         <LogoutBtn dict={dict}/>
