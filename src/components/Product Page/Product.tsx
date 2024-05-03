@@ -1,8 +1,8 @@
 'use client'
-import Loader from '@/UI/Loader/Loader';
+import Loader from '@/src/UI/Loader/Loader';
 import style from './Product.module.css'
 import { useEffect, useState } from "react";
-import product from '@/interfaces/product';
+import product from '@/src/interfaces/product';
 
 function Product({ id }: { id: number }) {
 
