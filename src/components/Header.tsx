@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import LogoutBtn from './LogoutBtn';
 import { Locale } from '@/i18n.config';
-import { getDictionary } from '@/dictionaries/dictionary';
+import { getDictionary } from '@/src/dictionaries/dictionary';
 import LocalSwitcher from './LocaleSwitcher';
 import ThemeToggle from './ThemeToggle';
 import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies';

@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { AUTH_COOKIE_KEY } from "./constants";
 import { NextResponse } from "next/server";
-import { i18n } from "./i18n.config";
+import { i18n } from "../i18n.config";
 import { cookies } from "next/headers";
 
 export function middleware(request: NextRequest) {

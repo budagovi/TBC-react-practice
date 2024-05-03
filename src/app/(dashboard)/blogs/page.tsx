@@ -1,8 +1,8 @@
 'use client'
 
-import Loader from "@/UI/Loader/Loader";
-import Blog from "@/components/Blogs Page/Blog";
-import blog from "@/interfaces/blog";
+import Loader from "@/src/UI/Loader/Loader";
+import Blog from "@/src/components/Blogs Page/Blog";
+import blog from "@/src/interfaces/blog";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react"
 const BlogsPage = () => {

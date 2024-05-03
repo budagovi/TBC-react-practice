@@ -1,7 +1,7 @@
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import Login from "../../components/Login Page/Login";
 import { Locale } from "@/i18n.config";
-import { getDictionary } from "@/dictionaries/dictionary";
+import { getDictionary } from "@/src/dictionaries/dictionary";
 import { cookies } from "next/headers";
 
 const page = async ({ params }: { params: Params }) => {

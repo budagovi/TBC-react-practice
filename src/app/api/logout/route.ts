@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { AUTH_COOKIE_KEY } from "@/constants";
+import { AUTH_COOKIE_KEY } from "@/src/constants";
 
 export async function GET() {
 

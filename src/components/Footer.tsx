@@ -4,8 +4,7 @@ import LocationIcon from '../icons/Location';
 import style from './Footer.module.css';
 
 import Link from 'next/link';
-import { Locale } from '@/i18n.config';
-import { getDictionary } from '@/dictionaries/dictionary';
+import { getDictionary } from '@/src/dictionaries/dictionary';
 import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 
 const Footer = async ({ lang }: { lang: RequestCookie | undefined }) => {

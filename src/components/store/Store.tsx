@@ -5,8 +5,8 @@ import StoreItem from './StoreItem';
 import Actions from './Actions';
 
 import { useEffect, useState } from 'react';
-import Loader from '@/UI/Loader/Loader';
-import product from '@/interfaces/product';
+import Loader from '@/src/UI/Loader/Loader';
+import product from '@/src/interfaces/product';
 
 const Store = ({ dict }: { dict: any }) => {
 

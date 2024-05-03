@@ -1,6 +1,6 @@
-import Product from "@/components/Product Page/Product"
+import Product from "@/src/components/Product Page/Product"
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import product from "@/interfaces/product";
+import product from "@/src/interfaces/product";
 
 
 export async function generateStaticParams(): Promise<string[]> {

@@ -1,5 +1,5 @@
-import Contact from '@/components/Contact Page/Contact';
-import { getDictionary } from '@/dictionaries/dictionary';
+import Contact from '@/src/components/Contact Page/Contact';
+import { getDictionary } from '@/src/dictionaries/dictionary';
 import { Locale } from '@/i18n.config';
 import { cookies } from 'next/headers';
 
