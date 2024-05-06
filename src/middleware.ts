@@ -8,11 +8,6 @@ export function middleware(request: NextRequest) {
   console.log("middleware executes on " + request.nextUrl.pathname)
   const { pathname } = request.nextUrl;
 
-  // return early if we deal with route handlers
-  if (pathname.includes('/api')) {
-    return NextResponse.next();
-  }
-
   // internationalization
   // const currLocale = (() => { //cuurent lang value
   //   for (let locale of i18n.locales) {
@@ -42,8 +37,7 @@ export function middleware(request: NextRequest) {
     console.log(`redirecting to login [`)
     return NextResponse.redirect(new URL(`/login`, request.url), { status: 307 })
   }
-
-  if (pathname.includes('/login') && token) {
+  else if (pathname.includes('/login') && token) {
     console.log('redirecting to store')
     return NextResponse.redirect(new URL('/store', request.url), { status: 307 })
   }
@@ -52,5 +46,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|icon|images).*)"],
 };

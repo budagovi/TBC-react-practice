@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "@/src/globals.css";
 import style from './Layout.module.css'
 
-import Header from '../components/Header'
+import Header from '../components/Main Navigation/Header'
 import Footer from '../components/Footer';
 import { ReactNode } from "react";
 import { Locale } from "@/i18n.config";
@@ -22,8 +22,8 @@ const RootLayout = async ({ children }: { children: ReactNode, params: { lang: L
   
   return (
     <html lang={lang ? lang.value : 'en'} data-theme='dark'>
-      <body className={inter.className}>
-        <Header lang={lang} />
+      <body className={inter.className} id="root">
+        <Header/>
         <div className={style.mainWrapper}>
           {children}
         </div>
@@ -33,4 +33,4 @@ const RootLayout = async ({ children }: { children: ReactNode, params: { lang: L
   );
 }
 
-export default RootLayout
+export default RootLayout;

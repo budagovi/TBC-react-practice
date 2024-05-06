@@ -1,6 +1,6 @@
 'use server'
 
-import { AUTH_COOKIE_KEY } from "@/constants";
+import { AUTH_COOKIE_KEY } from "@/src/constants";
 import { cookies } from "next/headers";
 
 export async function login(formData:FormData) {

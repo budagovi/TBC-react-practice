@@ -1,6 +1,5 @@
 import Profile from '@/src/components/Profile Page/Profile';
 import { getDictionary } from '@/src/dictionaries/dictionary';
-import { Locale } from '@/i18n.config';
 import { cookies } from 'next/headers';
 
 const ProfilePage = async () => {

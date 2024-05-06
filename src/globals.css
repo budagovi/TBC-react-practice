@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+/* reset default styling */
 * {
   font-family: "Nunito", sans-serif;
   font-optical-sizing: auto;
@@ -10,59 +11,61 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  background-color: #f1faee;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  background-color: #f8f8f8;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
+/* theme color palletes */
 :root[data-theme='light'] {
   --greenBg: #1b3c35;
   --greenFore: #1b3c35;
-  --fore: #ebebeb;
+  --fore: #f0f0f0;
   --foreHover: #cacaca;
   --foreDark: #4d4d4d;
   --wheatTransparent: #f4f1dec7;
   --bloodyRed: #540b0e;
+  --red: #db4444;
 
   --greyBorder: 1px solid #b6b6b6;
   --contentBackground: #ffffffc1;
   --boxShadow: #8a8a8a;
+  
 }
 
 :root[data-theme='dark'] {
 
   --greenBg: #202020;
   --greenFore: #858585;
-  
-  /* --primary-bright: #ffffff;
-  --primary: #d9d9d9;
-  --primary-dim: #666666;
-  --secondary: #ffed7f;
-  --secondary-bright: #ffea5f; */
   --contentBackground: #060708aa;
   --boxShadow: #383838;
+}
 
-  color-scheme: dark;
+/* gloabl properties */
+:root {
+  --shadow: 0 2px 3px #0000005e;
 }
 
 ::selection {
   background-color: #4c6258;
   color: #fff;
 }
+
+/* global classes */
+.gl-max-width {
+  width: min(100%, 1380px);
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
 
 /* HEADERS */
 

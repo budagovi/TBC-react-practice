@@ -1,9 +1,9 @@
 'use client'
 
-import style from './LogoutBtn.module.css';
+import ExitIcon from '@/src/icons/Exit';
 import { usePathname, useRouter } from 'next/navigation';
 
-const LogoutBtn = ({ dict }: { dict: any }) => {
+const LogoutBtn = () => {
 
   const router = useRouter();
   const pathname = usePathname();
@@ -18,7 +18,7 @@ const LogoutBtn = ({ dict }: { dict: any }) => {
 
   if(pathname.includes('/login'))
     return null
-  return <span className={style.wrapper} onClick={logoutHandler}>{dict.logout}</span>
+  return <li onClick={logoutHandler}><ExitIcon /> Logout</li>
 }
 
 export default LogoutBtn;

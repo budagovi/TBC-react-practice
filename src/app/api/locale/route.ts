@@ -1,6 +1,6 @@
 import { Locale } from 'next/dist/compiled/@vercel/og/satori';
 import { cookies } from 'next/headers';
-import { NextResponse, NextRequest } from 'next/server';
+import { NextRequest } from 'next/server';
 
 export async function POST(req: NextRequest) {
   const { locale }: { locale:Locale } = await req.json();

@@ -1,52 +1,67 @@
 .wrapper {
-  border-radius: 0.3rem;
-  overflow: hidden;
-  background-color: #f4f4f4;
-  transition: .3s ease-in-out;
-  position: relative;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  border-radius: 0.3rem;
+  transition: .3s ease-in-out;
   cursor: pointer;
+  position: relative;
 }
 
-:root[data-theme='dark'] .wrapper {
-  background-color: #3b3b3b;
-  color: #f4f4f4;
+.imgWrapper {
+  aspect-ratio: 1/1;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 4px 0 #00000047;
+  overflow: hidden;
 }
 
-
-.wrapper:hover {
-  box-shadow: 5px 5px 20px var(--boxShadow);
-}
-
-.wrapper img {
+.imgWrapper img {
+  object-fit: cover;
+  height: 100%;
   width: 100%;
+  transition: .5s ease-in-out;
+}
+
+.imgWrapper:hover img {
+  scale: 1.05;
+}
+
+.saleTag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--red);
+  color: #f6f6f6;
+  font-size: 0.75rem;
+  font-weight: 400;
+  border-radius: 0.25rem;
 }
 
 .description {
   display: flex;
   flex-direction: column;
-  padding: 0.4rem 1rem 0.6rem;
+  gap: 0.5rem;
   flex-grow: 1;
 }
 
 .description>span:nth-of-type(1) {
   font-size: 15px;
-  color: #969696;
-  margin: 0.5rem 0;
+  color: #7a7a7a;
+  text-shadow: var(--shadow);
 }
 
 .description>span:nth-of-type(2) {
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight:600;
+  text-shadow: var(--shadow);
   flex-grow: 1;
 }
 
 .description>span:nth-of-type(3) {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   color: rgb(74, 74, 74);
-  margin-top: 0.4rem;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -59,7 +74,7 @@
 .oldPrice {
   text-decoration: line-through;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 12px;
   color: #676767;
 }
 
@@ -67,6 +82,7 @@
   text-decoration: none;
   font-weight: inherit;
   font-size: inherit;
+  color: var(--red);
 }
 
 .cartWrapper {
@@ -92,17 +108,4 @@
   height: 18px;
   transform: translateY(1px);
   fill: var(--fore);
-}
-
-
-.imgWrapper {
-  width: 100%;
-  aspect-ratio: 1/1;
-  overflow: hidden;
-}
-
-.imgWrapper img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
 }
