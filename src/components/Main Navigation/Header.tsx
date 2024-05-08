@@ -64,10 +64,10 @@ const Header = () => {
         </nav>
       </div>
 
-      {/*   -=-=-=- Banner (only on home route) -=-=-=-   */}
+      {/*   -=-=-=- Banner (visible only on home route) -=-=-=-   */}
       <div className={style.bannerText}>
         <p>welcome to the aurora plants</p>
-        <span>let's bring the spring to your home</span>
+        <span>let&apos;s bring the spring to your home</span>
         <Button
           light={true}
           onClick={() => router.push('/store')}

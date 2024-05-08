@@ -28,6 +28,7 @@ body {
 :root[data-theme='light'] {
   --greenBg: #1b3c35;
   --greenFore: #1b3c35;
+  
   --fore: #f0f0f0;
   --foreHover: #cacaca;
   --foreDark: #4d4d4d;

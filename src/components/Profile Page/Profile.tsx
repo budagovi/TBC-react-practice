@@ -39,7 +39,7 @@ const Profile = ({ dict }: { dict: any }) => {
           </section>
         </div>
         <h2>{dict.passForm.title}</h2>
-        <ChangePassForm password={user.password} dict={dict.passForm}/>
+        <ChangePassForm dict={dict.passForm}/>
       </div>
     </div>
   )

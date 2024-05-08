@@ -3,7 +3,7 @@
 import { ChangeEvent, useState } from 'react';
 import style from './ChangePassForm.module.css';
 
-const ChangePassForm = ({ password, dict }: {password:string, dict:any}) => {
+const ChangePassForm = ({ dict }: { dict:any}) => {
 
   const iniContainer = {
     password: '',
