@@ -19,11 +19,12 @@ const RootLayout = async ({ children }: { children: ReactNode, params: { lang: L
 
 
   let lang = cookies().get('locale')
-  
+
   return (
     <html lang={lang ? lang.value : 'en'} data-theme='dark'>
       <body className={inter.className} id="root">
-        <Header/>
+        <div id="overlay"></div>
+        <Header />
         <div className={style.mainWrapper}>
           {children}
         </div>

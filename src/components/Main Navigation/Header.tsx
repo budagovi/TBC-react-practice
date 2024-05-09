@@ -1,12 +1,12 @@
 'use client'
 
 // *
-// * header with main navigation 
+// * Header with main navigation 
 // *
 
 import style from './Header.module.css';
 
-//components
+// Components
 import CartIcon from '@/src/icons/Cart';
 import ProfileIcon from '@/src/icons/Profile';
 import NotebookIcon from '@/src/icons/Notebook';
@@ -21,7 +21,6 @@ import DropDown from '@/src/UI/DropDown/DropDown';
 // nextjs/react api
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-
 
 const Header = () => {
 
@@ -51,7 +50,8 @@ const Header = () => {
           <Link href={`/store`}>store</Link>
           <Link href={`/about`}>about</Link>
           <Link href={`/contact`}>contact</Link>
-          <Link href={`/blogs`}>blogs</Link>
+          <Link href={`/admin`}>admin panel</Link>
+          {/* <Link href={`/blogs`}>blogs</Link> */}
           <Link href={`/cart`}>
             <CartIcon className={style.cartIcon} />
           </Link>

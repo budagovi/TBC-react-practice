@@ -1,0 +1,82 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--greenBg);
+  padding: 1.3rem 2rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+
+.info > span > span {
+  font-weight: 800;
+}
+
+.info > span:nth-of-type(1) {
+  font-weight: 800;
+  color: var(--greenFore);
+  border-bottom: 1px solid var(--greenFore);
+  margin-bottom: 0.5rem;
+}
+
+.form {
+  padding: 2rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  gap: 0.5rem;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: #00000060;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form h3 {
+  text-align: center;
+}
+
+.formActions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form  input,
+.form  textarea {
+  font-size: 0.9rem;
+  width: 200px;
+  border: 1px solid transparent;
+  outline: none;
+  padding: 0.4rem 0.5rem;
+  width: 100%;
+  border-bottom: 1px solid var(--greenBg);
+}
+
+.form select {
+  border: none;
+  outline: none;
+  
+}
