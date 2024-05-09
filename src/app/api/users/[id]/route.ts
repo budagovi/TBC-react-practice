@@ -30,7 +30,7 @@ export async function PUT(request: NextRequest) {
   const { id, firstname, lastname, dob, gender, email, password, mobile, address, role } = data;
 
   try {
-    const query = await sql`UPDATE users
+    await sql`UPDATE users
       SET
         firstname = ${firstname},
         lastname = ${lastname},
@@ -56,7 +56,7 @@ export async function DELETE({ }: NextRequest, { params }: SearchParams) {
   const { id } = params
 
   try {
-    const query = await sql`DELETE FROM users WHERE id = ${id}`;
+    await sql`DELETE FROM users WHERE id = ${id}`;
     return NextResponse.json({ id }, { status: 200 })
 
   } catch (error) {
