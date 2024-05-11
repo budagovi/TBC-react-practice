@@ -1,9 +1,9 @@
-/* -=- Contact Content -=- */
+/* -=- Contact Page Content -=- */
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 0.9fr 2fr;
-  column-gap: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
 }
 
 .gridCell {
@@ -54,4 +54,10 @@
 .details section > span {
   font-size: 14px;
   font-weight: normal;
+  max-width: 300px;
+}
+
+/* -=- Contact Form -=- */
+.gridCell:nth-of-type(2) {
+  flex-grow: 1;
 }

@@ -13,6 +13,7 @@ const Contact = ({ dict }: { dict: any }) => {
 
   return (
     <div className={style.wrapper}>
+
       {/*   -=-=-=- Contact Details -=-=-=-   */}
       <div className={style.gridCell}>
         <aside className={style.details}>
@@ -40,10 +41,12 @@ const Contact = ({ dict }: { dict: any }) => {
           </section>
         </aside>
       </div>
+
       {/*   -=-=-=- Contact Form -=-=-=-   */}
       <div className={style.gridCell}>
-        <ContactForm dict={dict}/>
+        <ContactForm dict={dict} />
       </div>
+
     </div>
   )
 }

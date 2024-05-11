@@ -49,13 +49,13 @@ const Header = () => {
           <Link href={`/about`}>about</Link>
           <Link href={`/contact`}>contact</Link>
           <Link href={`/admin`}>admin panel</Link>
-          {/* <Link href={`/blogs`}>blogs</Link> */}
           <Link href={`/cart`}>
             <CartIcon className={style.cartIcon} />
           </Link>
           <DropDown
-            trigger={<ProfileIcon className={style.profileIcon} />}>
-            <li><ProfileIcon />Account</li>
+            trigger={<ProfileIcon className={style.profileIcon} />}
+          >
+            <Link href='/profile'><li><ProfileIcon />Account</li></Link>
             <li><NotebookIcon />My Orders</li>
             <LogoutBtn />
           </DropDown>
@@ -73,6 +73,7 @@ const Header = () => {
           shop now
         </Button>
       </div>
+
     </header>
   )
 }
