@@ -5,8 +5,10 @@ import { i18n } from "../i18n.config";
 import { cookies } from "next/headers";
 
 export function middleware(request: NextRequest) {
-  console.log("middleware executes on " + request.nextUrl.pathname)
+
+  // extract pathname 
   const { pathname } = request.nextUrl;
+  console.log("middleware executes on " + pathname)
 
   // internationalization
   // const currLocale = (() => { //cuurent lang value
@@ -34,7 +36,7 @@ export function middleware(request: NextRequest) {
 
   // redirects for user authentication
   if (!pathname.includes('/login') && !token) {
-    console.log(`redirecting to login [`)
+    console.log(`redirecting to login`)
     return NextResponse.redirect(new URL(`/login`, request.url), { status: 307 })
   }
   else if (pathname.includes('/login') && token) {

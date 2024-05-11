@@ -1,4 +1,4 @@
-/* Header appearence on home route */
+/* -=- Header appearence on home route -=- */
 .banner {
   min-height: 100vh;
   background-image:
@@ -38,7 +38,7 @@
   font-weight: 400;
 }
 
-/* Header appearence on other routes*/
+/* Header appearence on other routes */
 .wrapper {
   color: var(--greenFore);
 }
@@ -47,7 +47,7 @@
   display: none;
 }
 
-/* Head */
+/* -=- Head -=- */
 .head {
   background-color: var(--greenBg);
   width: 100%;
@@ -61,7 +61,7 @@
   padding-block: 0.4rem;
 }
 
-/* Navigation Bar*/
+/* -=- Navigation Bar -=- */
 .navWrapper {
   display: flex;
   justify-content: space-between;

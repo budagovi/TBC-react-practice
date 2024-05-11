@@ -4,21 +4,19 @@
 // * Header with main navigation 
 // *
 
+// --- CSS
 import style from './Header.module.css';
-
-// Components
+// --- Components
 import CartIcon from '@/src/icons/Cart';
 import ProfileIcon from '@/src/icons/Profile';
 import NotebookIcon from '@/src/icons/Notebook';
 import LogoutBtn from './LogoutBtn';
 import LocalSwitcher from './LocaleSwitcher';
-import ThemeToggle from './ThemeToggle';
-
-// UI
+// import ThemeToggle from './ThemeToggle';
+// --- UI
 import Button from '@/src/UI/Button/Button';
 import DropDown from '@/src/UI/DropDown/DropDown';
-
-// nextjs/react api
+// --- nextjs/react api
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -45,7 +43,7 @@ const Header = () => {
       <div className={`${style.navWrapper} gl-max-width`}>
         <h1>Aurora Plants</h1>
         <nav className={style.links}>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           {!isRoot ? <Link href={'/'}>home</Link> : <span>home</span>}
           <Link href={`/store`}>store</Link>
           <Link href={`/about`}>about</Link>
@@ -75,7 +73,6 @@ const Header = () => {
           shop now
         </Button>
       </div>
-
     </header>
   )
 }

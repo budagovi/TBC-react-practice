@@ -5,7 +5,6 @@ import StoreItem from './StoreItem';
 import Actions from './Actions';
 
 import { useEffect, useState } from 'react';
-import Loader from '@/src/UI/Loader/Loader';
 import product from '@/src/interfaces/product';
 
 const Store = ({ dict }: { dict: any }) => {
@@ -43,7 +42,6 @@ const Store = ({ dict }: { dict: any }) => {
           dict={dict}  
         />
       </div>
-      {filteredList.length === 0 && <Loader />}
       <div className={style.storeWrapper}>
         {filteredList.length !== 0 && [...filteredList].sort((a, b) => {
           // const aPrice = a.sale ? a.sale : a.price

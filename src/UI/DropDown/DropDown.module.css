@@ -17,6 +17,7 @@
   gap: 0.4rem;
 }
 
+/* applied conditionally to toggle dropdown menu */
 .show {
   display: flex;
 }

@@ -1,25 +1,26 @@
-import style from './ContactForm.module.css';
+// *
+// * Contact Form
+// *
 
-const ContactForm = ({dict}: {dict:any}) => {
+// --- CSS
+import style from './ContactForm.module.css';
+// --- UI
+import Input from '@/src/UI/Input Fields/Input';
+import TextArea from '@/src/UI/Input Fields/TextArea';
+import Button from '@/src/UI/Button/Button';
+
+const ContactForm = ({}: {dict:any}) => {
+
+
   return (
-    <form action="#" className={style.wrapper}>
-      <div className={style.formControl}>
-        <label htmlFor="name">{dict.name}:</label>
-        <input type="text" id="name" placeholder={dict.nameSpaceHolder}/>
+    <form className={style.wrapper}>
+      <div className={style.textInputs}>
+        <Input type='text' placeholder='Your Name' name='name' required/>
+        <Input type='email' placeholder='Your Email' name='email' required/>
+        <Input type='text' placeholder='Your Phone' name='mobile' required/>
       </div>
-      <div className={style.formControl}>
-        <label htmlFor="email">{dict.email}:</label>
-        <input type="email" id="email" placeholder='my-email@example.com'/>
-      </div>
-      <div className={style.formControl}>
-        <label htmlFor="subject">{dict.subject}:</label>
-        <input type="text" id="subject" placeholder={dict.subjectSpaceHolder}/>
-      </div>
-      <div className={style.formControl}>
-        <label htmlFor="msg">{dict.message}:</label>
-        <textarea id="msg" cols={30} rows={8} placeholder={dict.messageSpaceHolder}/>
-      </div>
-      <button type="submit">{dict.btnText}</button>
+      <TextArea name='message' placeholder='Your Message' rows={10}/>
+      <Button type='submit'>Send Message</Button>
     </form>
   )
 }

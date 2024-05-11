@@ -4,7 +4,7 @@
 // * Helper component for scrolling to the top on navigation
 // *
 
-// next.js/react api
+// --- next.js/react api
 import { useEffect } from 'react'
 
 const ScrollUp = () => {

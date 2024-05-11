@@ -37,7 +37,7 @@ section.links span {
   fill: var(--fore);
 }
 
-.icon {
+.contactLine svg {
   --iconSize: 14px;
   width: var(--iconSize);
   height: var(--iconSize);

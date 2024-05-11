@@ -1,5 +1,6 @@
 .wrapper {
   display: flex;
+  gap: 0.4rem;
   align-self: flex-start;
   list-style: none;
 }

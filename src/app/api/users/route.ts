@@ -30,6 +30,7 @@ export async function POST(request: NextRequest) {
   const password = data.password as string
   const role = data.role as string
 
+  console.log(data)
   try {
     const query = await sql`INSERT INTO users (firstname, lastname, email, password, dob, mobile, address, gender, role)
     VALUES (${firstname}, ${lastname}, ${email}, ${password}, ${dob}, ${mobile}, ${address}, ${gender}, ${role})
@@ -40,6 +41,5 @@ export async function POST(request: NextRequest) {
   }
   catch (error) {
     return NextResponse.json({ error }, { status: 500 })
-
   }
 }

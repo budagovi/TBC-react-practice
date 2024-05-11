@@ -1,19 +1,16 @@
 'use client'
 
 // *
-// * Custom component with carousel and arrow buttons (takes carousel items (cards) as children)
+// * Custom component with carousel and arrow buttons (takes carousel items (div tags) as children)
 // *
 
-// CSS
+// --- CSS
 import style from './SliderSection.module.css';
-
-// UI
+// --- UI
 import Button from '@/src/UI/Button/Button';
-
-// embla-carousel api
+// --- embla-carousel api
 import useEmblaCarousel from 'embla-carousel-react'
-
-// next.js/react api
+// --- next.js/react api
 import { useCallback, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 

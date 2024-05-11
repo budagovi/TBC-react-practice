@@ -26,10 +26,6 @@ export default function ThemeToggle() {
   const maybeTheme = () => {
     const themeLocalStorage = localStorage.getItem('theme')
     const themeSystem = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-
-
-    console.log(themeSystem);
-
     return themeLocalStorage ?? themeSystem
   }
 

@@ -67,7 +67,7 @@ const AdminPage = () => {
           id: u.id,
           firstname: u.firstname,
           lastname: u.lastname,
-          dob: u.dob,
+          dob: u.dob.split('T')[0],
           gender: u.gender,
           email: u.email,
           password: u.password,
@@ -90,7 +90,7 @@ const AdminPage = () => {
     }
 
     fetchData()
-  }, [])
+  }, [users])
 
   const deleteUser = (id: number) => {
     const del = async () => {

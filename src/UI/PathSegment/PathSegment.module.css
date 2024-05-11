@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 14px;
+  color: var(--grey);
+  font-weight: 500;
+}
+
+.wrapper > span {
+  color: inherit;
+  font-weight: inherit;
+}
+
+.wrapper > span:nth-of-type(3) {
+  color: var(--black);
+  font-weight: 600;
+}

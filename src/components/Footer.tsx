@@ -16,15 +16,15 @@ const Footer = async ({ lang }: { lang: RequestCookie | undefined }) => {
       <section className={style.links}>
         <span>{dict.contactTitle}</span>
         <div className={style.contactLine}>
-          <EnvelopeIcon className={style.icon} />
+          <EnvelopeIcon />
           <a href='#'>aurora-store@example.com</a>
         </div>
         <div className={style.contactLine}>
-          <TelephoneIcon className={style.icon} />
+          <TelephoneIcon />
           <a href='#'>+123 45 67 89</a>
         </div>
         <div className={style.contactLine}>
-          <LocationIcon className={style.icon} />
+          <LocationIcon />
           <a href='#'>{dict.address}</a>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "@/src/globals.css";
-import style from './Layout.module.css'
+import style from './layout.module.css'
 
 import Header from '../components/Main Navigation/Header'
 import Footer from '../components/Footer';
@@ -21,11 +21,11 @@ const RootLayout = async ({ children }: { children: ReactNode, params: { lang: L
   let lang = cookies().get('locale')
 
   return (
-    <html lang={lang ? lang.value : 'en'} data-theme='dark'>
+    <html lang={lang ? lang.value : 'en'}>
       <body className={inter.className} id="root">
         <div id="overlay"></div>
         <Header />
-        <div className={style.mainWrapper}>
+        <div className={`${style.mainWrapper} gl-max-width`}>
           {children}
         </div>
         <Footer lang={lang} />

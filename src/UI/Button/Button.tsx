@@ -2,9 +2,9 @@
 // * Custom button component
 // *
 
+// --- CSS
 import style from './Button.module.css';
-
-//  next.js/react api
+// --- next.js/react api
 import { MouseEventHandler, ReactNode } from 'react';
 
 interface Props {

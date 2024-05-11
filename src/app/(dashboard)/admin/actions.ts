@@ -27,5 +27,6 @@ export async function addUser(formData: FormData) {
     console.log('User added successfully:', data);
   } else {
     console.error('Failed to add user. Status:', response.status);
+    console.log(await response.json())
   }
 }

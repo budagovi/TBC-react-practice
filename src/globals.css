@@ -1,6 +1,7 @@
+/* -=- Custom Font -=- */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-/* reset default styling */
+/* -=- Reset Default Styling -=- */
 * {
   font-family: "Nunito", sans-serif;
   font-optical-sizing: auto;
@@ -17,42 +18,35 @@ a {
 }
 
 body {
-  margin: 0;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  background-color: #f8f8f8;
+  background-color: var(--bodyBg);
 }
 
-/* theme color palletes */
-:root[data-theme='light'] {
+/* -=- Color Palletes -=- */
+:root {
   --greenBg: #1b3c35;
   --greenFore: #1b3c35;
-  
+  --greyshGreen: #dce1de;
+  --red: #db4444;
+  --bodyBg: #f8f8f8;
+  --black: #030303;
+  --grey: #808080;
+
   --fore: #f0f0f0;
   --foreHover: #cacaca;
   --foreDark: #4d4d4d;
-  --wheatTransparent: #f4f1dec7;
-  --bloodyRed: #540b0e;
-  --red: #db4444;
 
   --greyBorder: 1px solid #b6b6b6;
   --contentBackground: #ffffffc1;
   --boxShadow: #8a8a8a;
-  
 }
 
-:root[data-theme='dark'] {
-
-  --greenBg: #202020;
-  --greenFore: #858585;
-  --contentBackground: #060708aa;
-  --boxShadow: #383838;
-}
-
-/* gloabl properties */
+/* -=- Global Variable Properties -=- */
 :root {
   --shadow: 0 2px 3px #0000005e;
+  --cardShadow: 0 1px 6px 0px #0002;
 }
 
 ::selection {
@@ -60,7 +54,7 @@ body {
   color: #fff;
 }
 
-/* global classes */
+/* -=- global classes -=- */
 .gl-max-width {
   width: min(100%, 1380px);
   margin: 0 auto;
@@ -68,8 +62,7 @@ body {
 }
 
 
-/* HEADERS */
-
+/* -=- Headers -=- */
 h1 {
   font-size: 2.4rem;
   font-weight: 600;
@@ -78,4 +71,12 @@ h1 {
 h2 {
   font-weight: 600;
   color: var(--green);
+}
+
+/* -=- Horizontal Line -=- */
+hr {
+  width: 100%;
+  height: 1px;
+  background-color: var(--greenBg);
+  border: none;
 }
