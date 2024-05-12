@@ -36,6 +36,7 @@
 .wrapper section {
   padding: 2.5rem 5rem;
   box-shadow: var(--cardShadow);
+  border-radius: 0.25rem;
   flex-grow: 1;
 }
 

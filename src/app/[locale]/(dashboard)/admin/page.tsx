@@ -4,6 +4,7 @@ import style from './style.module.css';
 import Button from '@/src/UI/Button/Button';
 import Modal from '@/src/UI/Modal/Modal';
 import { addUser } from './actions';
+import User from '@/src/interfaces/user';
 
 // --- next-internationalization api
 //import { Locale } from "@/i18n.config";
@@ -20,26 +21,12 @@ import { addUser } from './actions';
 //   }
 // }
 
-interface User {
-  id: number;
-  firstname: string;
-  lastname: string;
-  dob: string;
-  gender: 'm' | 'f';
-  email: string;
-  password: string;
-  mobile: string;
-  address: string;
-  role: 'user' | 'admin';
-  created_at: string;
-}
-
 interface SingleUser {
   id: number | null;
   firstname: string;
   lastname: string;
   dob: string;
-  gender: 'm' | 'f';
+  gender: 'male' | 'female';
   email: string;
   password: string;
   mobile: string;
@@ -66,7 +53,7 @@ const AdminPage = () => {
     firstname: '',
     lastname: '',
     dob: '',
-    gender: 'm',
+    gender: 'male',
     email: '',
     password: '',
     mobile: '',
@@ -98,18 +85,22 @@ const AdminPage = () => {
     setShowEdit(prev => !prev)
   }
 
-  useEffect(() => {
-
+  const fetchUsers = () => {
     const fetchData = async () => {
       const response = await fetch('/api/users')
       if (response.ok) {
         const data = await response.json();
+        //console.log(data);
         setUsers(data)
       }
     }
 
     fetchData()
-  }, [users])
+  }
+
+  useEffect(() => {
+    fetchUsers();
+  }, [])
 
   const deleteUser = (id: number) => {
     const del = async () => {
@@ -118,6 +109,7 @@ const AdminPage = () => {
       })
 
       if (response.ok) {
+        fetchUsers();
         console.log('user deleted successfully')
       }
     }
@@ -137,6 +129,7 @@ const AdminPage = () => {
         })
 
         if (response.ok) {
+          fetchUsers();
           console.log('user updated successfully')
         }
       }
@@ -196,14 +189,14 @@ const AdminPage = () => {
           </select>
 
           <div className={style.formActions}>
-            <Button type='submit'>add</Button>
+            <Button type='submit' onClick={() => window.location.reload()}>add</Button>
             <Button onClick={toggleModal}>cancel</Button>
           </div>
         </form>
       </Modal>
 
       <Modal show={showEdit}>
-        <form className={style.form} action={addUser} onSubmit={() => { toggleEdit(); editUser() }}>
+        <form className={style.form} onSubmit={() => { toggleEdit(); editUser() }}>
           <h3> add new user </h3>
           <input
             type="text"
@@ -243,7 +236,7 @@ const AdminPage = () => {
             value={user.gender}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => {
               setUser(prev => {
-                return { ...prev, gender: e.target.value as 'm' | 'f' }
+                return { ...prev, gender: e.target.value as 'male' | 'female' }
               })
             }}
           >
@@ -323,7 +316,7 @@ const AdminPage = () => {
           <div className={style.info}>
             <span>{user.firstname + ' ' + user.lastname}</span>
             <span><span>age: </span>{today.getFullYear() - +user.dob.split('-')[0]}</span>
-            <span><span>gender: </span>{user.gender === 'f' ? 'female' : 'male'}</span>
+            <span><span>gender: </span>{user.gender === 'male' ? 'male' : 'female'}</span>
             <span><span>address: </span>{user.address}</span>
             <span><span>mobile: </span>{user.mobile}</span>
             <span><span>email: </span>{user.email}</span>
