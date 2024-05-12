@@ -5,7 +5,8 @@
   list-style: none;
 }
 
-.wrapper li a {
+.wrapper li {
   text-transform: uppercase;
   font-size: 12px;
+  cursor: pointer;
 }

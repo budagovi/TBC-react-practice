@@ -5,6 +5,21 @@ import Button from '@/src/UI/Button/Button';
 import Modal from '@/src/UI/Modal/Modal';
 import { addUser } from './actions';
 
+// --- next-internationalization api
+import { Locale } from "@/i18n.config";
+import { setStaticParamsLocale } from "next-international/server";
+import { getStaticParams } from '@/src/locales/server';
+
+export function generateStaticParams() {
+  return getStaticParams()
+}
+
+interface Props {
+  params: {
+    locale: Locale
+  }
+}
+
 interface User {
   id: number;
   firstname: string;
@@ -36,7 +51,10 @@ function maskString(str: string) {
   return str.replace(/./g, '*');
 }
 
-const AdminPage = () => {
+const AdminPage = ({ params: { locale } }: Props) => {
+
+  // static rendering for both languages on build
+  setStaticParamsLocale(locale)
 
   const today = new Date()
   const [users, setUsers] = useState<User[]>(() => [])

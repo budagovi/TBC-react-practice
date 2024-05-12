@@ -39,7 +39,7 @@
   background-color: var(--greenBg);
   border-radius: 50%;
   border: none;
-  padding: 0.5rem;
+  padding: 0.6rem;
 }
 
 .iconDetail .iconWrapper svg {

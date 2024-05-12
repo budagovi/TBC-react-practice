@@ -1,41 +1,22 @@
 'use client'
 
+import { useChangeLocale } from '@/src/locales/client'
 import style from './LocaleSwitcher.module.css'
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-
-import { i18n, Locale } from "@/i18n.config"
+import { i18n } from "@/i18n.config"
 
 const LocalSwitcher = () => {
-  const pathname = usePathname();
 
-  // const redirectedPathname = (locale: Locale) => {
-  //   if(!pathname) 
-  //     return '/';
-    
-  //   const segments = pathname.split('/');
-  //   segments[1] = locale;
-  //   return segments.join('/');
-  // }
-
-  const switchLocale = async (lang : Locale) => {
-    await fetch(`/api/locale`, {
-      method: 'POST',
-      body: JSON.stringify({ locale: lang }),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    });
-
-    window.location.reload()
-  }
+  const changeLocale = useChangeLocale({preserveSearchParams: true});
 
   return (
     <ul className={style.wrapper}>
-      {i18n.locales.map( locale => {
-        return(
-          <li key={locale}>
-            <Link href={pathname} onClick={ () => switchLocale(locale)}>{locale}</Link>
+      {i18n.locales.map(locale => {
+        return (
+          <li
+            key={locale}
+            onClick={() => changeLocale(locale)}
+          >
+            {locale}
           </li>
         )
       })}

@@ -2,8 +2,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import style from './Login.module.css';
 import { useRouter } from 'next/navigation';
+import { useScopedI18n } from '@/src/locales/client';
 
-const Login = ({dict}: {dict:any}) => {
+const Login = () => {
+
+  const t = useScopedI18n('login page')
 
   const [credentials, setCredentials] = useState( () => {return {username: '', password: '0lelplR'}})
   const router = useRouter();
@@ -39,7 +42,7 @@ const Login = ({dict}: {dict:any}) => {
 
   return (
     <form className={style.wrapper} onSubmit={submitHandler}>
-      <h1>{dict.title}</h1>
+      <h1>{t('title')}</h1>
       <input
         type="text"
         placeholder='username'
@@ -54,7 +57,7 @@ const Login = ({dict}: {dict:any}) => {
         value={credentials.password}
         onChange={passwordChangeHandler}
       />
-      <button type="submit">{dict.btnText}</button>
+      <button type="submit">{t('btn text')}</button>
     </form>
   )
 }

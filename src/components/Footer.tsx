@@ -1,20 +1,28 @@
+// *
+// * Footer of page
+// *
+
+// --- CSS
+import style from './Footer.module.css';
+// --- Icon Components
 import EnvelopeIcon from '../icons/Envelope';
 import TelephoneIcon from '../icons/Telephone';
 import LocationIcon from '../icons/Location';
-import style from './Footer.module.css';
-
+// --- next.js/react api
 import Link from 'next/link';
-import { getDictionary } from '@/src/dictionaries/dictionary';
-import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies';
+// --- next-internationalization api
+import { getScopedI18n } from '@/src/locales/server'
 
-const Footer = async ({ lang }: { lang: RequestCookie | undefined }) => {
+const Footer = async () => {
 
-  const { footer: dict } = await getDictionary(lang);
+  const t = await getScopedI18n('footer')
 
   return (
     <footer className={style.wrapper}>
+
+      {/*   -=-=-=- Contact -=-=-=-   */}
       <section className={style.links}>
-        <span>{dict.contactTitle}</span>
+        <span>{t('contact title')}</span>
         <div className={style.contactLine}>
           <EnvelopeIcon />
           <a href='#'>aurora-store@example.com</a>
@@ -25,19 +33,23 @@ const Footer = async ({ lang }: { lang: RequestCookie | undefined }) => {
         </div>
         <div className={style.contactLine}>
           <LocationIcon />
-          <a href='#'>{dict.address}</a>
+          <a href='#'>{t('address')}</a>
         </div>
       </section>
+
+      {/*   -=-=-=- Fast Section -=-=-=-   */}
       <section className={style.links}>
-        <span>{dict.linksTitle}</span>
-        <Link href={`/about`} >{dict.about}</Link>
-        <Link href={`/contact`}>{dict.contact}</Link>
-        <Link href={`/store`}>{dict.store}</Link>
+        <span>{t('links title')}</span>
+        <Link href={`/about`} >{t('about')}</Link>
+        <Link href={`/contact`}>{t('about')}</Link>
+        <Link href={`/store`}>{t('store')}</Link>
       </section>
+
+      {/*   -=-=-=- Information -=-=-=-   */}
       <section className={style.links}>
-        <span>{dict.infoTitle}</span>
-        <a href='#'>{dict['terms&conditions']}</a>
-        <a href='#'>{dict.privacyPolicy}</a>
+        <span>{t('info title')}</span>
+        <a href='#'>{t('terms & conditions')}</a>
+        <a href='#'>{t('privacy policy')}</a>
       </section>
     </footer>
   )

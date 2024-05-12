@@ -16,11 +16,15 @@ import LocalSwitcher from './LocaleSwitcher';
 // --- UI
 import Button from '@/src/UI/Button/Button';
 import DropDown from '@/src/UI/DropDown/DropDown';
-// --- nextjs/react api
+// --- next/react api
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useScopedI18n } from '@/src/locales/client';
+import { Suspense } from 'react';
 
 const Header = () => {
+
+  const t = useScopedI18n('header')
 
   const pathname = usePathname();
   const isRoot = pathname === '/';
@@ -34,8 +38,10 @@ const Header = () => {
       <div className={style.head}>
         <section className='gl-max-width'>
           <span></span>
-          <span>Summer sale for all season plants and free express delivery - off 50%!</span>
-          <LocalSwitcher />
+          <span>{t('summer sal-')}</span>
+          <Suspense>
+            <LocalSwitcher />
+          </Suspense>
         </section>
       </div>
 
@@ -44,10 +50,10 @@ const Header = () => {
         <h1>Aurora Plants</h1>
         <nav className={style.links}>
           {/* <ThemeToggle /> */}
-          {!isRoot ? <Link href={'/'}>home</Link> : <span>home</span>}
-          <Link href={`/store`}>store</Link>
-          <Link href={`/about`}>about</Link>
-          <Link href={`/contact`}>contact</Link>
+          {!isRoot ? <Link href={'/'}>{t('home')}</Link> : <span>{t('home')}</span>}
+          <Link href={`/store`}>{t('store')}</Link>
+          <Link href={`/about`}>{t('about')}</Link>
+          <Link href={`/contact`}>{t('contact')}</Link>
           <Link href={`/admin`}>admin panel</Link>
           <Link href={`/cart`}>
             <CartIcon className={style.cartIcon} />

@@ -4,6 +4,14 @@ import { NextResponse } from "next/server";
 import { i18n } from "../i18n.config";
 import { cookies } from "next/headers";
 
+import { createI18nMiddleware } from 'next-international/middleware'
+
+const I18nMiddleware = createI18nMiddleware({
+  locales: ['en', 'ka'],
+  defaultLocale: 'en',
+  urlMappingStrategy: 'rewrite'
+})
+
 export function middleware(request: NextRequest) {
 
   // extract pathname 
@@ -43,8 +51,8 @@ export function middleware(request: NextRequest) {
     console.log('redirecting to store')
     return NextResponse.redirect(new URL('/store', request.url), { status: 307 })
   }
-
-  return NextResponse.next();
+  
+  return I18nMiddleware(request)
 }
 
 export const config = {

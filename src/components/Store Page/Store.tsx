@@ -7,7 +7,7 @@ import Actions from './Actions';
 import { useEffect, useState } from 'react';
 import product from '@/src/interfaces/product';
 
-const Store = ({ dict }: { dict: any }) => {
+const Store = ({ dict}: { dict?: any }) => {
 
   useEffect(() => {
     const fetchData = async () => {

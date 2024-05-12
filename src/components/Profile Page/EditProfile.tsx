@@ -1,27 +1,40 @@
-import Reset from '@/src/UI/Input Fields/Reset';
+'use client'
+
+// *
+// * Profile Edit Form
+// *
+
+// --- CSS
 import style from './EditProfile.module.css';
+// --- UI
+import Reset from '@/src/UI/Input Fields/Reset';
 import Input from '@/src/UI/Input Fields/Input';
 import Button from '@/src/UI/Button/Button';
+// --- next.react api
+// --- next-internationalization api
+import { useScopedI18n } from '@/src/locales/client';
+
 const EditProfile = () => {
 
+  const t = useScopedI18n('profile page.edit form')
   // form submit logic
 
   return (
     <>
-      <h3>Edit your profile</h3>
+      <h3>{t('title')}</h3>
       <form className={style.wrapper}>
         {/*   -=-=-=- Fullname Credentials -=-=-=-   */}
         <div className={style.coupleInput}>
           <Input
             type='text'
-            label='First Name'
-            placeholder='John'
+            label={t('firstname.0')}
+            placeholder={t('firstname.1')}
             name='firstname'
           />
           <Input
             type='text'
-            label='Last Name'
-            placeholder='Smit'
+            label={t('lastname.0')}
+            placeholder={t('lastname.1')}
             name='lastname'
           />
         </div>
@@ -29,14 +42,14 @@ const EditProfile = () => {
         <div className={style.coupleInput}>
           <Input
             type='email'
-            label='Email'
+            label={t('email')}
             placeholder='example@gmail.com'
             name='email'
           />
           <Input
             type='text'
-            label='Address'
-            placeholder='City, Example Street'
+            label={t('address.0')}
+            placeholder={t('address.1')}
             name='address'
           />
         </div>
@@ -44,25 +57,25 @@ const EditProfile = () => {
         <div className={style.columnInputs}>
           <Input
             type='password'
-            label='Password Changes'
-            placeholder='Current Password'
+            label={t('password.0')}
+            placeholder={t('address.1')}
             name='password'
           />
           <Input
             type='password'
-            placeholder='New Password'
+            placeholder={t('password.2')}
             name='newPassword'
           />
           <Input
             type='password'
-            placeholder='Confirm New Password'
+            placeholder={t('password.3')}
             name='confirmPassword'
           />
         </div>
         {/*   -=-=-=- Buttons -=-=-=-   */}
         <div className={style.actions}>
-          <Reset value='cancel' />
-          <Button>Save Changes</Button>
+          <Reset value={t('cancel')} />
+          <Button>{t('save')}</Button>
         </div>
       </form>
     </>

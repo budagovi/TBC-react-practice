@@ -8,8 +8,12 @@ import style from './Contact.module.css';
 import ContactForm from './ContactForm';
 import EnvelopeIcon from '../../icons/Envelope';
 import TelephoneIcon from '../../icons/Telephone';
+// --- next-internationalization api
+import { getScopedI18n } from '@/src/locales/server';
 
-const Contact = ({ dict }: { dict: any }) => {
+const Contact = async () => {
+
+  const t = await getScopedI18n('contact page.info')
 
   return (
     <div className={style.wrapper}>
@@ -22,10 +26,10 @@ const Contact = ({ dict }: { dict: any }) => {
               <div className={style.iconWrapper}>
                 <TelephoneIcon />
               </div>
-              <span>call to us</span>
+              <span>{t('call to us')}</span>
             </div>
-            <span>We are available 24/7, 7 days a week.</span>
-            <span>Phone: +123 45 67 89</span>
+            <span>{t('we are avail-')}</span>
+            <span>{t('phone')}: +123 45 67 89</span>
           </section>
           <hr />
           <section>
@@ -33,18 +37,18 @@ const Contact = ({ dict }: { dict: any }) => {
               <div className={style.iconWrapper}>
                 <EnvelopeIcon />
               </div>
-              <span>write to us</span>
+              <span>{t('write to us')}</span>
             </div>
-            <span>Fill out our form and we will contact you within 24 hours.</span>
-            <span>Emails: aurora-store@example.com</span>
-            <span>Emails: aurora-support@example.com</span>
+            <span>{t('fill out our for-')}</span>
+            <span>{t('emails')}: aurora-store@example.com</span>
+            <span>{t('emails')}: aurora-support@example.com</span>
           </section>
         </aside>
       </div>
 
       {/*   -=-=-=- Contact Form -=-=-=-   */}
       <div className={style.gridCell}>
-        <ContactForm dict={dict} />
+        <ContactForm />
       </div>
 
     </div>

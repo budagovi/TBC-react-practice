@@ -1,3 +1,4 @@
+/* -=- Footer -=- */
 footer.wrapper {
   display: flex;
   justify-content: center;
@@ -9,6 +10,7 @@ footer.wrapper {
   font-size: 14px;
 }
 
+/* -=- Section Styling -=- */
 section.links {
   display: flex;
   flex-direction: column;
@@ -26,6 +28,7 @@ section.links span {
   color: var(--fore)
 }
 
+/* -=- Group of Icon and Text -=- */
 .contactLine {
   display: flex;
   align-items: center;
@@ -47,6 +50,7 @@ section.links span {
   transition: .15s ease-in-out;
 }
 
+/* -=- Link Styling -=- */
 section.links a {
   font-size: 12px;
   text-decoration: none;
