@@ -2,15 +2,14 @@ import style from './Actions.module.css';
 import SearchIcon from '../../icons/Search';
 import { ChangeEvent, MouseEvent } from 'react';
 
-const Actions = ({ search, sort, dict }: {
+const Actions = ({ search, sort }: {
   search: Function,
-  sort: Function,
-  dict: any
+  sort: Function
 }) => {
 
   // debounce
-  let timer:any;
-  const SearchChangeHandler = (e:ChangeEvent<HTMLInputElement>) => {
+  let timer: any;
+  const SearchChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
 
     clearTimeout(timer)
@@ -20,9 +19,9 @@ const Actions = ({ search, sort, dict }: {
   }
 
   // sort handler
-  const toggleSortHandler = (e:MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.classList.toggle(`${ style.active}`)
-    const bool = e.currentTarget.classList.contains(`${ style.active}`) 
+  const toggleSortHandler = (e: MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.classList.toggle(`${style.active}`)
+    const bool = e.currentTarget.classList.contains(`${style.active}`)
     sort(bool)
   }
 
@@ -33,7 +32,7 @@ const Actions = ({ search, sort, dict }: {
           <input
             id='search'
             type="text"
-            placeholder={dict.searchText}
+            placeholder='search'
             onChange={SearchChangeHandler}
           />
         </form>
@@ -44,8 +43,9 @@ const Actions = ({ search, sort, dict }: {
 
       <button
         className={style.sortBtn}
-        onClick={toggleSortHandler}>
-        {dict.sortBtnText}
+        onClick={toggleSortHandler}
+      >
+        sort
       </button>
       {/* <button className={style.filterBtn}>Filter</button> */}
     </div>

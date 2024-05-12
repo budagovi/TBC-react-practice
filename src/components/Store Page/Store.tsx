@@ -7,7 +7,7 @@ import Actions from './Actions';
 import { useEffect, useState } from 'react';
 import product from '@/src/interfaces/product';
 
-const Store = ({ dict}: { dict?: any }) => {
+const Store = () => {
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,11 +35,10 @@ const Store = ({ dict}: { dict?: any }) => {
   return (
     <section className={style.wrapper}>
       <div className={style.actions}>
-        <h2>{dict.title}</h2>
+        <h2>Products</h2>
         <Actions 
           search={() => console.log('need to fix')} 
-          sort={(bool:boolean) => setSorted(bool)} 
-          dict={dict}  
+          sort={(bool:boolean) => setSorted(bool)}   
         />
       </div>
       <div className={style.storeWrapper}>
