@@ -1,15 +1,28 @@
-import CartIcon from '../../icons/Cart';
-import style from './StoreItem.module.css';
-import Link from 'next/link';
+// *
+// * Store Item (Grid Element)
+// *
 
-const StoreItem = ({ src, name, price, category, sale, id }: {
+// --- CSS
+import style from './StoreItem.module.css';
+// --- Icons
+import CartIcon from '../../icons/Cart';
+// --- Hooks
+import useCartContext from '@/src/hooks/useCartContext';
+
+interface IProps {
   src: string,
   name: string,
   price: number,
   category: string,
   sale: number,
   id: number
-}) => {
+}
+
+const StoreItem = (props: IProps) => {
+
+  const { src, name, price, category, sale, id } = props;
+  const ctx = useCartContext();
+
   let priceTag = <span>${price.toFixed(2)}</span>
   if (sale) {
     priceTag = (
@@ -20,23 +33,32 @@ const StoreItem = ({ src, name, price, category, sale, id }: {
     )
   }
 
+  const addItemHandler = () => {
+    ctx.addItem({
+      id: id,
+      title: name,
+      price: +((price * (100 - sale) / 100).toFixed(2)),
+      discountPercentage: sale,
+      category: category,
+      amount: 1
+    })
+  }
+
   return (
-    <Link href={'./store/' + id}>
-      <div className={style.wrapper}>
-        <div className={style.imgWrapper}>
-          <img src={src} alt={name} />
-        </div>
-        <div className={style.description}>
-          <span>{category}</span>
-          <span>{name}</span>
-          {priceTag}
-        </div>
-        <span className={style.saleTag}>-{Math.ceil(sale)}%</span>
-        <button className={style.cartWrapper}>
-          <CartIcon className={style.cartIcon} />
-        </button>
+    <div className={style.wrapper}>
+      <div className={style.imgWrapper}>
+        <img src={src} alt={name} />
       </div>
-    </Link>
+      <div className={style.description}>
+        <span>{category}</span>
+        <span>{name}</span>
+        {priceTag}
+      </div>
+      <span className={style.saleTag}>-{Math.ceil(sale)}%</span>
+      <button className={style.cartWrapper} onClick={addItemHandler}>
+        <CartIcon className={style.cartIcon} />
+      </button>
+    </div>
   )
 }
 

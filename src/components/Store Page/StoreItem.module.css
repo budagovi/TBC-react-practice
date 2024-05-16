@@ -93,7 +93,7 @@
   padding: 0.4rem 0.6rem;
   outline: none;
   border: none;
-  background-color: var(--green);
+  background-color: var(--greenBg);
   opacity: 0.9;
   border-radius: 4rem;
   cursor: pointer;

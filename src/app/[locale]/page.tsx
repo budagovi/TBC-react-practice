@@ -2,7 +2,7 @@
 import ScrollUp from "@/src/UI/ScrollUp";
 import SliderSection from "@/src/UI/Slider Section/SliderSection";
 import { useState, useEffect } from "react";
-import product from "@/src/interfaces/product";
+import Product from "@/src/interfaces/product";
 import StoreItem from "@/src/components/Store Page/StoreItem";
 
 // // --- next-internationalization api
@@ -28,7 +28,7 @@ const App = () => {
   // setStaticParamsLocale(locale)
 
 
-  const [products, setProducts] = useState<product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {

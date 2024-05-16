@@ -5,7 +5,7 @@ import StoreItem from './StoreItem';
 import Actions from './Actions';
 
 import { useEffect, useState } from 'react';
-import product from '@/src/interfaces/product';
+import Product from '@/src/interfaces/product';
 
 const Store = () => {
 
@@ -22,7 +22,7 @@ const Store = () => {
     fetchData();
   }, [])
 
-  const [filteredList, setFilteredList] = useState<product[]>([]);
+  const [filteredList, setFilteredList] = useState<Product[]>([]);
   const [sorted, setSorted] = useState(false);
 
   // filter by query

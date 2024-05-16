@@ -7,6 +7,7 @@ import Footer from '@/src/components/Footer';
 import { ReactNode } from "react";
 import { Locale } from "@/i18n.config";
 import { I18nProviderClient } from '../../locales/client'
+import CartContextProvider from "@/src/context/cart";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,12 +24,14 @@ const RootLayout = async ({ params: { locale }, children }: { params: { locale: 
     <html lang={locale}>
       <body className={inter.className} id="root">
         <I18nProviderClient locale={locale}>
-          <div id="overlay"></div>
-          <Header />
-          <div className={`${style.mainWrapper} gl-max-width`}>
-            {children}
-          </div>
-          <Footer/>
+          <CartContextProvider>
+            <div id="overlay"></div>
+            <Header />
+            <div className={`${style.mainWrapper} gl-max-width`}>
+              {children}
+            </div>
+            <Footer />
+          </CartContextProvider>
         </I18nProviderClient>
       </body>
     </html>

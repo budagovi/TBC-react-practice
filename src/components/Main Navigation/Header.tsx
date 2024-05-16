@@ -7,29 +7,41 @@
 // --- CSS
 import style from './Header.module.css';
 // --- Components
-import CartIcon from '@/src/icons/Cart';
-import ProfileIcon from '@/src/icons/Profile';
 import NotebookIcon from '@/src/icons/Notebook';
-import LogoutBtn from './LogoutBtn';
+import ProfileIcon from '@/src/icons/Profile';
 import LocalSwitcher from './LocaleSwitcher';
+import CartIcon from '@/src/icons/Cart';
+import LogoutBtn from './LogoutBtn';
 // import ThemeToggle from './ThemeToggle';
 // --- UI
-import Button from '@/src/UI/Button/Button';
 import DropDown from '@/src/UI/DropDown/DropDown';
+import Button from '@/src/UI/Button/Button';
 // --- next/react api
 import { usePathname, useRouter } from 'next/navigation';
+import { Suspense, useState, useEffect } from 'react';
 import Link from 'next/link';
+// --- next-internationalization api
 import { useScopedI18n } from '@/src/locales/client';
-import { Suspense } from 'react';
+import useCartContext from '@/src/hooks/useCartContext';
 
 const Header = () => {
 
+  // translator
   const t = useScopedI18n('header')
 
   const pathname = usePathname();
   const isRoot = pathname === '/';
 
   const router = useRouter();
+
+  // get total amount of cart items and render with no SSR
+  const ctx = useCartContext();
+  const { totalAmount } = ctx;
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   return (
     <header className={`${isRoot ? style.banner : style.wrapper}`}>
@@ -55,7 +67,8 @@ const Header = () => {
           <Link href={`/about`}>{t('about')}</Link>
           <Link href={`/contact`}>{t('contact')}</Link>
           <Link href={`/admin`}>admin panel</Link>
-          <Link href={`/cart`}>
+          <Link href={`/cart`} className={style.cartIcon}>
+            {isClient && <div >{totalAmount}</div>}
             <CartIcon className={style.cartIcon} />
           </Link>
           <DropDown

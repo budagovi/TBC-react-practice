@@ -1,5 +1,5 @@
 // *
-// * Content of Contact page
+// * Content of Contact Page
 // *
 
 // --- CSS

@@ -1,2 +1,2 @@
 export const AUTH_COOKIE_KEY = 'auth';
-export const LANG_COOKIE_KEY = 'lang'; 
+export const CART_LOCSTORE_KEY = 'cart';
