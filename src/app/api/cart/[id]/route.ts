@@ -42,7 +42,7 @@ export async function PUT(request: NextRequest, { params }: SearchParams) {
     }
     else {
       const state = await sql`SELECT * from carts where user_id = ${+id}`
-      console.log(state)
+      
       return NextResponse.json({ state }, { status: 200 });
     }
   } catch (error) {

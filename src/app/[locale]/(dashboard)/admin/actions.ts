@@ -14,7 +14,13 @@ export async function addUser(formData: FormData) {
     role: formData.get('role') as string
   }
 
-  const response = await fetch('http://localhost:3000/api/users', {
+  const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+
+  const apiUrl = `${baseUrl}/api/users`;
+
+  console.log(baseUrl)
+  
+  const response = await fetch(apiUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
