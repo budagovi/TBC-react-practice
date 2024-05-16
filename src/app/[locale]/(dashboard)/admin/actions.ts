@@ -14,7 +14,7 @@ export async function addUser(formData: FormData) {
     role: formData.get('role') as string
   }
 
-  const apiUrl = `${process.env.NEXT_PUBLIC_URL}/api/users`;
+  const apiUrl = `${process.env.VERCEL_URL}/api/users`;
   
   const response = await fetch(apiUrl, {
     method: 'POST',
