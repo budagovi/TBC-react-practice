@@ -138,6 +138,8 @@ const AdminPage = () => {
     edit()
   }
 
+  console.log('env key is ' + process.env.VERCEL_URL)
+
   return (
     <div className={style.wrapper}>
 
