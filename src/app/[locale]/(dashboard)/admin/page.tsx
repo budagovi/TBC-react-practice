@@ -197,7 +197,7 @@ const AdminPage = () => {
 
       <Modal show={showEdit}>
         <form className={style.form} onSubmit={() => { toggleEdit(); editUser() }}>
-          <h3> add new user </h3>
+          <h3> edit user </h3>
           <input
             type="text"
             placeholder='firstname'
@@ -307,7 +307,7 @@ const AdminPage = () => {
         </form>
       </Modal>
 
-      <h2>Users: </h2>
+      <h2>Users' List: </h2>
       <br />
       <Button onClick={toggleModal}>Add user</Button>
       <br />
