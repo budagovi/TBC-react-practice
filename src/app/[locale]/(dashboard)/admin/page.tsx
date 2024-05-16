@@ -307,7 +307,7 @@ const AdminPage = () => {
         </form>
       </Modal>
 
-      <h2>Users' List: </h2>
+      <h2>Users List: </h2>
       <br />
       <Button onClick={toggleModal}>Add user</Button>
       <br />
