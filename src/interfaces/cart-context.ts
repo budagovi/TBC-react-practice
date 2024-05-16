@@ -2,7 +2,7 @@ export interface ICartContext {
   items: ICartItem[],
   totalAmount: number,
   addItem: (item: ICartItem) => void,
-  removeItem: (id: ICartItem) => void,
+  removeItem: (id: number) => void,
   clearCart: () => void
 }
 
@@ -12,8 +12,8 @@ export interface ICartState {
 }
 
 export interface ICartAction {
-  type: 'ADD_ITEM' | 'REMOVE_ITEM' | 'CLEAR_ITEM' | 'RESET_CART',
-  payload: ICartItem | null
+  type: 'ADD_ITEM' | 'REMOVE_ITEM' | 'SET_CART' | 'RESET_CART',
+  payload: ICartItem | number | ICartState | null 
 }
 
 export interface ICartItem {

@@ -26,7 +26,7 @@ const CartItem = ({ item }: IProps) => {
   }
 
   const removeItemHandler = () => {
-    ctx.removeItem(item)
+    ctx.removeItem(item.id)
   }
 
 
