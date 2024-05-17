@@ -189,7 +189,7 @@ const AdminPage = () => {
           </select>
 
           <div className={style.formActions}>
-            <Button type='submit'>add</Button>
+            <Button type='submit' onClick={() => window.location.reload()}>add</Button>
             <Button onClick={toggleModal}>cancel</Button>
           </div>
         </form>
