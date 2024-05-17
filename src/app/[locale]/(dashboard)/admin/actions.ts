@@ -1,5 +1,7 @@
 'use server'
 
+import { BASE_URL } from "@/src/constants";
+
 export async function addUser(formData: FormData) {
 
   const data = {
@@ -14,7 +16,7 @@ export async function addUser(formData: FormData) {
     role: formData.get('role') as string
   }
 
-  const apiUrl = `${process.env.VERCEL_URL}/api/users`;
+  const apiUrl = `${BASE_URL}/api/users`;
   
   const response = await fetch(apiUrl, {
     method: 'POST',
