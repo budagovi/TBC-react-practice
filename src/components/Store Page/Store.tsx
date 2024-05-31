@@ -7,14 +7,15 @@ import Actions from './Actions';
 import { useEffect, useState } from 'react';
 import Product from '@/src/interfaces/product';
 
-const Store = () => {
 
+const Store = () => {
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('https://dummyjson.com/products');
+      const response = await fetch('/api/products', {cache: 'no-cache'});
       if (response.ok) {
         const data = await response.json();
-        setFilteredList(data.products)
+        console.log(data)
+        setFilteredList(data)
       }
       return [];
     }
@@ -36,17 +37,17 @@ const Store = () => {
     <section className={style.wrapper}>
       <div className={style.actions}>
         <h2>Products</h2>
-        <Actions 
-          search={() => console.log('need to fix')} 
-          sort={(bool:boolean) => setSorted(bool)}   
+        <Actions
+          search={() => console.log('need to fix')}
+          sort={(bool: boolean) => setSorted(bool)}
         />
       </div>
       <div className={style.storeWrapper}>
         {filteredList.length !== 0 && [...filteredList].sort((a, b) => {
           // const aPrice = a.sale ? a.sale : a.price
           // const bPrice = b.sale ? b.sale : b.price
-          const aPrice= a.discountPercentage ? a.price * (100 - a.discountPercentage) / 100 : a.price
-          const bPrice = b.discountPercentage ? b.price * (100 - b.discountPercentage) / 100 : b.price
+          const aPrice = a.salePercentage ? a.price * (100 - a.salePercentage) / 100 : a.price
+          const bPrice = b.salePercentage ? b.price * (100 - b.salePercentage) / 100 : b.price
 
           return sorted ? aPrice - bPrice : 0
         }).map((item) =>
@@ -60,11 +61,11 @@ const Store = () => {
           <StoreItem
             key={item.id}
             id={item.id}
-            src={item.thumbnail}
-            name={item.title}
+            src={item.imgUrl}
+            name={item.name}
             price={item.price}
             category={item.category}
-            sale={item.discountPercentage} />
+            sale={item.salePercentage} />
         )
         }
       </div>

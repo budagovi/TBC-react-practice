@@ -1,4 +1,4 @@
-export default interface User {
+interface User {
   id: number;
   firstname: string;
   lastname: string;
@@ -9,5 +9,5 @@ export default interface User {
   mobile: string;
   address: string;
   role: 'admin' | 'user';
-  created_at: string; 
+  created_at: string;
 }

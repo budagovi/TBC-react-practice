@@ -4,8 +4,6 @@
 
 // --- CSS
 import style from './StoreItem.module.css';
-// --- Icons
-import CartIcon from '../../icons/Cart';
 // --- Hooks
 import useCartContext from '@/src/hooks/useCartContext';
 
@@ -23,12 +21,12 @@ const StoreItem = (props: IProps) => {
   const { src, name, price, category, sale, id } = props;
   const ctx = useCartContext();
 
-  let priceTag = <span>${price.toFixed(2)}</span>
+  let priceTag = <span>${price}</span>
   if (sale) {
     priceTag = (
       <span>
-        <span className={style.salePrice}>${(price * (100 - sale) / 100).toFixed(2)}</span>
-        <span className={style.oldPrice}>${price.toFixed(2)} </span>
+        <span className={style.salePrice}>${(price * (100 - sale) / 100)}</span>
+        <span className={style.oldPrice}>${+price} </span>
       </span>
     )
   }
@@ -37,7 +35,7 @@ const StoreItem = (props: IProps) => {
     ctx.addItem({
       id: id,
       title: name,
-      price: +((price * (100 - sale) / 100).toFixed(2)),
+      price: +((price * (100 - sale) / 100)),
       discountPercentage: sale,
       category: category,
       amount: 1
@@ -54,9 +52,9 @@ const StoreItem = (props: IProps) => {
         <span>{name}</span>
         {priceTag}
       </div>
-      <span className={style.saleTag}>-{Math.ceil(sale)}%</span>
+      {sale > 0 && <span className={style.saleTag}>-{100*sale}%</span> }
       <button className={style.cartWrapper} onClick={addItemHandler}>
-        <CartIcon className={style.cartIcon} />
+        <img src="./icons/heart.svg" alt="" />
       </button>
     </div>
   )

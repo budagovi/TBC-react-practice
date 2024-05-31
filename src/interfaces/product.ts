@@ -1,13 +1,18 @@
 export default interface Product {
-  id: number,
-  title: string,
-  description: string,
-  price: number,
-  discountPercentage: number,
-  rating: number,
-  stock: number,
-  brand: string,
-  category: string,
-  thumbnail: string,
-  images: Array<string>
+  id: number;
+  name: string;
+  nameGe: string;
+  price: number;
+  salePercentage: number;
+  description: string;
+  descriptionGe: string;
+  lightReq: string;
+  wateringNeed: string;
+  growthRate: string;
+  size: string;
+  petFriendly: boolean;
+  flowering: boolean;
+  imgUrl: string;
+  imageUrls: string[];
+  category: string
 }
