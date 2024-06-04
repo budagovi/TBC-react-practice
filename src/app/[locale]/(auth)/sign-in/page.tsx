@@ -1,5 +1,5 @@
 // --- Components
-import Login from "@/src/components/Login Page/Login";
+import SignInForm from "@/src/components/auth/SignInForm";
 // --- next-internationalization api
 import { Locale } from "@/i18n.config";
 import { setStaticParamsLocale } from "next-international/server";
@@ -15,11 +15,12 @@ interface Props {
   }
 }
 
-const LoginPage = ({ params: { locale } }: Props) => {
+const SignInPage = ({ params: { locale } }: Props) => {
 
   // static rendering for both languages on build
   setStaticParamsLocale(locale)
-  return <Login />
+  
+  return <SignInForm />
 }
 
-export default LoginPage;
+export default SignInPage;

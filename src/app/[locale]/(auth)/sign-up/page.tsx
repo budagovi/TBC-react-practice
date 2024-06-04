@@ -1,5 +1,5 @@
-// --- Compoents
-import Contact from '@/src/components/Contact Page/Contact';
+// --- Components
+import SignUpForm from "@/src/components/auth/SignUpForm";
 // --- next-internationalization api
 import { Locale } from "@/i18n.config";
 import { setStaticParamsLocale } from "next-international/server";
@@ -14,11 +14,13 @@ interface Props {
     locale: Locale
   }
 }
-const ContactPage = ({ params: { locale } }: Props) => {
+
+const SignUpPage = ({ params: { locale } }: Props) => {
 
   // static rendering for both languages on build
   setStaticParamsLocale(locale)
-  return <Contact />
+  
+  return <SignUpForm />
 }
 
-export default ContactPage;
+export default SignUpPage;

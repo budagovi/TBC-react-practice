@@ -1,0 +1,34 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* image and layer are put in the body tag */
+.wrapper img {
+  position: fixed;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.halfTransparentLayer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #00000053;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

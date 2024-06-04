@@ -1,9 +1,9 @@
 'use client'
 import ScrollUp from "@/src/UI/ScrollUp";
-import SliderSection from "@/src/UI/Slider Section/SliderSection";
-import { useState, useEffect } from "react";
-import Product from "@/src/interfaces/product";
-import StoreItem from "@/src/components/Store Page/StoreItem";
+//import SliderSection from "@/src/UI/Slider Section/SliderSection";
+// import { useState, useEffect } from "react";
+// import Product from "@/src/interfaces/product";
+//import StoreItem from "@/src/components/Store Page/StoreItem";
 
 // // --- next-internationalization api
 // import { Locale } from "@/i18n.config";
@@ -28,25 +28,25 @@ const App = () => {
   // setStaticParamsLocale(locale)
 
 
-  const [products, setProducts] = useState<Product[]>([]);
+  //const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('https://dummyjson.com/products');
-      if (response.ok) {
-        const data = await response.json();
-        setProducts(data.products)
-      }
-      return [];
-    }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await fetch('https://dummyjson.com/products');
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setProducts(data.products)
+  //     }
+  //     return [];
+  //   }
 
-    fetchData();
-  }, [])
+  //   fetchData();
+  // }, [])
 
 
   return (
     <div className='gl-max-width'>
-      <SliderSection
+      {/* <SliderSection
         intro="today's"
         title="flash sales"
         btnText="view all products"
@@ -63,7 +63,7 @@ const App = () => {
               sale={item.discountPercentage} />
           </div>
         )}
-      </SliderSection>
+      </SliderSection> */}
       <ScrollUp />
     </div>
   );

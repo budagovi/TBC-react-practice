@@ -20,7 +20,7 @@ const ProfilePage = ({ params: { locale } }: Props) => {
   // static rendering for both languages on build
   setStaticParamsLocale(locale)
 
-  return <><Profile /></>
+  return <Profile />
 
 }
 

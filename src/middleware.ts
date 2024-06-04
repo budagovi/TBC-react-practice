@@ -3,7 +3,7 @@
 // *
 
 // --- Constants
-import { AUTH_COOKIE_KEY } from "./constants";
+//import { AUTH_COOKIE_KEY } from "./constants";
 // --- next/react api
 import { NextRequest, NextResponse } from "next/server";
 // --- next-internationalization
@@ -41,20 +41,22 @@ export function middleware(request: NextRequest) {
       .redirect(new URL(newPathname, request.url), { status: 307 })
   }
 
-  // extract token for checking authorized user existence
-  const token = !!request.cookies.get(AUTH_COOKIE_KEY);
 
-  // redirects for user authentication
-  if (!pathname.includes('/login') && !token) {
-    console.log(`[unauthorized user] redirecting to /login`)
-    return NextResponse
-      .redirect(new URL(`/login`, request.url), { status: 307 })
-  }
-  else if (pathname.includes('/login') && token) {
-    console.log('[authorized user] redirecting to /store')
-    return NextResponse
-      .redirect(new URL('/store', request.url), { status: 307 })
-  }
+
+  // // extract token for checking authorized user existence
+  // const token = !!request.cookies.get(AUTH_COOKIE_KEY);
+
+  // // redirects for user authentication
+  // if (!pathname.includes('/login') && !token) {
+  //   console.log(`[unauthorized user] redirecting to /login`)
+  //   return NextResponse
+  //     .redirect(new URL(`/login`, request.url), { status: 307 })
+  // }
+  // else if (pathname.includes('/login') && token) {
+  //   console.log('[authorized user] redirecting to /store')
+  //   return NextResponse
+  //     .redirect(new URL('/store', request.url), { status: 307 })
+  // }
 
   return NextResponse.next();
 }

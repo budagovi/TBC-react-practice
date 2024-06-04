@@ -4,25 +4,45 @@
 
 // --- CSS
 import style from './Input.module.css'
+// --- react api
+import { memo, InputHTMLAttributes } from 'react'
 
-interface Props {
-  label?: string,
-  name: string,
-  type: 'text' | 'number' | 'password' | 'date' | 'email',
-  placeholder: string,
-  required?: boolean,
+interface IProps extends InputHTMLAttributes<HTMLInputElement> {
+  // other input attributes
+  label?: string
 }
 
-const Input = ({ label, name, type, placeholder, required = false }: Props) => {
+const Input = memo(
+  function Input(
+    {
+      label,
+      type,
+      name,
+      placeholder,
+      required = false,
+      value,
+      onChange,
+      onBlur,
+    }: IProps
+  ) {
 
-  const placeholderText = required ? placeholder + ' *' : placeholder
+    return (
+      <div className={style.wrapper}>
+        {label && <label htmlFor={name}>{label}</label>}
+        <input
+          id={name}
+          type={type}
+          name={name}
+          placeholder={placeholder}
+          required={required}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+        />
+      </div>
+    )
 
-  return (
-    <div className={style.wrapper}>
-      {label && <label htmlFor={name}>{label}</label>}
-      <input type={type} placeholder={placeholderText} required={required}/>
-    </div>
-  )
-}
+  }
+)
 
 export default Input;

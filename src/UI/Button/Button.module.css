@@ -1,17 +1,18 @@
 .btn {
-  font-size: 1rem;
-  color: #f4f6f3;
+  font-size: 15px;
+  color: var(--bodyBg);
   background-color: var(--greenBg);
-  padding: 1rem 3rem;
+  padding: 0.8rem 2.5rem;
   border-radius: 0.25rem;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.25);
   border: none;
   outline: none;
   cursor: pointer;
 }
 
 .btn.light {
-  background-color: #f4f6f3;
+  background-color: var(--bodyBg);
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.2);
   color: var(--greenBg);
   font-weight: 500;
 }

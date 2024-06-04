@@ -30,7 +30,10 @@ const Header = () => {
   const t = useScopedI18n('header')
 
   const pathname = usePathname();
-  const isRoot = pathname === '/';
+  // expnad banner with image if user is on home route
+  const isRoot = pathname === '/'; 
+  // make font white if user is on any auth route
+  const isAuth = pathname === '/sign-in' || pathname === '/sign-up';
 
   const router = useRouter();
 
@@ -44,9 +47,10 @@ const Header = () => {
   }, [])
 
   return (
-    <header className={`${isRoot ? style.banner : style.wrapper}`}>
+    <header className={`${isRoot ? style.banner : style.wrapper} ${isAuth ? style.lightFont : null}`}>
 
       {/*   -=-=-=- Head -=-=-=-   */}
+
       <div className={style.head}>
         <section className='gl-max-width'>
           <span></span>
@@ -58,15 +62,14 @@ const Header = () => {
       </div>
 
       {/*   -=-=-=- Navigation Bar -=-=-=-   */}
+
       <div className={`${style.navWrapper} gl-max-width`}>
-        <h1>Aurora Plants</h1>
+        {!isRoot ? <Link href={'/'}><h1>Aurora Plants</h1></Link> : <h1>Aurora Plants</h1>}
         <nav className={style.links}>
           {/* <ThemeToggle /> */}
-          {!isRoot ? <Link href={'/'}>{t('home')}</Link> : <span>{t('home')}</span>}
           <Link href={`/store`}>{t('store')}</Link>
           <Link href={`/about`}>{t('about')}</Link>
           <Link href={`/contact`}>{t('contact')}</Link>
-          <Link href={`/admin`}>admin panel</Link>
           <Link href={`/cart`} className={style.cartIcon}>
             {isClient && <div >{totalAmount}</div>}
             <CartIcon className={style.cartIcon} />
@@ -82,6 +85,7 @@ const Header = () => {
       </div>
 
       {/*   -=-=-=- Banner (visible only on home route) -=-=-=-   */}
+      
       <div className={style.bannerText}>
         <p>welcome to the aurora plants</p>
         <span>let&apos;s bring the spring to your home</span>

@@ -25,13 +25,15 @@ body {
 
 /* -=- Color Palletes -=- */
 :root {
+  /* 1b3c35 004F44 */
   --greenBg: #1b3c35;
   --greenFore: #1b3c35;
   --greyshGreen: #dce1de;
   --red: #db4444;
-  --bodyBg: #f8f8f8;
-  --black: #030303;
+  --bodyBg: #F7F8FA;
+  --black: #272727;
   --grey: #808080;
+  --placeholderColor: #9ca09d;
 
   --fore: #f0f0f0;
   --foreHover: #cacaca;
@@ -49,7 +51,7 @@ body {
 }
 
 ::selection {
-  background-color: #4c6258;
+  background-color: rgb(61, 127, 97);
   color: #fff;
 }
 
@@ -71,7 +73,7 @@ h2 {
   font-size: 2.25rem;
   font-weight: 600;
 }
-
+#e9efebaa
 h3 {
   font-size: 1.25rem;
   font-weight: 600;

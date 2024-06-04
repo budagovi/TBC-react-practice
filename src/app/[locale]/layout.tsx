@@ -18,8 +18,6 @@ export const metadata = {
 
 const RootLayout = async ({ params: { locale }, children }: { params: { locale: Locale }, children: ReactNode }) => {
 
-
-
   return (
     <html lang={locale}>
       <body className={inter.className} id="root">

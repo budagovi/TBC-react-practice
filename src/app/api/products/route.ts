@@ -1,5 +1,5 @@
 import { sql } from "@vercel/postgres";
-import { revalidatePath } from "next/cache";
+//import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 // *
@@ -35,7 +35,6 @@ export async function GET() {
     const response = await sqlGetProducts;
     const products = response.rows;
 
-    console.log(products)
     return NextResponse.json(products, { status: 200 });
   } catch (error) {
     console.error("Error fetching products:", error);
