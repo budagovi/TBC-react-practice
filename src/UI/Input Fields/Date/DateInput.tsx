@@ -7,32 +7,30 @@
 // --- style 
 import './DateInput.css';
 // --- react api
-import { memo, useState } from 'react';
+import { memo } from 'react';
 // --- react-icons
 import { DatePicker } from "antd";
 // --- dayjs
-import { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 
 interface IProps {
   label?: string,
   placeholder: string
   name: string,
+  value: number | null,
   onChange: (date: number | null) => void;
 }
 
 const DateInput = memo(
-  function DateInput({ label, placeholder, name, onChange, }: IProps) {
-
-    const [controlledDate, setControlledDate] = useState<Dayjs>();
+  function DateInput({ label, placeholder, name, value, onChange, }: IProps) {
 
     return (
       <div className='date-input-wrapper'>
         {label && <label htmlFor={name}>{label}</label>}
         <DatePicker
           placeholder={placeholder}
-          value={controlledDate}
+          value={value ? dayjs(value) : null}
           onChange={(newDate) => {
-            setControlledDate(newDate) // update controlled value
             onChange(newDate ? newDate.valueOf() : null)  // send current value to parent
           }}
         />

@@ -27,7 +27,7 @@ export interface ISignUpFormData {
   firstname: string,
   lastname: string,
   gender: string | null,
-  dobDayjs: number | null,
+  dobMilSecs: number | null,
   address: string,
   mobile: string,
   email: string,
@@ -42,7 +42,7 @@ const SignUp = () => {
     firstname: '',
     lastname: '',
     gender: null,
-    dobDayjs: null,
+    dobMilSecs: null,
     address: '',
     mobile: '',
     email: '',
@@ -121,6 +121,7 @@ const SignUp = () => {
             currSlide={slideNum}
             firstnameValue={customFormData.firstname}
             lastnameValue={customFormData.lastname}
+            dobValue={customFormData.dobMilSecs}
             genderValue={customFormData.gender}
             stateDispatch={setCustomFormData} // setCustomData for date and gender inputs
             changeHandler={changeHandler}

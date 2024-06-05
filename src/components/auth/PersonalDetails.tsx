@@ -20,6 +20,7 @@ interface IProps {
   currSlide: number,
   firstnameValue: string,
   lastnameValue: string,
+  dobValue: number | null,
   genderValue: string | null,
   stateDispatch: Dispatch<SetStateAction<ISignUpFormData>>,
   changeHandler: (e: ChangeEvent<HTMLInputElement>) => void
@@ -30,6 +31,7 @@ const PersonalDetails = memo(function
     currSlide,
     firstnameValue,
     lastnameValue,
+    dobValue,
     genderValue,
     stateDispatch,
     changeHandler
@@ -72,13 +74,14 @@ const PersonalDetails = memo(function
         <DateInput
           label={t('dob')}
           placeholder={t('dob')}
-          name='dobDayjs'
+          name='dob'
+          value={dobValue}
           onChange={(dateNum) => {
             stateDispatch((prevState) => (
               {
                 // modifying property that corresponds to trigerring input field and copy the rest
                 ...prevState,
-                dobDayjs: dateNum,
+                dobMilSecs: dateNum,
               }
             ));
           }}
