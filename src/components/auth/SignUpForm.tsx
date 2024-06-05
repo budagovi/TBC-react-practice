@@ -19,9 +19,11 @@ import { FaFacebook, FaGoogle } from 'react-icons/fa6';
 import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
 // --- embla-carousel-react
 import useEmblaCarousel from 'embla-carousel-react';
+// --- components
 import PersonalDetails from './PersonalDetails';
 import AddressDetails from './AddressDetails';
 import Credentials from './Credentials';
+import SlideIndicator from '@/src/UI/SlideIndicator/SlideIndicator';
 
 export interface ISignUpFormData {
   firstname: string,
@@ -81,7 +83,7 @@ const SignUp = () => {
     setCustomFormData(initialFormValue)
   }
 
-  // -=-=-=- Carousel -=-=-=-
+  // -=-=-=- Carousel Fucntionality -=-=-=-
   const [emblaRef, emblaApi] = useEmblaCarousel({ skipSnaps: true, watchDrag: false })
   const [slideNum, setSlideNum] = useState(0)
   const isNextBtnDisabled = useCallback(() => {
@@ -110,6 +112,9 @@ const SignUp = () => {
         <h1>{t('title')}</h1>
         <span>{t('create an acc-')}</span>
       </div>
+
+      {/*   -=-=-=- Slide Indicator -=-=-=-   */}
+      <SlideIndicator slidesAmount={3} currSlide={slideNum}/>
 
       {/*   -=-=-=- Form Inputs (Carousel) -=-=-=-   */}
 

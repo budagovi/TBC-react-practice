@@ -1,0 +1,33 @@
+.wrapper {
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.wrapper div {
+  background-color: var(--greyshGreen);
+  height: 2px;
+  flex: 1;
+  border-radius: 5rem;
+}
+
+.wrapper div.current {
+  background-color: var(--greenBg);
+  opacity: 0.7;
+  animation: highlight .45s ease-in forwards;
+}
+
+@keyframes highlight {
+  from {
+    background-color: var(--greyshGreen);
+    opacity: 1;
+  }
+
+  to {
+    background-color: var(--greenBg);
+    opacity: 0.7;
+  }
+}
+
