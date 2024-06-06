@@ -7,8 +7,8 @@
 // --- CSS
 import style from './ContactForm.module.css';
 // --- UI
-import Input from '@/src/UI/Input Fields/Input';
-import TextArea from '@/src/UI/Input Fields/TextArea';
+import Input from '@/src/UI/Input Fields/Input/Input';
+import TextArea from '@/src/UI/Input Fields/Input/TextArea';
 import Button from '@/src/UI/Button/Button';
 // --- next/react api
 

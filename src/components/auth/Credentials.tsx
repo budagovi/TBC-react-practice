@@ -8,9 +8,9 @@ import { ChangeEvent, memo } from 'react';
 // --- style
 import style from './AuthForm.module.css';
 // --- UI
-import Input from '@/src/UI/Input Fields/Input';
-import PasswordInput from '@/src/UI/Input Fields/Password';
-import CheckBox from '@/src/UI/Input Fields/CheckBox';
+import Input from '@/src/UI/Input Fields/Input/Input';
+import PasswordInput from '@/src/UI/Input Fields/Password/Password';
+import CheckBox from '@/src/UI/Input Fields/CheckBox/CheckBox';
 // --- next-internationalization api
 import { useScopedI18n } from '@/src/locales/client';
 // --- react/nextjs api
@@ -52,7 +52,6 @@ const Credentials = memo(function
         placeholder={t('email')}
         value={emailValue}
         onChange={changeHandler}
-        required
       />
 
       {/* Password Field */}
@@ -62,7 +61,6 @@ const Credentials = memo(function
         placeholder={t('password')}
         value={passwordValue}
         onChange={changeHandler}
-        required
       />
 
       {/* Confirm Password Field */}
@@ -72,7 +70,6 @@ const Credentials = memo(function
         placeholder={t('confirm')}
         value={confirmValue}
         onChange={changeHandler}
-        required
       />
 
       {/* Terms and Conditions Checkbox */}

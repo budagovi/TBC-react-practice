@@ -1,0 +1,87 @@
+/* -=- Custom Input and Textarea -=- */
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: .2s ease-in-out;
+}
+
+.wrapper label {
+  font-weight: 400;
+  font-size: 15px;
+  margin-inline-start: 0.2rem;
+}
+
+.wrapper input,
+.wrapper textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 14px;
+  font-weight: 500;
+  border: 0;
+  outline: 0;
+  background-color: var(--greyshGreen);
+  border: 1px solid var(--greyshGreen);
+  border-radius: 0.25rem;
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  color: var(--black);
+  transition: .2s ease-in-out;
+}
+
+.wrapper input:focus,
+.wrapper input:hover,
+.wrapper textarea:focus,
+.wrapper textarea:hover {
+  border: 1px solid var(--greenBg);
+}
+
+.wrapper input::placeholder,
+.wrapper textarea::placeholder {
+  color: var(--placeholderColor);
+}
+
+.wrapper textarea {
+  resize: none;
+}
+
+.wrapper.invalid {
+  color: var(--red);
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.wrapper.invalid input,
+.wrapper.invalid textarea,
+.wrapper.invalid input:hover,
+.wrapper.invalid textarea:hover {
+  /* background-color: #ffdddd; */
+  border: 1px solid var(--red);
+}
+
+.wrapper textarea {
+  resize: none;
+}

@@ -11,7 +11,7 @@ import style from './AuthForm.module.css';
 import { ISignUpFormData } from './SignUpForm';
 // --- UI
 import CustomSelect from '@/src/UI/Input Fields/Select/CustomSelect';
-import Input from '@/src/UI/Input Fields/Input';
+import Input from '@/src/UI/Input Fields/Input/Input';
 import DateInput from '@/src/UI/Input Fields/Date/DateInput';
 // --- next-internationalization api
 import { useScopedI18n } from '@/src/locales/client';
@@ -54,7 +54,6 @@ const PersonalDetails = memo(function
         placeholder={t('firstname')}
         value={firstnameValue}
         onChange={changeHandler}
-        required
       />
 
       {/* LastName Field */}
@@ -65,7 +64,6 @@ const PersonalDetails = memo(function
         placeholder={t('lastname')}
         value={lastnameValue}
         onChange={changeHandler}
-        required
       />
 
       <div className={style.twoInputs}>

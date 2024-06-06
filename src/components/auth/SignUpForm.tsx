@@ -1,7 +1,7 @@
 'use client'
 
 // *
-// * Sign-In Form Component
+// * Sign-In Form Component (using emblda Carousel)
 // *
 
 // --- style
@@ -114,7 +114,7 @@ const SignUp = () => {
       </div>
 
       {/*   -=-=-=- Slide Indicator -=-=-=-   */}
-      <SlideIndicator slidesAmount={3} currSlide={slideNum}/>
+      <SlideIndicator slidesAmount={3} currSlide={slideNum} />
 
       {/*   -=-=-=- Form Inputs (Carousel) -=-=-=-   */}
 

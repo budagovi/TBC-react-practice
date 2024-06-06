@@ -3,7 +3,7 @@
 // *
 
 // --- CSS
-import style from './Input.module.css'
+import style from './CheckBox.module.css'
 // --- react api
 import { InputHTMLAttributes, ChangeEventHandler, ReactNode } from 'react'
 
@@ -15,7 +15,7 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const CheckBox = ({ name, label, checked, onChange }: IProps) => {
   return (
-    <div className={style.checkboxWrapper}>
+    <div className={style.wrapper}>
       <input type='checkbox' name={name} id={name} checked={checked} onChange={onChange} />
       <label htmlFor={name}>{label}</label>
     </div>

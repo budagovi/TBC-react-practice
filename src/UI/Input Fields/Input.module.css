@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  transition: .2s ease-in-out;
 }
 
 .wrapper label {
@@ -46,6 +47,41 @@
   resize: none;
 }
 
+.wrapper.invalid {
+  color: var(--red);
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.wrapper.invalid input,
+.wrapper.invalid textarea,
+.wrapper.invalid input:hover,
+.wrapper.invalid textarea:hover {
+  /* background-color: #ffdddd; */
+  border: 1px solid var(--red);
+}
+
 /* -=- Custom Password Input -=- */
 
 .passwordWrapper {
@@ -69,6 +105,7 @@
 .passwordWrapper input:hover {
   border: 1px solid transparent;
 }
+
 .passwordWrapper:hover,
 .passwordWrapper:has(input:focus) {
   border: 1px solid var(--greenBg);
@@ -79,6 +116,10 @@
   width: var(--size);
   height: var(--size);
   cursor: pointer;
+}
+
+.passwordWrapper.invalid {
+  color: var(--red);
 }
 
 /* -=- Custom Reset Input -=- */

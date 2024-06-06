@@ -8,7 +8,7 @@
 import style from './EditProfile.module.css';
 // --- UI
 import Reset from '@/src/UI/Input Fields/Reset';
-import Input from '@/src/UI/Input Fields/Input';
+import Input from '@/src/UI/Input Fields/Input/Input';
 import Button from '@/src/UI/Button/Button';
 // --- next.react api
 // --- next-internationalization api

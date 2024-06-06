@@ -7,9 +7,9 @@
 // --- style
 import style from './AuthForm.module.css';
 // --- UI
-import Input from '@/src/UI/Input Fields/Input';
-import PasswordInput from '@/src/UI/Input Fields/Password';
-import CheckBox from '@/src/UI/Input Fields/CheckBox';
+import Input from '@/src/UI/Input Fields/Input/Input';
+import PasswordInput from '@/src/UI/Input Fields/Password/Password';
+import CheckBox from '@/src/UI/Input Fields/CheckBox/CheckBox';
 import Button from '@/src/UI/Button/Button';
 // --- nextjs/react api
 import { ChangeEvent, FormEvent, useState, useCallback } from 'react';
@@ -21,21 +21,37 @@ import { useScopedI18n } from '@/src/locales/client';
 import { FaFacebook, FaGoogle } from 'react-icons/fa6';
 
 interface ISignInFormData {
-  username: string,
+  email: string,
   password: string,
   isRemembered: boolean
 }
 
 const Login = () => {
 
-  const initialFormValue: ISignInFormData = { username: '', password: '', isRemembered: true }
-  const [customFormData, setCustomFormData] = useState(initialFormValue)
+  const initialFormValue: ISignInFormData = {
+    email: '',
+    password: '',
+    isRemembered: true
+  }
+
+  const [values, setValues] = useState(initialFormValue)
+  const [errors, setErrors] = useState<Partial<ISignInFormData>>({});
+
   //const router = useRouter();
 
   const changeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 
+    // cancel error feedback
+    setErrors((prevState) => (
+      {
+        // modifying property that corresponds to trigerring input field and copy the rest
+        ...prevState,
+        [name]: null,
+      }
+    ))
+
     const { name, value, type, checked } = e.target;
-    setCustomFormData((prevState) => (
+    setValues((prevState) => (
       {
         // modifying property that corresponds to trigerring input field and copy the rest
         ...prevState,
@@ -46,6 +62,12 @@ const Login = () => {
 
   const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (values.email === '')
+      setErrors(prevState => ({ ...prevState, email: 'email is required' }))
+
+    if (values.password === '')
+      setErrors(prevState => ({ ...prevState, password: 'password is required' }))
 
     // const response = await fetch('/api/login', {
     //   method: 'POST',
@@ -59,7 +81,6 @@ const Login = () => {
     //   router.push('/store')
     // }
 
-    setCustomFormData(initialFormValue)
   }
 
   const t = useScopedI18n('login page')
@@ -78,26 +99,26 @@ const Login = () => {
 
       <div className={style.inputs}>
 
-        {/*Username*/}
+        {/* Email */}
         <Input
           label={t('email')}
           type='text'
-          name='username'
+          name='email'
           placeholder={t('email')}
-          value={customFormData.username}
+          value={values.email}
           onChange={changeHandler}
-          required
+          error={errors.email}
         />
 
-        {/*Password*/}
+        {/* Password */}
         <PasswordInput
           label={t('password')}
           type='password'
           name='password'
           placeholder={t('password')}
-          value={customFormData.password}
+          value={values.password}
           onChange={changeHandler}
-          required
+          error={errors.password}
         />
       </div>
 
@@ -107,7 +128,7 @@ const Login = () => {
         <CheckBox
           label={t('remember')}
           name='isRemembered'
-          checked={customFormData.isRemembered}
+          checked={values.isRemembered}
           onChange={changeHandler}
         />
         <Link href={'#'}>{t('forgot?')}</Link>

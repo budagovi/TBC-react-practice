@@ -83,6 +83,10 @@ form.wrapper span {
   font-weight: 400;
 }
 
+.actions button {
+  cursor: pointer;
+}
+
 .arrowBtn {
   display: flex;
   align-items: center;

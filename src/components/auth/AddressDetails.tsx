@@ -8,7 +8,7 @@ import { ChangeEvent, memo } from 'react';
 // --- style
 import style from './AuthForm.module.css';
 // --- UI
-import Input from '@/src/UI/Input Fields/Input';
+import Input from '@/src/UI/Input Fields/Input/Input';
 // --- next-internationalization api
 import { useScopedI18n } from '@/src/locales/client';
 
@@ -44,7 +44,6 @@ const AddressDetails = memo(function
         placeholder={t('mobile')}
         value={mobileValue}
         onChange={changeHandler}
-        required
       />
 
       {/* Address Field*/}
@@ -55,7 +54,6 @@ const AddressDetails = memo(function
         placeholder={t('address')}
         value={addressValue}
         onChange={changeHandler}
-        required
       />
 
     </div>
