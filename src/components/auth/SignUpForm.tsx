@@ -8,6 +8,7 @@
 import style from './AuthForm.module.css';
 // --- UI
 import Button from '@/src/UI/Button/Button';
+import ProgressBar from '@/src/UI/ProgressBar/ProgressBar';
 // --- nextjs/react api
 import { ChangeEvent, FormEvent, useState, useCallback } from 'react';
 //import { useRouter } from 'next/navigation';
@@ -23,7 +24,6 @@ import useEmblaCarousel from 'embla-carousel-react';
 import PersonalDetails from './PersonalDetails';
 import AddressDetails from './AddressDetails';
 import Credentials from './Credentials';
-import SlideIndicator from '@/src/UI/SlideIndicator/SlideIndicator';
 
 export interface ISignUpFormData {
   firstname: string,
@@ -114,7 +114,9 @@ const SignUp = () => {
       </div>
 
       {/*   -=-=-=- Slide Indicator -=-=-=-   */}
-      <SlideIndicator slidesAmount={3} currSlide={slideNum} />
+      <ProgressBar
+        percent={32 * slideNum + 4}
+      />
 
       {/*   -=-=-=- Form Inputs (Carousel) -=-=-=-   */}
 

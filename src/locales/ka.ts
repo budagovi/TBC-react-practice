@@ -17,7 +17,7 @@ export default {
     'terms & conditions': 'წესები და პირობები',
     'privacy policy': 'უსაფრთხოება და კონფიდენციალურობა'
   },
-  "login page": {
+  "/sign-in": {
     'title': 'შესვლა',
     'btn text': 'შესვლა',
     'Login to yo-': 'პირად ანგარიშზე შესვლა წამებში',

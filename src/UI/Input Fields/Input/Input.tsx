@@ -5,14 +5,17 @@
 // --- CSS
 import style from './Input.module.css'
 // --- react api
-import { memo, InputHTMLAttributes } from 'react'
+import { memo, InputHTMLAttributes, useState, useEffect } from 'react'
 // --- antd
 import { Tooltip } from 'antd'
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   // other input attributes
   label?: string,
-  error?: string
+  errorMsg?: string,
+  validate?: (value: string) => boolean,
+  formSubmitted?: boolean,
+  requiredField?: boolean,
 }
 
 const Input = memo(
@@ -26,15 +29,49 @@ const Input = memo(
       onChange,
       onBlur,
       pattern,
-      error
+      errorMsg,
+      validate,
+      formSubmitted,
+      requiredField,
     }: IProps
   ) {
-    
+
+    const [wrapperClasses, setWrapperClasses] = useState(`${style.invalid} ${style.shaking}`);
+    const [isTouched, setIsTouched] = useState(false)
+
+    // detect validity of value during onChange
+    const isInvalid = validate && !validate(value as string) && isTouched;
+
+    // shake the component with invalid value on blur
+    const shake = () => {
+      if (!`${style.invalid} ${style.shaking}`.includes(`${style.shaking}`))
+        return;
+
+      setWrapperClasses(`${style.invalid} ${style.shaking}`);
+      const timer = setTimeout(() => {
+        setWrapperClasses(`${style.invalid}`);
+      }, 350);
+
+      return () => {
+        clearTimeout(timer);
+      }
+    }
+
+    // validate on form submission (for required fields, to check if they are empty)
+    requiredField && useEffect(() => {
+      if (formSubmitted === false)
+        return;
+
+      shake()
+      !isTouched && setIsTouched(true)
+    }, [formSubmitted])
+
+
     return (
-      <div className={`${style.wrapper} ${error ? style.invalid : null}`}>
+      <div className={`${style.wrapper} ${isInvalid ? wrapperClasses : null}`}>
         {label && <label htmlFor={name}>{label}</label>}
         <Tooltip
-          title={error ? error : null}
+          title={isInvalid ? errorMsg : null}
           placement="bottomLeft"
           color='#b92e2e'
           destroyTooltipOnHide={true}
@@ -47,7 +84,11 @@ const Input = memo(
             placeholder={placeholder}
             value={value}
             onChange={onChange}
-            onBlur={onBlur}
+            onBlur={(e) => {
+              onBlur && onBlur(e)
+              shake()
+              !isTouched && setIsTouched(true)
+            }}
             {...(pattern ? { pattern } : {})}
           />
         </Tooltip >

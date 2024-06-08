@@ -17,7 +17,7 @@ export default {
     'terms & conditions': 'terms and conditions',
     'privacy policy': 'privacy policy'
   },
-  'login page': {
+  '/sign-in': {
     'title': 'Sign in',
     'btn text': 'Log into account',
     'Login to yo-': 'Login to your account in a seconds',

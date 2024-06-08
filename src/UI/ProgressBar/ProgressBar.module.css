@@ -1,0 +1,22 @@
+.wrapper {
+  width: 100%;
+  padding-inline: 0.2rem;
+  opacity: 0.75;
+}
+
+.outer {
+  background-color: var(--foreHover);
+  height: 3px;
+  border-radius: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.inner {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  background-color: #004F44;
+  border-radius: 5rem;
+  transition: .5s ease-in-out;
+}
