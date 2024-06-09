@@ -15,18 +15,15 @@ import Input from '@/src/UI/Input Fields/Input/Input';
 import DateInput from '@/src/UI/Input Fields/Date/DateInput';
 // --- next-internationalization api
 import { useCurrentLocale, useScopedI18n } from '@/src/locales/client';
-import { IValidator } from '@/src/utilities/validators';
+// --- utils/validators
+import { nameValidatorFn, genderValidator, dobValidator } from '@/src/utilities/validators';
 
 interface IProps {
   currSlide: number,
   firstnameValue: string,
-  firstnameValidator: IValidator<string>
   lastnameValue: string,
-  lastnameValidator: IValidator<string>
   dobValue: number | null,
-  dobValidator: IValidator<number>,
   genderValue: string | null,
-  genderValidator: IValidator<string>,
   stateDispatch: Dispatch<SetStateAction<ISignUpFormData>>,
   changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
   formSubmitted?: boolean
@@ -36,13 +33,9 @@ const PersonalDetails = memo(function
   PersonalDetails({
     currSlide,
     firstnameValue,
-    firstnameValidator,
     lastnameValue,
-    lastnameValidator,
     dobValue,
-    dobValidator,
     genderValue,
-    genderValidator,
     stateDispatch,
     changeHandler,
     formSubmitted
@@ -70,8 +63,8 @@ const PersonalDetails = memo(function
         value={firstnameValue}
         onChange={changeHandler}
         // validations
-        validate={firstnameValidator.validateFn}
-        errorMsgs={firstnameValidator.errorMsgs(locale)}
+        validate={nameValidatorFn(t('firstname')).validateFn}
+        errorMsgs={nameValidatorFn(t('firstname')).errorMsgs(locale)}
         isRequired={true}
         formSubmitted={formSubmitted}
       />
@@ -86,8 +79,8 @@ const PersonalDetails = memo(function
         value={lastnameValue}
         onChange={changeHandler}
         // validations
-        validate={lastnameValidator.validateFn}
-        errorMsgs={lastnameValidator.errorMsgs(locale)}
+        validate={nameValidatorFn(t('lastname')).validateFn}
+        errorMsgs={nameValidatorFn(t('lastname')).errorMsgs(locale)}
         isRequired={true}
         formSubmitted={formSubmitted}
       />

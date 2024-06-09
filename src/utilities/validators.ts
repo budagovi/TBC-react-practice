@@ -82,15 +82,12 @@ export const nameValidatorFn = (name: string): IValidator<string> => {
         ]
       }
     }
-
-
-
   }
 }
 
 // -=-=-=- DoB validator on registration -=-=-=-
 
-export const dobValidator: IValidator<number> = {
+export const dobValidator: IValidator<number | null> = {
   validateFn: (value) => {
     if (value === null)
       return 0;
@@ -111,7 +108,7 @@ export const dobValidator: IValidator<number> = {
 
 // -=-=-=- Gender validator on registration -=-=-=-
 
-export const genderValidator: IValidator<string> = {
+export const genderValidator: IValidator<string | null> = {
   validateFn: (value) => {
     if (value === null)
       return 0;

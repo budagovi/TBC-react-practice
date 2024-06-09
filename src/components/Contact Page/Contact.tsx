@@ -6,8 +6,8 @@
 import style from './Contact.module.css';
 // --- Components
 import ContactForm from './ContactForm';
-import EnvelopeIcon from '../../icons/Envelope';
-import TelephoneIcon from '../../icons/Telephone';
+import EnvelopeIcon from '../icons/Envelope';
+import TelephoneIcon from '../icons/Telephone';
 // --- next-internationalization api
 import { getScopedI18n } from '@/src/locales/server';
 

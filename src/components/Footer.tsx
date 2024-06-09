@@ -5,9 +5,9 @@
 // --- CSS
 import style from './Footer.module.css';
 // --- Icon Components
-import EnvelopeIcon from '../icons/Envelope';
-import TelephoneIcon from '../icons/Telephone';
-import LocationIcon from '../icons/Location';
+import EnvelopeIcon from './icons/Envelope';
+import TelephoneIcon from './icons/Telephone';
+import LocationIcon from './icons/Location';
 // --- next.js/react api
 import Link from 'next/link';
 // --- next-internationalization api

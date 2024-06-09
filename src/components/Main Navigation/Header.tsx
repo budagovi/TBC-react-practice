@@ -7,10 +7,10 @@
 // --- CSS
 import style from './Header.module.css';
 // --- Components
-import NotebookIcon from '@/src/icons/Notebook';
-import ProfileIcon from '@/src/icons/Profile';
+import NotebookIcon from '@/src/components/icons/Notebook';
+import ProfileIcon from '@/src/components/icons/Profile';
 import LocalSwitcher from './LocaleSwitcher';
-import CartIcon from '@/src/icons/Cart';
+import CartIcon from '@/src/components/icons/Cart';
 import LogoutBtn from './LogoutBtn';
 // import ThemeToggle from './ThemeToggle';
 // --- UI
@@ -31,7 +31,7 @@ const Header = () => {
 
   const pathname = usePathname();
   // expnad banner with image if user is on home route
-  const isRoot = pathname === '/'; 
+  const isRoot = pathname === '/';
   // make font white if user is on any auth route
   const isAuth = pathname === '/sign-in' || pathname === '/sign-up';
 
@@ -85,7 +85,7 @@ const Header = () => {
       </div>
 
       {/*   -=-=-=- Banner (visible only on home route) -=-=-=-   */}
-      
+
       <div className={style.bannerText}>
         <p>welcome to the aurora plants</p>
         <span>let&apos;s bring the spring to your home</span>

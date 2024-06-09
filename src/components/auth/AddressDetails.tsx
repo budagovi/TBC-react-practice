@@ -11,15 +11,14 @@ import style from './AuthForm.module.css';
 import Input from '@/src/UI/Input Fields/Input/Input';
 // --- next-internationalization api
 import { useCurrentLocale, useScopedI18n } from '@/src/locales/client';
-// --- interfaces
-import { IValidator, addressValidator } from '@/src/utilities/validators';
+// --- utils/validators
+import { addressValidator, mobileValidator } from '@/src/utilities/validators';
+
 
 interface IProps {
   currSlide: number,
   mobileValue: string,
-  mobileValidator: IValidator<string>,
   addressValue: string,
-  addressValidator: IValidator<string>
   changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
   formSubmitted?: boolean
 }
@@ -28,11 +27,12 @@ const AddressDetails = memo(function
   AddressDetails({
     currSlide,
     mobileValue,
-    mobileValidator,
     addressValue,
     changeHandler,
     formSubmitted
   }: IProps) {
+
+  // -=-=-=- Internationalization -=-=-=-
 
   const t = useScopedI18n('/sign-up')
   const locale = useCurrentLocale();

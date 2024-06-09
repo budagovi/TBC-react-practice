@@ -15,16 +15,18 @@ import CheckBox from '@/src/UI/Input Fields/CheckBox/CheckBox';
 import { useCurrentLocale, useScopedI18n } from '@/src/locales/client';
 // --- react/nextjs api
 import Link from 'next/link';
-import { IValidator } from '@/src/utilities/validators';
+// --- utils/validators
+import {
+  emailValidator,
+  passwordValidator,
+  confirmPasswordValidator
+} from '@/src/utilities/validators';
 
 interface IProps {
   currSlide: number,
   emailValue: string,
-  emailValidator: IValidator<string>,
   passwordValue: string,
-  passwordValidator: IValidator<string>
   confirmValue: string,
-  confirmValidator: IValidator<string>
   agreeValue: boolean,
   changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
   formSubmitted: boolean
@@ -34,15 +36,14 @@ const Credentials = memo(function
   Credentials({
     currSlide,
     emailValue,
-    emailValidator,
     passwordValue,
-    passwordValidator,
     confirmValue,
-    confirmValidator,
     agreeValue,
     changeHandler,
     formSubmitted
   }: IProps) {
+
+  // -=-=-=- Internationalization -=-=-=-
 
   const t = useScopedI18n('/sign-up')
   const locale = useCurrentLocale()
@@ -91,8 +92,8 @@ const Credentials = memo(function
         value={confirmValue}
         onChange={changeHandler}
         // validations
-        validate={confirmValidator.validateFn}
-        errorMsgs={confirmValidator.errorMsgs(locale)}
+        validate={confirmPasswordValidator(passwordValue).validateFn}
+        errorMsgs={confirmPasswordValidator(passwordValue).errorMsgs(locale)}
         isRequired={true}
         formSubmitted={formSubmitted}
       />

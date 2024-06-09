@@ -3,7 +3,7 @@
 // *
 
 const formatPhoneNumber = (value: string) => {
-  const prefix = "+995-5";
+  const prefix = "+995 5";
 
   // Remove all non-digit characters except the prefix
   const phoneNumber = value.replace(/[^\d]/g, "").slice(4);
@@ -14,11 +14,11 @@ const formatPhoneNumber = (value: string) => {
   if (len <= 2) {
     return `${prefix}${phoneNumber}`;
   } else if (len <= 4) {
-    return `${prefix}${phoneNumber.slice(0, 2)}-${phoneNumber.slice(2)}`;
+    return `${prefix}${phoneNumber.slice(0, 2)} ${phoneNumber.slice(2)}`;
   } else if (len <= 6) {
-    return `${prefix}${phoneNumber.slice(0, 2)}-${phoneNumber.slice(2, 4)}-${phoneNumber.slice(4)}`;
+    return `${prefix}${phoneNumber.slice(0, 2)} ${phoneNumber.slice(2, 4)} ${phoneNumber.slice(4)}`;
   } else {
-    return `${prefix}${phoneNumber.slice(0, 2)}-${phoneNumber.slice(2, 4)}-${phoneNumber.slice(4, 6)}-${phoneNumber.slice(6, 8)}`;
+    return `${prefix}${phoneNumber.slice(0, 2)} ${phoneNumber.slice(2, 4)} ${phoneNumber.slice(4, 6)} ${phoneNumber.slice(6, 8)}`;
   }
 };
 

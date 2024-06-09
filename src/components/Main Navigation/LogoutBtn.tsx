@@ -1,6 +1,6 @@
 'use client'
 
-import ExitIcon from '@/src/icons/Exit';
+import ExitIcon from '@/src/components/icons/Exit';
 import { usePathname, useRouter } from 'next/navigation';
 
 const LogoutBtn = () => {
@@ -16,7 +16,7 @@ const LogoutBtn = () => {
     }
   }
 
-  if(pathname.includes('/login'))
+  if (pathname.includes('/login'))
     return null
   return <li onClick={logoutHandler}><ExitIcon /> Logout</li>
 }

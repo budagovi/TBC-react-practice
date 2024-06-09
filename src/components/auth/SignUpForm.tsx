@@ -73,11 +73,6 @@ const SignUpForm = () => {
 
   const t = useScopedI18n('/sign-up')
 
-  // -=-=-=- Form Input Validators -=-=-=-
-
-  const firstnameValidator = nameValidatorFn(t('firstname'))
-  const lastnameValidator = nameValidatorFn(t('lastname'))
-
   // -=-=-=- Form State -=-=-=-
 
   const [values, setValues] = useState(initialFormValue)
@@ -106,7 +101,28 @@ const SignUpForm = () => {
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    startTransition(() => { })
+    startTransition(() => {
+      console.log('start ')
+
+      // check form validity
+      if (
+        nameValidatorFn('firstname').validateFn(values.firstname) >= 0 ||
+        nameValidatorFn('lastname').validateFn(values.lastname) >= 0 ||
+        dobValidator.validateFn(values.dobMilSecs) >= 0 ||
+        genderValidator.validateFn(values.gender) >= 0 ||
+        mobileValidator.validateFn(values.mobile) >= 0 ||
+        addressValidator.validateFn(values.address) >= 0 ||
+        emailValidator.validateFn(values.email) >= 0 ||
+        passwordValidator.validateFn(values.password) >= 0 ||
+        confirmPasswordValidator(values.password).validateFn(values.confirm) >= 0
+      ) {
+        // invalid form logic
+        return
+      }
+
+      // valid form logic
+
+    })
 
     // const response = await fetch('/api/login', {
     //   method: 'POST',
@@ -132,18 +148,19 @@ const SignUpForm = () => {
 
     if (slideNum === 0) {
       setIsNextBtnDisabled(
-        values.firstname === '' ||
-        values.lastname === '' ||
-        !dayjs(values.dobMilSecs).isValid() ||
-        !values.gender
+        nameValidatorFn('firstname').validateFn(values.firstname) >= 0 ||
+        nameValidatorFn('lastname').validateFn(values.lastname) >= 0 ||
+        dobValidator.validateFn(values.dobMilSecs) >= 0 ||
+        genderValidator.validateFn(values.gender) >= 0
       )
     }
     else if (slideNum === 1) {
       setIsNextBtnDisabled(
-        values.mobile === '' ||
-        values.address === ''
+        mobileValidator.validateFn(values.mobile) >= 0 ||
+        addressValidator.validateFn(values.address) >= 0
       )
     }
+
   }, [values, setIsNextBtnDisabled, slideNum])
 
 
@@ -189,14 +206,10 @@ const SignUpForm = () => {
           <PersonalDetails
             currSlide={slideNum}
             firstnameValue={values.firstname}
-            firstnameValidator={firstnameValidator}
             lastnameValue={values.lastname}
-            lastnameValidator={lastnameValidator}
             dobValue={values.dobMilSecs}
-            dobValidator={dobValidator}
             genderValue={values.gender}
-            genderValidator={genderValidator}
-            stateDispatch={setValues} // setCustomData for date and gender inputs
+            stateDispatch={setValues} // setValues for date and gender inputs
             changeHandler={changeHandler}
             // pass form status, if only the slide is active (to not touch "invisible" inputs)
             formSubmitted={slideNum === 0 ? isPending : false}
@@ -206,9 +219,7 @@ const SignUpForm = () => {
           <AddressDetails
             currSlide={slideNum}
             mobileValue={values.mobile}
-            mobileValidator={mobileValidator}
             addressValue={values.address}
-            addressValidator={addressValidator}
             changeHandler={changeHandler}
             // pass form status, if only the slide is active (to not touch "invisible" inputs)
             formSubmitted={slideNum === 1 ? isPending : false}
@@ -218,11 +229,8 @@ const SignUpForm = () => {
           <Credentials
             currSlide={slideNum}
             emailValue={values.email}
-            emailValidator={emailValidator}
             passwordValue={values.password}
-            passwordValidator={passwordValidator}
             confirmValue={values.confirm}
-            confirmValidator={confirmPasswordValidator(values.password)}
             agreeValue={values.agree}
             changeHandler={changeHandler}
             // pass form status, if only the slide is active (to not touch "invisible" inputs)
