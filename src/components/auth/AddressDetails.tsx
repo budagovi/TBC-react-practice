@@ -10,24 +10,32 @@ import style from './AuthForm.module.css';
 // --- UI
 import Input from '@/src/UI/Input Fields/Input/Input';
 // --- next-internationalization api
-import { useScopedI18n } from '@/src/locales/client';
+import { useCurrentLocale, useScopedI18n } from '@/src/locales/client';
+// --- interfaces
+import { IValidator, addressValidator } from '@/src/utilities/validators';
 
 interface IProps {
   currSlide: number,
   mobileValue: string,
+  mobileValidator: IValidator<string>,
   addressValue: string,
-  changeHandler: (e: ChangeEvent<HTMLInputElement>) => void
+  addressValidator: IValidator<string>
+  changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
+  formSubmitted?: boolean
 }
 
 const AddressDetails = memo(function
   AddressDetails({
     currSlide,
     mobileValue,
+    mobileValidator,
     addressValue,
-    changeHandler
+    changeHandler,
+    formSubmitted
   }: IProps) {
 
-  const t = useScopedI18n('register page')
+  const t = useScopedI18n('/sign-up')
+  const locale = useCurrentLocale();
 
   return (
     <div className={`
@@ -42,8 +50,14 @@ const AddressDetails = memo(function
         type='text'
         name='mobile'
         placeholder={t('mobile')}
+        // for controlling the input
         value={mobileValue}
         onChange={changeHandler}
+        // validations
+        validate={mobileValidator.validateFn}
+        errorMsgs={mobileValidator.errorMsgs(locale)}
+        isRequired={true}
+        formSubmitted={formSubmitted}
       />
 
       {/* Address Field*/}
@@ -52,8 +66,14 @@ const AddressDetails = memo(function
         type='text'
         name='address'
         placeholder={t('address')}
+        // for controlling the input
         value={addressValue}
         onChange={changeHandler}
+        // validations
+        validate={addressValidator.validateFn}
+        errorMsgs={addressValidator.errorMsgs(locale)}
+        isRequired={true}
+        formSubmitted={formSubmitted}
       />
 
     </div>

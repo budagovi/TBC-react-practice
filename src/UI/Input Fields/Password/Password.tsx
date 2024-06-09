@@ -14,10 +14,10 @@ import { Tooltip } from 'antd';
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   // other input attributes
   label?: string,
-  errorMsg?: string,
-  validate?: (value: string) => boolean,
+  validate?: (value: string) => number,
+  errorMsgs?: string[],
   formSubmitted?: boolean,
-  requiredField?: boolean,
+  isRequired?: boolean,
 }
 
 const PasswordInput = memo(
@@ -30,18 +30,19 @@ const PasswordInput = memo(
       value,
       onChange,
       onBlur,
-      errorMsg,
+      errorMsgs,
       validate,
       formSubmitted,
-      requiredField,
+      isRequired
     }: IProps
   ) {
 
+    value = value as string
     const [show, setShow] = useState(false)
     const [wrapperClasses, setWrapperClasses] = useState(`${style.invalid} ${style.shaking}`);
     const [isTouched, setIsTouched] = useState(false);
 
-    const isInvalid = validate && !validate(value as string) && isTouched;
+    const isInvalid = validate && errorMsgs && validate(value) >= 0 && isTouched;
     // toggle eye icons
     const toggleShow = () => {
       setShow(prevState => !prevState)
@@ -49,8 +50,7 @@ const PasswordInput = memo(
 
     // shake the component with invalid value on blur
     const shake = () => {
-      if (!`${style.invalid} ${style.shaking}`.includes(`${style.shaking}`))
-        return;
+      !isTouched && setIsTouched(true)
 
       setWrapperClasses(`${style.invalid} ${style.shaking}`);
       const timer = setTimeout(() => {
@@ -63,18 +63,22 @@ const PasswordInput = memo(
     }
 
     // validate on form submission (for required fields, to check if they are empty)
-    requiredField && useEffect(() => {
-      if (formSubmitted === false)
-        return;
+    useEffect(() => {
+      if (!isRequired || formSubmitted === false)
+        return
 
       shake()
-      !isTouched && setIsTouched(true)
     }, [formSubmitted])
 
     return (
       <div className={`${style.wrapper} ${isInvalid ? wrapperClasses : null}`}>
         {label && <label htmlFor={name}>{label}</label>}
-        <Tooltip title={isInvalid ? errorMsg : null} placement="bottomLeft" color='#b92e2e'>
+        <Tooltip
+          title={isInvalid ? errorMsgs[validate(value)] : null}
+          placement="bottomLeft"
+          color='#b92e2e'
+          mouseEnterDelay={0.07}
+        >
           <div className={style.passwordWrapper}>
             <input
               id={name}
@@ -87,7 +91,6 @@ const PasswordInput = memo(
               onBlur={(e) => {
                 onBlur && onBlur(e)
                 shake()
-                !isTouched && setIsTouched(true)
               }}
             />
             {!show ?

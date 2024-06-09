@@ -29,7 +29,7 @@ export default {
     'email': 'Email',
     'password': 'Password'
   },
-  'register page': {
+  '/sign-up': {
     'title': 'Sign Up',
     'btn text': 'Create and account',
     'create an acc-': 'create an account in just a seconds',
@@ -53,7 +53,8 @@ export default {
     'password': 'Password',
     'confirm': 'Confirm Paswword',
     'continue': 'continue',
-    'go back': 'Go back'
+    'go back': 'go back',
+    'sign up': 'Sign Up'
   },
   'store page': {
     'title': 'Browse Products',

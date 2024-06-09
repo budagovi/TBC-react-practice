@@ -8,6 +8,7 @@
   border: none;
   outline: none;
   cursor: pointer;
+  transition: .15s ease-in;
 }
 
 .btn.light {
@@ -15,4 +16,10 @@
   box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.2);
   color: var(--greenBg);
   font-weight: 500;
+}
+
+.btn:disabled {
+  color: var(--bodyBg);
+  background-color: var(--grey);
+  cursor: not-allowed;
 }

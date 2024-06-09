@@ -81,3 +81,40 @@
   font-weight: 600;
   background-color: #e9efebae;
 }
+
+/* invalid value */
+.select-input-wrapper.invalid {
+  color: var(--red);
+}
+
+.select-input-wrapper.shaking {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-3px);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
+
+  75% {
+    transform: translateX(-3px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.select-input-wrapper.invalid .ant-select,
+.select-input-wrapper.invalid .ant-select:hover {
+  /* background-color: #ffdddd; */
+  border: 1px solid var(--red) !important;
+}

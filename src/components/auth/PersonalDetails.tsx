@@ -14,30 +14,44 @@ import CustomSelect from '@/src/UI/Input Fields/Select/CustomSelect';
 import Input from '@/src/UI/Input Fields/Input/Input';
 import DateInput from '@/src/UI/Input Fields/Date/DateInput';
 // --- next-internationalization api
-import { useScopedI18n } from '@/src/locales/client';
+import { useCurrentLocale, useScopedI18n } from '@/src/locales/client';
+import { IValidator } from '@/src/utilities/validators';
 
 interface IProps {
   currSlide: number,
   firstnameValue: string,
+  firstnameValidator: IValidator<string>
   lastnameValue: string,
+  lastnameValidator: IValidator<string>
   dobValue: number | null,
+  dobValidator: IValidator<number>,
   genderValue: string | null,
+  genderValidator: IValidator<string>,
   stateDispatch: Dispatch<SetStateAction<ISignUpFormData>>,
-  changeHandler: (e: ChangeEvent<HTMLInputElement>) => void
+  changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
+  formSubmitted?: boolean
 }
 
 const PersonalDetails = memo(function
   PersonalDetails({
     currSlide,
     firstnameValue,
+    firstnameValidator,
     lastnameValue,
+    lastnameValidator,
     dobValue,
+    dobValidator,
     genderValue,
+    genderValidator,
     stateDispatch,
-    changeHandler
+    changeHandler,
+    formSubmitted
   }: IProps) {
 
-  const t = useScopedI18n('register page')
+  // -=-=-=- Internationalization -=-=-=-
+
+  const t = useScopedI18n('/sign-up')
+  const locale = useCurrentLocale()
 
   return (
     <div className={`
@@ -49,21 +63,33 @@ const PersonalDetails = memo(function
       {/* FirstName Field*/}
       <Input
         label={t('firstname')}
-        type='text'
-        name='firstname'
         placeholder={t('firstname')}
+        type='text'
+        name='firstname' // id
+        // for controlling input
         value={firstnameValue}
         onChange={changeHandler}
+        // validations
+        validate={firstnameValidator.validateFn}
+        errorMsgs={firstnameValidator.errorMsgs(locale)}
+        isRequired={true}
+        formSubmitted={formSubmitted}
       />
 
       {/* LastName Field */}
       <Input
         label={t('lastname')}
         type='text'
-        name='lastname'
+        name='lastname' // id
         placeholder={t('lastname')}
+        // for controlling input
         value={lastnameValue}
         onChange={changeHandler}
+        // validations
+        validate={lastnameValidator.validateFn}
+        errorMsgs={lastnameValidator.errorMsgs(locale)}
+        isRequired={true}
+        formSubmitted={formSubmitted}
       />
 
       <div className={style.twoInputs}>
@@ -83,6 +109,10 @@ const PersonalDetails = memo(function
               }
             ));
           }}
+          validate={dobValidator.validateFn}
+          errorMsgs={dobValidator.errorMsgs(locale)}
+          isRequired={true}
+          formSubmitted={formSubmitted}
         />
 
         {/* Gender Field */}
@@ -103,6 +133,10 @@ const PersonalDetails = memo(function
               }
             ));
           }}
+          validate={genderValidator.validateFn}
+          errorMsgs={genderValidator.errorMsgs(locale)}
+          isRequired={true}
+          formSubmitted={formSubmitted}
         />
 
       </div>

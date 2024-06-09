@@ -1,7 +1,7 @@
 'use client'
 
 // *
-// * Sign-In Form Component (using emblda Carousel)
+// * Sign-In Sliding Form Component (using emblda Carousel)
 // *
 
 // --- style
@@ -10,7 +10,7 @@ import style from './AuthForm.module.css';
 import Button from '@/src/UI/Button/Button';
 import ProgressBar from '@/src/UI/ProgressBar/ProgressBar';
 // --- nextjs/react api
-import { ChangeEvent, FormEvent, useState, useCallback } from 'react';
+import { ChangeEvent, useState, useCallback, useTransition, FormEvent, useEffect } from 'react';
 //import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 // --- next-internationalization api
@@ -24,6 +24,22 @@ import useEmblaCarousel from 'embla-carousel-react';
 import PersonalDetails from './PersonalDetails';
 import AddressDetails from './AddressDetails';
 import Credentials from './Credentials';
+// --- dayjs
+import dayjs from 'dayjs';
+// --- antd
+import { Tooltip } from 'antd';
+// --- utils
+import {
+  nameValidatorFn,
+  dobValidator,
+  genderValidator,
+  mobileValidator,
+  addressValidator,
+  emailValidator,
+  passwordValidator,
+  confirmPasswordValidator
+} from '@/src/utilities/validators';
+import formatPhoneNumber from '@/src/utilities/helpers/formatPhoneNumber';
 
 export interface ISignUpFormData {
   firstname: string,
@@ -38,35 +54,59 @@ export interface ISignUpFormData {
   agree: boolean
 }
 
-const SignUp = () => {
+const initialFormValue: ISignUpFormData = {
+  firstname: '',
+  lastname: '',
+  gender: null,
+  dobMilSecs: null,
+  address: '',
+  mobile: '+995 5',
+  email: '',
+  password: '',
+  confirm: '',
+  agree: false
+}
 
-  const initialFormValue: ISignUpFormData = {
-    firstname: '',
-    lastname: '',
-    gender: null,
-    dobMilSecs: null,
-    address: '',
-    mobile: '',
-    email: '',
-    password: '',
-    confirm: '',
-    agree: false
-  }
+const SignUpForm = () => {
 
-  // -=-=-=- Form state -=-=-=-
-  const [customFormData, setCustomFormData] = useState(initialFormValue)
+  // -=-=-=- Internationalization -=-=-=-
+
+  const t = useScopedI18n('/sign-up')
+
+  // -=-=-=- Form Input Validators -=-=-=-
+
+  const firstnameValidator = nameValidatorFn(t('firstname'))
+  const lastnameValidator = nameValidatorFn(t('lastname'))
+
+  // -=-=-=- Form State -=-=-=-
+
+  const [values, setValues] = useState(initialFormValue)
+  const [isPending, startTransition] = useTransition();
+
   //const router = useRouter();
 
   const changeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
-    setCustomFormData((prevState) => ({
+
+    if (name === 'mobile') {
+      const newValue = formatPhoneNumber(value)
+      setValues((prevState) => ({
+        ...prevState,
+        [name]: newValue,
+      }));
+      return;
+    }
+
+    setValues((prevState) => ({
       ...prevState,
       [name]: type === 'checkbox' ? checked : value,
     }));
   }, []);
 
-  const submitHandler = async (e: FormEvent) => {
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    startTransition(() => { })
 
     // const response = await fetch('/api/login', {
     //   method: 'POST',
@@ -80,28 +120,50 @@ const SignUp = () => {
     //   router.push('/store')
     // }
 
-    setCustomFormData(initialFormValue)
   }
 
   // -=-=-=- Carousel Fucntionality -=-=-=-
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ skipSnaps: true, watchDrag: false })
   const [slideNum, setSlideNum] = useState(0)
-  const isNextBtnDisabled = useCallback(() => {
-    return slideNum === 2
-  }, [slideNum])
+  const [isNextBtnDisabled, setIsNextBtnDisabled] = useState(true)
+
+  useEffect(() => {
+
+    if (slideNum === 0) {
+      setIsNextBtnDisabled(
+        values.firstname === '' ||
+        values.lastname === '' ||
+        !dayjs(values.dobMilSecs).isValid() ||
+        !values.gender
+      )
+    }
+    else if (slideNum === 1) {
+      setIsNextBtnDisabled(
+        values.mobile === '' ||
+        values.address === ''
+      )
+    }
+  }, [values, setIsNextBtnDisabled, slideNum])
+
 
   const scrollPrev = useCallback(() => {
     setSlideNum(prevState => prevState - 1)
-    if (emblaApi) emblaApi.scrollPrev()
+    if (emblaApi)
+      emblaApi.scrollPrev()
   }, [emblaApi])
 
   const scrollNext = useCallback(() => {
-    setSlideNum(prevState => prevState + 1)
-    if (emblaApi) emblaApi.scrollNext()
-  }, [emblaApi])
 
-  // -=-=-=- Internationalization -=-=-=-
-  const t = useScopedI18n('register page')
+    if (isNextBtnDisabled) {
+      startTransition(() => { })
+      return
+    }
+
+    setSlideNum(prevState => prevState + 1)
+    if (emblaApi)
+      emblaApi.scrollNext()
+  }, [emblaApi, isNextBtnDisabled, slideNum])
 
   return (
     <form className={style.wrapper} onSubmit={submitHandler}>
@@ -126,30 +188,45 @@ const SignUp = () => {
           {/* Slide 1 - Personal Details */}
           <PersonalDetails
             currSlide={slideNum}
-            firstnameValue={customFormData.firstname}
-            lastnameValue={customFormData.lastname}
-            dobValue={customFormData.dobMilSecs}
-            genderValue={customFormData.gender}
-            stateDispatch={setCustomFormData} // setCustomData for date and gender inputs
+            firstnameValue={values.firstname}
+            firstnameValidator={firstnameValidator}
+            lastnameValue={values.lastname}
+            lastnameValidator={lastnameValidator}
+            dobValue={values.dobMilSecs}
+            dobValidator={dobValidator}
+            genderValue={values.gender}
+            genderValidator={genderValidator}
+            stateDispatch={setValues} // setCustomData for date and gender inputs
             changeHandler={changeHandler}
+            // pass form status, if only the slide is active (to not touch "invisible" inputs)
+            formSubmitted={slideNum === 0 ? isPending : false}
           />
 
           {/* Slide 2 - Address Details */}
           <AddressDetails
             currSlide={slideNum}
-            mobileValue={customFormData.mobile}
-            addressValue={customFormData.address}
+            mobileValue={values.mobile}
+            mobileValidator={mobileValidator}
+            addressValue={values.address}
+            addressValidator={addressValidator}
             changeHandler={changeHandler}
+            // pass form status, if only the slide is active (to not touch "invisible" inputs)
+            formSubmitted={slideNum === 1 ? isPending : false}
           />
 
           {/* Slide 3 - Credentials and Submit */}
           <Credentials
             currSlide={slideNum}
-            emailValue={customFormData.email}
-            passwordValue={customFormData.password}
-            confirmValue={customFormData.confirm}
-            agreeValue={customFormData.agree}
+            emailValue={values.email}
+            emailValidator={emailValidator}
+            passwordValue={values.password}
+            passwordValidator={passwordValidator}
+            confirmValue={values.confirm}
+            confirmValidator={confirmPasswordValidator(values.password)}
+            agreeValue={values.agree}
             changeHandler={changeHandler}
+            // pass form status, if only the slide is active (to not touch "invisible" inputs)
+            formSubmitted={slideNum === 2 ? isPending : false}
           />
 
         </div>
@@ -160,28 +237,40 @@ const SignUp = () => {
         <button
           disabled={slideNum === 0}
           type='button'
-          className={style.arrowBtn}
+          className={`${style.arrowBtn} ${slideNum === 0 && style.hide}`}
           onClick={scrollPrev}
         >
           <MdArrowBackIos className={style.arrow} />
           <span>
-            go back
+            {t('go back')}
           </span>
         </button>
-        <button
-          disabled={isNextBtnDisabled()}
-          type='button'
-          className={style.arrowBtn}
-          onClick={scrollNext}
+        <Tooltip
+          title={isNextBtnDisabled ? 'Please, fill in the missing fields' : null}
+          placement="topRight"
+          color='#272727'
+          destroyTooltipOnHide={true}
+          mouseEnterDelay={0.07}
         >
-          <span>
-            {t('continue')}
-          </span>
-          <MdArrowForwardIos className={style.arrow} />
-        </button>
+          <button
+            disabled={slideNum === 2}
+            type='button'
+            className={`${style.arrowBtn} ${slideNum === 2 && style.hide}`}
+            onClick={scrollNext}
+          >
+            <span>
+              {t('continue')}
+            </span>
+            <MdArrowForwardIos className={style.arrow} />
+          </button>
+        </Tooltip>
       </div>
 
-      <Button type='submit'>{t('continue')}</Button>
+      <Button
+        type='submit'
+      >
+        {t('sign up')}
+      </Button>
 
       <div className={style.actions}>
         <span>{t('already member?')}<Link href={'/sign-in'}>{' ' + t('sign in')}</Link></span>
@@ -208,4 +297,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp;
+export default SignUpForm;

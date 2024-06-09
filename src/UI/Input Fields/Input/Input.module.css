@@ -31,6 +31,14 @@
   transition: .2s ease-in-out;
 }
 
+/* disable default background-color on browser autofill */
+.wrapper input:-webkit-autofill,
+.wrapper input:-webkit-autofill:hover,
+.wrapper input:-webkit-autofill:focus,
+.wrapper input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .wrapper input:focus,
 .wrapper input:hover,
 .wrapper textarea:focus,
@@ -61,15 +69,15 @@
   }
 
   25% {
-    transform: translateX(-5px);
+    transform: translateX(-3px);
   }
 
   50% {
-    transform: translateX(5px);
+    transform: translateX(3px);
   }
 
   75% {
-    transform: translateX(-5px);
+    transform: translateX(-3px);
   }
 
   100% {

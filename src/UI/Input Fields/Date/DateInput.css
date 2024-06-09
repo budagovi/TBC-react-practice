@@ -80,3 +80,40 @@
 :where(.css-dev-only-do-not-override-j9bb5n).ant-picker-dropdown .ant-picker-cell .ant-picker-cell-inner::before {
   border: 1px solid var(--greenBg) !important;
 }
+
+/* invalid value */
+.date-input-wrapper.invalid {
+  color: var(--red);
+}
+
+.date-input-wrapper.shaking {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-3px);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
+
+  75% {
+    transform: translateX(-3px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.date-input-wrapper.invalid .ant-picker,
+.date-input-wrapper.invalid .ant-picker:hover {
+  /* background-color: #ffdddd; */
+  border: 1px solid var(--red) !important;
+}

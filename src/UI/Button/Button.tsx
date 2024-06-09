@@ -5,21 +5,19 @@
 // --- CSS
 import style from './Button.module.css';
 // --- next.js/react api
-import { MouseEventHandler, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
-interface Props {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode,
   light?: boolean,
-  onClick?: MouseEventHandler,
-  className?: string | null,
-  type?: 'button' | 'submit' | 'reset'
 }
 
-const Button = ({ children, light= false, onClick, className = null, type= 'button' }: Props) => {
+const Button = ({ children, light = false, onClick, className, type = 'button', disabled }: Props) => {
   return (
-    <button 
+    <button
+      disabled={disabled}
       type={type}
-      className={`${style.btn} ${light && style.light} ${className}`} 
+      className={`${style.btn} ${light && style.light} ${className}`}
       onClick={onClick}>
       {children}
     </button>

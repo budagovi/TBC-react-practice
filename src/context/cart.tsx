@@ -128,22 +128,22 @@ const CartContextProvider = ({ children }: IProps) => {
 
   const id = 2;
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch('/api/cart/' + id)
-      console.log('get req')
-      if (response.ok) {
-        const records = await response.json();
-        const cartState = records.data[0]
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const response = await fetch('/api/cart/' + id)
+  //     console.log('get req')
+  //     if (response.ok) {
+  //       const records = await response.json();
+  //       const cartState = records.data[0]
 
-        //console.log(cartState && cartState.totalamount)
-        if (cartState && cartState.data)
-          dispatch({ type: 'SET_CART', payload: { items: cartState.data, totalAmount: +cartState.totalamount as number } })
-      }
-    }
+  //       //console.log(cartState && cartState.totalamount)
+  //       if (cartState && cartState.data)
+  //         dispatch({ type: 'SET_CART', payload: { items: cartState.data, totalAmount: +cartState.totalamount as number } })
+  //     }
+  //   }
 
-    getData()
-  }, [])
+  //   getData()
+  // }, [])
 
   useEffect(() => {
     //setStoredItems(state);

@@ -16,9 +16,11 @@ import { ChangeEvent, FormEvent, useState, useCallback, useTransition } from 're
 //import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 // --- next-internationalization api
-import { useScopedI18n } from '@/src/locales/client';
+import { useCurrentLocale, useScopedI18n } from '@/src/locales/client';
 // --- react-icons
 import { FaFacebook, FaGoogle } from 'react-icons/fa6';
+// --- utils
+import { isRequiredFieldString } from '@/src/utilities/validators';
 
 interface ISignInFormData {
   email: string,
@@ -32,7 +34,19 @@ const initialFormValue: ISignInFormData = {
   isRemembered: true
 }
 
-const Login = () => {
+const SignInForm = () => {
+
+  // -=-=-=- Internationalization -=-=-=-
+
+  const t = useScopedI18n('/sign-in')
+  const locale = useCurrentLocale()
+
+  // -=-=-=- Form Input Validators -=-=-=-
+
+  const EmailValidator = isRequiredFieldString(t('email'))
+  const PasswordValidator = isRequiredFieldString(t('password'))
+
+  // -=-=-=- Form State -=-=-=-
 
   const [values, setValues] = useState(initialFormValue)
   const [isPending, startTransition] = useTransition();
@@ -60,7 +74,7 @@ const Login = () => {
     ));
   }, []);
 
-  const submitHandler = async (e: FormEvent) => {
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     startTransition(() => { })
@@ -70,7 +84,7 @@ const Login = () => {
     // if (values.password === '')
     //   setErrors(prevState => ({ ...prevState, password: 'password is required' }))
 
-    // const response = await fetch('/api/login', {
+    // const response = await fetch('/api/SignInForm', {
     //   method: 'POST',
     //   headers: { 'Content-Type': 'application/json' },
     //   body: JSON.stringify({
@@ -83,8 +97,6 @@ const Login = () => {
     // }
 
   }
-
-  const t = useScopedI18n('/sign-in')
 
   return (
     <form className={style.wrapper} onSubmit={submitHandler}>
@@ -108,9 +120,9 @@ const Login = () => {
           placeholder={t('email')}
           value={values.email}
           onChange={changeHandler}
-          validate={(value: string) => value !== ''}
-          errorMsg='Email is required'
-          requiredField={true}
+          validate={EmailValidator.validateFn}
+          errorMsgs={EmailValidator.errorMsgs(locale)}
+          isRequired={true}
           formSubmitted={isPending}
         />
 
@@ -122,9 +134,9 @@ const Login = () => {
           placeholder={t('password')}
           value={values.password}
           onChange={changeHandler}
-          validate={(value: string) => value !== ''}
-          errorMsg='Password is required'
-          requiredField={true}
+          validate={PasswordValidator.validateFn}
+          errorMsgs={PasswordValidator.errorMsgs(locale)}
+          isRequired={true}
           formSubmitted={isPending}
         />
       </div>
@@ -168,4 +180,4 @@ const Login = () => {
   )
 }
 
-export default Login;
+export default SignInForm;

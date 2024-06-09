@@ -26,10 +26,10 @@ export default {
     'do not have and account?': 'არ გაქვს ანგარიში?',
     'sign up': 'დარეგისტრირდი',
     'continue': 'ან გააგრძელე',
-    'email': 'ელ-ფოსტა',
+    'email': 'ელ. ფოსტა',
     'password': 'პაროლი'
   },
-  'register page': {
+  '/sign-up': {
     'title': 'რეგისტრაცია',
     'btn text': 'ანგარიშის შექმნა',
     'create an acc-': 'შექმენი ანგარიში წამებში',
@@ -48,12 +48,13 @@ export default {
     'dob': 'დაბადების თარიღი',
     'country': 'ქვეყანა',
     'address': 'მისამართი',
-    'mobile': 'მობილურუ ნომერი',
-    'email': 'ელ-ფოსტა',
+    'mobile': 'მობილური ნომერი',
+    'email': 'ელ. ფოსტა',
     'password': 'პაროლი',
     'confirm': 'დაადასტურეთ პაროლი',
     'continue': 'გაგრძელება',
-    'go back': 'დაბრუნება'
+    'go back': 'დაბრუნება',
+    'sign up': 'რეგისტრაცია'
   },
   'store page': {
     'title': 'პროდუქტები',

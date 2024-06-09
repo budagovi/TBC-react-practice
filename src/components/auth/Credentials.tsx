@@ -12,30 +12,40 @@ import Input from '@/src/UI/Input Fields/Input/Input';
 import PasswordInput from '@/src/UI/Input Fields/Password/Password';
 import CheckBox from '@/src/UI/Input Fields/CheckBox/CheckBox';
 // --- next-internationalization api
-import { useScopedI18n } from '@/src/locales/client';
+import { useCurrentLocale, useScopedI18n } from '@/src/locales/client';
 // --- react/nextjs api
 import Link from 'next/link';
+import { IValidator } from '@/src/utilities/validators';
 
 interface IProps {
   currSlide: number,
   emailValue: string,
+  emailValidator: IValidator<string>,
   passwordValue: string,
+  passwordValidator: IValidator<string>
   confirmValue: string,
+  confirmValidator: IValidator<string>
   agreeValue: boolean,
-  changeHandler: (e: ChangeEvent<HTMLInputElement>) => void
+  changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
+  formSubmitted: boolean
 }
 
 const Credentials = memo(function
   Credentials({
     currSlide,
     emailValue,
+    emailValidator,
     passwordValue,
+    passwordValidator,
     confirmValue,
+    confirmValidator,
     agreeValue,
-    changeHandler
+    changeHandler,
+    formSubmitted
   }: IProps) {
 
-  const t = useScopedI18n('register page')
+  const t = useScopedI18n('/sign-up')
+  const locale = useCurrentLocale()
 
   return (
     <div className={`
@@ -47,11 +57,16 @@ const Credentials = memo(function
       {/* Email Field */}
       <Input
         label={t('email')}
-        type='email'
+        type='text'
         name='email'
         placeholder={t('email')}
         value={emailValue}
         onChange={changeHandler}
+        // validations
+        validate={emailValidator.validateFn}
+        errorMsgs={emailValidator.errorMsgs(locale)}
+        isRequired={true}
+        formSubmitted={formSubmitted}
       />
 
       {/* Password Field */}
@@ -61,6 +76,11 @@ const Credentials = memo(function
         placeholder={t('password')}
         value={passwordValue}
         onChange={changeHandler}
+        // validations
+        validate={passwordValidator.validateFn}
+        errorMsgs={passwordValidator.errorMsgs(locale)}
+        isRequired={true}
+        formSubmitted={formSubmitted}
       />
 
       {/* Confirm Password Field */}
@@ -70,6 +90,11 @@ const Credentials = memo(function
         placeholder={t('confirm')}
         value={confirmValue}
         onChange={changeHandler}
+        // validations
+        validate={confirmValidator.validateFn}
+        errorMsgs={confirmValidator.errorMsgs(locale)}
+        isRequired={true}
+        formSubmitted={formSubmitted}
       />
 
       {/* Terms and Conditions Checkbox */}
