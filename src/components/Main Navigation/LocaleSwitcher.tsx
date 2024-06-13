@@ -1,12 +1,12 @@
 'use client'
 
-import { useChangeLocale } from '@/src/locales/client'
+import { useChangeLocale } from '@/src/lib/next-internationalization/client'
 import style from './LocaleSwitcher.module.css'
-import { i18n } from "@/i18n.config"
+import { i18n } from "@/src/lib/next-internationalization/i18n.config"
 
 const LocalSwitcher = () => {
 
-  const changeLocale = useChangeLocale({preserveSearchParams: true});
+  const changeLocale = useChangeLocale({ preserveSearchParams: true });
 
   return (
     <ul className={style.wrapper}>

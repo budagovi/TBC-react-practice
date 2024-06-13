@@ -1,7 +1,3 @@
-// *
-// * Custom button component
-// *
-
 // --- CSS
 import style from './Button.module.css';
 // --- next.js/react api
@@ -12,6 +8,9 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   light?: boolean,
 }
 
+/**  
+ * Custom button component
+ */
 const Button = ({ children, light = false, onClick, className, type = 'button', disabled }: Props) => {
   return (
     <button

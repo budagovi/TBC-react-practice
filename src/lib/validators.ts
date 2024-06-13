@@ -2,6 +2,8 @@
 // * Validator objects for input elements
 // *
 
+import isEmailFormat from "../utilities/checkers/isEmailFormat";
+
 /*-=-=-=-=-=-=-=-
   
   Validator Object consists of 2 properties: validatorFn and errorMsgs:
@@ -26,8 +28,26 @@ export interface IValidator<T> {
   errorMsgs: (locale: string) => string[];
 }
 
-// -=-=-=- Validator for reqired string values -=-=-=-
-
+/**
+ *  ### Custom validator for reqired string values
+ *  Function that returns validator object according to input field name (used in messages)
+ * 
+ * - should not be empty string
+ * 
+ * @param {string} fieldName - The name of the field to validate.
+ * @returns An object containing the validation function and error messages.
+ * 
+ * @example 
+ * ```typescript
+ * const { validateFn, errorMsgs } = isRequiredFieldString(t('username'));
+ * 
+ * // Check for validity
+ * const idx: number = validateFn(value);
+ * 
+ * // Use index returned from validateFn to display error message (if idx >= 0)
+ * const errorMsg: string = errorMsgs(locale)[idx];
+ * ```
+ */
 export const isRequiredFieldString = (fieldName: string): IValidator<string> => {
   return {
     validateFn: (value) => {
@@ -49,8 +69,30 @@ export const isRequiredFieldString = (fieldName: string): IValidator<string> => 
   }
 }
 
-// -=-=-=- Firstname & Lastname validator on registration -=-=-=-
 
+/**
+ *  ### Firstname & Lastname validator on registration
+ * 
+ *  Function that returns validator object according to input field name (used in messages)
+ * - should not be empty
+ * - maximum length 15 characters
+ * - should not include whitespaces
+ * - can contain only alphabetical characters and apostrophe
+ * 
+ * @param {string} name - The name of the field to validate.
+ * @returns An object containing the validation function and error messages.
+ * 
+ * @example
+ * ```typescript
+ *  const { validateFn, errorMsgs } = nameValidatorFn(t('firstname'))
+ * 
+ *  // check for validity
+ *  const idx:number = validateFn(value)
+ * 
+ *  // use index returned from validatorFn to display error message (if idx >= 0)
+ *  const errorMsg: string = errorMsgs(locale)[idx]
+ * ```
+ */
 export const nameValidatorFn = (name: string): IValidator<string> => {
   return {
     validateFn: (value) => {
@@ -85,8 +127,23 @@ export const nameValidatorFn = (name: string): IValidator<string> => {
   }
 }
 
-// -=-=-=- DoB validator on registration -=-=-=-
-
+/**
+ *  ### Date of Birth validator on registration
+ *  An object containing the validation function and error messages.
+ * 
+ * - value should not be null
+ * 
+ * @example
+ * ```typescript
+ *  const { validateFn, errorMsgs } = dobValidator;
+ * 
+ *  // check for validity
+ *  const idx:number = validateFn(value)
+ * 
+ *  // use index returned from validatorFn to display error message (if idx >= 0)
+ *  const errorMsg: string = errorMsgs(locale)[idx]
+ * ```
+ */
 export const dobValidator: IValidator<number | null> = {
   validateFn: (value) => {
     if (value === null)
@@ -106,8 +163,23 @@ export const dobValidator: IValidator<number | null> = {
   }
 }
 
-// -=-=-=- Gender validator on registration -=-=-=-
-
+/**
+ *  ### Gender validator on registration
+ *  An object containing the validation function and error messages.
+ * 
+ * - value should not be null
+ * 
+ * @example
+ * ```typescript
+ *  const { validateFn, errorMsgs } = genderValidator;
+ * 
+ *  // check for validity
+ *  const idx:number = validateFn(value)
+ * 
+ *  // use index returned from validatorFn to display error message (if idx >= 0)
+ *  const errorMsg: string = errorMsgs(locale)[idx]
+ * ```
+ */
 export const genderValidator: IValidator<string | null> = {
   validateFn: (value) => {
     if (value === null)
@@ -127,8 +199,24 @@ export const genderValidator: IValidator<string | null> = {
   }
 }
 
-// -=-=-=- Mobile phone validator on registration -=-=-=-
-
+/**
+ *  ### Mobile phone validator on registration 
+ *  An object containing the validation function and error messages.
+ * 
+ * - should not be empty
+ * - should follow predefined format +995 5XX XX XX XX
+ * 
+ * @example
+ * ```typescript
+ *  const { validateFn, errorMsgs } = mobileValidator;
+ * 
+ *  // check for validity
+ *  const idx:number = validateFn(value)
+ * 
+ *  // use index returned from validatorFn to display error message (if idx >= 0)
+ *  const errorMsg: string = errorMsgs(locale)[idx]
+ * ```
+ */
 export const mobileValidator: IValidator<string> = {
   validateFn: (value) => {
     const phoneRegex = /^\+995 5\d{2} \d{2} \d{2} \d{2}$/;
@@ -154,14 +242,31 @@ export const mobileValidator: IValidator<string> = {
   }
 }
 
-// -=-=-=- Address validator on registration -=-=-=-
-
+/**
+ *  ### Address validator on registration
+ *  An object containing the validation function and error messages.
+ * 
+ * - should not be empty
+ * - minimum length 5
+ * - should not contain special characters
+ * 
+ * @example
+ * ```typescript
+ *  const { validateFn, errorMsgs } = addressValidator;
+ * 
+ *  // check for validity
+ *  const idx:number = validateFn(value)
+ * 
+ *  // use index returned from validatorFn to display error message (if idx >= 0)
+ *  const errorMsg: string = errorMsgs(locale)[idx]
+ * ```
+ */
 export const addressValidator: IValidator<string> = {
   validateFn: (value) => {
     const specialCharsRegex = /[^a-zA-Z0-9\s.,-,']/;
     if (value.trim() === '') {
       return 0;
-    } else if (value.trim().length < 5) {
+    } else if (value.trim().length < 4) {
       return 1;
     } else if (specialCharsRegex.test(value.trim())) {
       return 2;
@@ -185,33 +290,71 @@ export const addressValidator: IValidator<string> = {
   }
 }
 
-// -=-=-=- Email validator on registration -=-=-=-
-
+/**
+ *  ### Email validator on registration
+ *  An object containing the validation function and error messages.
+ * 
+ * - should not be empty
+ * - should follow standard email address format
+ * 
+ * @example
+ * ```typescript
+ *  const { validateFn, errorMsgs } = emailValidator;
+ * 
+ *  // check for validity
+ *  const idx:number = validateFn(value)
+ * 
+ *  // use index returned from validatorFn to display error message (if idx >= 0)
+ *  const errorMsg: string = errorMsgs(locale)[idx]
+ * ```
+ */
 export const emailValidator: IValidator<string> = {
   validateFn: (value) => {
     if (value.trim() === '') {
       return 0;
-    } else {
-      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-      return isValidEmail ? -1 : 1;
     }
+    else if (value.includes('\n')) {
+      return 1;
+    } else if (isEmailFormat(value.trim()) !== 7) {
+      return 2;
+    }
+    return -1;
   },
   errorMsgs: (locale = 'en') => {
     switch (locale) {
       case 'ka': return [
         'ელ. ფოსტა აუცილებელი ველია',
+        'ელ-ფოსტა უკვე გამოყენებულია',
         'არასრულად შეყვანილი ელ. ფოსტა'
       ];
       default: return [
         'Email is required',
+        'Email is already in use',
         'Invalid email address'
       ];
     }
   }
 };
 
-// -=-=-=- Password validator on registration -=-=-=-
-
+/**
+ *  ### Password validator on registration
+ *  An object containing the validation function and error messages.
+ * 
+ * - should not be empty
+ * - minimum length 5
+ * - must contain at least one uppercase letter, one lowercase letter, and one digit
+ * 
+ * @example
+ * ```typescript
+ *  const { validateFn, errorMsgs } = passwordValidator;
+ * 
+ *  // check for validity
+ *  const idx:number = validateFn(value)
+ * 
+ *  // use index returned from validatorFn to display error message (if idx >= 0)
+ *  const errorMsg: string = errorMsgs(locale)[idx]
+ * ```
+ */
 export const passwordValidator: IValidator<string> = {
   validateFn: (value) => {
     if (value.trim() === '') {
@@ -240,17 +383,36 @@ export const passwordValidator: IValidator<string> = {
   }
 };
 
-// -=-=-=- Confirm password validator on registration -=-=-=-
-
+/**
+ *  ### Confirm password validator on registration
+ *  Function that returns an object containing the validation function and error messages.
+ * 
+ * - should not be empty
+ * - should match to password
+ * - must contain at least one uppercase letter, one lowercase letter, and one digit
+ * 
+ * @param {string} password
+ * 
+ * @example
+ * ```typescript
+ *  const { validateFn, errorMsgs } = confirmPasswordValidator;
+ * 
+ *  // check for validity
+ *  const idx:number = validateFn(value)
+ * 
+ *  // use index returned from validatorFn to display error message (if idx >= 0)
+ *  const errorMsg: string = errorMsgs(locale)[idx]
+ * ```
+ */
 export const confirmPasswordValidator = (password: string): IValidator<string> => {
   return {
     validateFn: (value) => {
       if (value.trim() === '') {
         return 0;
       } else if (value !== password) {
-        return 1; 
+        return 1;
       } else {
-        return -1; 
+        return -1;
       }
     },
     errorMsgs: (locale = 'en') => {

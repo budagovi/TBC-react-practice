@@ -53,8 +53,6 @@ const postData = async (id: number, state: ICartState) => {
   }
 }
 
-
-
 const cartReducer = (state: ICartState, action: ICartAction): ICartState => {
 
   // set initial values

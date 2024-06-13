@@ -4,8 +4,7 @@ import style from './style.module.css';
 import Button from '@/src/UI/Button/Button';
 import Modal from '@/src/UI/Modal/Modal';
 import { addUser } from './actions';
-import User from '@/src/interfaces/user';
-
+import { IUser } from '@/src/lib/types';
 // --- next-internationalization api
 //import { Locale } from "@/i18n.config";
 // import { setStaticParamsLocale } from "next-international/server";
@@ -28,14 +27,9 @@ interface SingleUser {
   dob: string;
   gender: 'male' | 'female';
   email: string;
-  password: string;
   mobile: string;
   address: string;
-  role: 'user' | 'admin';
-}
-
-function maskString(str: string) {
-  return str.replace(/./g, '*');
+  isAdmin: boolean;
 }
 
 // { params: { locale } }: Props
@@ -45,7 +39,7 @@ const AdminPage = () => {
   // setStaticParamsLocale(locale)
 
   const today = new Date()
-  const [users, setUsers] = useState<User[]>(() => [])
+  const [users, setUsers] = useState<IUser[]>(() => [])
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showEdit, setShowEdit] = useState<boolean>(false);
   const [user, setUser] = useState<SingleUser>({
@@ -55,10 +49,9 @@ const AdminPage = () => {
     dob: '',
     gender: 'male',
     email: '',
-    password: '',
     mobile: '',
     address: '',
-    role: 'user',
+    isAdmin: false,
   })
 
   const toggleModal = () => {
@@ -76,10 +69,9 @@ const AdminPage = () => {
           dob: u.dob.split('T')[0],
           gender: u.gender,
           email: u.email,
-          password: u.password,
           mobile: u.mobile,
           address: u.address,
-          role: u.role,
+          isAdmin: u.isAdmin,
         })
     }
     setShowEdit(prev => !prev)
@@ -276,29 +268,6 @@ const AdminPage = () => {
               })
             }}
           />
-          <input
-            type="text"
-            placeholder='password'
-            name='password'
-            value={user.password}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              setUser(prev => {
-                return { ...prev, password: e.target.value }
-              })
-            }}
-          />
-          <select
-            name='role'
-            value={user.role}
-            onChange={(e: ChangeEvent<HTMLSelectElement>) => {
-              setUser(prev => {
-                return { ...prev, role: e.target.value as 'user' | 'admin' }
-              })
-            }}
-          >
-            <option value="user">user</option>
-            <option value="admin">admin</option>
-          </select>
 
           <div className={style.formActions}>
             <Button type='submit'>save</Button>
@@ -320,7 +289,6 @@ const AdminPage = () => {
             <span><span>address: </span>{user.address}</span>
             <span><span>mobile: </span>{user.mobile}</span>
             <span><span>email: </span>{user.email}</span>
-            <span><span>password: </span>{maskString(user.password)}</span>
           </div>
           <div className={style.actions}>
             <Button onClick={() => toggleEdit(user.id)}>edit</Button>

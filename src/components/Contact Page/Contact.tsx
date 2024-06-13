@@ -9,7 +9,7 @@ import ContactForm from './ContactForm';
 import EnvelopeIcon from '../icons/Envelope';
 import TelephoneIcon from '../icons/Telephone';
 // --- next-internationalization api
-import { getScopedI18n } from '@/src/locales/server';
+import { getScopedI18n } from '@/src/lib/next-internationalization/server';
 
 const Contact = async () => {
 

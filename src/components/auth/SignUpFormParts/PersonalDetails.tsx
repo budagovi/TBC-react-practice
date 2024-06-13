@@ -1,22 +1,18 @@
 'use client'
-
-import { ChangeEvent, Dispatch, SetStateAction, memo } from 'react';
-// *
-// * Part of Sign-In Form (User's Personal Information)
-// *
-
 // --- style
-import style from './AuthForm.module.css';
+import style from '../SignInUpForm.module.css'
 // --- interfaces
-import { ISignUpFormData } from './SignUpForm';
+import { ISignUpFormData } from '@/src/lib/types';
 // --- UI
 import CustomSelect from '@/src/UI/Input Fields/Select/CustomSelect';
 import Input from '@/src/UI/Input Fields/Input/Input';
 import DateInput from '@/src/UI/Input Fields/Date/DateInput';
 // --- next-internationalization api
-import { useCurrentLocale, useScopedI18n } from '@/src/locales/client';
+import { useCurrentLocale, useScopedI18n } from '@/src/lib/next-internationalization/client';
 // --- utils/validators
-import { nameValidatorFn, genderValidator, dobValidator } from '@/src/utilities/validators';
+import { nameValidatorFn, genderValidator, dobValidator } from '@/src/lib/validators';
+// --- react api
+import { ChangeEvent, Dispatch, SetStateAction, memo } from 'react';
 
 interface IProps {
   currSlide: number,
@@ -29,6 +25,13 @@ interface IProps {
   formSubmitted?: boolean
 }
 
+/**
+ * Part of Sign-In form component ( should not be used in other components! )
+ * - first name
+ * - last name
+ * - date of birth
+ * - gender
+ */
 const PersonalDetails = memo(function
   PersonalDetails({
     currSlide,

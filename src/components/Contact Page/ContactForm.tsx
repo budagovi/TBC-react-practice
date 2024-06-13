@@ -13,7 +13,7 @@ import Button from '@/src/UI/Button/Button';
 // --- next/react api
 
 // --- next-internationalization api
-import { useScopedI18n } from '@/src/locales/client';
+import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 
 const ContactForm = () => {
 

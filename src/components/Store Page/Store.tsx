@@ -5,13 +5,13 @@ import StoreItem from './StoreItem';
 import Actions from './Actions';
 
 import { useEffect, useState } from 'react';
-import Product from '@/src/interfaces/product';
+import { IProduct } from '@/src/lib/types';
 
 
 const Store = () => {
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/api/products', {cache: 'no-cache'});
+      const response = await fetch('/api/products', { cache: 'no-cache' });
       if (response.ok) {
         const data = await response.json();
         console.log(data)
@@ -23,7 +23,7 @@ const Store = () => {
     fetchData();
   }, [])
 
-  const [filteredList, setFilteredList] = useState<Product[]>([]);
+  const [filteredList, setFilteredList] = useState<IProduct[]>([]);
   const [sorted, setSorted] = useState(false);
 
   // filter by query

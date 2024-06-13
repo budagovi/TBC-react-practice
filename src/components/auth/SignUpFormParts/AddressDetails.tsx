@@ -1,19 +1,14 @@
 'use client'
-
-import { ChangeEvent, memo } from 'react';
-// *
-// * Part of Sign-In Form (User's Address Information)
-// *
-
 // --- style
-import style from './AuthForm.module.css';
+import style from '../SignInUpForm.module.css';
 // --- UI
 import Input from '@/src/UI/Input Fields/Input/Input';
 // --- next-internationalization api
-import { useCurrentLocale, useScopedI18n } from '@/src/locales/client';
+import { useCurrentLocale, useScopedI18n } from '@/src/lib/next-internationalization/client';
 // --- utils/validators
-import { addressValidator, mobileValidator } from '@/src/utilities/validators';
-
+import { addressValidator, mobileValidator } from '@/src/lib/validators';
+// --- react api
+import { ChangeEvent, memo } from 'react';
 
 interface IProps {
   currSlide: number,
@@ -23,6 +18,11 @@ interface IProps {
   formSubmitted?: boolean
 }
 
+/**
+ * Part of Sign-In form component ( should not be used in other components! )
+ * - mobile
+ * - address
+ */
 const AddressDetails = memo(function
   AddressDetails({
     currSlide,

@@ -1,0 +1,48 @@
+.overlay a,
+.overlay button {
+  color: var(--greenFore);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.overlay ul li:hover a,
+.overlay ul li:hover button,
+.overlay ul li:hover .itemIcon {
+  color: var(--grey);
+}
+
+.itemWrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 0.7rem;
+}
+
+.itemWrapper button {
+  background-color: inherit;
+  border: 0;
+  transition: color 0.3s;
+}
+
+.itemWrapper a,
+.itemWrapper button {
+  display: inline-block;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.itemWrapper .itemIcon {
+  color: var(--greenFore);
+  --size: 19px;
+  width: var(--size);
+  height: var(--size);
+  transition: color 0.3s;
+}
+
+.icon {
+  --size: 24px;
+  width: var(--size);
+  height: var(--size);
+}

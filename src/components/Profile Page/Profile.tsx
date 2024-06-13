@@ -8,7 +8,7 @@ import style from './Profile.module.css';
 import EditProfile from './EditProfile';
 // --- next/react api
 // --- next-internationalization api
-import { getScopedI18n } from '@/src/locales/server';
+import { getScopedI18n } from '@/src/lib/next-internationalization/server';
 
 const Profile = async () => {
 

@@ -34,20 +34,6 @@ form.wrapper span {
   grid-template-columns: repeat(2, 1fr);
 }
 
-
-/* -=- Form Label  -=- */
-
-.formLabel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.formLabel h1 {
-  font-size: 2.5rem;
-  color: var(--greenFore);
-}
-
 /* -=- SignIn Input Fields' Wrapper -=- */
 
 .inputs {
@@ -116,56 +102,6 @@ form.wrapper span {
 
 .arrow {
   color: var(--greenFore);
-}
-
-/* -=- Form Socials -=- */
-
-.socialsLabel {
-  text-align: center;
-  font-size: 14px;
-  position: relative;
-  margin-top: var(--margin-bottom);
-}
-
-.socialsLabel span {
-  background: var(--bodyBg);
-  position: relative;
-  padding-inline: 0.5rem;
-  z-index: 3;
-}
-
-.socialsLabel::before {
-  content: '';
-  display: block;
-  height: 1px;
-  width: 100%;
-  background-color: var(--foreDark);
-  position: absolute;
-  top: 50%;
-  transform: translateY(50%);
-  z-index: 2;
-}
-
-.socials {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.4rem;
-}
-
-.socials>button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 0;
-  border: 1px solid var(--greenBg);
-  border-radius: 0.25rem;
-}
-
-.socialsLogo {
-  width: 22px;
-  height: 22px;
 }
 
 /* Form Carousel */

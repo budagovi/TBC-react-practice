@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     },
     "lib": [
       "dom",
@@ -36,7 +38,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/Login Page/Login.tsx", "src/UI/Modal/Modal.tsx"  ],
+  ],
   "exclude": [
     "node_modules"
   ]

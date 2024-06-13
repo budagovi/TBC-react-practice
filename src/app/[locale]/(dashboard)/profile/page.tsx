@@ -1,9 +1,9 @@
 // --- Components
 import Profile from '@/src/components/Profile Page/Profile';
 // --- next-internationalization api
-import { Locale } from "@/i18n.config";
+import { Locale } from "@/src/lib/next-internationalization/i18n.config";
 import { setStaticParamsLocale } from "next-international/server";
-import { getStaticParams } from '@/src/locales/server';
+import { getStaticParams } from '@/src/lib/next-internationalization/server';
 
 export function generateStaticParams() {
   return getStaticParams()

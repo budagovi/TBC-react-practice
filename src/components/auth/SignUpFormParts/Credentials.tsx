@@ -1,26 +1,22 @@
 'use client'
-
-import { ChangeEvent, memo } from 'react';
-// *
-// * Part of Sign-In Form (User's Credentials)
-// *
-
 // --- style
-import style from './AuthForm.module.css';
+import style from '../SignInUpForm.module.css';
 // --- UI
 import Input from '@/src/UI/Input Fields/Input/Input';
 import PasswordInput from '@/src/UI/Input Fields/Password/Password';
 import CheckBox from '@/src/UI/Input Fields/CheckBox/CheckBox';
 // --- next-internationalization api
-import { useCurrentLocale, useScopedI18n } from '@/src/locales/client';
+import { useCurrentLocale, useScopedI18n } from '@/src/lib/next-internationalization/client';
 // --- react/nextjs api
 import Link from 'next/link';
+// --- react api
+import { ChangeEvent, memo } from 'react';
 // --- utils/validators
 import {
   emailValidator,
   passwordValidator,
   confirmPasswordValidator
-} from '@/src/utilities/validators';
+} from '@/src/lib/validators';
 
 interface IProps {
   currSlide: number,
@@ -32,6 +28,12 @@ interface IProps {
   formSubmitted: boolean
 }
 
+/**
+ * Part of Sign-In form component ( should not be used in other components! )
+ * - email
+ * - password
+ * - confirm password
+ */
 const Credentials = memo(function
   Credentials({
     currSlide,

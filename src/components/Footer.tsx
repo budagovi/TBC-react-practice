@@ -11,7 +11,7 @@ import LocationIcon from './icons/Location';
 // --- next.js/react api
 import Link from 'next/link';
 // --- next-internationalization api
-import { getScopedI18n } from '@/src/locales/server'
+import { getScopedI18n } from '@/src/lib/next-internationalization/server'
 
 const Footer = async () => {
 

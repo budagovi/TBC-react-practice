@@ -3,8 +3,10 @@ export default {
     'summer sal-': 'Summer sale for all season plants and free express delivery - off 50%!',
     'home': 'home',
     'store': 'store',
-    'about': 'about us',
+    'blogs': 'blogs',
     'contact': 'contact us',
+    'logging out': 'Logging out',
+    'logged out': "You've logged out"
   },
   'footer': {
     'contact title': 'contact',
@@ -27,7 +29,11 @@ export default {
     'sign up': 'Sign Up',
     'continue': 'or continue with',
     'email': 'Email',
-    'password': 'Password'
+    'password': 'Password',
+    'incorrect credentials': 'Incorrect credentials! Please try again',
+    'successfull login': "You've logged in successfully",
+    'loading message': 'Logging in, it will take a few seconds',
+    'failed login': 'Something went wrong, plase try again later'
   },
   '/sign-up': {
     'title': 'Sign Up',
@@ -54,7 +60,11 @@ export default {
     'confirm': 'Confirm Paswword',
     'continue': 'continue',
     'go back': 'go back',
-    'sign up': 'Sign Up'
+    'sign up': 'Sign Up',
+    'email is used': 'Email is already used! Please enter different Email address',
+    'successfull register': "You've registered successfully",
+    'loading message': 'Please wait, it will take a few seconds',
+    'failed registration': 'Something went wrong, plase try again later'
   },
   'store page': {
     'title': 'Browse Products',

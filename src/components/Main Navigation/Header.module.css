@@ -62,10 +62,10 @@
 
 .head section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   color: var(--fore);
   font-size: 13px;
-  padding-block: 0.4rem;
+  padding-block: 0.3rem;
 }
 
 /* -=- Navigation Bar -=- */
@@ -78,8 +78,14 @@
   color: inherit
 }
 
-.navWrapper h1:hover {
+.navWrapper h1 {
+  transition: .2s ease-in;
   cursor: pointer;
+}
+
+.navWrapper h1:hover,
+.navWrapper a:hover {
+  color: var(--foreHover);
 }
 
 nav.links {
@@ -97,10 +103,6 @@ nav.links span {
   transition: .2s ease-in;
   margin-inline: 0.3rem;
   font-weight: 700;
-}
-
-nav.links a:hover {
-  color: var(--foreHover);
 }
 
 nav.links>span {
@@ -122,10 +124,10 @@ nav.links>span {
 /* -=-=-=- Cartlist amount indicator -=-=-=- */
 
 .cartIcon {
-  position: relative; 
+  position: relative;
 }
 
-.cartIcon > div {
+.cartIcon>div {
   aspect-ratio: 1/1;
   width: 19px;
   position: absolute;

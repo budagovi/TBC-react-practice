@@ -1,11 +1,6 @@
 'use client'
-
-// *
-// * Sign-In Form Component
-// *
-
 // --- style
-import style from './AuthForm.module.css';
+import style from './SignInUpForm.module.css';
 // --- UI
 import Input from '@/src/UI/Input Fields/Input/Input';
 import PasswordInput from '@/src/UI/Input Fields/Password/Password';
@@ -13,20 +8,22 @@ import CheckBox from '@/src/UI/Input Fields/CheckBox/CheckBox';
 import Button from '@/src/UI/Button/Button';
 // --- nextjs/react api
 import { ChangeEvent, FormEvent, useState, useCallback, useTransition } from 'react';
-//import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 // --- next-internationalization api
-import { useCurrentLocale, useScopedI18n } from '@/src/locales/client';
-// --- react-icons
-import { FaFacebook, FaGoogle } from 'react-icons/fa6';
-// --- utils
-import { isRequiredFieldString } from '@/src/utilities/validators';
+import { useCurrentLocale, useScopedI18n } from '@/src/lib/next-internationalization/client';
+// --- validators
+import { isRequiredFieldString } from '@/src/lib/validators';
+// --- antd
+import { App } from 'antd';
+// --- components
+import Socials from './Socials';
+import FormLabel from './FormLabel';
+// --- types
+import { ISignInFormData } from '@/src/lib/types';
+/// --- actions
+import { login } from '@/src/lib/jose-auth/actions';
 
-interface ISignInFormData {
-  email: string,
-  password: string,
-  isRemembered: boolean
-}
 
 const initialFormValue: ISignInFormData = {
   email: '',
@@ -34,6 +31,9 @@ const initialFormValue: ISignInFormData = {
   isRemembered: true
 }
 
+/**
+ * Sign in form custom component
+ */
 const SignInForm = () => {
 
   // -=-=-=- Internationalization -=-=-=-
@@ -51,18 +51,11 @@ const SignInForm = () => {
   const [values, setValues] = useState(initialFormValue)
   const [isPending, startTransition] = useTransition();
 
-  //const router = useRouter();
+  const { message } = App.useApp();
+  const router = useRouter();
+
 
   const changeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-
-    // cancel error feedback
-    // setErrors((prevState) => (
-    //   {
-    //     // modifying property that corresponds to trigerring input field and copy the rest
-    //     ...prevState,
-    //     [name]: null,
-    //   }
-    // ))
 
     const { name, value, type, checked } = e.target;
     setValues((prevState) => (
@@ -77,25 +70,59 @@ const SignInForm = () => {
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    startTransition(() => { })
-    // if (values.email === '')
-    //   setErrors(prevState => ({ ...prevState, email: 'email is required' }))
+    startTransition(() => {
 
-    // if (values.password === '')
-    //   setErrors(prevState => ({ ...prevState, password: 'password is required' }))
+      // check fields validity
+      if (!values.email || !values.password)
+        return;
 
-    // const response = await fetch('/api/SignInForm', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     ...credentials
-    //   })
-    // })
+      // if form is valid POST data to db
+      const key = 'updatable';
+      message.open({
+        key,
+        type: 'loading',
+        content: t('loading message'),
+        duration: 3600
+      })
 
-    // if(response.ok) {
-    //   router.push('/store')
-    // }
+      setTimeout(async () => {
+        try {
 
+          const loginStatus = await login({
+            email: values.email,
+            password: values.password,
+            isRemembered: values.isRemembered
+          })
+
+          if (loginStatus.success) {
+            message.open({
+              key,
+              type: 'success',
+              content: t('successfull login'),
+              duration: 2
+            })
+            router.push('/profile')
+            return;
+          }
+
+          let errorMsg = t('failed login')
+          if (loginStatus.status === 401 || loginStatus.status === 404) {
+            errorMsg = t('incorrect credentials')
+          }
+          
+          message.open({
+            key,
+            type: 'error',
+            content: errorMsg,
+            duration: 2
+          })
+
+        } catch (e) {
+          console.log(e)
+        }
+      }, 1000)
+
+    })
   }
 
   return (
@@ -103,10 +130,10 @@ const SignInForm = () => {
 
       {/*   -=-=-=- Form Label -=-=-=-   */}
 
-      <div className={style.formLabel}>
-        <h1>{t('title')}</h1>
-        <span>{t('Login to yo-')}</span>
-      </div>
+      <FormLabel
+        title={t('title')}
+        subtitle={t('Login to yo-')}
+      />
 
       {/*   -=-=-=- Form Inputs -=-=-=-   */}
 
@@ -159,22 +186,9 @@ const SignInForm = () => {
         <span>{t('do not have and account?')}<Link href={'/sign-up'}>{' ' + t('sign up')}</Link></span>
       </div>
 
-      {/*   -=-=-=- Socials -=-=-=-   */}
+      {/*   -=-=-=- Form Socials -=-=-=-   */}
 
-      <div className={style.socialsLabel}>
-        <span>{t('continue')}</span>
-      </div>
-
-      <div className={style.socials}>
-        <Button light>
-          <FaFacebook className={style.socialsLogo} />
-          <span>Facebook</span>
-        </Button>
-        <Button light>
-          <FaGoogle className={style.socialsLogo} />
-          <span>Google</span>
-        </Button>
-      </div>
+      <Socials />
 
     </form>
   )

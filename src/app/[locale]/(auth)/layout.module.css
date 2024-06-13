@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 
-/* image and layer are put in the body tag */
+/* image and layer are put in the <body> using fixed position */
 .wrapper img {
   position: fixed;
   z-index: -2;

@@ -1,6 +1,6 @@
 'use server'
 
-import { BASE_URL } from "@/src/constants";
+import { BASE_URL } from "@/src/lib/constants";
 
 export async function addUser(formData: FormData) {
 
@@ -17,7 +17,7 @@ export async function addUser(formData: FormData) {
   }
 
   const apiUrl = `${BASE_URL}/api/users`;
-  
+
   const response = await fetch(apiUrl, {
     method: 'POST',
     headers: {
