@@ -75,7 +75,16 @@ const Header = ({ isLoggedIn }: IProps) => {
             {isClient ? <div >{totalAmount}</div> : <div>0</div>}
             <CartIcon className={style.cartIcon} />
           </Link>
-          {isLoggedIn ? <ProfileDropDown currentPath={pathname} /> : null}
+          {isLoggedIn ?
+            <ProfileDropDown currentPath={pathname} /> :
+            <Button
+              light
+              style={{ padding: "0.5rem 0.8rem" }}
+              onClick={() => router.push('/sign-in')}
+            >
+              Sign in
+            </Button>
+          }
         </nav>
       </div>
 

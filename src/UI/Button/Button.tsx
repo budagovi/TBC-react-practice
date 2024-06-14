@@ -3,20 +3,21 @@ import style from './Button.module.css';
 // --- next.js/react api
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode,
-  light?: boolean,
+  light?: boolean
 }
 
 /**  
  * Custom button component
  */
-const Button = ({ children, light = false, onClick, className, type = 'button', disabled }: Props) => {
+const Button = ({ children, light = false, onClick, className, type = 'button', disabled, style: styleInline }: IProps) => {
   return (
     <button
       disabled={disabled}
       type={type}
-      className={`${style.btn} ${light && style.light} ${className}`}
+      className={`${style.btn} ${className} ${light && style.light}`}
+      style={styleInline}
       onClick={onClick}>
       {children}
     </button>

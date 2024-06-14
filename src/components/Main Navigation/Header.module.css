@@ -115,12 +115,6 @@ nav.links>span {
   height: var(--size);
 }
 
-.profileIcon {
-  --size: 27px;
-  width: var(--size);
-  height: var(--size);
-}
-
 /* -=-=-=- Cartlist amount indicator -=-=-=- */
 
 .cartIcon {

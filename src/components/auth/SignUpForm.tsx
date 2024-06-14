@@ -143,7 +143,7 @@ const SignUpForm = () => {
               password: values.password,
               isRemembered: false
             })
-            router.push('/profile')
+            router.replace('/profile')
             return;
           }
           else if (response.status === 409) { // email is already used

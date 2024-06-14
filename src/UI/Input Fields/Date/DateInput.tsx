@@ -1,15 +1,11 @@
 'use client'
 
-// *
-// * Custom date input element
-// *
-
 /*-=-=-=-=-=-=-=-
   
   Input value passes date value (in number type - amount of milliseconds) 
   to its parent component (form).
 
-  To get the Date object from outgoing value use dayjs(value) function.
+  To get the Date object from outgoing value use dayjs(value).toDate() method.
 
   -=-=-=-=-=-=-=-*/
 
@@ -35,6 +31,9 @@ interface IProps {
   isRequired?: boolean,
 }
 
+/**
+ * Custom date input element
+ */
 const DateInput = memo(
   function DateInput(
     {
@@ -75,7 +74,6 @@ const DateInput = memo(
         clearTimeout(timer);
       }
     }
-
 
     // validate on form submission (for required fields, to check if they are empty)
     useEffect(() => {

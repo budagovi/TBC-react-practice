@@ -101,7 +101,7 @@ const SignInForm = () => {
               content: t('successfull login'),
               duration: 2
             })
-            router.push('/profile')
+            router.replace('/profile')
             return;
           }
 
