@@ -41,4 +41,37 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  transition: .2s ease-in;
+}
+
+.wrapper label a {
+  transition: .2s ease-in;
+}
+
+.wrapper.invalid input {
+  border: 1px solid var(--red);
+  box-shadow: 0 0 0 var(--red);
+  background-color: #FFE5E5;
+  animation: glow 1.5s forwards;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 2px var(--red);
+    scale: 1;
+  }
+
+  45% {
+    box-shadow: 0 0 4px var(--red);
+    scale: 1.1;
+  }
+
+  100% {
+    box-shadow: 0 0 3px var(--red);
+    scale: 1;
+  }
+}
+
+.wrapper.invalid * {
+  color: var(--red);
 }

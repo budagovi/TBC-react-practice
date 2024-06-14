@@ -69,6 +69,7 @@ const SignUpForm = () => {
 
   const [values, setValues] = useState(initialFormValue)
   const [isPending, startTransition] = useTransition();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const formIsValid = isSignUpFormValid(values)
@@ -86,7 +87,6 @@ const SignUpForm = () => {
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     startTransition(async () => {
 
       // check fields validity and scroll to invalid input's slide
@@ -100,6 +100,7 @@ const SignUpForm = () => {
       }
 
       if (!formIsValid.credentials) {
+        console.log('agree')
         if (slideNum === 0) {
           scrollNext()
           scrollNext()
@@ -111,6 +112,7 @@ const SignUpForm = () => {
       }
 
       // if form is valid POST data to db
+      setIsSubmitting(true)
       const key = 'updatable';
       message.open({
         key,
@@ -136,7 +138,7 @@ const SignUpForm = () => {
               key,
               type: 'success',
               content: t('successfull register'),
-              duration: 2
+              duration: 5
             })
             await login({
               email: values.email,
@@ -151,7 +153,7 @@ const SignUpForm = () => {
               key,
               type: 'error',
               content: t('email is used'),
-              duration: 2
+              duration: 6
             })
             setValues((prevState) => ({
               ...prevState,
@@ -174,6 +176,8 @@ const SignUpForm = () => {
             duration: 2
           })
           console.log(e) // "something went wrong"
+        } finally {
+          setIsSubmitting(false)
         }
       }, 1000)
     })
@@ -216,13 +220,17 @@ const SignUpForm = () => {
   return (
     <form className={style.wrapper} onSubmit={submitHandler}>
 
+      {/*   -=-=-=- Form Overlay (on pending) -=-=-=-   */}
+
+      {isSubmitting && <div className={style.overlay}></div>}
+
       {/*   -=-=-=- Form Label -=-=-=-   */}
 
       <FormLabel
         title={t('title')}
         subtitle={t('create an acc-')}
       />
-      <ProgressBar percent={32 * slideNum + 4} />
+      <ProgressBar percent={32 * slideNum + 4 + (isSubmitting ? 32 : 0)} />
 
       {/*   -=-=-=- Form Inputs (Carousel) -=-=-=-   */}
 
@@ -304,6 +312,7 @@ const SignUpForm = () => {
 
       <Button
         type='submit'
+        disabled={isSubmitting}
       >
         {t('sign up')}
       </Button>

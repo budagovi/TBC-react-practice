@@ -11,6 +11,29 @@ form.wrapper {
   border-radius: 0.25rem;
   color: var(--grey);
   --margin-bottom: 0.6rem;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 4;
+  cursor: not-allowed;
+  animation: fade .1s ease-in forwards;
+}
+
+@keyframes fade {
+  from {
+    background-color: transparent;
+  }
+
+  to {
+    background-color: #ddd8;
+  }
 }
 
 form.wrapper a {

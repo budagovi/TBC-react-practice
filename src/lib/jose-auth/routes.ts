@@ -4,8 +4,7 @@
  * @type {string[]}
  */
 export const publicRoutes: string[] = [
-  '/', '/cart', '/contact', '/store'
-
+  '/', '/cart', '/contact', '/store', '/blogs', '/en', '/ka'
 ]
 
 /**
@@ -14,7 +13,7 @@ export const publicRoutes: string[] = [
  * @type {string[]}
  */
 export const authRoutes: string[] = [
-  '/sign-in', '/sign-up', '/en', '/ka'
+  '/sign-in', '/sign-up'
 ]
 
 /**

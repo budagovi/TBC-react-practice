@@ -50,6 +50,7 @@ const SignInForm = () => {
 
   const [values, setValues] = useState(initialFormValue)
   const [isPending, startTransition] = useTransition();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { message } = App.useApp();
   const router = useRouter();
@@ -77,6 +78,7 @@ const SignInForm = () => {
         return;
 
       // if form is valid POST data to db
+      setIsSubmitting(true)
       const key = 'updatable';
       message.open({
         key,
@@ -109,7 +111,7 @@ const SignInForm = () => {
           if (loginStatus.status === 401 || loginStatus.status === 404) {
             errorMsg = t('incorrect credentials')
           }
-          
+
           message.open({
             key,
             type: 'error',
@@ -119,6 +121,8 @@ const SignInForm = () => {
 
         } catch (e) {
           console.log(e)
+        } finally {
+          setIsSubmitting(false)
         }
       }, 1000)
 
@@ -127,6 +131,10 @@ const SignInForm = () => {
 
   return (
     <form className={style.wrapper} onSubmit={submitHandler}>
+
+      {/*   -=-=-=- Form Overlay (on pending) -=-=-=-   */}
+
+      {isSubmitting && <div className={style.overlay}></div>}
 
       {/*   -=-=-=- Form Label -=-=-=-   */}
 
@@ -181,7 +189,7 @@ const SignInForm = () => {
       </div>
 
 
-      <Button type='submit'>{t('btn text')}</Button>
+      <Button type='submit' disabled={isSubmitting}>{t('btn text')}</Button>
       <div className={style.actions}>
         <span>{t('do not have and account?')}<Link href={'/sign-up'}>{' ' + t('sign up')}</Link></span>
       </div>

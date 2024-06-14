@@ -36,13 +36,15 @@ const isSignUpFormValid = (values: ISignUpFormData) => {
   const credentials = (
     emailValidator.validateFn(values.email) == -1 &&
     passwordValidator.validateFn(values.password) == -1 &&
-    confirmPasswordValidator(values.password).validateFn(values.confirm) == -1
+    confirmPasswordValidator(values.password).validateFn(values.confirm) == -1 &&
+    values.agree === true
   )
 
   return {
     addressDetails,
     personalDetails,
     credentials,
+    entire: addressDetails && personalDetails && credentials
   }
 }
 

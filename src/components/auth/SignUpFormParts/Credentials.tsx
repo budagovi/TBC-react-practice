@@ -106,6 +106,10 @@ const Credentials = memo(function
         name='agree'
         checked={agreeValue}
         onChange={changeHandler}
+        // validations
+        errorMsg={"Please accept the terms and conditions"}
+        isRequired={true}
+        formSubmitted={formSubmitted}
       />
 
     </div>
