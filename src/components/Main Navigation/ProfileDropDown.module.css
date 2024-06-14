@@ -45,4 +45,10 @@
   --size: 24px;
   width: var(--size);
   height: var(--size);
+  cursor: pointer;
+  transition: var(--textHoverTransition);
+}
+
+.icon:hover {
+  color: var(--foreHover);
 }

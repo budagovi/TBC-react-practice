@@ -23,6 +23,14 @@ body {
   background-color: var(--bodyBg);
 }
 
+/* -=- Override Ant App style -=- */
+:where(.css-dev-only-do-not-override-j9bb5n).ant-app {
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: "Nunito", sans-serif;
+}
+
 /* -=- Color Palletes -=- */
 :root {
   /* 1b3c35 004F44 */
@@ -48,6 +56,7 @@ body {
 :root {
   --shadow: 0 2px 3px #0000005e;
   --cardShadow: 0 1px 6px 0px #0002;
+  --textHoverTransition: .2s ease-in;
 }
 
 ::selection {
@@ -73,8 +82,8 @@ h2 {
   font-size: 2.25rem;
   font-weight: 600;
 }
-#e9efebaa
-h3 {
+
+#e9efebaa h3 {
   font-size: 1.25rem;
   font-weight: 600;
 }

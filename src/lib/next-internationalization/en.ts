@@ -6,7 +6,12 @@ export default {
     'blogs': 'blogs',
     'contact': 'contact us',
     'logging out': 'Logging out',
-    'logged out': "You've logged out"
+    'logged out': "You've logged out",
+    'en': 'EN',
+    'ge': 'GE',
+    'profile': 'Profile',
+    'orders': 'My orders',
+    'logout': 'Log out'
   },
   'footer': {
     'contact title': 'contact',

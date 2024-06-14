@@ -30,29 +30,16 @@ import { ISignUpFormData } from '@/src/lib/types';
 import { login } from '@/src/lib/jose-auth/actions';
 import { useRouter } from 'next/navigation';
 
-// const initialFormValue: ISignUpFormData = {
-//   firstname: '',
-//   lastname: '',
-//   gender: null,
-//   dobMilSecs: null,
-//   address: '',
-//   mobile: '+995 5',
-//   email: '',
-//   password: '',
-//   confirm: '',
-//   agree: false
-// }
-
 const initialFormValue: ISignUpFormData = {
-  firstname: 'luka',
-  lastname: 'budagovi',
-  gender: 'male',
+  firstname: '',
+  lastname: '',
+  gender: null,
   dobMilSecs: null,
-  address: 'java',
-  mobile: '+995 555 14 14 02',
+  address: '',
+  mobile: '+995 5',
   email: '',
-  password: 'luka123AA',
-  confirm: 'luka123AA',
+  password: '',
+  confirm: '',
   agree: false
 }
 

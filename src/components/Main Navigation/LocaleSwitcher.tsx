@@ -1,26 +1,31 @@
 'use client'
 
-import { useChangeLocale } from '@/src/lib/next-internationalization/client'
+import { useChangeLocale, useCurrentLocale, useScopedI18n } from '@/src/lib/next-internationalization/client'
 import style from './LocaleSwitcher.module.css'
-import { i18n } from "@/src/lib/next-internationalization/i18n.config"
+import { authRoutes } from '@/src/lib/jose-auth/routes';
 
-const LocalSwitcher = () => {
+interface IProps {
+  currentPath: string;
+}
+/**
+ * Locale switching component (collapsable horizontal select)
+ */
+const LocalSwitcher = ({ currentPath }: IProps) => {
+
+  const t = useScopedI18n('header')
+
+  // to set white border
+  const isLight = currentPath === '/' || authRoutes.includes(currentPath)
 
   const changeLocale = useChangeLocale({ preserveSearchParams: true });
+  const currLocale = useCurrentLocale();
 
   return (
-    <ul className={style.wrapper}>
-      {i18n.locales.map(locale => {
-        return (
-          <li
-            key={locale}
-            onClick={() => changeLocale(locale)}
-          >
-            {locale}
-          </li>
-        )
-      })}
-    </ul>
+    <div className={`${style.wrapper} ${isLight ? style.light : ''}`}>
+      {currLocale === 'ka' && <button onClick={() => changeLocale('ka')}>{t('ge')}</button>}
+      <button onClick={() => changeLocale('en')}>{t('en')}</button>
+      {currLocale === 'en' && <button onClick={() => changeLocale('ka')}>{t('ge')}</button>}
+    </div>
   )
 }
 

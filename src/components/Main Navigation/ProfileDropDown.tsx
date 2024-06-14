@@ -25,10 +25,10 @@ interface IProps {
 const ProfileDropDown = async ({ currentPath }: IProps) => {
 
   const t = useScopedI18n('header')
-  
+
   const { message } = App.useApp();
   const router = useRouter();
-  
+
   const clickHandler = async () => {
     message.open({
       key: 'logout',
@@ -54,21 +54,21 @@ const ProfileDropDown = async ({ currentPath }: IProps) => {
     {
       key: 1, label:
         <div className={style.itemWrapper}>
-          <Link href={'/profile'}>Profile</Link>
+          <Link href={'/profile'}>{t('profile')}</Link>
           <IoPersonOutline className={style.itemIcon} />
         </div>
     },
     {
       key: 2, label:
         <div className={style.itemWrapper}>
-          <Link href={'/profile'}>My Orders</Link>
+          <Link href={'/profile'}>{t('orders')}</Link>
           <SlNotebook className={style.itemIcon} />
         </div>
     },
     {
       key: 3, label:
         <div className={style.itemWrapper}>
-          <button onClick={clickHandler}>Log out</button>
+          <button onClick={clickHandler}>{t('logout')}</button>
           <RxExit className={style.itemIcon} />
         </div >
     },

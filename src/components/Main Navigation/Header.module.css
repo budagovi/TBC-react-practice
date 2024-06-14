@@ -79,19 +79,24 @@
 }
 
 .navWrapper h1 {
-  transition: .2s ease-in;
   cursor: pointer;
 }
 
-.navWrapper h1:hover,
-.navWrapper a:hover {
+.navWrapper .textLink:hover,
+.navWrapper button:hover {
   color: var(--foreHover);
+}
+
+.navWrapper h1:hover,
+.navWrapper a:has(h1) {
+  color: inherit;
 }
 
 nav.links {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  --navWrapperGap: 2rem;
+  gap: var(--navWrapperGap);
 }
 
 nav.links a,
@@ -100,8 +105,7 @@ nav.links span {
   text-decoration: none;
   text-transform: capitalize;
   color: inherit;
-  transition: .2s ease-in;
-  margin-inline: 0.3rem;
+  transition: var(--textHoverTransition);
   font-weight: 700;
 }
 
@@ -109,16 +113,19 @@ nav.links>span {
   cursor: pointer;
 }
 
-.cartIcon {
-  --size: 22px;
-  width: var(--size);
-  height: var(--size);
-}
-
 /* -=-=-=- Cartlist amount indicator -=-=-=- */
 
 .cartIcon {
+  --navIconSize: 28px;
+  width: var(--navIconSize);
+  height: var(--navIconSize);
   position: relative;
+  margin-right: calc(var(--navWrapperGap)/-2);
+  transition: var(--textHoverTransition);
+}
+
+.cartIcon:hover {
+  color: var(--foreHover);
 }
 
 .cartIcon>div {
@@ -128,8 +135,8 @@ nav.links>span {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -50%;
-  right: -50%;
+  top: -40%;
+  right: -30%;
   font-size: 11px;
   background-color: var(--red);
   color: var(--fore);

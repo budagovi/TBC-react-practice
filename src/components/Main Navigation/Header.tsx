@@ -3,7 +3,6 @@
 import style from './Header.module.css';
 // --- Components
 import LocalSwitcher from './LocaleSwitcher';
-import CartIcon from '@/src/components/icons/Cart';
 import ProfileDropDown from './ProfileDropDown';
 // import ThemeToggle from './ThemeToggle';
 // --- UI
@@ -16,6 +15,8 @@ import Link from 'next/link';
 import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 // --- hooks
 import useCartContext from '@/src/hooks/useCartContext';
+// --- react-icons
+import { IoCartOutline } from "react-icons/io5"
 
 interface IProps {
   isLoggedIn: boolean
@@ -66,14 +67,27 @@ const Header = ({ isLoggedIn }: IProps) => {
         {!isRootPage ? <Link href={'/'}><h1>Aurora Plants</h1></Link> : <h1>Aurora Plants</h1>}
         <nav className={style.links}>
           <Suspense>
-            <LocalSwitcher />
+            <LocalSwitcher currentPath={pathname} />
           </Suspense>
-          <Link href={`/store`}>{t('store')}</Link>
-          <Link href={`/blogs`}>{t('blogs')}</Link>
-          <Link href={`/contact`}>{t('contact')}</Link>
+          <Link
+            href={`/store`}
+            className={style.textLink}>
+            {t('store')}
+          </Link>
+          <Link
+            href={`/blogs`}
+            className={style.textLink}>
+            {t('blogs')}
+          </Link>
+          <Link
+            href={`/contact`}
+            className={style.textLink}>
+            {t('contact')}
+          </Link>
+
           <Link href={`/cart`} className={style.cartIcon}>
             {isClient ? <div >{totalAmount}</div> : <div>0</div>}
-            <CartIcon className={style.cartIcon} />
+            <IoCartOutline className={style.cartIcon} />
           </Link>
           {isLoggedIn ?
             <ProfileDropDown currentPath={pathname} /> :
