@@ -1,0 +1,47 @@
+.wrapper {
+  margin: 4rem 0 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.iconWrapper {
+  width: 4rem;
+  aspect-ratio: 1/1;
+  background-color: var(--greenBg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5rem;
+  border: 1rem solid var(--greyshGreen);
+  box-sizing: content-box;
+  margin: 1.2rem 0;
+}
+
+.iconWrapper>svg {
+  --size: 2.5rem;
+  width: var(--size);
+  height: var(--size);
+  color: var(--fore);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--black);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.text {
+  font-size: 14px;
+  color: var(--grey);
+  text-align: center;
+}

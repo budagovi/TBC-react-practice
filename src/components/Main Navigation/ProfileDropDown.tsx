@@ -13,6 +13,7 @@ import { App, Dropdown } from "antd"
 import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 // --- jose-auth lib
 import { logout } from '@/src/lib/jose-auth/actions';
+// --- public routes
 import { publicRoutes } from '@/src/lib/jose-auth/routes';
 
 interface IProps {

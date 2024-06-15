@@ -7,6 +7,9 @@ import dayjs from 'dayjs'
 // --- types
 import { ISignUpFormData, ICustomApiResponse } from "@/src/lib/types";
 
+// *
+// * Route handler for registering a new user 
+// * 
 export async function POST(request: NextRequest) {
 
   try {
@@ -47,11 +50,11 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
 
-  } catch (error) {
+  } catch (error: any) {
     
-    console.error("Error in API /login:", error);
+    console.error("Error in API [POST]/login:", error);
     return NextResponse.json<ICustomApiResponse>(
-      { message: 'failed registration' },
+      { message: 'Failed to register a new user' },
       { status: 500 }
     )
   }

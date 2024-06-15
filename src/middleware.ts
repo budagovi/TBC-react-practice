@@ -46,7 +46,6 @@ export const middleware = async (request: NextRequest) => {
   const isPublicRoute = publicRoutes.includes(pathname)
   const isAuthRoute = authRoutes.includes(pathname)
 
-  console.log('sesstion ' + isLoggedIn)
   if (isAuthRoute) {
     if (isLoggedIn) {
       return NextResponse

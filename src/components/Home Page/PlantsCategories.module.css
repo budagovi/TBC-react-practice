@@ -1,0 +1,96 @@
+.wrapper {
+  width: 100%;
+  margin: 3rem 0;
+  height: clamp(100px, 50vw, 750px);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    "item1 item1 item2"
+    "item1 item1 item3";
+}
+
+.item {
+  background-position: center;
+  background-size: cover;
+  box-shadow: 2px 2px 7px #cacaca;
+  position: relative;
+}
+
+.item span {
+  text-decoration: none;
+  margin-bottom: 2px;
+  line-height: 1.4em;
+  color: var(--fore);
+  font-weight: 700;
+  font-size: 2rem;
+  transition: var(--textHoverTransition);
+  position: relative;
+  transform-origin: bottom left;
+}
+
+.item span::after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  background-color: var(--fore);
+  transition: .3s ease-in-out;
+}
+
+/* -=- styling onHover -=- */
+
+.item:hover .overlay {
+  background-color: rgba(6, 34, 11, 0.479);
+}
+
+.item:hover span {
+  scale: 1.05;
+}
+
+.item:hover span::after {
+  width: 100%;
+}
+
+.item1 {
+  background-image: url(/images/plant-category-thumbnail.jpg);
+  grid-area: item1;
+}
+
+.item2 {
+  background-image: url(/images/cactus-category-thumbnail.jpg);
+  grid-area: item2;
+}
+
+.item3 {
+  background-image: url(/images/bonsai-category-thumbnail.jpg);
+  grid-area: item3;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(6, 34, 7, 0.333);
+  display: flex;
+  align-items: flex-end;
+  padding: 2em;
+  transition: .3s ease-in-out;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  .item {
+    padding: 25vw 0 0.7vw 2vw;
+  }
+}

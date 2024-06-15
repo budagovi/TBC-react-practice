@@ -92,11 +92,11 @@ const Header = ({ isLoggedIn }: IProps) => {
           {isLoggedIn ?
             <ProfileDropDown currentPath={pathname} /> :
             <Button
-              light
+              light={isAuth || isRootPage ? true : undefined}
               style={{ padding: "0.5rem 0.8rem" }}
               onClick={() => router.push('/sign-in')}
             >
-              Sign in
+              {t('sign in')}
             </Button>
           }
         </nav>
@@ -105,13 +105,13 @@ const Header = ({ isLoggedIn }: IProps) => {
       {/*   -=-=-=- Banner (visible only on home route) -=-=-=-   */}
 
       <div className={style.bannerText}>
-        <p>welcome to the aurora plants</p>
-        <span>let&apos;s bring the spring to your home</span>
+        <p>{t('welcome')}</p>
+        <span>{t('intro text')}</span>
         <Button
           light={true}
           onClick={() => router.push('/store')}
         >
-          shop now
+          {t('shop now')}
         </Button>
       </div>
 

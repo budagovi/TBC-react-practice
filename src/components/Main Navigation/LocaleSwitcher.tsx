@@ -1,24 +1,26 @@
 'use client'
-
-import { useChangeLocale, useCurrentLocale, useScopedI18n } from '@/src/lib/next-internationalization/client'
+// --- style
 import style from './LocaleSwitcher.module.css'
+// --- next-internationalization
+import { useChangeLocale, useCurrentLocale, useScopedI18n } from '@/src/lib/next-internationalization/client';
+// --- auth routes
 import { authRoutes } from '@/src/lib/jose-auth/routes';
 
 interface IProps {
   currentPath: string;
 }
+
 /**
  * Locale switching component (collapsable horizontal select)
  */
 const LocalSwitcher = ({ currentPath }: IProps) => {
 
   const t = useScopedI18n('header')
-
-  // to set white border
-  const isLight = currentPath === '/' || authRoutes.includes(currentPath)
-
   const changeLocale = useChangeLocale({ preserveSearchParams: true });
   const currLocale = useCurrentLocale();
+  
+  // to set white border
+  const isLight = currentPath === '/' || authRoutes.includes(currentPath)
 
   return (
     <div className={`${style.wrapper} ${isLight ? style.light : ''}`}>

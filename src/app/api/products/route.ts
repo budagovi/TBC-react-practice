@@ -1,12 +1,14 @@
 import { sql } from "@vercel/postgres";
 //import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
+// --- types
+import { IProduct } from "@/src/lib/types";
 
 // *
-// * Route handler for fetching all products
+// * Route handler for fetching all products from database
 // * 
 
-const sqlGetProducts = sql`
+const sqlGetProducts = sql<IProduct[]>`
 SELECT 
   name, 
   name_ge             AS "nameGe",
@@ -30,17 +32,18 @@ ORDER BY
 `
 
 export async function GET() {
-  
+
   try {
     const response = await sqlGetProducts;
-    const products = response.rows;
+    const products= response.rows;
 
     return NextResponse.json(products, { status: 200 });
-  } catch (error) {
-    console.error("Error fetching products:", error);
+  } catch (error: any) {
+    
+    console.error("Error in API [GET]/products:", error);
 
     return NextResponse.json(
-      { message: "Internal Server Error" },
+      { message: "Failed to fetch products from database" },
       { status: 500 }
     );
   }

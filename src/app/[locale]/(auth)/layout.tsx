@@ -10,10 +10,10 @@ interface IAuthLayoutProps {
 }
 
 const AuthLayout = ({ children }: IAuthLayoutProps) => {
-  
+
   return (
     <div className={style.wrapper}>
-      <img src="/images/auth gallery/image-4.jpg" alt="" />
+      <img src="./images/auth-background.jpg" alt="authorization page background" />
       <div className={style.halfTransparentLayer}></div>
       {children}
     </div>

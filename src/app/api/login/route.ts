@@ -5,6 +5,9 @@ import { NextRequest, NextResponse } from 'next/server';
 // --- types
 import { ICustomApiResponse, ISignInFormData, IUser } from '@/src/lib/types';
 
+// *
+// * Route handler for loggin the user in
+// * 
 export async function POST(request: NextRequest) {
 
   try {
@@ -52,9 +55,9 @@ export async function POST(request: NextRequest) {
     );
 
   } catch (error: any) {
-    console.error("Error in API:", error);
+    console.error("Error in API [POST]/login:", error);
     return NextResponse.json<ICustomApiResponse>(
-      { message: 'failed login' },
+      { message: 'Failed to log the user in' },
       { status: 500 }
     )
   }

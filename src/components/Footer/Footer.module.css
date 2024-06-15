@@ -1,0 +1,108 @@
+/* -=- Footer -=- */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 0 1rem;
+  background-color: var(--greenBg);
+}
+
+.wrapper {
+  display: flex;
+  gap: 3.5rem;
+  color: var(--fore);
+  font-size: 14px;
+}
+
+/* -=- Section Styling -=- */
+
+section.links {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+section.links:not(:nth-child(1)) {
+  text-transform: capitalize;
+}
+
+section.links span {
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--fore);
+  margin-bottom: 1rem;
+}
+
+/* -=- Group of Icon and Text -=- */
+
+.contactLine {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  fill: #aeaeae;
+}
+
+.contactLine:hover {
+  fill: var(--fore);
+}
+
+.contactLine .icon {
+  --size: 20px;
+  width: var(--size);
+  height: var(--size);
+  color: var(--foreHover);
+}
+
+/* -=- Link Styling -=- */
+
+section.links a,
+section.links p {
+  font-size: 16px;
+  text-decoration: none;
+  transition: var(--textHoverTransition);
+  color: var(--foreHover);
+  text-shadow: var(--shadow);
+}
+
+section.links a:hover,
+.contactLine:has(a:hover) svg {
+  color: var(--fore);
+}
+
+/* -=- CopyRight -=- */
+.copyRightWrapper {
+  display: flex;
+  gap: 0.25rem;
+  color: var(--foreHover);
+  font-size: 13px;
+}
+
+.copyRightIcon {
+  --size: 14px;
+  width: var(--size);
+  height: var(--size);
+  transform: translateY(1px);
+  color: inherit;
+}
+
+/* -=- Media logos -=- */
+.logos {
+  display: flex;
+  gap: 1rem;
+}
+
+.logo {
+  --size: 25px;
+  height: var(--size);
+  width: var(--size);
+  color: var(--foreHover);
+  transition: var(--textHoverTransition);
+  cursor: pointer;
+}
+
+.logo:hover {
+  color: var(--fore);
+}

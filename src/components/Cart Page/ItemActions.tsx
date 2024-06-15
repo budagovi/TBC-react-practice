@@ -19,10 +19,10 @@ const ItemActions = ({ children, increaseItem, decreaseItem }: IProps) => {
       {children}
       <div className={style.actions}>
         <button onClick={() => increaseItem()}>
-          <img src="./images/arrow-small.png" alt="arrow-up" />
+          <img src="./assets/arrow-small.png" alt="arrow-up" />
         </button>
         <button onClick={() => decreaseItem()}>
-          <img src="./images/arrow-small.png" alt="arrow-down" />
+          <img src="./assets/arrow-small.png" alt="arrow-down" />
         </button>
       </div>
     </div >

@@ -121,13 +121,13 @@ export interface IProduct {
   salePercentage: number;
   description: string;
   descriptionGe: string;
-  lightReq: string;
-  wateringNeed: string;
-  growthRate: string;
-  size: string;
+  lightReq: 'partial shade' | 'full sun' | 'full shade';
+  wateringNeed: 'medium' | 'low' | 'high';
+  growthRate: 'moderate' | 'slow' | 'fast';
+  size: 'medium' | 'large' | 'small';
   petFriendly: boolean;
-  flowering: boolean;
+  flowering: 'non-flowering' | 'seasonal flowering';
   imgUrl: string;
   imageUrls: string[];
-  category: string
+  category: 'plant' | 'cactus' | 'bonsai';
 }

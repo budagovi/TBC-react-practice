@@ -24,6 +24,7 @@ body {
 }
 
 /* -=- Override Ant App style -=- */
+
 :where(.css-dev-only-do-not-override-j9bb5n).ant-app {
   color: inherit;
   font-size: inherit;

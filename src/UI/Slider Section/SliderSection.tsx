@@ -1,10 +1,5 @@
 'use client'
-
-// *
-// * Custom component with carousel and arrow buttons (takes carousel items (div tags) as children)
-// *
-
-// --- CSS
+// --- style
 import style from './SliderSection.module.css';
 // --- UI
 import Button from '@/src/UI/Button/Button';
@@ -15,14 +10,16 @@ import { useCallback, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface Props {
-  intro: string,
   title: string,
   btnText?: string,
   children: ReactNode,
   linkTo: string
 }
 
-const SliderSection = ({ intro, title, btnText = '', children, linkTo }: Props) => {
+/**
+ * Custom component with carousel and arrow buttons (takes carousel items (sequence of div tags) as children)
+ */
+const SliderSection = ({ title, btnText = '', children, linkTo }: Props) => {
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, slidesToScroll: 3 });
   const router = useRouter();
@@ -37,15 +34,14 @@ const SliderSection = ({ intro, title, btnText = '', children, linkTo }: Props) 
 
   return (
     <section className={style.wrapper}>
-      <span className={style.intro}>{intro}</span>
       <div className={style.title}>
         <span>{title}</span>
         <div className={style.controls}>
           <button onClick={scrollPrev}>
-            <img src='/images/arrow-light.png' />
+            <img src='./images/arrow-light.png' />
           </button>
           <button onClick={scrollNext}>
-            <img src='/images/arrow-light.png' />
+            <img src='./images/arrow-light.png' />
           </button>
         </div>
       </div>

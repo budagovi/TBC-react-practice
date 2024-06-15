@@ -1,0 +1,19 @@
+.intro {
+  color: var(--greenFore);
+  font-weight: 700;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-shadow: var(--shadow);
+}
+
+.intro::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 40px;
+  background-color: var(--greenFore);
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+}

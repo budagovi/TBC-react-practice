@@ -11,18 +11,36 @@ export default {
     'ge': 'GE',
     'profile': 'Profile',
     'orders': 'My orders',
-    'logout': 'Log out'
+    'logout': 'Log out',
+    'sign in': 'Sign In',
+    'welcome': 'welcome to the aurora plants',
+    'intro text': "Let's Bring The Spring To Your Home",
+    'shop now': 'shop now'
   },
   'footer': {
-    'contact title': 'contact',
+    'support': 'get in touch',
     'address': 'city, example street',
-    'links title': 'fast links',
+    'links title': 'quick links',
     'store': 'store',
     'about': 'about us',
     'contact': 'contact us',
     'info title': 'information',
     'terms & conditions': 'terms and conditions',
-    'privacy policy': 'privacy policy'
+    'privacy policy': 'privacy policy',
+    'sign in': 'sign in',
+    'follow': 'follow us',
+    'copy right text': 'Copyright Aurora Plants 2024. All right reserved'
+  },
+  '/': {
+    'todays': "Today's",
+    'flah sales': 'Flash Sales',
+    'view all': 'view all products',
+    'plants': 'Plants',
+    'cactuses': 'Cactuses',
+    'bonsais': 'Bonsais',
+    'delivery service': ['free and fast delivery', 'Free delivery for all the orders over $140'],
+    'support service': ['24/7 customer service', 'Friendly customer support 24/7'],
+    'money back service': ['money back guarantee', 'we return money within 30 days']
   },
   '/sign-in': {
     'title': 'Sign in',
