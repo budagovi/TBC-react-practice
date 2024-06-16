@@ -1,8 +1,5 @@
-// *
-// * Custom password input element
-// *
-
-// --- CSS
+'use client'
+// --- style
 import style from './Password.module.css'
 // --- react api
 import { memo, InputHTMLAttributes, useState, useEffect } from 'react'
@@ -20,6 +17,9 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   isRequired?: boolean,
 }
 
+/**
+ * Custom password input element (can be validated and display error messages after touch)
+ */
 const PasswordInput = memo(
   function PasswordInput(
     {

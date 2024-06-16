@@ -94,16 +94,16 @@ export default {
     'searchText': 'Search for plants',
     'sortBtnText': 'Sort by price'
   },
-  'contact page': {
+  '/contact': {
     'form': {
-      'your name': 'Your Name',
-      'your email': 'Your Email',
-      'your phone': 'Your Phone',
-      'your msg': 'Your Message',
+      'name': 'Name',
+      'email': 'Email',
+      'phone': 'Phone',
+      'msg': 'Message',
       'send msg': 'Send Message'
     },
     'info': {
-      'call to us': 'call to us',
+      'call to us': 'call us',
       'we are avail-': 'We are available 24/7, 7 days a week.',
       'phone': 'Phone',
       'write to us': 'write to us',

@@ -1,19 +1,19 @@
-// *
-// * Content of Contact Page
-// *
-
-// --- CSS
+// --- style
 import style from './Contact.module.css';
 // --- Components
 import ContactForm from './ContactForm';
-import EnvelopeIcon from '../icons/Envelope';
-import TelephoneIcon from '../icons/Telephone';
+// --- react-icons
+import { MdOutlineMailOutline } from "react-icons/md";
+import { TbHeadset } from "react-icons/tb";
 // --- next-internationalization api
 import { getScopedI18n } from '@/src/lib/next-internationalization/server';
 
+/**
+ *  Static contact details and contact form
+ */
 const Contact = async () => {
 
-  const t = await getScopedI18n('contact page.info')
+  const t = await getScopedI18n('/contact.info')
 
   return (
     <div className={style.wrapper}>
@@ -24,7 +24,7 @@ const Contact = async () => {
           <section>
             <div className={style.iconDetail}>
               <div className={style.iconWrapper}>
-                <TelephoneIcon />
+                <TbHeadset className={style.icon} />
               </div>
               <span>{t('call to us')}</span>
             </div>
@@ -35,7 +35,7 @@ const Contact = async () => {
           <section>
             <div className={style.iconDetail}>
               <div className={style.iconWrapper}>
-                <EnvelopeIcon />
+                <MdOutlineMailOutline className={style.icon} />
               </div>
               <span>{t('write to us')}</span>
             </div>

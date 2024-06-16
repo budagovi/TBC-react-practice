@@ -1,14 +1,15 @@
 'use client'
-
-// *
-// * Helper component for displaying pathname in server components
-// *
-
-// --- CSS
+import Link from 'next/link';
+// --- style
 import style from './PathSegment.module.css';
 // --- next.js api
 import { usePathname } from "next/navigation";
 
+/**
+ * 
+ * Displays pathname in server components
+ * 
+ */
 const PathSegment = () => {
   let pathname = usePathname();
   pathname = pathname.split('/')[1]
@@ -16,7 +17,7 @@ const PathSegment = () => {
 
   return (
     <span className={style.wrapper}>
-      <span>Home</span>
+      <Link href='/'>Home</Link>
       <span>{pathname ? '/' : null}</span>
       <span>{pathname}</span>
     </span>

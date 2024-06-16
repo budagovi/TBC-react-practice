@@ -1,9 +1,4 @@
 'use client'
-
-// *
-// * Custom select input element
-// *
-
 // --- style 
 import './CustomSelect.css';
 // --- react api
@@ -24,6 +19,9 @@ interface IProps {
   isRequired?: boolean
 }
 
+/**
+ * Custom select input element (can be validate to be required and highlight after touch)
+ */
 const CustomSelect = memo(
   function CustomSelect(
     {

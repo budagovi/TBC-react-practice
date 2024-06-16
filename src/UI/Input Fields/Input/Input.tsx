@@ -1,8 +1,5 @@
-// *
-// * Custom input element
-// *
-
-// --- CSS
+'use client'
+// --- style
 import style from './Input.module.css'
 // --- react api
 import { memo, InputHTMLAttributes, useState, useEffect } from 'react'
@@ -18,6 +15,9 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   isRequired?: boolean,
 }
 
+/**
+ * Custom input element (can be validated and display error messages after touch)
+ */
 const Input = memo(
   function Input(
     {

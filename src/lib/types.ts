@@ -45,6 +45,23 @@ export interface ISignUpFormData {
 /**
  * ```typescript
  *  {
+      name: string,
+      email: string,
+      phone: string,
+      message: string
+ *  }
+ * ```
+ */
+export interface IContactFormData {
+  name: string,
+  email: string,
+  mobile: string,
+  message: string
+}
+
+/**
+ * ```typescript
+ *  {
       message: string
     }
  * ```

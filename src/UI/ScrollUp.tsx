@@ -1,11 +1,10 @@
 'use client'
-
-// *
-// * Helper component for scrolling to the top on navigation
-// *
-
 // --- next.js/react api
 import { useEffect } from 'react'
+
+/**
+ * Helper component for scrolling to the top on navigation/refresh (for server components)
+ */
 
 const ScrollUp = () => {
   useEffect(() => window.document.scrollingElement?.scrollTo(0, 0), [])

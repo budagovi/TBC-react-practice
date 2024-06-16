@@ -1,12 +1,10 @@
-// *
-// * Custom checkbox element
-// *
-
-// --- CSS
-import { Tooltip } from 'antd';
+'use client'
+// --- style
 import style from './CheckBox.module.css'
 // --- react api
 import { InputHTMLAttributes, ChangeEventHandler, ReactNode, useEffect, useState } from 'react'
+// --- antd
+import { Tooltip } from 'antd';
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   // other input attributes
@@ -17,6 +15,9 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   formSubmitted?: boolean
 }
 
+/**
+ * Custom checkbox element (can be set to be required and highlited when is unchecked after touch)
+ */
 const CheckBox = ({ name, label, checked, onChange, errorMsg, isRequired, formSubmitted }: IProps) => {
 
   const [isTouched, setIsTouched] = useState(false)

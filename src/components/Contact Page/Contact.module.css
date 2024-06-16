@@ -33,28 +33,37 @@
 }
 
 .iconDetail .iconWrapper {
-  --size: 2.5rem;
+  --wrapperSize: 2rem;
   width: var(--size);
   height: var(--size);
   background-color: var(--greenBg);
   border-radius: 50%;
-  border: none;
-  padding: 0.6rem;
+  border: 0.4rem solid var(--greyshGreen);
+  padding: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.iconDetail .iconWrapper svg {
-  fill: var(--bodyBg);
+.icon {
+  --size: calc(var(--wrapperSize) - 0.5rem);
+  width: var(--size);
+  height: var(--size);
+  color: var(--fore);
+  filter: drop-shadow(var(--shadow));
 }
 
 .iconDetail span {
   text-transform: capitalize;
   font-weight: 600;
+  color: var(--greenBg);
 }
 
-.details section > span {
+.details section>span {
   font-size: 14px;
   font-weight: normal;
   max-width: 300px;
+  color: var(--grey);
 }
 
 /* -=- Contact Form -=- */

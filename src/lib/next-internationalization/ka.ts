@@ -94,21 +94,21 @@ export default {
     'searchText': 'მოძებნეთ პროდუქტი',
     'sortBtnText': 'სორტირება ფასით'
   },
-  'contact page': {
+  '/contact': {
     'form': {
-      'your name': 'თქვენი სახელი',
-      'your email': 'თქვენი ელ-ფოსტა',
-      'your phone': 'თქვენი ნომერი',
-      'your msg': 'თქვენი შეტყობინება',
+      'name': 'სახელი',
+      'email': 'ელ-ფოსტა',
+      'phone': 'ნომერი',
+      'msg': 'შეტყობინება',
       'send msg': 'გაგზავნა'
     },
     'info': {
-      'call to us': 'დაგვიკერეთ',
+      'call to us': 'დაგვირეკეთ',
       'we are avail-': 'ჩვენ ვართ 24/7-ზე ხელმისაწვდომი, ყოველდღე',
       'phone': 'ნომერი',
       'write to us': 'მოგვწერეთ',
       'fill out our for-': 'შეავსეთ მოცემული ფორმა და ჩვენს დაგეკონტაქტებით 24 საათის განამვლობაში',
-      'emails': 'ელ-ფოსტა'
+      'emails': 'ელ. ფოსტა'
     }
   },
   'profile page': {

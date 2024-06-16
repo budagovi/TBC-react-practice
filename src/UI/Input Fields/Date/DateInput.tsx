@@ -32,7 +32,7 @@ interface IProps {
 }
 
 /**
- * Custom date input element
+ * Custom date input element (can be validated and display error messages after touch)
  */
 const DateInput = memo(
   function DateInput(

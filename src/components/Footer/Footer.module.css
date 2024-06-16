@@ -54,6 +54,7 @@ section.links span {
   width: var(--size);
   height: var(--size);
   color: var(--foreHover);
+  filter: drop-shadow(var(--shadow));
 }
 
 /* -=- Link Styling -=- */
@@ -101,6 +102,7 @@ section.links a:hover,
   color: var(--foreHover);
   transition: var(--textHoverTransition);
   cursor: pointer;
+  filter: drop-shadow(var(--shadow));
 }
 
 .logo:hover {

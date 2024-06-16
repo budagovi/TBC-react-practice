@@ -11,7 +11,15 @@
   font-weight: inherit;
 }
 
-.wrapper > span:nth-of-type(3) {
+.wrapper > span:nth-of-type(2) {
   color: var(--black);
   font-weight: 600;
+}
+
+.wrapper a {
+  color: inherit;
+}
+
+.wrapper a:hover {
+  color: var(--foreHover);
 }
