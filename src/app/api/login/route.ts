@@ -3,7 +3,9 @@ import { sql } from '@vercel/postgres';
 // --- nextjs api
 import { NextRequest, NextResponse } from 'next/server';
 // --- types
-import { ICustomApiResponse, ISignInFormData, IUser } from '@/src/lib/types';
+import { ISignInFormData } from '@/src/lib/types/forms';
+import { IUser } from '@/src/lib/types/entities';
+import { ICustomApiResponse } from '@/src/lib/types/responses';
 
 // *
 // * Route handler for loggin the user in

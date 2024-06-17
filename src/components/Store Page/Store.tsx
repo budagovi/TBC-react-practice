@@ -1,13 +1,18 @@
 'use client'
-
+// --- style
 import style from './Store.module.css';
+// --- components
 import StoreItem from './StoreItem';
-import Actions from './Actions';
-
+import SortButton from './SortButton';
+// --- react api
 import { useEffect, useState } from 'react';
-import { IProduct } from '@/src/lib/types';
+// --- tyoes
+import { IProduct } from '@/src/lib/types/entities';
+import useStoreFilterContext from '@/src/hooks/useStoreFilterContext';
 
-
+/**
+ * Store Component containing grid of Product cards
+ */
 const Store = () => {
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +20,7 @@ const Store = () => {
       if (response.ok) {
         const data = await response.json();
         console.log(data)
-        setFilteredList(data)
+        setProducts(data)
       }
       return [];
     }
@@ -23,41 +28,19 @@ const Store = () => {
     fetchData();
   }, [])
 
-  const [filteredList, setFilteredList] = useState<IProduct[]>([]);
-  const [sorted, setSorted] = useState(false);
+  const [products, setProducts] = useState<IProduct[]>([]);
+  const ctx = useStoreFilterContext();
 
-  // filter by query
-  // const searchItems = (searchText:string) => {
-  //   setFilteredList(products
-  //     .filter(product => product.name.toLowerCase().includes(searchText))
-  //   )
-  // }
+
 
   return (
     <section className={style.wrapper}>
-      <div className={style.actions}>
-        <h2>Products</h2>
-        <Actions
-          search={() => console.log('need to fix')}
-          sort={(bool: boolean) => setSorted(bool)}
-        />
+      <div className={style.sortWrapper}>
+        <span>Sort By:</span>
+        <SortButton />
       </div>
       <div className={style.storeWrapper}>
-        {filteredList.length !== 0 && [...filteredList].sort((a, b) => {
-          // const aPrice = a.sale ? a.sale : a.price
-          // const bPrice = b.sale ? b.sale : b.price
-          const aPrice = a.salePercentage ? a.price * (100 - a.salePercentage) / 100 : a.price
-          const bPrice = b.salePercentage ? b.price * (100 - b.salePercentage) / 100 : b.price
-
-          return sorted ? aPrice - bPrice : 0
-        }).map((item) =>
-          // <StoreItem
-          //   key={item.id}
-          //   src={item.src}
-          //   name={item.name}
-          //   price={item.price}
-          //   category={item.category}
-          //   sale={item.sale}/>
+        {products.length !== 0 && products.map((item) =>
           <StoreItem
             key={item.id}
             id={item.id}
@@ -66,8 +49,7 @@ const Store = () => {
             price={item.price}
             category={item.category}
             sale={item.salePercentage} />
-        )
-        }
+        )}
       </div>
     </section>
   )

@@ -1,4 +1,4 @@
-import { IContactFormData } from '@/src/lib/types'
+import { IContactFormData } from '@/src/lib/types/forms'
 import {
   isRequiredFieldString,
   mobileValidator,

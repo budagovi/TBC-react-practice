@@ -12,7 +12,7 @@ import { ChangeEvent, FormEvent, useCallback, useState, useTransition } from 're
 // --- validators
 import { emailValidator, isRequiredFieldString, mobileValidator } from '@/src/lib/validators';
 // --- types
-import { IContactFormData } from '@/src/lib/types';
+import { IContactFormData } from '@/src/lib/types/forms';
 import isContactFormValid from '@/src/utilities/checkers/isContactFormValid';
 import formatPhoneNumber from '@/src/utilities/helpers/formatPhoneNumber';
 

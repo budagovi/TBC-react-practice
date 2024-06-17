@@ -21,15 +21,23 @@ body {
   display: flex;
   flex-direction: column;
   background-color: var(--bodyBg);
+  position: relative;
 }
 
 /* -=- Override Ant App style -=- */
 
-:where(.css-dev-only-do-not-override-j9bb5n).ant-app {
+.ant-app {
   color: inherit;
   font-size: inherit;
   line-height: inherit;
   font-family: "Nunito", sans-serif;
+}
+
+.ant-select-focused .ant-select-selector,
+.ant-select-selector:focus,
+.ant-select-selector:active,
+.ant-select-open .ant-select-selector {
+  box-shadow: none !important;
 }
 
 /* -=- Color Palletes -=- */

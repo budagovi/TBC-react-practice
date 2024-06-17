@@ -1,0 +1,74 @@
+.wrapper {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  color: var(--black);
+}
+
+.wrapper b {
+  font-weight: 800;
+  color: var(--greenFore);
+}
+
+.sectionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title {
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.sectionWrapper ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sectionWrapper ul li a {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 0.4rem;
+  border-radius: 0.25rem;
+  transition: .1s ease-in;
+  color: var(--black);
+}
+
+.sectionWrapper ul a:hover {
+  background-color: var(--greyshGreen);
+  color: var(--black);
+}
+
+
+.sectionWrapper ul a span {
+  transition: .3s ease-in-out;
+}
+
+.sectionWrapper ul a:hover span:nth-of-type(1) {
+  transform: translateX(10px);
+}
+
+.sectionWrapper ul a:hover span:nth-of-type(2) {
+  transform: translateX(-5px);
+}
+
+.slider {
+  fill: var(--greenFore);
+}
+
+.priceIndicator {
+  /* align-self: flex-end; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper>button {
+  align-self: flex-start;
+}

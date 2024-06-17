@@ -1,0 +1,5 @@
+.sortButton {
+  width: 130px;
+  color: var(--placeholderColor);
+  border-radius: 0.5rem;
+}

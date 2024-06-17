@@ -1,14 +1,19 @@
-import { ReactNode } from 'react';
-import style from './layout.module.css';
+// --- style
+import style from '@/src/app/layouts.module.css';
+// --- components
 import PathSegment from '@/src/UI/PathSegment/PathSegment';
 
-const layout = ({ children }: { children: ReactNode }) => {
+interface IProps {
+  children: React.ReactNode
+}
+
+const DashboardLayout = ({ children }: IProps) => {
   return (
-    <main className= { style.mainContent } >
+    <main className={style.dashboard_layout} >
       <PathSegment />
-    { children }
+      {children}
     </main>
   )
 }
 
-export default layout;
+export default DashboardLayout;

@@ -1,0 +1,77 @@
+/* -=-=-=-=-=- Root Layout -=-=-=-=-=- */
+.root_layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 2rem 9rem;
+  flex: 1;
+}
+
+/* -=-=-=-=-=- Dashboard Layout -=-=-=-=-=- */
+.dashboard_layout {
+  width: 100%;
+  border-radius: 4px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+/* -=-=-=-=-=- Authentication Layout -=-=-=-=-=- */
+.auth_layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* image and layer are put in the <body> using fixed position */
+.auth_layout img {
+  position: fixed;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.auth_layout .halfTransparentLayer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #00000053;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* -=-=-=-=-=- Store Layout -=-=-=-=-=- */
+.store_layout {
+  --columnGap: 4rem;
+  display: grid;
+  column-gap: var(--columnGap);
+  grid-template-columns: 320px 1fr;
+}
+
+.store_layout>div:nth-of-type(1) {
+  position: relative;
+}
+
+.store_layout>div:nth-of-type(1):after {
+  position: absolute;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 2px;
+  background-color: var(--greyshGreen);
+  right: 0;
+  transform: translateX(calc(var(--columnGap)/2));
+}

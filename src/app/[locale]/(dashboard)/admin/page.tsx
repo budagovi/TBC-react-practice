@@ -4,7 +4,7 @@ import style from './style.module.css';
 import Button from '@/src/UI/Button/Button';
 import Modal from '@/src/UI/Modal/Modal';
 import { addUser } from './actions';
-import { IUser } from '@/src/lib/types';
+import { IUser } from '@/src/lib/types/entities';
 // --- next-internationalization api
 //import { Locale } from "@/i18n.config";
 // import { setStaticParamsLocale } from "next-international/server";

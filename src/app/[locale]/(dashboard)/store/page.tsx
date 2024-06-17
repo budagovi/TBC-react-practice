@@ -9,13 +9,13 @@ export function generateStaticParams() {
   return getStaticParams()
 }
 
-interface Props {
+interface IProps {
   params: {
     locale: Locale
   }
 }
 
-const StorePage = ({ params: { locale } }: Props) => {
+const StorePage = ({ params: { locale } }: IProps) => {
 
   // static rendering for both languages on build
   setStaticParamsLocale(locale)

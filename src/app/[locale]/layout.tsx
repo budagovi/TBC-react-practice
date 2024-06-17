@@ -1,16 +1,21 @@
-import { Inter } from "next/font/google";
+// --- style
+import style from '@/src/app/layouts.module.css'
 import "@/src/globals.css";
-import style from './layout.module.css'
-
+// --- nextjs api
+import { Inter } from "next/font/google";
+// --- components
 import Header from '@/src/components/Main Navigation/Header'
 import Footer from '@/src/components/Footer/Footer';
-import { ReactNode } from "react";
+// --- context
+import CartContextProvider from "@/src/context/cart";
+// --- antd
+import { App as AntdApp } from "antd";
+// --- jose-auth api
+import { getSession } from "@/src/lib/jose-auth/auth";
+// --- next-internationalization
 import { Locale } from "@/src/lib/next-internationalization/i18n.config";
 import { I18nProviderClient } from '../../lib/next-internationalization/client'
-import CartContextProvider from "@/src/context/cart";
 
-import { App as AntdApp } from "antd";
-import { getSession } from "@/src/lib/jose-auth/auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +24,14 @@ export const metadata = {
   description: "Online plants shopping platform",
 };
 
-const RootLayout = async ({ params: { locale }, children }: { params: { locale: Locale }, children: ReactNode }) => {
+interface IProps {
+  params: {
+    locale: Locale
+  },
+  children: React.ReactNode
+}
+
+const RootLayout = async ({ params: { locale }, children }: IProps) => {
 
   // check for authorized user
   const isLoggedIn = await getSession();
@@ -28,16 +40,16 @@ const RootLayout = async ({ params: { locale }, children }: { params: { locale: 
     <html lang={locale}>
       <body className={inter.className} id="root">
         <I18nProviderClient locale={locale}>
-          <AntdApp>
-            <CartContextProvider>
-              <div id="overlay"></div>
-              <Header isLoggedIn={isLoggedIn} />
-              <div className={`${style.mainWrapper} gl-max-width`}>
-                {children}
-              </div>
-              <Footer />
-            </CartContextProvider>
-          </AntdApp>
+            <AntdApp>
+              <CartContextProvider>
+                <div id="overlay"></div>
+                <Header isLoggedIn={isLoggedIn} />
+                <div className={`${style.root_layout} gl-max-width`}>
+                  {children}
+                </div>
+                <Footer />
+              </CartContextProvider>
+            </AntdApp>
         </I18nProviderClient>
       </body>
     </html>

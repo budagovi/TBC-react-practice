@@ -7,7 +7,7 @@
 // --- CSS
 import style from './EditProfile.module.css';
 // --- UI
-import Reset from '@/src/UI/Input Fields/Reset';
+
 import Input from '@/src/UI/Input Fields/Input/Input';
 import Button from '@/src/UI/Button/Button';
 // --- next.react api
@@ -74,7 +74,7 @@ const EditProfile = () => {
         </div>
         {/*   -=-=-=- Buttons -=-=-=-   */}
         <div className={style.actions}>
-          <Reset value={t('cancel')} />
+          {/* reset btn */}
           <Button>{t('save')}</Button>
         </div>
       </form>

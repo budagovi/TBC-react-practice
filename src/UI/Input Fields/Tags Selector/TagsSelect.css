@@ -33,7 +33,7 @@
 .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
   background: inherit;
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 14px;
   font-weight: 500;
   border: none;
@@ -82,39 +82,55 @@
   background-color: #e9efebae;
 }
 
-/* invalid value */
-.select-input-wrapper.invalid {
-  color: var(--red);
+:where(.css-dev-only-do-not-override-j9bb5n).ant-select-multiple .ant-select-selection-overflow .ant-select-selection-item,
+.ant-select-multiple .ant-select-selection-overflow .ant-select-selection-item {
+  margin-block: 0;
 }
 
-.select-input-wrapper.shaking {
-  animation: shake 0.3s;
+:where(.css-dev-only-do-not-override-j9bb5n).ant-select-multiple .ant-select-selection-search-mirror,
+.ant-select-multiple .ant-select-selection-search-mirror {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+  z-index: 999;
+  white-space: pre;
+  visibility: hidden;
 }
 
-@keyframes shake {
-  0% {
-    transform: translateX(0);
-  }
 
-  25% {
-    transform: translateX(-3px);
-  }
-
-  50% {
-    transform: translateX(3px);
-  }
-
-  75% {
-    transform: translateX(-3px);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+:where(.css-dev-only-do-not-override-j9bb5n).ant-select-multiple .ant-select-selector:after,
+.ant-select-multiple .ant-select-selector:after {
+  display: inline-block;
+  width: 0;
+  margin: 2px 0;
+  line-height: 24px;
+  visibility: hidden;
+  content: "\a0";
 }
 
-.select-input-wrapper.invalid .ant-select,
-.select-input-wrapper.invalid .ant-select:hover {
-  /* background-color: #ffdddd; */
-  border: 1px solid var(--red) !important;
+:where(.css-dev-only-do-not-override-1a9ks5f).ant-slider .ant-slider-handle::before,
+.ant-slider .ant-slider-handle::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -2px;
+  inset-block-start: -2px;
+  width: 14px;
+  height: 14px;
+  background-color: transparent;
+}
+
+:where(.css-dev-only-do-not-override-1a9ks5f).ant-slider .ant-slider-handle::after,
+.ant-slider .ant-slider-handle::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px #1b3c35;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: inset-inline-start 0.2s, inset-block-start 0.2s, width 0.2s, height 0.2s, box-shadow 0.2s;
 }

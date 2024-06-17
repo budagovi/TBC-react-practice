@@ -1,4 +1,4 @@
-import { ISignUpFormData } from '@/src/lib/types'
+import { ISignUpFormData } from '@/src/lib/types/forms'
 import {
   nameValidatorFn,
   dobValidator,

@@ -7,7 +7,7 @@ import SectionLabel from '@/src/UI/Section Label/SectionLabel';
 // --- react api
 import { useState, useEffect } from "react";
 // types
-import { IProduct } from "@/src/lib/types";
+import { IProduct } from "@/src/lib/types/entities";
 // --- components
 import StoreItem from '../Store Page/StoreItem';
 // --- next-internationalization

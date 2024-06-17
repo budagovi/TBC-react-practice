@@ -20,7 +20,7 @@ import dayjs, { Dayjs } from 'dayjs';
 
 interface IProps {
   label?: string,
-  placeholder: string
+  placeholder?: string
   name: string,
   value: number | null,
   onChange: (date: number | null) => void,

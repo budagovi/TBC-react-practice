@@ -4,7 +4,8 @@ import { cookies } from "next/headers";
 // --- jose-auth
 import { encrypt } from "./auth";
 // --- types
-import { ICustomApiResponse, ISignInFormData, ILoginUserActionResponse } from "../types";
+import { ICustomApiResponse, ILoginUserActionResponse } from "../types/responses";
+import { ISignInFormData } from "../types/forms";
 // --- constancts
 import { AUTH_COOKIE_KEY, BASE_URL } from "../constants";
 

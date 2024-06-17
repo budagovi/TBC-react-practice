@@ -4,6 +4,22 @@
   gap: 1.5rem;
 }
 
+.sortWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sortWrapper span {
+  font-size: 15px;
+  color: var(--placeholderColor);
+}
+
+.sortButton:active {
+  box-shadow: none;
+  border: 1px solid transparent;
+}
+
 .actions {
   display: flex;
   justify-content: space-between;
@@ -14,6 +30,6 @@
 
 .storeWrapper {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }

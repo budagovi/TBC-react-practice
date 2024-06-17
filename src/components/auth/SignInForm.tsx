@@ -20,7 +20,7 @@ import { App } from 'antd';
 import Socials from './Socials';
 import FormLabel from './FormLabel';
 // --- types
-import { ISignInFormData } from '@/src/lib/types';
+import { ISignInFormData } from '@/src/lib/types/forms';
 /// --- actions
 import { login } from '@/src/lib/jose-auth/actions';
 

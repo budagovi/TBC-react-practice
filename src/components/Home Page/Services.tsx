@@ -34,7 +34,7 @@ const Services = async () => {
 
   return (
     <div className={style.wrapper}>
-      {services.map(srv => <div className={style.item}>
+      {services.map((srv, idx) => <div key={idx} className={style.item}>
         <div className={style.iconWrapper}>
           {srv.icon}
         </div>

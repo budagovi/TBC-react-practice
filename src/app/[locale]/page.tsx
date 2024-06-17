@@ -29,7 +29,7 @@ const App = ({ params: { locale } }: IProps) => {
       <FeaturedProducts />
       <PlantsCategories />
       <Services />
-      {/* <ScrollUp /> */}
+      <ScrollUp />
     </>
   );
 }

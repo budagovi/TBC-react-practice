@@ -2,7 +2,7 @@
 // --- style
 import style from '../SignInUpForm.module.css'
 // --- interfaces
-import { ISignUpFormData } from '@/src/lib/types';
+import { ISignUpFormData } from '@/src/lib/types/forms';
 // --- UI
 import CustomSelect from '@/src/UI/Input Fields/Select/CustomSelect';
 import Input from '@/src/UI/Input Fields/Input/Input';

@@ -8,7 +8,7 @@ import { Select, Tooltip } from "antd"
 
 interface IProps {
   label?: string,
-  placeholder: string
+  placeholder?: string
   options: { value: string, label: ReactNode }[],
   value: string | null,
   onChange: (str: string) => void,

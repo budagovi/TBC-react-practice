@@ -5,7 +5,8 @@ import { NextRequest, NextResponse } from "next/server";
 // --- dayjs
 import dayjs from 'dayjs'
 // --- types
-import { ISignUpFormData, ICustomApiResponse } from "@/src/lib/types";
+import { ICustomApiResponse } from "@/src/lib/types/responses";
+import { ISignUpFormData } from "@/src/lib/types/forms";
 
 // *
 // * Route handler for registering a new user 
@@ -51,7 +52,7 @@ export async function POST(request: NextRequest) {
     );
 
   } catch (error: any) {
-    
+
     console.error("Error in API [POST]/login:", error);
     return NextResponse.json<ICustomApiResponse>(
       { message: 'Failed to register a new user' },

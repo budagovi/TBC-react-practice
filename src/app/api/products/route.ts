@@ -2,7 +2,7 @@ import { sql } from "@vercel/postgres";
 //import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 // --- types
-import { IProduct } from "@/src/lib/types";
+import { IProduct } from "@/src/lib/types/entities";
 
 // *
 // * Route handler for fetching all products from database
@@ -35,11 +35,11 @@ export async function GET() {
 
   try {
     const response = await sqlGetProducts;
-    const products= response.rows;
+    const products = response.rows;
 
     return NextResponse.json(products, { status: 200 });
   } catch (error: any) {
-    
+
     console.error("Error in API [GET]/products:", error);
 
     return NextResponse.json(

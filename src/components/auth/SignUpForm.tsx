@@ -25,7 +25,7 @@ import { Tooltip, App } from 'antd';
 import formatPhoneNumber from '@/src/utilities/helpers/formatPhoneNumber';
 import isSignUpFormValid from '@/src/utilities/checkers/isSignUpFormValid';
 // --- types
-import { ISignUpFormData } from '@/src/lib/types';
+import { ISignUpFormData } from '@/src/lib/types/forms';
 // --- actions
 import { login } from '@/src/lib/jose-auth/actions';
 import { useRouter } from 'next/navigation';
