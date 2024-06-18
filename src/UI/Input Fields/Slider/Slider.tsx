@@ -9,8 +9,7 @@ interface IProps {
 }
 
 /**
- * 
- * @returns Custom slider bar for setting some range in numbers
+ * Custom slider bar for setting some range in numbers
  */
 const Slider = ({ onChangeComplete, defaultValue, max, value }: IProps) => {
   return (

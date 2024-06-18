@@ -33,7 +33,7 @@
 .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
   background: inherit;
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
   font-size: 14px;
   font-weight: 500;
   border: none;
@@ -68,6 +68,7 @@
 .ant-select-selection-placeholder {
   color: var(--placeholderColor) !important;
   font-weight: 500 !important;
+  padding-inline-start: 0.35rem;
 }
 
 .ant-select-selection-item>span {
@@ -109,28 +110,6 @@
   content: "\a0";
 }
 
-:where(.css-dev-only-do-not-override-1a9ks5f).ant-slider .ant-slider-handle::before,
-.ant-slider .ant-slider-handle::before {
-  content: "";
-  position: absolute;
-  inset-inline-start: -2px;
-  inset-block-start: -2px;
-  width: 14px;
-  height: 14px;
-  background-color: transparent;
-}
-
-:where(.css-dev-only-do-not-override-1a9ks5f).ant-slider .ant-slider-handle::after,
-.ant-slider .ant-slider-handle::after {
-  content: "";
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  width: 10px;
-  height: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 2px #1b3c35;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: inset-inline-start 0.2s, inset-block-start 0.2s, width 0.2s, height 0.2s, box-shadow 0.2s;
+.anticon.anticon-check svg {
+  color: var(--greenBg) !important;
 }

@@ -29,34 +29,52 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 0.2rem;
 }
 
-.sectionWrapper ul li a {
+.sectionWrapper ul li button {
+  border: none;
+  background-color: transparent;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding-block: 0.4rem;
+  padding-inline-end: 0.2rem;
   border-radius: 0.25rem;
   transition: .1s ease-in;
   color: var(--black);
+  cursor: pointer;
 }
 
-.sectionWrapper ul a:hover {
+.sectionWrapper ul button:hover {
   background-color: var(--greyshGreen);
-  color: var(--black);
 }
 
+.activeCategory {
+  animation: selectScale .3s ease-in-out;
+  background-color: var(--greyshGreen) !important;
+}
+@keyframes selectScale {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.02;
+  }
+  100% {
+    scale: 1;
+  }
+}
+.activeCategory span:nth-of-type(1) {
+  transform: translateX(7px);
+}
 
-.sectionWrapper ul a span {
+.sectionWrapper ul button span {
   transition: .3s ease-in-out;
 }
 
-.sectionWrapper ul a:hover span:nth-of-type(1) {
+.sectionWrapper ul button:hover span:nth-of-type(1) {
   transform: translateX(10px);
-}
-
-.sectionWrapper ul a:hover span:nth-of-type(2) {
-  transform: translateX(-5px);
 }
 
 .slider {

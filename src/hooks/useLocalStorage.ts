@@ -1,10 +1,12 @@
-// *
-// * Custom hook for using localstorage api with re-renders
-// *
-
+'use client'
 // --- react api
 import { useEffect, useState } from "react";
 
+/**
+ * Custom hook for using localstorage api with re-renders
+ * @param initialValue 
+ * @returns 
+ */
 const useLocalStorage = <T>(key: string, initialValue: T) => {
   const [value, setValue] = useState<T>(() => {
     if (typeof window === 'undefined') return initialValue;

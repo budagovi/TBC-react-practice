@@ -10,10 +10,11 @@ interface IProps {
   label?: string,
   placeholder?: string
   options: { value: string, label: ReactNode }[],
-  value: string[] | null,
-  onChange: (str: string[]) => void
+  value: IStoreTag[] | null,
+  onChange: (str: IStoreTag[]) => void
 }
 
+type IStoreTag = 'medium' | 'large' | 'small' | 'pet friendly' | 'slow' | 'fast' | 'non-flowering' | 'seasonal flowering';
 /**
  * Custom select input element for setting multiple tags
  */

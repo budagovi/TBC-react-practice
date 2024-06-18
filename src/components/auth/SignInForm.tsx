@@ -22,7 +22,7 @@ import FormLabel from './FormLabel';
 // --- types
 import { ISignInFormData } from '@/src/lib/types/forms';
 /// --- actions
-import { login } from '@/src/lib/jose-auth/actions';
+import { login } from '@/src/app/[locale]/(auth)/actions';
 
 
 const initialFormValue: ISignInFormData = {

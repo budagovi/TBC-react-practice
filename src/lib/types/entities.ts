@@ -61,7 +61,7 @@ export interface IProduct {
   descriptionGe: string;
   lightReq: 'partial shade' | 'full sun' | 'full shade';
   wateringNeed: 'medium' | 'low' | 'high';
-  growthRate: 'moderate' | 'slow' | 'fast';
+  growthRate: 'slow' | 'fast';
   size: 'medium' | 'large' | 'small';
   petFriendly: boolean;
   flowering: 'non-flowering' | 'seasonal flowering';

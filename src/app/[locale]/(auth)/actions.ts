@@ -2,23 +2,23 @@
 // --- nextjs api
 import { cookies } from "next/headers";
 // --- jose-auth
-import { encrypt } from "./auth";
+import { encrypt } from "@/src/lib/jose-auth/auth";
 // --- types
-import { ICustomApiResponse, ILoginUserActionResponse } from "../types/responses";
-import { ISignInFormData } from "../types/forms";
+import { ICustomApiResponse, IActionResponse } from "@/src/lib/types/responses";
+import { ISignInFormData } from "@/src/lib/types/forms";
 // --- constancts
-import { AUTH_COOKIE_KEY, BASE_URL } from "../constants";
+import { AUTH_COOKIE_KEY, BASE_URL } from "@/src/lib/constants";
 
 /**
  * Server Action, creates session token and stores it in cookies if the authorization proccess was successful
  * 
- * @returns object containing execution success status.
- * if status is false, it additionaly returns endpoint response status:
+ * @returns object containing execution success property [boolean].
+ * if success is false, it additionaly returns endpoint response status:
  * - 401 - "incorrect credentials"
  * - 404 -"user not found"
  * - 500 - "failed login"
  */
-export async function login(formData: ISignInFormData): Promise<ILoginUserActionResponse> {
+export async function login(formData: ISignInFormData): Promise<IActionResponse> {
 
   // Verify credentials
   const apiUrl = `${BASE_URL}/api/login`;

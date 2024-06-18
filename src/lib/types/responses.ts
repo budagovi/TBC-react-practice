@@ -23,8 +23,9 @@ export interface ICustomApiResponse {
     }
  * ```
  */
-export type ILoginUserActionResponse = {
+export type IActionResponse = {
   success: true;
+  payload?: any
 } | {
   success: false;
   message: string;

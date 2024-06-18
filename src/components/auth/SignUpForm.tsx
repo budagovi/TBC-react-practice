@@ -27,7 +27,7 @@ import isSignUpFormValid from '@/src/utilities/checkers/isSignUpFormValid';
 // --- types
 import { ISignUpFormData } from '@/src/lib/types/forms';
 // --- actions
-import { login } from '@/src/lib/jose-auth/actions';
+import { login } from '@/src/app/[locale]/(auth)/actions';
 import { useRouter } from 'next/navigation';
 
 const initialFormValue: ISignUpFormData = {

@@ -2,4 +2,15 @@
   width: 130px;
   color: var(--placeholderColor);
   border-radius: 0.5rem;
+  position: relative;
+  height: 32px;
+  box-sizing: border-box;
+}
+
+.sortButton>div {
+  height: 100%;
+}
+
+.sortButton>span {
+  margin-top: -6px;
 }
