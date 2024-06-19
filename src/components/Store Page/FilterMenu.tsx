@@ -11,6 +11,7 @@ import useStoreQueryParams from '@/src/hooks/useStoreQueryParams';
 // --- react/nextjs api
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import CategoriesList from './CategoriesList';
 
 type IStoreTag = 'medium' | 'large' | 'small' | 'pet friendly' | 'slow' | 'fast' | 'non-flowering' | 'seasonal flowering';
 
@@ -33,14 +34,6 @@ const FilterMenu = () => {
     }));
   };
 
-  const setCategory = (value: string) => {
-    setFilter(getQuery())
-    setFilter(prevState => ({ ...prevState, category: isCurrentCategory(value) ? '' : value }))
-  }
-
-  const isCurrentCategory = (value: string) => {
-    return filter.category === value;
-  }
 
   // options for tags menu
   const tagsOptions = [
@@ -56,7 +49,7 @@ const FilterMenu = () => {
 
   return (
     <div className={style.wrapper}>
-      {/* Search Bar */}
+      {/* -=-=-=-=- Search Bar -=-=-=-=- */}
       <div className={style.sectionWrapper}>
         <span className={style.title}>Search</span>
         <Input
@@ -70,49 +63,27 @@ const FilterMenu = () => {
         />
       </div>
 
-      {/* Categories */}
+      {/* -=-=-=-=- Categories -=-=-=-=- */}
       <div className={style.sectionWrapper}>
         <span className={style.title}>Categories</span>
-        <ul>
-          <li>
-            <button
-              onClick={() => setCategory('plant')}
-              className={`${isCurrentCategory('plant') ? style.activeCategory : ''}`}
-            >
-              <span>Plant</span>
-              <span>(5)</span>
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => setCategory('cactus')}
-              className={`${isCurrentCategory('cactus') ? style.activeCategory : ''}`}
-            >
-              <span>Cactus</span>
-              <span>(5)</span>
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => setCategory('bonsai')}
-              className={`${isCurrentCategory('bonsai') ? style.activeCategory : ''}`}
-            >
-              <span>Bonsai</span>
-              <span>(5)</span>
-            </button>
-          </li>
-        </ul>
+        <CategoriesList
+          filter={filter}
+          setFilter={setFilter}
+          getQuery={getQuery}
+        />
       </div>
 
-      {/* Filter */}
+      {/* -=-=-=-=- Filter -=-=-=-=- */}
       <div className={style.sectionWrapper}>
         <span className={style.title}>Filter</span>
+        {/* -=-=-=-=- Tags -=-=-=-=- */}
         <TagsSelect
           placeholder='Select tags'
           value={filter.tags}
           onChange={tagsChangeHandler}
           options={tagsOptions}
         />
+        {/* -=-=-=-=- Slider -=-=-=-=- */}
         <Slider
           onChangeComplete={(value) => {
             setFilter(getQuery())
@@ -125,7 +96,7 @@ const FilterMenu = () => {
         <span className={style.priceIndicator}>Price: <b>${filter.minPrice} - ${filter.maxPrice}</b></span>
       </div>
 
-      {/* Actions */}
+      {/* -=-=-=-=- Actions -=-=-=-=- */}
       <Button onClick={() => setFilter({ searchValue: '', category: '', minPrice: '0', maxPrice: '200', tags: [], sortBy: '' })}>reset filter</Button>
     </div >
   );

@@ -6,7 +6,7 @@ import useDebounce from './useDebounce';
 
 export type IStoreTag = 'medium' | 'large' | 'small' | 'pet friendly' | 'slow' | 'fast' | 'non-flowering' | 'seasonal flowering';
 
-interface FilterState {
+export interface FilterState {
   searchValue: string;
   category: string;
   minPrice: string;
