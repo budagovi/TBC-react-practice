@@ -27,6 +27,7 @@ ul.wrapper button:hover {
   animation: selectScale .3s ease-in-out;
   background-color: var(--greyshGreen) !important;
 }
+
 @keyframes selectScale {
   0% {
     scale: 1;
@@ -38,6 +39,7 @@ ul.wrapper button:hover {
     scale: 1;
   }
 }
+
 .activeCategory span:nth-of-type(1) {
   transform: translateX(7px);
 }

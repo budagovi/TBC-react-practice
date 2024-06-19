@@ -1,4 +1,4 @@
-/* CSS File used to override Antd styles s*/
+CSS File used to override Antd styles s*/
 
 :where(.css-dev-only-do-not-override-j9bb5n).ant-slider-horizontal,
 .ant-slider-horizontal {
@@ -61,3 +61,6 @@
   cursor: pointer;
   transition: inset-inline-start 0.2s, inset-block-start 0.2s, width 0.2s, height 0.2s, box-shadow 0.2s;
 }
+/* inset: auto auto 1122px 655px; */
+
+/* inset: auto auto 777px 487px; */

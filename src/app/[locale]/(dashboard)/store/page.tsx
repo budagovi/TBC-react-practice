@@ -8,7 +8,6 @@ import { getProducts } from './actions';
 import { IProduct } from '@/src/lib/types/entities';
 import isStoreTag from '@/src/utilities/checkers/isStoreTag';
 import { IStoreTag } from '@/src/hooks/useStoreQueryParams';
-import ScrollUp from '@/src/UI/ScrollUp';
 
 export function generateStaticParams() {
   return getStaticParams()
@@ -23,12 +22,14 @@ interface IProps {
 
 const StorePage = async ({ params: { locale }, searchParams }: IProps) => {
 
+  // get data
   const response = await getProducts();
   let products: IProduct[] = [];
   if (response.success) {
     products = response.payload.data;
   }
 
+  // extract query parameters
   const { q, category, minPrice, maxPrice, tags, sortBy } = searchParams;
   let filteredProducts = [...products];
 
@@ -62,11 +63,10 @@ const StorePage = async ({ params: { locale }, searchParams }: IProps) => {
   if (typeof tags === 'string' && tags.split(',').every(tag => isStoreTag(tag))) {
     const tagsList = tags.split(',');
 
-    console.log(tagsList)
     filteredProducts = filteredProducts.filter((item) => {
-
       const itemTags: IStoreTag[] = [item.size, item.flowering, item.growthRate]
       if (item.petFriendly) itemTags.push('pet friendly')
+      if (item.salePercentage > 0) itemTags.push('sale')
       return tagsList.every(tag => itemTags.includes(tag as IStoreTag))
     })
   }
@@ -84,10 +84,9 @@ const StorePage = async ({ params: { locale }, searchParams }: IProps) => {
   // static rendering for both languages on build
   setStaticParamsLocale(locale)
 
-  return <>
+  return <div>
     <Store products={filteredProducts} />
-    <ScrollUp />
-  </>
+  </div>
 
 }
 

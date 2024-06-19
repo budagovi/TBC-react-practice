@@ -1,51 +1,77 @@
-'use client'
+'use client';
+
 // --- style 
 import './TagsSelect.css';
 // --- react api
-import { ReactNode, memo } from 'react';
+import { ReactNode, memo, useEffect, useRef, useState } from 'react';
 // --- react-icons
-import { Select } from "antd"
+import { ConfigProvider, Select } from "antd";
+// --- types
+import { IStoreTag } from '@/src/hooks/useStoreQueryParams';
 
 interface IProps {
-  label?: string,
-  placeholder?: string
-  options: { value: string, label: ReactNode }[],
-  value: IStoreTag[] | null,
-  onChange: (str: IStoreTag[]) => void
+  label?: string;
+  placeholder?: string;
+  options: { value: string; label: ReactNode }[];
+  value: IStoreTag[] | null;
+  onChange: (str: IStoreTag[]) => void;
 }
 
-type IStoreTag = 'medium' | 'large' | 'small' | 'pet friendly' | 'slow' | 'fast' | 'non-flowering' | 'seasonal flowering';
 /**
  * Custom select input element for setting multiple tags
  */
-const TagsSelect = memo(
-  function TagsSelect(
-    {
-      label,
-      placeholder,
-      options,
-      value,
-      onChange
-    }: IProps) {
+const TagsSelect = ({
+  label,
+  placeholder,
+  options,
+  value,
+  onChange,
+}: IProps) => {
+  const [renderCount, setRenderCount] = useState(0);
+  const propsChanged = useRef(false);
 
-    return (
-      <div className='select-input-wrapper'>
-        {label && <label>{label}</label>}
+  // Detect props change
+  useEffect(() => {
+    propsChanged.current = true;
+  }, [label, placeholder, options, value, onChange]);
+
+  // Trigger extra render on props change
+  useEffect(() => {
+    if (propsChanged.current) {
+      setRenderCount((prev) => prev + 1);
+      propsChanged.current = false;
+    }
+  }, [renderCount]);
+
+
+  return (
+    <div className='select-input-wrapper'>
+      {label && <label>{label}</label>}
+      <ConfigProvider theme={{
+        components: {
+          Select: {
+            optionFontSize: 13,
+          }
+        }
+      }}>
         <Select
           placeholder={placeholder}
           value={value}
           onChange={onChange}
           mode='multiple'
           maxTagCount='responsive'
+          placement='bottomLeft'
+          listHeight={150}
         >
-          {options.map((item, idx) =>
-            <Select.Option key={idx} value={item.value}>{item.label}</Select.Option>
-          )}
+        {options.map((item, idx) => (
+          <Select.Option key={idx} value={item.value}>
+            {item.label}
+          </Select.Option>
+        ))}
+      </Select>
+    </ConfigProvider>
+    </div >
+  );
+};
 
-        </Select>
-      </div >
-    )
-  })
-
-
-export default TagsSelect;
+export default memo(TagsSelect);

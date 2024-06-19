@@ -89,10 +89,22 @@ export default {
     'loading message': 'Please wait, it will take a few seconds',
     'failed registration': 'Something went wrong, plase try again later'
   },
-  'store page': {
-    'title': 'Browse Products',
-    'searchText': 'Search for plants',
-    'sortBtnText': 'Sort by price'
+  '/store': {
+    'search': 'Search',
+    'enter name': 'Enter product name',
+    'filter': 'Filter',
+    'select tags': 'Select tags',
+    'tags': ['in sale', 'small', 'medium', 'large', 'slow-growing', 'fast-growing', 'flowering', 'non-flowering', 'pet friendly'],
+    'price': 'Price',
+    'categories': 'Categories',
+    'plant': 'Plant',
+    'cactus': 'Cactus',
+    'bonsai': 'Bonsai',
+    'reset': 'reset filter',
+    'sort by': 'Sort by',
+    'default': 'default',
+    'sort-price': 'Price',
+    'sort-price-desc': 'Price Desc'
   },
   '/contact': {
     'form': {

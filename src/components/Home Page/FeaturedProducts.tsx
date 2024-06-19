@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 // types
 import { IProduct } from "@/src/lib/types/entities";
 // --- components
-import StoreItem from '../Store Page/StoreItem';
+import ProductCard from '../Store Page/ProductCard';
 // --- next-internationalization
 import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 
@@ -52,7 +52,7 @@ const FeaturedProducts = ({ }: IProps) => {
       >
         {products.filter(item => item.salePercentage > 0).map(item => (
           <div key={item.id}>
-            <StoreItem
+            <ProductCard
               id={item.id}
               src={item.imgUrl}
               name={item.name}

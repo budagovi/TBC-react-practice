@@ -113,3 +113,61 @@
 .anticon.anticon-check svg {
   color: var(--greenBg) !important;
 }
+
+.ant-select-item.ant-select-item-option.ant-select-item-option-selected {
+  background-color: var(--greyshGreen);
+  opacity: 0.8;
+}
+
+:where(.css-dev-only-do-not-override-891z1r).ant-slider .ant-slider-rail {
+  position: absolute;
+  background-color: #dce1de;
+  border-radius: 2px;
+  transition: background-color 0.2s;
+}
+
+:where(.css-dev-only-do-not-override-891z1r).ant-slider-horizontal {
+  padding-block: 4px;
+  height: 12px;
+}
+
+.ant-select-handle {
+  inset-block-start: 1px;
+}
+
+.ant-select-handle-1 {
+  left: 0%;
+  transform: translateX(-50%);
+  inset-block-start: 1px !important;
+}
+
+.ant-select-handle-2 {
+  left: 100%;
+  transform: translateX(-50%);
+  inset-block-start: 1px !important;
+}
+
+:where(.css-dev-only-do-not-override-891z1r).ant-slider .ant-slider-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  outline: none;
+}
+
+:where(.css-dev-only-do-not-override-891z1r).ant-slider-horizontal .ant-slider-handle {
+  inset-block-start: 1px;
+}
+
+:where(.css-dev-only-do-not-override-891z1r).ant-slider {
+  box-sizing: border-box;
+  margin: 11px 5px;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  position: relative;
+  height: 10px;
+  cursor: pointer;
+  touch-action: none;
+}

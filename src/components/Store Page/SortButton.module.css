@@ -1,10 +1,22 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapper span {
+  font-size: 15px;
+  color: var(--placeholderColor);
+}
+
 .sortButton {
-  width: 130px;
+  width: 160px;
   color: var(--placeholderColor);
   border-radius: 0.5rem;
   position: relative;
   height: 32px;
   box-sizing: border-box;
+  font-size: 14px;
 }
 
 .sortButton>div {
@@ -13,4 +25,9 @@
 
 .sortButton>span {
   margin-top: -6px;
+}
+
+.sortButton * {
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
 }

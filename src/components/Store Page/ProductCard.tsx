@@ -1,9 +1,6 @@
-// *
-// * Store Item (Grid Element)
-// *
-
-// --- CSS
-import style from './StoreItem.module.css';
+'use client'
+// --- style
+import style from './ProductCard.module.css';
 // --- Hooks
 import useCartContext from '@/src/hooks/useCartContext';
 
@@ -16,7 +13,11 @@ interface IProps {
   id: number
 }
 
-const StoreItem = (props: IProps) => {
+/**
+ * Product card component (Store grid item)
+ * @param product - object of type IProduct
+ */
+const ProductCard = (props: IProps) => {
 
   const { src, name, price, category, sale, id } = props;
   const ctx = useCartContext();
@@ -52,7 +53,7 @@ const StoreItem = (props: IProps) => {
         <span>{name}</span>
         {priceTag}
       </div>
-      {sale > 0 && <span className={style.saleTag}>-{100*sale}%</span> }
+      {sale > 0 && <span className={style.saleTag}>-{100 * sale}%</span>}
       <button className={style.cartWrapper} onClick={addItemHandler}>
         <img src="./icons/heart.svg" alt="" />
       </button>
@@ -60,4 +61,4 @@ const StoreItem = (props: IProps) => {
   )
 }
 
-export default StoreItem;
+export default ProductCard;

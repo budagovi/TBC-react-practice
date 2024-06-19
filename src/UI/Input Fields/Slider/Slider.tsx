@@ -26,16 +26,18 @@ const Slider = ({ onChangeComplete, defaultValue, max, value }: IProps) => {
         }
       }
     }}>
-      <SliderAntd
-        tooltip={{ color: '#272727', }}
-        onChange={onChangeComplete}
-        range={{
-          draggableTrack: true,
-        }}
-        defaultValue={defaultValue}
-        max={max}
-        value={value}
-      />
+      <div style={{ position: 'relative' }}>
+        <SliderAntd
+          tooltip={{ color: '#272727', placement: 'bottom'}}
+          onChange={onChangeComplete}
+          range={{
+            draggableTrack: true,
+          }}
+          defaultValue={defaultValue}
+          max={max}
+          value={value}
+        />
+      </div>
     </ConfigProvider>
   )
 }

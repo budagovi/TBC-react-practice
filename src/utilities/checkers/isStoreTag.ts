@@ -6,7 +6,7 @@ import { IStoreTag } from "@/src/hooks/useStoreQueryParams";
  */
 const isStoreTag = (tag: any): tag is IStoreTag => {
 
-  const storeTags: IStoreTag[] = ['medium', 'large', 'small', 'pet friendly', 'slow', 'fast', 'non-flowering', 'seasonal flowering'];
+  const storeTags: IStoreTag[] = ['sale', 'medium', 'large', 'small', 'pet friendly', 'slow', 'fast', 'non-flowering', 'seasonal flowering'];
   return storeTags.includes(tag);
 }
 

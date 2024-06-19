@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 // --- hooks
 import useDebounce from './useDebounce';
 
-export type IStoreTag = 'medium' | 'large' | 'small' | 'pet friendly' | 'slow' | 'fast' | 'non-flowering' | 'seasonal flowering';
+export type IStoreTag = 'sale' | 'medium' | 'large' | 'small' | 'pet friendly' | 'slow' | 'fast' | 'non-flowering' | 'seasonal flowering';
 
 export interface FilterState {
   searchValue: string;
@@ -58,10 +58,16 @@ const useStoreQueryParams = () => {
 
   };
 
-  // update query (and navigate) every time filter changes
+  // update query (and navigate) every time filter changes using debounce
   useEffect(
-    useDebounce(() => setQuery(filter), 700),
-    [filter.searchValue, filter.category, filter.minPrice, filter.maxPrice, filter.tags, filter.sortBy, router]
+    useDebounce(() => setQuery(filter), 500),
+    [filter.searchValue, filter.minPrice, filter.maxPrice]
+  );
+
+  // without debounce
+  useEffect(
+    () => setQuery(filter),
+    [filter.category, filter.tags, filter.sortBy]
   );
 
   return { filter, setFilter, getQuery };

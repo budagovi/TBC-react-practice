@@ -52,26 +52,3 @@
   right: 0;
   bottom: 0;
 }
-
-/* -=-=-=-=-=- Store Layout -=-=-=-=-=- */
-.store_layout {
-  --columnGap: 4rem;
-  display: grid;
-  column-gap: var(--columnGap);
-  grid-template-columns: 320px 1fr;
-}
-
-.store_layout>div:nth-of-type(1) {
-  position: relative;
-}
-
-.store_layout>div:nth-of-type(1):after {
-  position: absolute;
-  content: '';
-  display: block;
-  height: 100%;
-  width: 2px;
-  background-color: var(--greyshGreen);
-  right: 0;
-  transform: translateX(calc(var(--columnGap)/2));
-}

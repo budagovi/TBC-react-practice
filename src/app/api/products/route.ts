@@ -10,6 +10,7 @@ import { IProduct } from "@/src/lib/types/entities";
 
 const sqlGetProducts = sql<IProduct[]>`
 SELECT 
+  id,
   name, 
   name_ge             AS "nameGe",
   price, 

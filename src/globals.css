@@ -31,6 +31,9 @@ body {
   font-size: inherit;
   line-height: inherit;
   font-family: "Nunito", sans-serif;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 .ant-select-focused .ant-select-selector,

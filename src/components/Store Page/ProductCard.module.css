@@ -6,12 +6,13 @@
   transition: .3s ease-in-out;
   cursor: pointer;
   position: relative;
+  box-shadow: var(--cardShadow);
+  padding: 0.5rem;
 }
 
 .imgWrapper {
   aspect-ratio: 1/1;
   border-radius: 0.25rem;
-  box-shadow: 0 4px 4px 0 #00000047;
   overflow: hidden;
 }
 
@@ -22,7 +23,12 @@
   transition: .5s ease-in-out;
 }
 
-.imgWrapper:hover img {
+.wrapper:hover {
+  box-shadow: 0 1px 20px 0px #0007;;
+}
+
+
+.wrapper:hover img {
   scale: 1.05;
 }
 
@@ -53,7 +59,7 @@
 
 .description>span:nth-of-type(2) {
   font-size: 16px;
-  font-weight:600;
+  font-weight: 600;
   text-shadow: var(--shadow);
   flex-grow: 1;
 }

@@ -8,11 +8,15 @@ import useStoreQueryParams from '@/src/hooks/useStoreQueryParams';
 // react/nextjs api
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+// --- next-internationalization
+import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 
 /**
- * Button to choose with what to sort by
+ * Sorting button for store (sets and gets store search params)
  */
 const SortButton = () => {
+
+  const t = useScopedI18n('/store');
 
   const { filter, setFilter, getQuery } = useStoreQueryParams();
 
@@ -28,26 +32,29 @@ const SortButton = () => {
   }, [searchParams])
 
   return (
-    <ConfigProvider theme={{
-      components: {
-        Select: {
-          optionSelectedBg: '#dce1de'
+    <div className={style.wrapper}>
+      <span>{t('sort by')}:</span>
+      <ConfigProvider theme={{
+        components: {
+          Select: {
+            optionSelectedBg: '#dce1de'
+          }
         }
-      }
-    }}>
-      <Select
-        placeholder='Default'
-        options={[
-          { label: 'Default', value: '' },
-          { label: 'Price', value: 'price' },
-          { label: 'Price Desc', value: 'price desc' }
-        ]}
-        className={style.sortButton}
-        loading={false}
-        value={filter.sortBy}
-        onChange={changeHandler}
-      />
-    </ConfigProvider>
+      }}>
+        <Select
+          placeholder='Default'
+          options={[
+            { label: t('default'), value: '' },
+            { label: t('sort-price'), value: 'price' },
+            { label: t('sort-price-desc'), value: 'price desc' }
+          ]}
+          className={style.sortButton}
+          loading={false}
+          value={filter.sortBy}
+          onChange={changeHandler}
+        />
+      </ConfigProvider>
+    </div>
   )
 }
 
