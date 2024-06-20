@@ -35,9 +35,13 @@ const StorePage = async ({ params: { locale }, searchParams }: IProps) => {
 
   // Filter by query search
   if (typeof q === 'string' && q.trim() !== '') {
-    filteredProducts = filteredProducts.filter(item =>
-      item.name?.toLowerCase().includes((q as string).toLowerCase())
-    );
+    filteredProducts = filteredProducts.filter(item => {
+      if (locale === 'en') {
+        return item.name?.toLowerCase().includes(q.toLowerCase());
+      } else if (locale === 'ka') {
+        return item.nameGe?.toLowerCase().includes(q.toLowerCase());
+      }
+    });
   }
 
   // Filter by category

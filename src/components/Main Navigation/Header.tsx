@@ -16,7 +16,7 @@ import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 // --- hooks
 import useCartContext from '@/src/hooks/useCartContext';
 // --- react-icons
-import { IoCartOutline } from "react-icons/io5"
+import { FaCartShopping } from "react-icons/fa6";
 
 interface IProps {
   isLoggedIn: boolean
@@ -87,7 +87,7 @@ const Header = ({ isLoggedIn }: IProps) => {
 
           <Link href={`/cart`} className={style.cartIcon}>
             {isClient ? <div >{totalAmount}</div> : <div>0</div>}
-            <IoCartOutline className={style.cartIcon} />
+            <FaCartShopping className={style.cartIcon} />
           </Link>
           {isLoggedIn ?
             <ProfileDropDown currentPath={pathname} /> :

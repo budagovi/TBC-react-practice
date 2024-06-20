@@ -3,10 +3,15 @@
 import style from './ProductCard.module.css';
 // --- Hooks
 import useCartContext from '@/src/hooks/useCartContext';
+// --- react-icons
+import { FaCartPlus } from "react-icons/fa6";
+// --- next-internationalization
+import { useCurrentLocale, useScopedI18n } from '@/src/lib/next-internationalization/client';
 
 interface IProps {
   src: string,
   name: string,
+  nameGe: string,
   price: number,
   category: string,
   sale: number,
@@ -15,19 +20,26 @@ interface IProps {
 
 /**
  * Product card component (Store grid item)
- * @param product - object of type IProduct
+ * @param product - some properties of type IProduct
  */
 const ProductCard = (props: IProps) => {
 
-  const { src, name, price, category, sale, id } = props;
+  const { src, name, nameGe, price, category, sale, id } = props;
   const ctx = useCartContext();
 
-  let priceTag = <span>${price}</span>
-  if (sale) {
+  // deal with languages
+  const locale = useCurrentLocale();
+  const t = useScopedI18n('/store');
+  const isEng = locale === 'en';
+  const productName = isEng ? name : nameGe;
+  const productCategory = isEng ? category : t(category as 'plant' | 'bonsai' | 'cactus')
+
+  let priceTag = <span>${(+price).toFixed(2)}</span>
+  if (sale > 0) {
     priceTag = (
       <span>
-        <span className={style.salePrice}>${(price * (100 - sale) / 100)}</span>
-        <span className={style.oldPrice}>${+price} </span>
+        <span className={style.salePrice}>${(price * (1 - sale)).toFixed(2)}</span>
+        <span className={style.oldPrice}>${(+price).toFixed(2)} </span>
       </span>
     )
   }
@@ -49,13 +61,13 @@ const ProductCard = (props: IProps) => {
         <img src={src} alt={name} />
       </div>
       <div className={style.description}>
-        <span>{category}</span>
-        <span>{name}</span>
+        <span>{productCategory}</span>
+        <span>{productName}</span>
         {priceTag}
       </div>
       {sale > 0 && <span className={style.saleTag}>-{100 * sale}%</span>}
       <button className={style.cartWrapper} onClick={addItemHandler}>
-        <img src="./icons/heart.svg" alt="" />
+        <FaCartPlus className={style.cartIcon} />
       </button>
     </div>
   )

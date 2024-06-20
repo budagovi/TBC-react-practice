@@ -17,7 +17,7 @@ export const getProducts = async (): Promise<IActionResponse> => {
   revalidatePath('/store')
 
   try {
-    const response = await fetch(BASE_URL + '/api/products', { cache: 'no-cache' });
+    const response = await fetch(BASE_URL + '/api/products', { next: { revalidate: 0 } });
     if (response.ok) {
       const data: Array<IProduct> = await response.json();
       return {

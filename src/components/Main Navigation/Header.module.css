@@ -116,7 +116,7 @@ nav.links>span {
 /* -=-=-=- Cartlist amount indicator -=-=-=- */
 
 .cartIcon {
-  --navIconSize: 28px;
+  --navIconSize: 26px;
   width: var(--navIconSize);
   height: var(--navIconSize);
   position: relative;
@@ -142,4 +142,5 @@ nav.links>span {
   color: var(--fore);
   border-radius: 50%;
   z-index: 1;
+  opacity: 0.8;
 }

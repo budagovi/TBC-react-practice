@@ -23,6 +23,7 @@ const ProductsGrid = ({ products }: IProps) => {
             id={item.id}
             src={item.imgUrl}
             name={item.name}
+            nameGe={item.nameGe}
             price={item.price}
             category={item.category}
             sale={item.salePercentage} />
