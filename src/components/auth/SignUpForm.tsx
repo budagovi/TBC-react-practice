@@ -6,6 +6,7 @@ import Button from '@/src/UI/Button/Button';
 import ProgressBar from '@/src/UI/ProgressBar/ProgressBar';
 // --- nextjs/react api
 import { ChangeEvent, useState, useCallback, useTransition, FormEvent, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 // --- next-internationalization api
 import { useScopedI18n } from '@/src/lib/next-internationalization/client';
@@ -27,8 +28,7 @@ import isSignUpFormValid from '@/src/utilities/checkers/isSignUpFormValid';
 // --- types
 import { ISignUpFormData } from '@/src/lib/types/forms';
 // --- actions
-import { login } from '@/src/app/[locale]/(auth)/actions';
-import { useRouter } from 'next/navigation';
+import { login } from '@/src/lib/actions/auth';
 
 const initialFormValue: ISignUpFormData = {
   firstname: '',

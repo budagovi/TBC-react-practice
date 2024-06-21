@@ -4,7 +4,7 @@
 // * Profile Edit Form
 // *
 
-// --- CSS
+// --- style
 import style from './EditProfile.module.css';
 // --- UI
 

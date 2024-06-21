@@ -24,25 +24,6 @@ body {
   position: relative;
 }
 
-/* -=- Override Ant App style -=- */
-
-.ant-app {
-  color: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  font-family: "Nunito", sans-serif;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-}
-
-.ant-select-focused .ant-select-selector,
-.ant-select-selector:focus,
-.ant-select-selector:active,
-.ant-select-open .ant-select-selector {
-  box-shadow: none !important;
-}
-
 /* -=- Color Palletes -=- */
 :root {
   /* 1b3c35 004F44 */
@@ -53,6 +34,7 @@ body {
   --bodyBg: #F7F8FA;
   --black: #272727;
   --grey: #808080;
+  --darkGrey: #5a5a5a;
   --placeholderColor: #9ca09d;
 
   --fore: #f0f0f0;
@@ -106,4 +88,9 @@ hr {
   height: 1px;
   background-color: var(--greenBg);
   border: none;
+  border-radius: 1rem;
+}
+
+hr.light {
+  background-color: var(--placeholderColor);
 }

@@ -1,0 +1,85 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.wrapper h2 {
+  color: var(--greenFore);
+}
+
+
+.price {
+  font-size: 24px;
+  color: var(--darkGrey);
+  font-weight: 800;
+}
+
+.oldPrice {
+  color: var(--grey);
+  text-decoration: line-through;
+  font-weight: 500;
+  color: var(--red);
+  margin-left: 0.4rem;
+}
+
+/* product properties */
+.wrapper table tbody tr th {
+  text-align: start;
+}
+
+.wrapper table tbody tr th:nth-of-type(1) {
+  font-weight: 500;
+  color: var(--black);
+  padding-block: 0.05rem;
+}
+
+.wrapper table tbody tr th:nth-of-type(2) {
+  padding-inline-start: 1rem;
+}
+
+.wrapper th a {
+  color: var(--greenFore);
+  font-weight: 400;
+  opacity: 0.85;
+  transition: var(--textHoverTransition);
+}
+
+.wrapper th a:hover {
+  color: var(--greenFore);
+  opacity: 1;
+}
+
+/* Shipping information */
+.shippingWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.shippingWrapper p {
+  font-weight: 800;
+  color: var(--darkGrey);
+  font-size: 18px;
+  margin-bottom: 0.4rem;
+}
+
+.shippingWrapper span {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.icon {
+  --size: 18px;
+  width: var(--size);
+  height: var(--size);
+  fill: var(--greenBg);
+}

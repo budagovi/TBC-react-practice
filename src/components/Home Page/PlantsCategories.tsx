@@ -13,17 +13,17 @@ const PlantsCategories = async () => {
   const t = await getScopedI18n('/')
   return (
     <div className={style.wrapper}>
-      <Link href='/store' className={`${style.item1} ${style.item}`}>
+      <Link href='/store?category=plant' className={`${style.item1} ${style.item}`}>
         <div className={style.overlay}>
           <span>{t('plants')} &rarr;</span>
         </div>
       </Link>
-      <Link href='/store' className={`${style.item2} ${style.item}`}>
+      <Link href='/store?category=cactus' className={`${style.item2} ${style.item}`}>
         <div className={style.overlay}>
           <span>{t('cactuses')}  &rarr;</span>
         </div>
       </Link>
-      <Link href='/store' className={`${style.item3} ${style.item}`}>
+      <Link href='/store?category=bonsai' className={`${style.item3} ${style.item}`}>
         <div className={style.overlay}>
           <span>{t('bonsais')} &rarr;</span>
         </div>

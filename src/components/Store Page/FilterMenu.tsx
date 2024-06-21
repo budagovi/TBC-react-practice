@@ -52,8 +52,7 @@ const FilterMenu = () => {
     { value: 'slow', label: <span>{t('tags.4')}</span> },
     { value: 'fast', label: <span>{t('tags.5')}</span> },
     { value: 'seasonal flowering', label: <span>{t('tags.6')}</span> },
-    { value: 'non-flowering', label: <span>{t('tags.7')}</span> },
-    { value: 'pet friendly', label: <span>{t('tags.8')}</span> },
+    { value: 'non-flowering', label: <span>{t('tags.7')}</span> }
   ];
 
   return (

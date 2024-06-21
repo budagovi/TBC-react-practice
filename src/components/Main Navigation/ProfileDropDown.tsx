@@ -2,7 +2,7 @@
 import style from './ProfileDropDown.module.css';
 // --- react-icons
 import { SlNotebook } from "react-icons/sl";
-import { IoPersonOutline } from "react-icons/io5";
+import { IoPerson, IoPersonOutline } from "react-icons/io5";
 import { RxExit } from "react-icons/rx";
 // --- react/nextjs api
 import Link from 'next/link';
@@ -12,7 +12,7 @@ import { App, Dropdown } from "antd"
 // --- next-internationalization
 import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 // --- jose-auth lib
-import { logout } from '@/src/app/[locale]/(auth)/actions';
+import { logout } from '@/src/lib/actions/auth';
 // --- public routes
 import { publicRoutes } from '@/src/lib/jose-auth/routes';
 
@@ -23,7 +23,7 @@ interface IProps {
 /**
  * Profile icon, with dropdown menu of account-specific links
  */
-const ProfileDropDown = async ({ currentPath }: IProps) => {
+const ProfileDropDown = ({ currentPath }: IProps) => {
 
   const t = useScopedI18n('header')
 
@@ -85,7 +85,9 @@ const ProfileDropDown = async ({ currentPath }: IProps) => {
       overlayClassName={style.overlay}
       overlayStyle={{ paddingBlock: 7 }}
     >
-      <IoPersonOutline className={style.icon} />
+      <div className={style.iconWrapper}>
+        <IoPerson className={style.icon} />
+      </div>
     </Dropdown>
   )
 }

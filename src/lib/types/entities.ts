@@ -1,4 +1,3 @@
-
 /**
  * ```typescript
  *  {
@@ -40,13 +39,9 @@ export interface IUser {
       description: string;
       descriptionGe: string;
       lightReq: string;
-      wateringNeed: string;
-      growthRate: string;
       size: string;
-      petFriendly: boolean;
       flowering: boolean;
       imgUrl: string;
-      imageUrls: string[];
       category: string
     }
  * ```
@@ -59,13 +54,9 @@ export interface IProduct {
   salePercentage: number;
   description: string;
   descriptionGe: string;
-  lightReq: 'partial shade' | 'full sun' | 'full shade';
-  wateringNeed: 'medium' | 'low' | 'high';
   growthRate: 'slow' | 'fast';
   size: 'medium' | 'large' | 'small';
-  petFriendly: boolean;
   flowering: 'non-flowering' | 'seasonal flowering';
   imgUrl: string;
-  imageUrls: string[];
   category: 'plant' | 'cactus' | 'bonsai';
 }

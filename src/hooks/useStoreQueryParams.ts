@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 // --- hooks
 import useDebounce from './useDebounce';
 
-export type IStoreTag = 'sale' | 'medium' | 'large' | 'small' | 'pet friendly' | 'slow' | 'fast' | 'non-flowering' | 'seasonal flowering';
+export type IStoreTag = 'sale' | 'medium' | 'large' | 'small' | 'slow' | 'fast' | 'non-flowering' | 'seasonal flowering';
 
 export interface FilterState {
   searchValue: string;
@@ -54,7 +54,7 @@ const useStoreQueryParams = () => {
     if (filter.sortBy) query.sortBy = filter.sortBy
 
     const queryString = new URLSearchParams(query).toString();
-    router.push(`/store?${queryString}`);
+    router.replace(`/store?${queryString}`);
 
   };
 

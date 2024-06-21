@@ -1,25 +1,39 @@
 .wrapper {
   display: flex;
-  gap: 0.75rem;
+  align-items: center;
   font-size: 14px;
-  color: var(--grey);
+  color: var(--placeholderColor);
+}
+
+.wrapper * {
   font-weight: 500;
 }
 
-.wrapper > span {
-  color: inherit;
-  font-weight: inherit;
-}
-
-.wrapper > span:nth-of-type(2) {
-  color: var(--black);
-  font-weight: 600;
+.wrapper b {
+  padding-inline: 0.3rem;
 }
 
 .wrapper a {
-  color: inherit;
+  padding: 0.2rem 0.3rem;
 }
 
 .wrapper a:hover {
-  color: var(--foreHover);
+  color: var(--black);
+  background-color: var(--greyshGreen);
+  border-radius: 0.25rem;
+  transition: .1s ease-in-out;
+}
+
+.wrapper span:nth-last-of-type(1) a {
+  color: var(--black);
+  font-weight: 600;
+  cursor: default;
+}
+
+.wrapper span:nth-last-of-type(1) a:hover {
+  background-color: transparent;
+}
+
+.wrapper a {
+  color: var(--grey);
 }

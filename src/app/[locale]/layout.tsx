@@ -1,6 +1,7 @@
 // --- style
 import style from '@/src/app/layouts.module.css'
 import "@/src/globals.css";
+import "@/src/antd-override.css"
 // --- nextjs api
 import { Inter } from "next/font/google";
 // --- components
@@ -21,7 +22,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Aurora Plants",
-  description: "Online plants shopping platform",
+  description: "Online Plants Shopping Platform",
 };
 
 interface IProps {

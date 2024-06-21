@@ -4,10 +4,13 @@ import Store from '@/src/components/Store Page/Store';
 import { Locale } from "@/src/lib/next-internationalization/i18n.config";
 import { setStaticParamsLocale } from "next-international/server";
 import { getStaticParams } from '@/src/lib/next-internationalization/server';
-import { getProducts } from './actions';
+// --- actions
+import { getProducts } from '@/src/lib/actions/getProducts';
+// --- types
 import { IProduct } from '@/src/lib/types/entities';
-import isStoreTag from '@/src/utilities/checkers/isStoreTag';
 import { IStoreTag } from '@/src/hooks/useStoreQueryParams';
+// --- utils/checkers
+import isStoreTag from '@/src/utilities/checkers/isStoreTag';
 
 export function generateStaticParams() {
   return getStaticParams()
@@ -21,6 +24,9 @@ interface IProps {
 }
 
 const StorePage = async ({ params: { locale }, searchParams }: IProps) => {
+
+  // static rendering for both languages on build-time
+  setStaticParamsLocale(locale)
 
   // get data
   const response = await getProducts();
@@ -36,11 +42,12 @@ const StorePage = async ({ params: { locale }, searchParams }: IProps) => {
   // Filter by query search
   if (typeof q === 'string' && q.trim() !== '') {
     filteredProducts = filteredProducts.filter(item => {
-      if (locale === 'en') {
-        return item.name?.toLowerCase().includes(q.toLowerCase());
-      } else if (locale === 'ka') {
+      if (locale === 'ka') {
         return item.nameGe?.toLowerCase().includes(q.toLowerCase());
       }
+
+      return item.name?.toLowerCase().includes(q.toLowerCase());
+
     });
   }
 
@@ -69,7 +76,6 @@ const StorePage = async ({ params: { locale }, searchParams }: IProps) => {
 
     filteredProducts = filteredProducts.filter((item) => {
       const itemTags: IStoreTag[] = [item.size, item.flowering, item.growthRate]
-      if (item.petFriendly) itemTags.push('pet friendly')
       if (item.salePercentage > 0) itemTags.push('sale')
       return tagsList.every(tag => itemTags.includes(tag as IStoreTag))
     })
@@ -83,10 +89,6 @@ const StorePage = async ({ params: { locale }, searchParams }: IProps) => {
       filteredProducts.sort((a, b) => b.price - a.price);
     }
   }
-
-
-  // static rendering for both languages on build
-  setStaticParamsLocale(locale)
 
   return <div>
     <Store products={filteredProducts} />

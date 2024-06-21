@@ -7,6 +7,10 @@ import useCartContext from '@/src/hooks/useCartContext';
 import { FaCartPlus } from "react-icons/fa6";
 // --- next-internationalization
 import { useCurrentLocale, useScopedI18n } from '@/src/lib/next-internationalization/client';
+// --- next api
+import Link from 'next/link';
+// --- helpers
+import formatProductPathSegment from '@/src/utilities/helpers/formatProductPathSegment';
 
 interface IProps {
   src: string,
@@ -56,7 +60,7 @@ const ProductCard = (props: IProps) => {
   }
 
   return (
-    <div className={style.wrapper}>
+    <Link href={'/store/' + formatProductPathSegment(name, id)} className={style.wrapper}>
       <div className={style.imgWrapper}>
         <img src={src} alt={name} />
       </div>
@@ -69,7 +73,7 @@ const ProductCard = (props: IProps) => {
       <button className={style.cartWrapper} onClick={addItemHandler}>
         <FaCartPlus className={style.cartIcon} />
       </button>
-    </div>
+    </Link>
   )
 }
 

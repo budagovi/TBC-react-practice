@@ -84,14 +84,14 @@
   text-decoration: line-through;
   font-weight: 500;
   font-size: 12px;
-  color: var(--placeholderColor);
+  color: var(--red);
 }
 
 .salePrice {
   text-decoration: none;
   font-weight: inherit;
   font-size: inherit;
-  color: var(--red);
+  color: inherit;
 }
 
 /* add to cart button */

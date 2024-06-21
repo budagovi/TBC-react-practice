@@ -13,7 +13,7 @@ import {
 // --- next-internationalization
 import i18nMiddleware from "./lib/next-internationalization/i18nMiddleware";
 // --- helpers
-import includesLocale from "./utilities/helpers/includesLocale";
+import includesLocale from "./utilities/checkers/includesLocale";
 import removeLocale from "./utilities/helpers/removeLocale";
 import { getSession, updateSession } from "./lib/jose-auth/auth";
 
@@ -43,8 +43,8 @@ export const middleware = async (request: NextRequest) => {
   // -=-=-=- Autnentication -=-=-=-
 
   const isLoggedIn = !!(await getSession());
-  const isPublicRoute = publicRoutes.includes(pathname)
-  const isAuthRoute = authRoutes.includes(pathname)
+  const isPublicRoute = publicRoutes.some(route => pathname.startsWith(route)) || pathname === '/';
+  const isAuthRoute = authRoutes.some(route => pathname.startsWith(route))
 
   if (isAuthRoute) {
     if (isLoggedIn) {
@@ -55,6 +55,7 @@ export const middleware = async (request: NextRequest) => {
   }
 
   if (!isPublicRoute && !isLoggedIn) {
+    
     return NextResponse
       .redirect(new URL('/sign-in', request.url), { status: 307 })
   }
