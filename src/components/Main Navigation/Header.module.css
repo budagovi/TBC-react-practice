@@ -114,21 +114,27 @@ nav.links>span {
 }
 
 /* -=-=-=- Cartlist amount indicator -=-=-=- */
+.cartIconWrapper {
+  position: relative;
+  margin-right: calc(var(--navWrapperGap)/-2);
+  display: flex;
+  align-items: center;
+  transition: .1s ease-in;
+}
 
 .cartIcon {
   --navIconSize: 26px;
   width: var(--navIconSize);
   height: var(--navIconSize);
-  position: relative;
-  margin-right: calc(var(--navWrapperGap)/-2);
-  transition: var(--textHoverTransition);
+  transition: inherit;
+  transform: translateY(2px);
 }
 
 .cartIcon:hover {
   color: var(--foreHover);
 }
 
-.cartIcon>div {
+.cartIconWrapper>div {
   aspect-ratio: 1/1;
   width: 19px;
   position: absolute;

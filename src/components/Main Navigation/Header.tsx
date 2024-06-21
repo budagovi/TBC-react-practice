@@ -85,7 +85,7 @@ const Header = ({ isLoggedIn }: IProps) => {
             {t('contact')}
           </Link>
 
-          <Link href={`/cart`} className={style.cartIcon}>
+          <Link href={`/cart`} className={style.cartIconWrapper}>
             {isClient ? <div >{totalAmount}</div> : <div>0</div>}
             <FaCartShopping className={style.cartIcon} />
           </Link>
@@ -93,7 +93,7 @@ const Header = ({ isLoggedIn }: IProps) => {
             <ProfileDropDown currentPath={pathname} /> :
             <Button
               light={isAuth || isRootPage ? true : undefined}
-              style={{ padding: "0.5rem 0.8rem" }}
+              style={{ padding: "0.5rem 0.8rem", transition: '.2s ease-in' }}
               onClick={() => router.push('/sign-in')}
             >
               {t('sign in')}

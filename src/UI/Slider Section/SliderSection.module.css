@@ -36,6 +36,18 @@
   background-color: var(--greenBg);
   cursor: pointer;
   box-shadow: var(--shadow);
+  transition: .15s ease-in-out;
+}
+
+.title .controls button:hover {
+  scale: 1.05;
+  opacity: 0.9;
+}
+.title .controls button:nth-of-type(1):hover {
+  transform-origin: right;
+}
+.title .controls button:nth-of-type(2):hover {
+  transform-origin: left;
 }
 
 .title .controls button:nth-of-type(2) img {

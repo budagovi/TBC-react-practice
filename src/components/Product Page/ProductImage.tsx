@@ -15,19 +15,13 @@ interface IProps {
  */
 const ProductImage = ({ imgUrl, name }: IProps) => {
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => {
+    setIsModalOpen(prevState => !prevState);
+  };
+
   const [imageHovered, setImageHovered] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -57,7 +51,7 @@ const ProductImage = ({ imgUrl, name }: IProps) => {
       onMouseLeave={() => setImageHovered(false)}
       onMouseMove={handleMouseMove}
     >
-      <button onClick={showModal}>
+      <button onClick={toggleModal}>
         <img
           src={imgUrl}
           alt={name}
@@ -70,8 +64,8 @@ const ProductImage = ({ imgUrl, name }: IProps) => {
 
       <Modal
         open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        onOk={toggleModal}
+        onCancel={toggleModal}
         cancelText=''
         footer=''
         closable={false}
@@ -81,8 +75,7 @@ const ProductImage = ({ imgUrl, name }: IProps) => {
           src={imgUrl}
           alt={name}
           className={style.modalImg}
-          />
-
+        />
       </Modal>
     </div>
   )
