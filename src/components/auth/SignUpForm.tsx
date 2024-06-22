@@ -28,7 +28,7 @@ import isSignUpFormValid from '@/src/utilities/checkers/isSignUpFormValid';
 // --- types
 import { ISignUpFormData } from '@/src/lib/types/forms';
 // --- actions
-import { login } from '@/src/lib/actions/auth';
+import { login } from '@/src/server actions/auth';
 
 const initialFormValue: ISignUpFormData = {
   firstname: '',

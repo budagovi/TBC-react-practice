@@ -1,7 +1,8 @@
+'use server'
 // --- vercel
 import { sql } from "@vercel/postgres";
 // --- types
-import { IProduct } from "../types/entities";
+import { IProduct } from "@/src/lib/types/entities";
 
 /**
  * Fetches all products' name and id for product page's static rendering

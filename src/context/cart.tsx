@@ -1,13 +1,12 @@
 'use client'
 // react api
-import { ReactNode, useReducer, useEffect, createContext, useState } from "react"
+import { ReactNode, useReducer, useEffect, createContext } from "react"
 // hooks
 import useLocalStorage from "../hooks/useLocalStorage";
 // constants
 import { CART_LOCSTORE_KEY } from "../lib/constants";
 // types
 import type { ICartAction, ICartContext, ICartItem, ICartState } from "../lib/types/cart-context";
-import { getSession } from "../lib/jose-auth/auth";
 
 // create context
 export const CartContext = createContext<ICartContext>({} as ICartContext);

@@ -1,12 +1,12 @@
 // --- actions
-import { getProduct } from "@/src/lib/actions/getProduct";
+import { getProduct } from "@/src/server actions/getProduct";
 // --- types
 import { IProduct } from "@/src/lib/types/entities";
 // --- next-internationalization
 import { getStaticParams } from "@/src/lib/next-internationalization/server";
 import { setStaticParamsLocale } from "next-international/server";
 import { Locale } from "@/src/lib/next-internationalization/i18n.config";
-import fetchAllProductIdAndNames from "@/src/lib/db-queries/fetchAllProductIdAndNames";
+import fetchAllProductIdAndNames from "@/src/server actions/fetchAllProductIdAndNames";
 // --- helpers
 import formatProductPathSegment from "@/src/utilities/helpers/formatProductPathSegment";
 // --- actions
@@ -58,9 +58,9 @@ const ProductPage = async ({ params: { productSegment, locale } }: IProps) => {
   return (
     <>
       <ProductDetails product={product} />
-      <ProductNav 
+      <ProductNav
         descriptionText={product.description}
-        descriptionTextGe={product.descriptionGe}  
+        descriptionTextGe={product.descriptionGe}
       />
     </>
   )

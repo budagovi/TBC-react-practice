@@ -5,7 +5,7 @@
 // --- next api
 import { NextResponse } from "next/server";
 // --- query
-import fetchAllProcuts from "@/src/lib/db-queries/fetchAllProducts";
+import fetchAllProcuts from "@/src/server actions/fetchAllProducts";
 
 export async function GET() {
 

@@ -1,13 +1,14 @@
+'use server'
 // --- vercel
 import { sql } from "@vercel/postgres";
 // --- types
-import { IProduct } from "../types/entities";
+import { IProduct } from "@/src/lib/types/entities";
 
 /**
- * Fetch all products from the database
- * @returns Promise<IProduct[] | null> Array of products or null if query fails
+ * Fetch a product by name and id from the database
+ * @returns Promise<IProduct | null> a product or null if query fails
  */
-const fetchAllProducts = async (): Promise<IProduct[] | null> => {
+const fetchProductByIdAndName = async (id: number, name: string): Promise<IProduct | null> => {
   try {
     const queryResult = await sql<IProduct>`
       SELECT 
@@ -25,15 +26,17 @@ const fetchAllProducts = async (): Promise<IProduct[] | null> => {
         category
       FROM 
         products
-      ORDER BY
-        id
+      WHERE
+        id = ${id} and name = ${name}
     `;
 
-    return queryResult.rows || null;
+    return queryResult.rows[0] || null;
+
   } catch (error) {
-    console.error("Error fetching products:", error);
-    throw new Error("Failed to fetch products from the database");
+
+    console.error("Error fetching product by ID:", error);
+    throw new Error("Database query failed");
   }
 };
 
-export default fetchAllProducts;
+export default fetchProductByIdAndName;
