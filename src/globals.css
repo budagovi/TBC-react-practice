@@ -24,6 +24,12 @@ body {
   position: relative;
 }
 
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
 /* -=- Color Palletes -=- */
 :root {
   /* 1b3c35 004F44 */

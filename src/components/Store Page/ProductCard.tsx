@@ -9,6 +9,7 @@ import { FaCartPlus } from "react-icons/fa6";
 import { useCurrentLocale, useScopedI18n } from '@/src/lib/next-internationalization/client';
 // --- next api
 import Link from 'next/link';
+import { MouseEvent } from 'react';
 // --- helpers
 import formatProductPathSegment from '@/src/utilities/helpers/formatProductPathSegment';
 
@@ -19,7 +20,8 @@ interface IProps {
   price: number,
   category: string,
   sale: number,
-  id: number
+  id: number,
+  imgUrl: string
 }
 
 /**
@@ -28,7 +30,7 @@ interface IProps {
  */
 const ProductCard = (props: IProps) => {
 
-  const { src, name, nameGe, price, category, sale, id } = props;
+  const { src, name, nameGe, price, category, sale, id, imgUrl } = props;
   const ctx = useCartContext();
 
   // deal with languages
@@ -48,14 +50,17 @@ const ProductCard = (props: IProps) => {
     )
   }
 
-  const addItemHandler = () => {
+  const addItemHandler = (e:MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    
     ctx.addItem({
-      id: id,
-      title: name,
-      price: +((price * (100 - sale) / 100)),
-      discountPercentage: sale,
-      category: category,
-      amount: 1
+      name,
+      nameGe,
+      qty: 1,
+      id,
+      imgUrl,
+      price,
+      salePercentage: sale
     })
   }
 

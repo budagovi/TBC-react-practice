@@ -104,7 +104,8 @@ export default {
     'sort by': 'სორტირება',
     'default': 'სტანდარტული',
     'sort-price': 'ფასი',
-    'sort-price-desc': 'ფასი (კლებადი)'
+    'sort-price-desc': 'ფასი (კლებადი)',
+    'no products': 'პროდუქტები ვერ მოიძებნა'
   },
   '/product': {
     'add to cart': 'კალათაში დამატება',

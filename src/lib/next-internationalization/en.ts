@@ -104,7 +104,8 @@ export default {
     'sort by': 'Sort by',
     'default': 'default',
     'sort-price': 'Price',
-    'sort-price-desc': 'Price Desc'
+    'sort-price-desc': 'Price Desc',
+    'no products': 'No Products Found'
   },
   '/product':{
     'add to cart': 'add to cart',

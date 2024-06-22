@@ -9,7 +9,7 @@ import { IProduct } from "../types/entities";
  */
 const fetchProductByIdAndName = async (id: number, name: string): Promise<IProduct | null> => {
   try {
-    const qResult = await sql<IProduct>`
+    const queryResult = await sql<IProduct>`
       SELECT 
         id,
         name, 
@@ -18,14 +18,10 @@ const fetchProductByIdAndName = async (id: number, name: string): Promise<IProdu
         sale_percentage     AS "salePercentage", 
         description, 
         description_ge      AS "descriptionGe",
-        light_requirement   AS "lightReq", 
-        watering_needs      AS "wateringNeed", 
         growth_rate         AS "growthRate", 
         size, 
-        pet_friendly        AS "petFriendly", 
         flowering, 
         imgUrl              AS "imgUrl",
-        imageUrls           AS "imgUrls",
         category
       FROM 
         products
@@ -33,7 +29,7 @@ const fetchProductByIdAndName = async (id: number, name: string): Promise<IProdu
         id = ${id} and name = ${name}
     `;
 
-    return qResult.rows[0] || null;
+    return queryResult.rows[0] || null;
 
   } catch (error) {
 

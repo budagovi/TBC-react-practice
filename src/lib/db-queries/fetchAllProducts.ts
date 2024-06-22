@@ -18,14 +18,10 @@ const fetchAllProducts = async (): Promise<IProduct[] | null> => {
         sale_percentage     AS "salePercentage", 
         description, 
         description_ge      AS "descriptionGe",
-        light_requirement   AS "lightReq", 
-        watering_needs      AS "wateringNeed", 
         growth_rate         AS "growthRate", 
         size, 
-        pet_friendly        AS "petFriendly", 
         flowering, 
         imgUrl              AS "imgUrl",
-        imageUrls           AS "imgUrls",
         category
       FROM 
         products

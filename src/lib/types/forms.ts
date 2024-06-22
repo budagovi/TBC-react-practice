@@ -1,35 +1,10 @@
-/**
- * ```typescript
- *  {
-      email: string,
-      password: string,
-      isRemembered: boolean
-    }
- * ```
- */
-export interface ISignInFormData {
+export type ISignInFormData = {
   email: string,
   password: string,
   isRemembered: boolean
 }
 
-/**
- * ```typescript
- *  {
-      firstname: string,
-      lastname: string,
-      gender: string | null,
-      dobMilSecs: number | null,
-      address: string,
-      mobile: string,
-      email: string,
-      password: string,
-      confirm: string,
-      agree: boolean
- *  }
- * ```
- */
-export interface ISignUpFormData {
+export type ISignUpFormData = {
   firstname: string,
   lastname: string,
   gender: string | null,
@@ -42,17 +17,7 @@ export interface ISignUpFormData {
   agree: boolean
 }
 
-/**
- * ```typescript
- *  {
-      name: string,
-      email: string,
-      phone: string,
-      message: string
- *  }
- * ```
- */
-export interface IContactFormData {
+export type IContactFormData = {
   name: string,
   email: string,
   mobile: string,

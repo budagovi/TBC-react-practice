@@ -1,0 +1,82 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.wrapper img {
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+
+.nameHolder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-right: auto;
+  padding: 0.1rem 0;
+}
+
+.nameHolder>span {
+  font-weight: 500;
+  color: var(--black);
+  font-size: 14x;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--placeholderColor);
+  border-radius: 0.25rem;
+}
+
+.actions span {
+  padding-inline: 0.3rem;
+  font-size: 12px;
+}
+
+.actions button {
+  font-size: 20px;
+  padding-inline: 0.5rem;
+  height: 100%;
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: .1s ease-in-out;
+}
+
+.actions button:hover {
+  background-color: var(--greyshGreen);
+}
+
+.priceHolder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0.1rem 0;
+}
+
+.icon {
+  --size: 18px;
+  height: var(--size);
+  width: var(--size);
+  color: var(--red);
+  opacity: 0.85;
+  transition: var(--textHoverTransition);
+  cursor: pointer;
+}
+
+.icon:hover {
+  opacity: 1;
+}
+
+.priceHolder>span {
+  font-weight: 700;
+  color: var(--black);
+}

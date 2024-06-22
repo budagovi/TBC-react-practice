@@ -4,19 +4,17 @@ import style from './Header.module.css';
 // --- Components
 import LocalSwitcher from './LocaleSwitcher';
 import ProfileDropDown from './ProfileDropDown';
+import CartIcon from './CartIcon';
 // import ThemeToggle from './ThemeToggle';
 // --- UI
 import Button from '@/src/UI/Button/Button';
 // --- next/react api
 import { usePathname, useRouter } from 'next/navigation';
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense } from 'react';
 import Link from 'next/link';
 // --- next-internationalization api
 import { useScopedI18n } from '@/src/lib/next-internationalization/client';
-// --- hooks
-import useCartContext from '@/src/hooks/useCartContext';
-// --- react-icons
-import { FaCartShopping } from "react-icons/fa6";
+
 
 interface IProps {
   isLoggedIn: boolean
@@ -30,7 +28,6 @@ const Header = ({ isLoggedIn }: IProps) => {
   // -=-=-=- Internationalization -=-=-=-
 
   const t = useScopedI18n('header')
-
   const pathname = usePathname();
 
   // expnad banner with image if user is on home route
@@ -40,15 +37,6 @@ const Header = ({ isLoggedIn }: IProps) => {
   const isAuth = pathname === '/sign-in' || pathname === '/sign-up';
 
   const router = useRouter();
-
-  // get total amount of cart items and render with no SSR
-  const ctx = useCartContext();
-  const { totalAmount } = ctx;
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   return (
     <header className={`${isRootPage ? style.banner : style.wrapper} ${isAuth ? style.lightFont : null}`}>
@@ -84,11 +72,7 @@ const Header = ({ isLoggedIn }: IProps) => {
             className={style.textLink}>
             {t('contact')}
           </Link>
-
-          <Link href={`/cart`} className={style.cartIconWrapper}>
-            {isClient ? <div >{totalAmount}</div> : <div>0</div>}
-            <FaCartShopping className={style.cartIcon} />
-          </Link>
+          <CartIcon />
           {isLoggedIn ?
             <ProfileDropDown currentPath={pathname} /> :
             <Button

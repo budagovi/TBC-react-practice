@@ -42,7 +42,9 @@ const Product = async ({ product }: IProps) => {
       <div className={style.information}>
         <h2>{locale === 'en' ? product.name : product.nameGe}</h2>
         {price}
-        <ProductActions />
+        <ProductActions
+          product={product}
+        />
         <hr className='light' />
         <table>
           <tbody>
