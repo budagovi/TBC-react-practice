@@ -16,7 +16,7 @@ interface IProps {
 }
 const CartItem = ({ item }: IProps) => {
 
-  const { name, price, salePercentage, qty, nameGe } = item;
+  const { name, price, salePercentage, qty } = item;
   const pr = (price / 100 * salePercentage).toFixed(2)
 
   const ctx = useCartContext();
