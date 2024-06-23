@@ -47,8 +47,10 @@ const ProfileDropDown = ({ currentPath }: IProps) => {
       type: 'success'
     })
 
-    if (!publicRoutes.includes(currentPath))
+    if (!publicRoutes.includes(currentPath)) {
       router.push('/')
+      window.location.reload();
+    }
   }
 
   const items = [

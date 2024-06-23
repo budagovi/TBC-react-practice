@@ -12,7 +12,7 @@ import { IActionResponse } from "@/src/lib/types/responses";
  * if success is true, it additionally returns payload object with "data" property, that holds the actual data
  */
 
-export const getProduct = async (nameAndId: string): Promise<IActionResponse> => {
+const getProduct = async (nameAndId: string): Promise<IActionResponse> => {
 
   try {
     const response = await fetch(BASE_URL + '/api/products/' + nameAndId, {
@@ -47,3 +47,5 @@ export const getProduct = async (nameAndId: string): Promise<IActionResponse> =>
     };
   }
 }
+
+export default getProduct;

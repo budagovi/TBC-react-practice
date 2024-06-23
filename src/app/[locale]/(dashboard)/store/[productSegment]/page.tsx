@@ -1,15 +1,16 @@
 // --- actions
-import { getProduct } from "@/src/server actions/getProduct";
+import getProduct from "@/src/server actions/getProduct";
 // --- types
-import { IProduct } from "@/src/lib/types/entities";
+import type { IProduct } from "@/src/lib/types/entities";
 // --- next-internationalization
 import { getStaticParams } from "@/src/lib/next-internationalization/server";
 import { setStaticParamsLocale } from "next-international/server";
 import { Locale } from "@/src/lib/next-internationalization/i18n.config";
-import fetchAllProductIdAndNames from "@/src/server actions/fetchAllProductIdAndNames";
 // --- helpers
 import formatProductPathSegment from "@/src/utilities/helpers/formatProductPathSegment";
 // --- actions
+import fetchAllProductIdAndNames from "@/src/app/api/_queries/fetchAllProductIdAndNames";
+// --- components
 import ProductDetails from "@/src/components/Product Page/ProductDetails";
 import ProductNav from "@/src/components/Product Page/ProductNav";
 

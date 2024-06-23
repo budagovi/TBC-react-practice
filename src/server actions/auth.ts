@@ -64,7 +64,7 @@ export async function login(formData: ISignInFormData): Promise<IActionResponse>
 }
 
 /**
- * Server Action for logging out and removing token from cookeis
+ * Removes token from cookeis
  */
 export async function logout() {
   // Destroy the session

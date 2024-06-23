@@ -5,10 +5,10 @@ import { Locale } from "@/src/lib/next-internationalization/i18n.config";
 import { setStaticParamsLocale } from "next-international/server";
 import { getStaticParams } from '@/src/lib/next-internationalization/server';
 // --- actions
-import { getProducts } from '@/src/server actions/getProducts';
+import getProducts from '@/src/server actions/getProducts';
 // --- types
-import { IProduct } from '@/src/lib/types/entities';
-import { IStoreTag } from '@/src/hooks/useStoreQueryParams';
+import type { IProduct } from '@/src/lib/types/entities';
+import type { IStoreTag } from '@/src/hooks/useStoreQueryParams';
 // --- utils/checkers
 import isStoreTag from '@/src/utilities/checkers/isStoreTag';
 

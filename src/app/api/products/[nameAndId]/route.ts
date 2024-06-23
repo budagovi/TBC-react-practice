@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { IProduct } from "@/src/lib/types/entities";
 import { ICustomApiResponse } from "@/src/lib/types/responses";
 // --- query
-import fetchProductByIdAndName from "@/src/server actions/fetchProductByIdAndName";
+import fetchProductByIdAndName from "../../_queries/fetchProductByIdAndName";
 
 
 interface IProps {

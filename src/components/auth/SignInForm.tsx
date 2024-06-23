@@ -104,6 +104,7 @@ const SignInForm = () => {
               duration: 2
             })
             router.replace('/profile')
+            window.location.reload();
             return;
           }
 

@@ -62,7 +62,7 @@ const CartIcon = () => {
           </div>
           <div className={style.actions}>
             {ctx.items.length > 0 && <Button>view cart</Button>}
-            {ctx.items.length === 0 && <Button onClick={() => router.push('/store')}>start shopping</Button>}
+            {ctx.items.length === 0 && <Button onClick={() => { router.push('/store'); toggleDrawer() }}>start shopping</Button>}
           </div>
         </div>
       </Drawer>

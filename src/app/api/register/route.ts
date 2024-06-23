@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     }
 
     const dateISOString = dayjs(formData.dobMilSecs).toDate().toISOString().split('T')[0]
-    await sql`INSERT INTO users (
+    const queryResult = await sql`INSERT INTO users (
       firstname, 
       lastname, 
       dob, 
@@ -44,10 +44,11 @@ export async function POST(request: NextRequest) {
       ${formData.address}, 
       ${formData.email}, 
       ${formData.password}                    
-    );`
+    )
+      RETURNING id;`
 
-    return NextResponse.json<ICustomApiResponse>(
-      { message: "User Registered successfully" },
+    return NextResponse.json(
+      queryResult.rows[0].id,
       { status: 200 }
     );
 

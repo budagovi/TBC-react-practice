@@ -5,7 +5,7 @@
 // --- CSS
 import style from './CartItem.module.css';
 // --- Types
-import { ICartItem } from '@/src/interfaces/cart-context';
+import { ICartItem } from '@/src/lib/types/cart-context';
 // --- Hooks
 import useCartContext from '@/src/hooks/useCartContext';
 // -- Components
@@ -16,13 +16,13 @@ interface IProps {
 }
 const CartItem = ({ item }: IProps) => {
 
-  const { title, price, discountPercentage, amount } = item;
-  const pr = (price / 100 * discountPercentage).toFixed(2)
+  const { name, price, salePercentage, qty, nameGe } = item;
+  const pr = (price / 100 * salePercentage).toFixed(2)
 
   const ctx = useCartContext();
 
   const addItemHandler = () => {
-    ctx.addItem({ ...item, amount: 1 })
+    ctx.addItem({ ...item, qty: 1 })
   }
 
   const removeItemHandler = () => {
@@ -32,17 +32,17 @@ const CartItem = ({ item }: IProps) => {
 
   return (
     <tr className={style.wrapper}>
-      <td>{title}</td>
+      <td>{name}</td>
       <td>${pr}</td>
       <td>
         <ItemActions
           increaseItem={addItemHandler}
           decreaseItem={removeItemHandler}
         >
-          {amount}
+          {qty}
         </ItemActions>
       </td>
-      <td>{(+pr * amount).toFixed(2)}</td>
+      <td>{(+pr * qty).toFixed(2)}</td>
     </tr>
   )
 }

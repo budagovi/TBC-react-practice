@@ -29,6 +29,7 @@ import isSignUpFormValid from '@/src/utilities/checkers/isSignUpFormValid';
 import { ISignUpFormData } from '@/src/lib/types/forms';
 // --- actions
 import { login } from '@/src/server actions/auth';
+import createUserDbTable from '@/src/server actions/createUserDbTable';
 
 const initialFormValue: ISignUpFormData = {
   firstname: '',
@@ -121,6 +122,8 @@ const SignUpForm = () => {
           })
 
           if (response.ok) {
+            const newUserId = await response.json()
+            await createUserDbTable(newUserId)
             message.open({
               key,
               type: 'success',

@@ -1,12 +1,17 @@
 'use client'
-// react api
-import { ReactNode, useReducer, useEffect, createContext } from "react"
-// hooks
+// --- react api
+import { ReactNode, useReducer, useEffect, createContext, useState } from "react"
+// --- hooks
 import useLocalStorage from "../hooks/useLocalStorage";
-// constants
+// --- constants
 import { CART_LOCSTORE_KEY } from "../lib/constants";
-// types
+// --- types
 import type { ICartAction, ICartContext, ICartItem, ICartState } from "../lib/types/cart-context";
+import type { IActionResponse } from "../lib/types/responses";
+// --- server actions
+import getActiveUser from "@/src/server actions/getActiveUser";
+import getDatabaseCart from "../server actions/getDatabaseCart";
+import setDatabaseCart from "../server actions/setDatabaseCart";
 
 // create context
 export const CartContext = createContext<ICartContext>({} as ICartContext);
@@ -97,11 +102,30 @@ const CartContextProvider = ({ children }: IProps) => {
 
   const [storedItems, setStoredItems] = useLocalStorage<ICartState>(CART_LOCSTORE_KEY, initialValue)
   const [state, dispatch] = useReducer(cartReducer, storedItems);
+  const [user, setUser] = useState<any | null>(null);
 
+  // detect if user is authorized (override localstorage cart if needed)
+  useEffect(() => {
+    const getSession = async () => {
+      const user = await getActiveUser();
+      if (!!user) {
+        const dbCartState: IActionResponse = await getDatabaseCart(user.id)
+
+        if (dbCartState.success && dbCartState.payload.data.totalAmount > 0)
+          dispatch({ type: 'SET_CART', payload: dbCartState.payload.data })
+      }
+      setUser(user)
+    }
+    getSession();
+  }, [])
+
+  // update localstorage (and database if needed)
   useEffect(() => {
     setStoredItems(state)
-  }, [state])
-
+    if (user) {
+      setDatabaseCart(state, user.id)
+    }
+  }, [state, user])
 
   const addItemHandler = (item: ICartItem) => {
     dispatch({ type: 'ADD_ITEM', payload: item })
@@ -133,6 +157,7 @@ const CartContextProvider = ({ children }: IProps) => {
       {children}
     </CartContext.Provider>
   )
+
 }
 
 export default CartContextProvider;

@@ -11,7 +11,7 @@ import { IActionResponse } from "@/src/lib/types/responses";
  * @returns object containing execution success property [boolean].
  * if success is true, it additionally returns payload object with "data" property, that holds the actual data
  */
-export const getProducts = async (): Promise<IActionResponse> => {
+const getProducts = async (): Promise<IActionResponse> => {
 
   try {
     const response = await fetch(BASE_URL + '/api/products', { next: { revalidate: 0 } });
@@ -39,3 +39,5 @@ export const getProducts = async (): Promise<IActionResponse> => {
     };
   }
 }
+
+export default getProducts;
