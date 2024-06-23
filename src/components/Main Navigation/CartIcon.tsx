@@ -5,13 +5,15 @@ import { FaCartShopping } from "react-icons/fa6";
 // --- antd
 import { Drawer } from 'antd';
 // --- react/next api
-//import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 // --- hooks
 import useCartContext from '@/src/hooks/useCartContext';
-import DrawerItem from './DrawerItem';
+// --- UI
 import Button from '@/src/UI/Button/Button';
-import { useRouter } from 'next/navigation';
+// --- components
+import DrawerItem from './DrawerItem';
+import NavigateToCartButton from './NavigateToCartButton';
 
 /**
  * Cart icon that shows total amoun of cart items and onClick opens drawer from right
@@ -23,12 +25,10 @@ const CartIcon = () => {
   const { totalAmount } = ctx;
   const router = useRouter();
 
-
   const [isClient, setIsClient] = useState(false)
   useEffect(() => {
     setIsClient(true)
   }, [])
-
 
   const [open, setOpen] = useState(false);
   const toggleDrawer = () => {
@@ -45,7 +45,7 @@ const CartIcon = () => {
         <FaCartShopping className={style.cartIcon} />
       </button>
 
-      {/* -=-=-=-=- Modal -=-=-=-=- */}
+      {/* -=-=-=-=- Drawer -=-=-=-=- */}
       <Drawer
         title="Cart"
         onClose={toggleDrawer}
@@ -61,7 +61,7 @@ const CartIcon = () => {
             ) : <span className={style.empty}>Cart is empty</span>}
           </div>
           <div className={style.actions}>
-            {ctx.items.length > 0 && <Button>view cart</Button>}
+            {ctx.items.length > 0 && <NavigateToCartButton closeDrawer={toggleDrawer} />}
             {ctx.items.length === 0 && <Button onClick={() => { router.push('/store'); toggleDrawer() }}>start shopping</Button>}
           </div>
         </div>
