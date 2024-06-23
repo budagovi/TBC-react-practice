@@ -60,6 +60,7 @@ const FeaturedProducts = ({ }: IProps) => {
               price={item.price}
               category={item.category}
               sale={item.salePercentage}
+              imgUrl={item.imgUrl}
             />
           </div>
         ))

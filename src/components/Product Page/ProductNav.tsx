@@ -14,14 +14,14 @@ const ProductNav = ({ descriptionText, descriptionTextGe }: IProps) => {
   const locale = useCurrentLocale();
 
   const [currSlide, setCurrSlide] = useState(0);
-  
+
   const description = (
-    <div className={style.description}>
+    <div className={style.description} key={'description'}>
       {locale === 'en' ? descriptionText : descriptionTextGe}
     </div>
   )
 
-  const slides = [description, <ProductReviews />]
+  const slides = [description, <ProductReviews key={'reviews'} />]
 
   return (
     <div className={style.wrapper}>
