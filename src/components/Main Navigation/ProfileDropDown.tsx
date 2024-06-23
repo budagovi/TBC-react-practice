@@ -15,6 +15,8 @@ import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 import { logout } from '@/src/server actions/auth';
 // --- public routes
 import { publicRoutes } from '@/src/lib/jose-auth/routes';
+// --- constants
+import { CART_LOCSTORE_KEY } from '@/src/lib/constants';
 
 interface IProps {
   currentPath: string
@@ -39,7 +41,7 @@ const ProfileDropDown = ({ currentPath }: IProps) => {
     })
 
     await logout()
-
+    localStorage.removeItem(CART_LOCSTORE_KEY);
     message.open({
       key: 'logout',
       content: t('logged out'),

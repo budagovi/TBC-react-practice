@@ -19,12 +19,19 @@
 }
 
 /* Modal */
+.ant-modal-body {
+  height: fit-content !important;
+  display: flex;
+  gap: 0;
+}
 .ant-modal-content {
   padding: 0 !important;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 0;
+  width: fit-content !important;
+  margin: 0 auto !important;
 }
 
 .ant-modal-footer {

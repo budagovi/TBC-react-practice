@@ -1,24 +1,28 @@
 // --- Compoents
-import Cart from "@/src/components/Cart Page/Cart";
+
 // --- next-internationalization api
 import { Locale } from "@/src/lib/next-internationalization/i18n.config";
 import { setStaticParamsLocale } from "next-international/server";
 import { getStaticParams } from '@/src/lib/next-internationalization/server';
+import CheckoutForm from "@/src/components/Checkout Page/CheckoutForm";
+
 
 export function generateStaticParams() {
   return getStaticParams()
 }
 
-interface IProps {
+interface Props {
   params: {
     locale: Locale
   }
 }
-const CartPage = ({ params: { locale } }: IProps) => {
+const CheckoutPage = ({ params: { locale } }: Props) => {
 
   // static rendering for both languages on build
   setStaticParamsLocale(locale)
-  return <Cart />
+  return (
+    <CheckoutForm />
+  )
 }
 
-export default CartPage;
+export default CheckoutPage;

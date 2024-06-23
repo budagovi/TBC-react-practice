@@ -23,3 +23,11 @@ export type IContactFormData = {
   mobile: string,
   message: string
 }
+
+export type ICheckoutFormData = {
+  address: string,
+  mobile: string,
+  extraInfo: string | null,
+  shippingMethod: string | number | readonly string[] | undefined,
+  paymentMethod: string | number | readonly string[] | undefined,
+}

@@ -41,7 +41,6 @@ const NavigateToCartButton = ({ closeDrawer }: IProps) => {
       router.push('/cart');
       closeDrawer();
     }
-
     else
       setIsModalOpen(true);
   }

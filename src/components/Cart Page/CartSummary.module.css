@@ -1,0 +1,23 @@
+.wrapper {
+  border: 1px solid var(--greenBg);
+  border-radius: 0.25rem;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: fit-content;
+}
+
+.wrapper > span {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.wrapper div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper hr {
+  margin-block: 0.4rem;
+}

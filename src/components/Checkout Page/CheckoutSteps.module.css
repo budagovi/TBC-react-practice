@@ -1,0 +1,14 @@
+.stepsWrapper {
+  width: max(400px, 80%);
+  height: 0;
+  animation: show .3s linear forwards;
+}
+
+@keyframes show {
+  from {
+    height: 0;
+  }
+  to {
+    height: fit-content;
+  }
+}

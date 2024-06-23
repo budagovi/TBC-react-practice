@@ -25,7 +25,10 @@
   transition: transform 0.3s ease-out;
 }
 
+.modalImg {
+  width: clamp(320px, 40vw, 520px);
+}
+
 .imgWrapper:hover img {
   transform: scale(1.3);
 }
-

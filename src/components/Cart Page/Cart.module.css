@@ -1,0 +1,34 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 5rem;
+}
+
+/* Cart list */
+.cartList {
+  display: flex;
+  flex-direction: column;
+  --gap: 2.5rem;
+  gap: var(--gap);
+}
+
+.cartList>div {
+  position: relative;
+}
+
+.cartList>div:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  border-radius: 1rem;
+  background-color: var(--greenBg);
+  position: absolute;
+  bottom: calc(var(--gap)/-2);
+  opacity: 0.3;
+}
+
+
+.cartList>div:nth-last-of-type(1)::after {
+  display: none;
+}

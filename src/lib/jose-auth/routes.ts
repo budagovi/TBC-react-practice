@@ -4,7 +4,7 @@
  * @type {string[]}
  */
 export const publicRoutes: string[] = [
-  '/cart', '/contact', '/store', '/blogs', '/en', '/ka'
+  '/contact', '/store', '/blogs', '/en', '/ka'
 ]
 
 /**
