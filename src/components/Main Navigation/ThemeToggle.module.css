@@ -3,16 +3,15 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	aspect-ratio: 1/1;
-	height: 3rem;
-	width: auto;
+	--size: 26px;
+	width: var(--size);
+	height: var(--size);
 	margin: 0;
 	background-color: transparent;
 	border: none;
 }
 
-.toggle	svg {
+.toggle svg {
 	display: block;
 	position: relative;
-	fill: var(--primary-bright);
 }

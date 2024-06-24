@@ -18,6 +18,10 @@
   position: relative;
 }
 
+:root[data-theme='dark'] .item {
+  box-shadow: 2px 2px 10px #363636;
+}
+
 .item span {
   text-decoration: none;
   margin-bottom: 2px;
@@ -45,6 +49,10 @@
 
 .item:hover .overlay {
   background-color: rgba(6, 34, 11, 0.479);
+}
+
+:root[data-theme='dark'] .item:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.571);
 }
 
 .item:hover span {
@@ -81,6 +89,10 @@
   align-items: flex-end;
   padding: 2em;
   transition: .3s ease-in-out;
+}
+
+:root[data-theme='dark'] .overlay {
+  background-color: rgba(1, 4, 1, 0.438);
 }
 
 @media (max-width: 900px) {

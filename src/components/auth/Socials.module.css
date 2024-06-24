@@ -6,7 +6,7 @@
 }
 
 .socialsLabel span {
-  background: var(--bodyBg);
+  background: var(--body);
   position: relative;
   padding-inline: 0.5rem;
   z-index: 3;

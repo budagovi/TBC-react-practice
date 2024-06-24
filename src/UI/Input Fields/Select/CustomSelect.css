@@ -7,6 +7,10 @@
   gap: 0.3rem;
 }
 
+.select-input-wrapper * {
+  transition: .2s ease-in-out !important; 
+}
+
 .select-input-wrapper label {
   font-weight: 400;
   font-size: 15px;
@@ -22,7 +26,11 @@
   border: 1px solid var(--greyshGreen);
   overflow: hidden;
   position: relative;
-  transition: .2s ease-in-out;
+  transition: .2s ease-in-out !important;
+}
+
+:root[data-theme='dark'] .select-input-wrapper .ant-select {
+  background-color: transparent;
 }
 
 .select-input-wrapper .ant-select:hover,
@@ -31,7 +39,7 @@
 }
 
 .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
-  background: inherit;
+  background: transparent;
   width: 100%;
   padding: 0.75rem 1rem;
   font-size: 14px;
@@ -40,6 +48,7 @@
   display: flex;
   align-items: center;
   border-color: transparent;
+  transition: .2s ease-in-out !important;
 }
 
 .ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
@@ -87,6 +96,9 @@
   color: var(--red);
 }
 
+.select-input-wrapper.invalid label{
+  color: var(--grey);
+}
 .select-input-wrapper.shaking {
   animation: shake 0.3s;
 }

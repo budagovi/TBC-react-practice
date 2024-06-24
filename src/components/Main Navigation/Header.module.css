@@ -11,11 +11,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: .3s ease-in,
+}
+
+.banner * {
   color: var(--fore);
 }
 
+:root[data-theme='dark'] .banner {
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
+    url('../../../public/images/banner.jpg');
+}
+
 .banner .bannerText {
-  color: var(--fore);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,13 +49,13 @@
 }
 
 /* Header appearence on other routes */
-.wrapper {
+.wrapper * {
   color: var(--greenFore);
 }
 
 /* On auth segments make font white */
-.lightFont {
-  color: var(--bodyBg);
+.lightFont * {
+  color: var(--fore);
 }
 
 .wrapper .bannerText {
@@ -63,9 +72,12 @@
 .head section {
   display: flex;
   justify-content: center;
-  color: var(--fore);
   font-size: 13px;
   padding-block: 0.3rem;
+}
+
+.head section * {
+  color: var(--fore);
 }
 
 /* -=- Navigation Bar -=- */
@@ -75,7 +87,6 @@
   justify-content: space-between;
   align-items: center;
   padding-block: 0.8rem;
-  color: inherit
 }
 
 .navWrapper h1 {
@@ -85,11 +96,6 @@
 .navWrapper .textLink:hover,
 .navWrapper button:hover {
   color: var(--foreHover);
-}
-
-.navWrapper h1:hover,
-.navWrapper a:has(h1) {
-  color: inherit;
 }
 
 nav.links {
@@ -104,7 +110,6 @@ nav.links span {
   text-transform: capitalize;
   text-decoration: none;
   text-transform: capitalize;
-  color: inherit;
   transition: var(--textHoverTransition);
   font-weight: 700;
 }

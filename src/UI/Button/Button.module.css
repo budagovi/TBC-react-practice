@@ -1,6 +1,6 @@
 .btn {
   font-size: 15px;
-  color: var(--bodyBg);
+  color: var(--fore);
   background-color: var(--greenBg);
   padding: 0.8rem 2.5rem;
   border-radius: 0.25rem;
@@ -9,6 +9,10 @@
   outline: none;
   cursor: pointer;
   transition: .15s ease-in;
+}
+
+:root[data-theme='dark'] .btn:hover {
+  background-color: #333333;
 }
 
 .btn:hover {
@@ -20,7 +24,7 @@
 .btn.light {
   background-color: var(--bodyBg);
   box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.2);
-  color: var(--greenBg);
+  color: var(--greenFore);
   font-weight: 500;
 }
 
@@ -28,6 +32,7 @@
   color: var(--greenFore);
   opacity: 0.85;
 }
+
 .btn:disabled {
   color: var(--bodyBg);
   background-color: var(--grey);

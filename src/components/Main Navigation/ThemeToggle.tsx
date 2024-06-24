@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import style from './ThemeToggle.module.css'
 import Script from "next/script"
 
-
 export default function ThemeToggle() {
 
   const [theme, setTheme] = useState<any>()

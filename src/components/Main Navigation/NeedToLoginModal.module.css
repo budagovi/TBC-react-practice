@@ -10,7 +10,7 @@
   align-items: center;
   padding: 1rem 2rem 1.5rem;
   gap: 1rem;
-  background-color: var(--bodyBg);
+  background-color: var(--body);
 }
 
 .modalContent span{

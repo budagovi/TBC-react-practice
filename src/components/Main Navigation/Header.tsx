@@ -5,7 +5,7 @@ import style from './Header.module.css';
 import LocalSwitcher from './LocaleSwitcher';
 import ProfileDropDown from './ProfileDropDown';
 import CartIcon from './CartIcon';
-// import ThemeToggle from './ThemeToggle';
+import ThemeToggle from './ThemeToggle';
 // --- UI
 import Button from '@/src/UI/Button/Button';
 // --- next/react api
@@ -48,7 +48,6 @@ const Header = ({ isLoggedIn }: IProps) => {
           <span>{t('summer sal-')}</span>
         </section>
       </div>
-
       {/*   -=-=-=- Navigation Bar -=-=-=-   */}
 
       <div className={`${style.navWrapper} gl-max-width`}>
@@ -83,6 +82,7 @@ const Header = ({ isLoggedIn }: IProps) => {
               {t('sign in')}
             </Button>
           }
+          <ThemeToggle />
         </nav>
       </div>
 

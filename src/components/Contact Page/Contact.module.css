@@ -56,7 +56,7 @@
 .iconDetail span {
   text-transform: capitalize;
   font-weight: 600;
-  color: var(--greenBg);
+  color: var(--greenFore);
 }
 
 .details section>span {

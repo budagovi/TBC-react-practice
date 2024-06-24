@@ -53,6 +53,9 @@
   bottom: 0;
 }
 
+:root[data-theme='dark'] .auth_layout .halfTransparentLayer {
+  background-color: #00000086;
+}
 
 .cart_layout {
   display: grid;

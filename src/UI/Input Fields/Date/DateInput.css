@@ -11,6 +11,7 @@
   font-weight: 400;
   font-size: 15px;
   margin-inline-start: 0.2rem;
+  color: var(--grey);
 }
 
 .date-input-wrapper .ant-picker {
@@ -28,6 +29,11 @@
   overflow: hidden;
   transition: .2s ease-in-out;
 }
+
+:root[data-theme='dark'] .date-input-wrapper .ant-picker {
+  background-color: transparent;
+}
+ 
 
 .date-input-wrapper .ant-picker-focused,
 .date-input-wrapper .ant-picker:hover {

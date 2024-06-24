@@ -20,8 +20,12 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  background-color: var(--bodyBg);
+  background-color: var(--body);
   position: relative;
+}
+
+body * {
+  transition: color .2s ease-in, background-color .2s ease-in;
 }
 
 button {
@@ -29,6 +33,7 @@ button {
   border: none;
   outline: none;
 }
+
 /* -=- Radio Input -=- */
 input[type="radio"] {
   position: absolute;
@@ -38,7 +43,7 @@ input[type="radio"] {
 }
 
 /* Create a custom radio button */
-input[type="radio"] + span {
+input[type="radio"]+span {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -50,14 +55,14 @@ input[type="radio"] + span {
 }
 
 /* Custom radio button checked state */
-input[type="radio"]:checked + span {
+input[type="radio"]:checked+span {
   border-color: var(--greenBg);
   background-color: var(--greenBg);
   transition: 0;
 }
 
 /* Inner circle for checked state */
-input[type="radio"]:checked + span::before {
+input[type="radio"]:checked+span::before {
   content: '';
   display: block;
   width: 15px;
@@ -74,9 +79,11 @@ input[type="radio"]:checked + span::before {
   /* 1b3c35 004F44 */
   --greenBg: #1b3c35;
   --greenFore: #1b3c35;
+  --green: #1b3c35;
   --greyshGreen: #dce1de;
   --red: #db4444;
   --bodyBg: #F7F8FA;
+  --body: #F7F8FA;
   --black: #272727;
   --grey: #808080;
   --darkGrey: #5a5a5a;
@@ -91,6 +98,30 @@ input[type="radio"]:checked + span::before {
   --boxShadow: #8a8a8a;
 }
 
+:root[data-theme='dark'] {
+  --greenBg: #1E1E1E;
+  --greenFore: #9a9a9a;
+  --green: #26a778;
+  --greyshGreen: #4e4e4e;
+
+  --placeholderColor: #878787;
+
+  --red: #db4444;
+  --bodyBg: #1E1E1E;
+  --body: #121212;
+  --contentBackground: #2A2A2A;
+  --black: #bfbfbf;
+  --grey: #CCCCCC;
+  --darkGrey: #AAAAAA;
+  --fore: #CCCCCC;
+  --foreHover: #A6A6A6;
+  --foreDark: #333333;
+
+  /* Border and Shadow */
+  --greyBorder: 1px solid #444444;
+  --boxShadow: #444444;
+}
+
 /* -=- Global Variable Properties -=- */
 :root {
   --shadow: 0 2px 3px #0000005e;
@@ -98,8 +129,14 @@ input[type="radio"]:checked + span::before {
   --textHoverTransition: .2s ease-in;
 }
 
+:root[data-theme='dark'] {
+  --shadow: 0 2px 3px #0000005e;
+  --cardShadow: 0 1px 6px 0px #0002;
+}
+
+
 ::selection {
-  background-color: rgb(61, 127, 97);
+  background-color: rgb(50, 103, 80);
   color: #fff;
 }
 

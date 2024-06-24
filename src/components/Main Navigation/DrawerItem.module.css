@@ -26,6 +26,10 @@
   font-size: 14x;
 }
 
+:root[data-theme='dark'] .nameHolder>span {
+  color: #272727;
+}
+
 .actions {
   display: flex;
   align-items: center;
@@ -79,4 +83,8 @@
 .priceHolder>span {
   font-weight: 700;
   color: var(--black);
+}
+
+:root[data-theme='dark'] .priceHolder>span {
+  color: #272727;
 }
