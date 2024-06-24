@@ -1,5 +1,5 @@
 .stepsWrapper {
-  width: max(400px, 80%);
+  width: 100%;
   height: 0;
   animation: show .3s linear forwards;
 }

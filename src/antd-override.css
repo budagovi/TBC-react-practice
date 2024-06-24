@@ -37,3 +37,11 @@
 .ant-modal-footer {
   margin: 0 !important;
 }
+
+/* Steps */
+
+:where(.css-dev-only-do-not-override-6688ir).ant-steps .ant-steps-item-finish .ant-steps-item-icon,
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon {
+  background-color: #dce1de !important;
+  border-color: #dce1de !important;
+}

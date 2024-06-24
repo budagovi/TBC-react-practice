@@ -1,11 +1,20 @@
-import { ChangeEvent, memo } from 'react';
+// --- style
 import style from '../CheckoutForm.module.css';
+// --- react api
+import { ChangeEvent, memo } from 'react';
+// --- react-icons
+import { FiPlus } from 'react-icons/fi';
+// --- components
+import PaymentItem from '../PaymentItem';
+// --- types
+import type { ICreditCard } from '@/src/lib/types/entities';
+// --- next-internationalization
+import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 
 interface IProps {
   currSlide: number,
-  paymentMethod: string | number | readonly string[] | undefined,
   changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
-  formSubmitted?: boolean
+  creditCards: ICreditCard[]
 }
 
 /**
@@ -15,10 +24,11 @@ interface IProps {
 const Payments = memo(function
   Payments({
     currSlide,
-    paymentMethod,
     changeHandler,
-    formSubmitted
+    creditCards: cards
   }: IProps) {
+
+  const t = useScopedI18n('/checkout');
 
   return (
     <div className={`
@@ -26,14 +36,17 @@ const Payments = memo(function
       ${currSlide === 2 ? style.slideHidden : null} 
       ${style.embla__slide}
     `}>
-      <div>
-        <label htmlFor="1">Card</label>
-        <input type="radio" name="paymentMethod" id="1" onChange={changeHandler} value={paymentMethod} />
-      </div>
-      <div>
-        <label htmlFor="2">Cash</label>
-        <input type="radio" name="paymentMethod" id="2" onChange={changeHandler} value={paymentMethod} />
-      </div>
+      {cards.length > 0 ?
+        cards.map((card, idx) =>
+          <PaymentItem
+            key={idx}
+            card={card}
+            id={idx.toString()}
+            changeHandler={changeHandler}
+          />)
+        : <span>{t('no payments')}</span>
+      }
+      <button><FiPlus />{t('add payment')}</button>
     </div>
   )
 })

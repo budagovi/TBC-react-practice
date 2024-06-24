@@ -1,6 +1,6 @@
 'use client'
 // --- style
-import style from './NavigateToCartButton.module.css'
+import style from './NeedToLogInModal.module.css'
 // --- UI
 import Button from '@/src/UI/Button/Button';
 import getActiveUser from '@/src/server actions/getActiveUser';
@@ -9,15 +9,18 @@ import { Modal } from 'antd';
 import { useRouter } from 'next/navigation';
 // --- react api
 import { useEffect, useState } from 'react';
+// --- next-international
+import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 
 interface IProps {
   closeDrawer: () => void
 }
 /** 
- * Modal for user feedback (need to sign in to proceed)
+ * Button that activates feedback modal (to sign in) if user is non-autorized
  */
 const NavigateToCartButton = ({ closeDrawer }: IProps) => {
 
+  const t = useScopedI18n('header')
 
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,7 +56,7 @@ const NavigateToCartButton = ({ closeDrawer }: IProps) => {
 
   return (
     <div className={style.wrapper}>
-      <Button onClick={viewCartHandler}>view cart</Button>
+      <Button onClick={viewCartHandler}>{t('view cart')}</Button>
       <Modal
         open={isModalOpen}
         onOk={toggleModal}
@@ -64,8 +67,8 @@ const NavigateToCartButton = ({ closeDrawer }: IProps) => {
         className={style.modal}
       >
         <div className={style.modalContent}>
-          <span>To proceed, you need to sign in!</span>
-          <Button onClick={goToLoginHandler}>go to login</Button>
+          <span>{t('to proceed')}</span>
+          <Button onClick={goToLoginHandler}>{t('sign in')}</Button>
         </div>
       </Modal>
     </div>

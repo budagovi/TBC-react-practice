@@ -4,7 +4,11 @@ import Button from '@/src/UI/Button/Button';
 import style from './CartSummary.module.css';
 // --- hooks
 import useCartContext from '@/src/hooks/useCartContext';
-import { useRouter } from 'next/navigation';
+import useIsClient from '@/src/hooks/useIsClient';
+// --- next api
+import { usePathname, useRouter } from 'next/navigation';
+// --- next-international
+import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 
 
 /**
@@ -12,42 +16,58 @@ import { useRouter } from 'next/navigation';
  */
 const CartSummary = () => {
 
+  const t = useScopedI18n('/cart');
+
   const router = useRouter();
   const ctx = useCartContext();
+  const pathname = usePathname();
 
   const total = ctx.items.reduce((acc, curr) => acc + curr.qty * curr.price, 0)
   const discount = ctx.items.reduce((acc, curr) => acc + curr.price * curr.salePercentage * curr.qty, 0)
+  const isClient = useIsClient();
+
+  if (!isClient)
+    return null;
+
   return (
     <div className={style.wrapper}>
-      <span>Order Summary</span>
+      <span>{t('summary')}</span>
       <div>
-        <span>Price</span>
+        <span>{t('price')}</span>
         <span>${total.toFixed(2)}</span>
       </div>
 
       <div>
-        <span>Discount</span>
+        <span>{t('discount')}</span>
         <span>${discount.toFixed(2)}</span>
       </div>
 
       <div>
-        <span>Shipping</span>
-        <span>Free</span>
+        <span>{t('shipping')}</span>
+        <span>{t('free')}</span>
       </div>
 
       <div>
-        <span>Coupon Applied</span>
+        <span>{t('coupon applied')}</span>
         <span>$0.00</span>
       </div>
 
       <hr />
 
       <div>
-        <span>total</span>
+        <span>{t('total')}</span>
         <span>${(total - discount).toFixed(2)}</span>
       </div>
 
-      <Button onClick={() => router.push('/checkout')}>Proceed to Checkout</Button>
+      {pathname === '/cart' &&
+        <Button
+          disabled={ctx.items.length === 0}
+          onClick={
+            () => router.push('/cart/checkout')
+          }
+        >
+          {t('proceed to checkout')}
+        </Button>}
     </div>
   )
 }

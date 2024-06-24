@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--black);
+  border-radius: 0.3rem;
+  transition: .15s ease-in-out;
+  width: 100%;
+}
+
+.wrapper label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.wrapper label svg {
+  --size: 24px;
+  width: var(--size);
+  height: var(--size);
+  color: var(--greenFore);
+}
+
+.wrapper label span {
+  font-weight: 600;
+}
+
+.wrapper label span:nth-of-type(3) {
+  color: var(--grey);
+  opacity: 0.7;
+}
+
+.wrapper button {
+  font-size: 16px;
+  position: relative;
+  line-height: 1.6rem;
+  font-weight: 400;
+  cursor: pointer;
+  color: var(--red);
+}

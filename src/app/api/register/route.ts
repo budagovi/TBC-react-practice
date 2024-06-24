@@ -47,8 +47,16 @@ export async function POST(request: NextRequest) {
     )
       RETURNING id;`
 
+
+    const userId = queryResult.rows[0].id
+
+    await sql`
+      INSERT INTO addresses(user_id, address, city, tag)
+      VALUES (${userId}, ${formData.address}, ${formData.city}, 'Home')
+    `
+    
     return NextResponse.json(
-      queryResult.rows[0].id,
+      userId,
       { status: 200 }
     );
 

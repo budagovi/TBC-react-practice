@@ -32,7 +32,7 @@ export async function login(formData: ISignInFormData): Promise<IActionResponse>
         ...formData
       })
     })
-
+    
     if (!response.ok) {
       const data: ICustomApiResponse = await response.json();
 

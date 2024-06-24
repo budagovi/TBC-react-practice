@@ -9,6 +9,7 @@ export type ISignUpFormData = {
   lastname: string,
   gender: string | null,
   dobMilSecs: number | null,
+  city: string,
   address: string,
   mobile: string,
   email: string,
@@ -25,9 +26,13 @@ export type IContactFormData = {
 }
 
 export type ICheckoutFormData = {
-  address: string,
-  mobile: string,
-  extraInfo: string | null,
+  address: string | number | readonly string[] | undefined,
   shippingMethod: string | number | readonly string[] | undefined,
   paymentMethod: string | number | readonly string[] | undefined,
+}
+
+export type INewAddressForm = {
+  city: string,
+  address: string,
+  tag: string
 }

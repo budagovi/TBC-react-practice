@@ -30,7 +30,8 @@ const isSignUpFormValid = (values: ISignUpFormData) => {
 
   const addressDetails = (
     mobileValidator.validateFn(values.mobile) == -1 &&
-    addressValidator.validateFn(values.address) == -1
+    addressValidator.validateFn(values.address) == -1 &&
+    addressValidator.validateFn(values.city) == -1
   )
 
   const credentials = (

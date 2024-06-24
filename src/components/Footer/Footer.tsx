@@ -42,7 +42,7 @@ const Footer = async () => {
         {/*   -=-=-=- Fast Links -=-=-=-   */}
         <section className={style.links}>
           <span>{t('links title')}</span>
-          <Link href={`/about`} >{t('about')}</Link>
+          <Link href={`/blogs`} >{t('blogs')}</Link>
           <Link href={`/contact`}>{t('contact')}</Link>
           <Link href={`/store`}>{t('store')}</Link>
           <Link href={`/store`}>{t('sign in')}</Link>

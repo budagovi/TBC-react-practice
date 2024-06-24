@@ -5,8 +5,13 @@ import style from './CheckoutSteps.module.css';
 import useIsClient from "@/src/hooks/useIsClient";
 // --- antd 
 import { ConfigProvider, Steps } from "antd";
+// --- next-internationalization
+import { useScopedI18n } from '@/src/lib/next-internationalization/client';
+
 
 const CheckoutSteps = ({ current }: { current: number }) => {
+
+  const t = useScopedI18n('/checkout');
   const isClient = useIsClient();
 
   if (!isClient)
@@ -28,13 +33,13 @@ const CheckoutSteps = ({ current }: { current: number }) => {
           current={current}
           items={[
             {
-              title: 'Contact Details',
+              title: t('contacts'),
             },
             {
-              title: 'Shipping',
+              title: t('shipping'),
             },
             {
-              title: 'Payment',
+              title: t('payment'),
             },
           ]}
         />

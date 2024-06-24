@@ -15,14 +15,21 @@ export default {
     'sign in': 'Sign In',
     'welcome': 'welcome to the aurora plants',
     'intro text': "Let's Bring The Spring To Your Home",
-    'shop now': 'shop now'
+    'shop now': 'shop now',
+    'cart': 'Cart',
+    'empty cart': 'Cart is empty',
+    'subtotal': 'Subtotal',
+    'start shopping': 'Start Shopping',
+    'view cart': 'View Cart',
+    'to proceed': 'To proceed you need to sign in',
+    'go to login': 'Sign In'
   },
   'footer': {
     'support': 'get in touch',
     'address': 'city, example street',
     'links title': 'quick links',
     'store': 'store',
-    'about': 'about us',
+    'blogs': 'blogs',
     'contact': 'contact us',
     'info title': 'information',
     'terms & conditions': 'terms and conditions',
@@ -75,7 +82,7 @@ export default {
     'male': 'male',
     'female': 'female',
     'dob': 'Date of Birth',
-    'country': 'Country',
+    'city': 'City',
     'address': 'Address',
     'mobile': 'Mobile Phone',
     'email': 'Email',
@@ -107,7 +114,7 @@ export default {
     'sort-price-desc': 'Price Desc',
     'no products': 'No Products Found'
   },
-  '/product':{
+  '/product': {
     'add to cart': 'add to cart',
     'category': 'category',
     'plant': 'Plant',
@@ -128,6 +135,40 @@ export default {
     'payment': 'Secure payments',
     'description': 'Description',
     'reviews': 'Reviews',
+  },
+  '/cart': {
+    'summary': 'Order Summary',
+    'price': 'Price',
+    'discount': 'discount',
+    'shipping': 'shipping',
+    'free': 'Free',
+    'coupon applied': 'Coupon Applied',
+    'total': 'Total',
+    'proceed to checkout': 'Proceed to Checkout',
+    'empty cart': 'Cart is empty',
+    'remove': 'Remove'
+  },
+  '/checkout': {
+    'contacts': 'Contact Details',
+    'edit': 'Edit',
+    'remove': 'Remove',
+    'add address': 'Add New Address',
+    'shipping': 'Shipping',
+    'free': 'Free',
+    'regular': 'Regular Shipping',
+    'priority': 'Priority Shipping',
+    'payment': 'Payment',
+    'expires': ['Expires on', ''],
+    'add payment': 'Add Payment Method',
+    'continue': 'continue',
+    'back': 'back',
+    'submit': 'submit',
+    'no addresses': 'No active address found',
+    'no payments': 'No active payment method found',
+    'contact': 'contact',
+    'loading msg': 'Order is Proccessing',
+    'success msg': 'Order successfully submitted',
+    'error msg': 'Something went wring, try later'
   },
   '/contact': {
     'form': {

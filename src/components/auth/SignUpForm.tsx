@@ -36,6 +36,7 @@ const initialFormValue: ISignUpFormData = {
   lastname: '',
   gender: null,
   dobMilSecs: null,
+  city: '',
   address: '',
   mobile: '+995 5',
   email: '',
@@ -244,6 +245,7 @@ const SignUpForm = () => {
           <AddressDetails
             currSlide={slideNum}
             mobileValue={values.mobile}
+            cityValue={values.city}
             addressValue={values.address}
             changeHandler={changeHandler}
             // pass form status, if only the slide is active (to not touch "invisible" inputs)

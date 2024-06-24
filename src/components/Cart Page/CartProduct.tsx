@@ -9,6 +9,7 @@ import useCartContext from '@/src/hooks/useCartContext';
 import { useRouter } from 'next/navigation';
 // --- next-internationalization
 import { useCurrentLocale } from '@/src/lib/next-internationalization/client';
+import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 // --- utils
 import formatProductPathSegment from '@/src/utilities/helpers/formatProductPathSegment';
 
@@ -21,6 +22,7 @@ interface IProps {
  */
 const CartProduct = ({ item }: IProps) => {
 
+  const t = useScopedI18n('/cart')
   const locale = useCurrentLocale();
   const router = useRouter();
 
@@ -60,7 +62,7 @@ const CartProduct = ({ item }: IProps) => {
             <span>{qty}</span>
             <button onClick={addItemHandler}>+</button>
           </div>
-          <button onClick={clearItemHandler}>Remove</button>
+          <button onClick={clearItemHandler}>{t('remove')}</button>
         </div>
       </div>
       <div className={style.priceHolder}>

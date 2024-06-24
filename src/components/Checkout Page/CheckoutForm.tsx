@@ -1,12 +1,8 @@
 'use client'
 // --- style
 import style from './CheckoutForm.module.css';
-// --- UI
-import Button from '@/src/UI/Button/Button';
-import ProgressBar from '@/src/UI/ProgressBar/ProgressBar';
 // --- nextjs/react api
-import { ChangeEvent, useState, useCallback, useTransition, FormEvent, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { ChangeEvent, useState, useCallback, useEffect } from 'react';
 // --- next-internationalization api
 import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 // --- react-icons
@@ -18,109 +14,110 @@ import AddressDetails from './CheckoutFormParts/AddressDetails';
 import Shippings from './CheckoutFormParts/Shippings';
 import Payments from './CheckoutFormParts/Payments';
 // --- antd
-import { Tooltip, App } from 'antd';
-// --- utils
-import formatPhoneNumber from '@/src/utilities/helpers/formatPhoneNumber';
+import { App } from 'antd';
 // --- types
 import type { ICheckoutFormData } from '@/src/lib/types/forms';
 // --- validators
-import { mobileValidator } from '@/src/lib/validators';
 import CheckoutSteps from './CheckoutSteps';
+import useCartContext from '@/src/hooks/useCartContext';
+import { useRouter } from 'next/navigation';
+import { IAddress, ICreditCard, IOrder, IUser } from '@/src/lib/types/entities';
 
 const initialFormValue: ICheckoutFormData = {
-  address: '',
-  mobile: '+995 5',
+  address: undefined,
   shippingMethod: undefined,
-  paymentMethod: undefined,
-  extraInfo: ''
+  paymentMethod: undefined
+}
+
+interface IProps {
+  user: IUser,
+  addresses: IAddress[],
+  creditCards: ICreditCard[]
 }
 
 /**
  * Checkout sliding form custom component (using emblda Carousel)
  */
-const CheckoutForm = () => {
-
+const CheckoutForm = ({ user, addresses, creditCards }: IProps) => {
   // -=-=-=- Internationalization -=-=-=-
 
-  const t = useScopedI18n('/sign-up')
+  const t = useScopedI18n('/checkout')
 
   // -=-=-=- Form State -=-=-=-
 
   const [values, setValues] = useState(initialFormValue)
-  const [isPending, startTransition] = useTransition();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const router = useRouter();
-
-  const isFormValid = (
-    values.address !== '' &&
-    mobileValidator.validateFn(values.mobile) < 0 &&
-    values.paymentMethod !== undefined &&
-    values.shippingMethod !== undefined
-  )
 
   const { message } = App.useApp()
+  const ctx = useCartContext();
+  const router = useRouter();
 
   const changeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    const newValue = (name === 'mobile') ? formatPhoneNumber(value) : value;
 
     setValues((prevState) => ({
       ...prevState,
-      [name]: newValue,
+      [name]: value,
     }));
   }, []);
 
-  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    startTransition(async () => {
+  const submitHandler = async () => {
+    setIsSubmitting(true)
+    const key = 'updatable message';
+    message.open({
+      key,
+      type: 'loading',
+      content: t('loading msg'),
+      duration: 3
+    })
 
-      // check fields validity and scroll to invalid input's slide
-      if (values.address === '' || mobileValidator.validateFn(values.mobile) >= 0)
-        return;
 
-      if (values.shippingMethod === undefined) {
-        if (slideNum === 0)
-          scrollNext()
-        return;
+    try {
+
+      const total = ctx.items.reduce((acc, curr) => acc + curr.qty * curr.price, 0)
+
+      const data: IOrder = {
+        userId: user.id,
+        totalAmount: ctx.totalAmount,
+        items: ctx.items,
+        totalPrice: total,
+        created: ''
       }
 
-      if (values.paymentMethod === undefined) {
-        if (slideNum === 0) {
-          scrollNext()
-          scrollNext()
-        }
-        if (slideNum === 1) {
-          scrollNext()
-        }
-        return;
-      }
-
-      // valid form logic
-      setIsSubmitting(true)
-      const key = 'updatable message';
-      message.open({
-        key,
-        type: 'loading',
-        content: t('loading message'),
-        duration: 3600
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...data
+        })
       })
 
-      setTimeout(async () => {
-        try {
-          // logic
-        } catch (e) {
-          message.open({
-            key,
-            type: 'error',
-            content: t('failed registration'),
-            duration: 2
-          })
-          console.log(e) // "something went wrong"
-        } finally {
-          setIsSubmitting(false)
-        }
-      }, 1000)
-    })
+      if (response.ok) {
+        ctx.clearCart();
+        message.open({
+          key,
+          type: 'success',
+          content: t('success msg'),
+          duration: 4
+        })
+        router.replace('/store')
+        return;
+      }
+
+      throw new Error('something went wrong')
+    } catch (e) {
+      message.open({
+        key,
+        type: 'error',
+        content: t('error msg'),
+        duration: 2
+      })
+      console.log(e) // "something went wrong"
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   // -=-=-=- Carousel Fucntionality -=-=-=-
@@ -132,11 +129,12 @@ const CheckoutForm = () => {
   // disabling nextBtn if current slide's one field at least is invalid
   useEffect(() => {
     if (slideNum === 0)
-      setIsNextBtnDisabled(values.address === '' || mobileValidator.validateFn(values.mobile) >= 0)
+      setIsNextBtnDisabled(values.address === undefined)
     else if (slideNum === 1)
       setIsNextBtnDisabled(values.shippingMethod === undefined)
+    else if (slideNum === 2)
+      setIsNextBtnDisabled(values.paymentMethod === undefined)
   }, [values, setIsNextBtnDisabled, slideNum])
-
 
   const scrollPrev = useCallback(() => {
     setSlideNum(prevState => prevState - 1)
@@ -147,7 +145,6 @@ const CheckoutForm = () => {
   const scrollNext = useCallback(() => {
 
     if (isNextBtnDisabled) {
-      startTransition(() => { })
       return
     }
 
@@ -160,7 +157,7 @@ const CheckoutForm = () => {
   return (
     <div className={style.wrapper}>
       <CheckoutSteps current={slideNum} />
-      <form className={style.wrapper} onSubmit={submitHandler}>
+      <form className={style.wrapper}>
 
 
         {/*   -=-=-=- Form Overlay (on pending) -=-=-=-   */}
@@ -172,31 +169,25 @@ const CheckoutForm = () => {
         <div className={style.embla} ref={emblaRef}>
           <div className={style.embla__container}>
 
-            {/* Slide 1 - Personal Details */}
+            {/* Slide 1 - Address Details */}
             <AddressDetails
               currSlide={slideNum}
-              mobileValue={values.mobile}
-              addressValue={values.address}
               changeHandler={changeHandler}
-              // pass form status, if only the slide is active (to not touch "invisible" inputs)
-              formSubmitted={slideNum === 0 ? isPending : false}
+              addresses={addresses}
+              userId={user.id}
             />
 
-            {/* Slide 2 - Address Details */}
+            {/* Slide 2 - Shipping Details */}
             <Shippings
               currSlide={slideNum}
-              shippingMethod={values.shippingMethod}
               changeHandler={changeHandler}
-              formSubmitted={slideNum === 1 ? isPending : false}
             />
 
-            {/* Slide 3 - Credentials and Submit */}
+            {/* Slide 3 - Payment Details */}
             <Payments
               currSlide={slideNum}
-              paymentMethod={values.paymentMethod}
               changeHandler={changeHandler}
-              // pass form status, if only the slide is active (to not touch "invisible" inputs)
-              formSubmitted={slideNum === 2 ? isPending : false}
+              creditCards={creditCards}
             />
 
           </div>
@@ -213,37 +204,21 @@ const CheckoutForm = () => {
           >
             <MdArrowBackIos className={style.arrow} />
             <span>
-              {t('go back')}
+              {t('back')}
             </span>
           </button>
-          <Tooltip
-            title={isNextBtnDisabled ? 'Please, fill in the missing fields' : null}
-            placement="topRight"
-            color='#272727'
-            destroyTooltipOnHide={true}
-            mouseEnterDelay={0.07}
+          <button
+            disabled={isNextBtnDisabled}
+            type='button'
+            className={`${style.arrowBtn} ${slideNum === 3 && style.hide}`}
+            onClick={slideNum === 2 ? submitHandler : scrollNext}
           >
-            <button
-              disabled={slideNum === 2}
-              type='button'
-              className={`${style.arrowBtn} ${slideNum === 2 && style.hide}`}
-              onClick={scrollNext}
-            >
-              <span>
-                {t('continue')}
-              </span>
-              <MdArrowForwardIos className={style.arrow} />
-            </button>
-          </Tooltip>
+            <span>
+              {slideNum === 2 ? t('submit') : t('continue')}
+            </span>
+            <MdArrowForwardIos className={style.arrow} />
+          </button>
         </div>
-
-        <Button
-          type='submit'
-          disabled={isSubmitting || !isFormValid}
-        >
-          checkout
-        </Button>
-
       </form >
     </div>
   )

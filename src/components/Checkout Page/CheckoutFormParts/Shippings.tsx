@@ -1,11 +1,15 @@
-import { ChangeEvent, memo } from 'react';
+'use client'
+// --- style
 import style from '../CheckoutForm.module.css';
+import shippingStyle from './Shippings.module.css';
+// --- react api
+import { ChangeEvent, memo } from 'react';
+// --- next-internationalization
+import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 
 interface IProps {
   currSlide: number,
-  shippingMethod: string | number | readonly string[] | undefined,
   changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
-  formSubmitted?: boolean
 }
 
 /**
@@ -15,10 +19,10 @@ interface IProps {
 const Shippings = memo(function
   Shippings({
     currSlide,
-    shippingMethod,
     changeHandler,
-    //formSubmitted
   }: IProps) {
+
+  const t = useScopedI18n('/checkout');
 
   return (
     <div className={`
@@ -26,18 +30,30 @@ const Shippings = memo(function
       ${currSlide === 1 ? style.slideHidden : null} 
       ${style.embla__slide}
     `}>
-      <div>
-        <label htmlFor="1">Free</label>
-        <input type="radio" name="shippingMethod" id="1" onChange={changeHandler} value={shippingMethod} />
-      </div>
-      <div>
-        <label htmlFor="2">Priority</label>
-        <input type="radio" name="shippingMethod" id="2" onChange={changeHandler} value={shippingMethod} />
-      </div>
-      <div>
-        <label htmlFor="3">Schedule</label>
-        <input type="radio" name="shippingMethod" id="3" onChange={changeHandler} value={shippingMethod} />
-      </div>
+      <label htmlFor="free" className={shippingStyle.itemWrapper}>
+        <input
+          type="radio"
+          name="shippingMethod"
+          value='free shipping'
+          id='free'
+          onChange={changeHandler}
+        />
+        <span></span>
+        <span>{t('free')}</span>
+        <span>{t('regular')}</span>
+      </label>
+      <label htmlFor="priority" className={shippingStyle.itemWrapper}>
+        <input
+          type="radio"
+          name="shippingMethod"
+          value='priority shipping'
+          id='priority'
+          onChange={changeHandler}
+        />
+        <span></span>
+        <span>$8.5</span>
+        <span>{t('priority')}</span>
+      </label>
     </div>
   )
 })

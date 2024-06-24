@@ -6,13 +6,14 @@ import Input from '@/src/UI/Input Fields/Input/Input';
 // --- next-internationalization api
 import { useCurrentLocale, useScopedI18n } from '@/src/lib/next-internationalization/client';
 // --- utils/validators
-import { addressValidator, mobileValidator } from '@/src/lib/validators';
+import { addressValidator, cityValidator, mobileValidator } from '@/src/lib/validators';
 // --- react api
 import { ChangeEvent, memo } from 'react';
 
 interface IProps {
   currSlide: number,
   mobileValue: string,
+  cityValue: string,
   addressValue: string,
   changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
   formSubmitted?: boolean
@@ -27,6 +28,7 @@ const AddressDetails = memo(function
   AddressDetails({
     currSlide,
     mobileValue,
+    cityValue,
     addressValue,
     changeHandler,
     formSubmitted
@@ -56,6 +58,22 @@ const AddressDetails = memo(function
         // validations
         validate={mobileValidator.validateFn}
         errorMsgs={mobileValidator.errorMsgs(locale)}
+        isRequired={true}
+        formSubmitted={formSubmitted}
+      />
+
+      {/* City Field*/}
+      <Input
+        label={t('city')}
+        type='text'
+        name='city'
+        placeholder={t('city')}
+        // for controlling the input
+        value={cityValue}
+        onChange={changeHandler}
+        // validations
+        validate={cityValidator.validateFn}
+        errorMsgs={cityValidator.errorMsgs(locale)}
         isRequired={true}
         formSubmitted={formSubmitted}
       />

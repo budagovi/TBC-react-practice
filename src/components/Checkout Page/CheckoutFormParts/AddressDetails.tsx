@@ -1,34 +1,35 @@
 'use client'
-import { ChangeEvent, memo } from 'react';
+// --- style
 import style from '../CheckoutForm.module.css';
-import Input from '@/src/UI/Input Fields/Input/Input';
-import { isRequiredFieldString, mobileValidator } from '@/src/lib/validators';
-import { useCurrentLocale } from '@/src/lib/next-internationalization/client';
+// --- react api
+import { ChangeEvent, memo } from 'react';
+// --- types
+import type { IAddress } from '@/src/lib/types/entities';
+// --- components
+import AddressItem from '../AddressItem';
+// --- next-internationalization
+import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 
 interface IProps {
   currSlide: number,
-  mobileValue: string,
-  addressValue: string,
   changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
-  formSubmitted?: boolean
+  addresses: IAddress[],
+  userId: number
 }
 
 /**
  * Part of checkout form component ( should not be used in other components! )
- * - mobile
+ * - City
  * - address
  */
 const AddressDetails = memo(function
   AddressDetails({
     currSlide,
-    mobileValue,
-    addressValue,
     changeHandler,
-    formSubmitted
+    addresses
   }: IProps) {
 
-    const locale = useCurrentLocale();
-    const addressIsRequired = isRequiredFieldString('address');
+  const t = useScopedI18n('/checkout');
 
   return (
     <div className={`
@@ -36,37 +37,16 @@ const AddressDetails = memo(function
       ${currSlide === 0 ? style.slideHidden : null} 
       ${style.embla__slide}
     `}>
-      {/* Mobile Field*/}
-      <Input
-        label='mobile'
-        type='text'
-        name='mobile'
-        placeholder='mobile'
-        // for controlling the input
-        value={mobileValue}
-        onChange={changeHandler}
-        // validations
-        validate={mobileValidator.validateFn}
-        errorMsgs={mobileValidator.errorMsgs(locale)}
-        isRequired={true}
-        formSubmitted={formSubmitted}
-      />
-
-      {/* Address Field*/}
-      <Input
-        label='address'
-        type='text'
-        name='address'
-        placeholder='address'
-        // for controlling the input
-        value={addressValue}
-        onChange={changeHandler}
-        // validations
-        validate={addressIsRequired.validateFn}
-        errorMsgs={addressIsRequired.errorMsgs(locale)}
-        isRequired={true}
-        formSubmitted={formSubmitted}
-      />
+      {addresses.length > 0 ?
+        addresses.map((address, idx) =>
+          <AddressItem
+            key={idx}
+            address={address}
+            id={idx.toString()}
+            changeHandler={changeHandler}
+          />)
+        : <span>{t('no addresses')}</span>
+      }
     </div>
   )
 })

@@ -1,15 +1,15 @@
+import { ICartItem } from "./cart-context";
+
 export type IUser = {
-  id: number;
-  firstname: string;
-  lastname: string;
-  dob: string;
-  gender: 'male' | 'female';
-  email: string;
-  mobile: string;
-  address: string;
-  isAdmin: boolean;
-  created_at: string;
-  img: string;
+  id: number,
+  firstname: string,
+  lastname: string,
+  dob: string,
+  gender: 'male' | 'female',
+  email: string,
+  mobile: string,
+  isAdmin: boolean,
+  image: string | null
 }
 
 export type IProduct = {
@@ -25,4 +25,25 @@ export type IProduct = {
   flowering: 'non-flowering' | 'seasonal flowering';
   imgUrl: string;
   category: 'plant' | 'cactus' | 'bonsai';
+}
+
+export type IAddress = {
+  userId: number,
+  address: string,
+  city: string,
+  tag: string,
+  mobile: string
+}
+
+export type ICreditCard = {
+  cardId: string,
+  expires: string,
+}
+
+export type IOrder = {
+  userId: number;
+  totalAmount: number;
+  totalPrice: number;
+  items: ICartItem[];
+  created: string;
 }

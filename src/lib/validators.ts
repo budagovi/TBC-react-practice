@@ -291,6 +291,54 @@ export const addressValidator: IValidator<string> = {
 }
 
 /**
+ *  ### City validator on adding new address form
+ *  An object containing the validation function and error messages.
+ * 
+ * - should not be empty
+ * - minimum length 5
+ * - should not contain special characters
+ * 
+ * @example
+ * ```typescript
+ *  const { validateFn, errorMsgs } = cityValidator;
+ * 
+ *  // check for validity
+ *  const idx:number = validateFn(value)
+ * 
+ *  // use index returned from validatorFn to display error message (if idx >= 0)
+ *  const errorMsg: string = errorMsgs(locale)[idx]
+ * ```
+ */
+export const cityValidator: IValidator<string> = {
+  validateFn: (value) => {
+    const specialCharsRegex = /[^a-zA-Z0-9\s.,-,']/;
+    if (value.trim() === '') {
+      return 0;
+    } else if (value.trim().length < 4) {
+      return 1;
+    } else if (specialCharsRegex.test(value.trim())) {
+      return 2;
+    } else {
+      return -1;
+    }
+  },
+  errorMsgs: (locale = 'en') => {
+    switch (locale) {
+      case 'ka': return [
+        'ქალაქი აუცილებელი ველია',
+        'ქალაქი ძალიან მოკლეა',
+        'ქალაქი შეიცავს დაუშვებელ სიმბოლოებს'
+      ];
+      default: return [
+        'City is required',
+        'City is too short',
+        'City contains invalid characters'
+      ];
+    }
+  }
+}
+
+/**
  *  ### Email validator on registration
  *  An object containing the validation function and error messages.
  * 

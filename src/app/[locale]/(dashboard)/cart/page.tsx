@@ -1,5 +1,5 @@
 // --- Compoents
-import Cart from "@/src/components/Cart Page/Cart";
+import CartList from "@/src/components/Cart Page/CartList";
 // --- next-internationalization api
 import { Locale } from "@/src/lib/next-internationalization/i18n.config";
 import { setStaticParamsLocale } from "next-international/server";
@@ -18,7 +18,9 @@ const CartPage = ({ params: { locale } }: IProps) => {
 
   // static rendering for both languages on build
   setStaticParamsLocale(locale)
-  return <Cart />
+  return (
+    <CartList />
+  )
 }
 
 export default CartPage;

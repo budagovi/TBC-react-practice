@@ -6,29 +6,32 @@ import { FaCartShopping } from "react-icons/fa6";
 import { Drawer } from 'antd';
 // --- react/next api
 import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 // --- hooks
 import useCartContext from '@/src/hooks/useCartContext';
+import useIsClient from '@/src/hooks/useIsClient';
 // --- UI
 import Button from '@/src/UI/Button/Button';
 // --- components
 import DrawerItem from './DrawerItem';
-import NavigateToCartButton from './NavigateToCartButton';
+import NavigateToCartButton from './NeedToLogInModal';
+// --- next-international
+import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 
 /**
  * Cart icon that shows total amoun of cart items and onClick opens drawer from right
  */
 const CartIcon = () => {
 
+  const t = useScopedI18n('header');
   // get total amount of cart items and render with no SSR
   const ctx = useCartContext();
   const { totalAmount } = ctx;
   const router = useRouter();
 
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
+  const isClient = useIsClient();
+
+  const total = ctx.items.reduce((acc, curr) => acc + curr.price * curr.qty * (1 - curr.salePercentage), 0);
 
   const [open, setOpen] = useState(false);
   const toggleDrawer = () => {
@@ -47,7 +50,7 @@ const CartIcon = () => {
 
       {/* -=-=-=-=- Drawer -=-=-=-=- */}
       <Drawer
-        title="Cart"
+        title={t('cart')}
         onClose={toggleDrawer}
         open={open}
       >
@@ -58,11 +61,15 @@ const CartIcon = () => {
                 key={item.id}
                 cartItem={item}
               />
-            ) : <span className={style.empty}>Cart is empty</span>}
+            ) : <span className={style.empty}>{t('empty cart')}</span>}
+          </div>
+          <div className={style.priceHolder}>
+            <span>{t('subtotal')}:</span>
+            <span>${total.toFixed(2)}</span>
           </div>
           <div className={style.actions}>
             {ctx.items.length > 0 && <NavigateToCartButton closeDrawer={toggleDrawer} />}
-            {ctx.items.length === 0 && <Button onClick={() => { router.push('/store'); toggleDrawer() }}>start shopping</Button>}
+            {ctx.items.length === 0 && <Button onClick={() => { router.push('/store'); toggleDrawer() }}>{t('start shopping')}</Button>}
           </div>
         </div>
       </Drawer>

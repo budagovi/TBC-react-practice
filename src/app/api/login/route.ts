@@ -26,7 +26,6 @@ export async function POST(request: NextRequest) {
       email, 
       password,
       mobile, 
-      address, 
       is_admin as "isAdmin", 
       image 
     FROM users WHERE email=${email}`
