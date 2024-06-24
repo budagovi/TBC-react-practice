@@ -32,7 +32,6 @@ export async function POST(request: NextRequest) {
       dob, 
       gender, 
       mobile, 
-      address,
       email, 
       password 
     ) VALUES (
@@ -41,7 +40,6 @@ export async function POST(request: NextRequest) {
       ${dateISOString}, 
       ${formData.gender}, 
       ${formData.mobile}, 
-      ${formData.address}, 
       ${formData.email}, 
       ${formData.password}                    
     )
