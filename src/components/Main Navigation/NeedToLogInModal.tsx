@@ -1,6 +1,6 @@
 'use client'
 // --- style
-import style from './NeedToLogInModal.module.css'
+import style from '@/src/components/Main Navigation/NeedToLoginModal.module.css'
 // --- UI
 import Button from '@/src/UI/Button/Button';
 import getActiveUser from '@/src/server actions/getActiveUser';
