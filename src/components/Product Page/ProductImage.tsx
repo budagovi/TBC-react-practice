@@ -20,7 +20,7 @@ const ProductImage = ({ imgUrl, name }: IProps) => {
     setIsModalOpen(prevState => !prevState);
   };
 
-  
+
   const [imageHovered, setImageHovered] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -53,6 +53,7 @@ const ProductImage = ({ imgUrl, name }: IProps) => {
       onMouseMove={handleMouseMove}
     >
       <button onClick={toggleModal}>
+        <div className={style.overlay}></div>
         <img
           src={imgUrl}
           alt={name}

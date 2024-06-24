@@ -32,7 +32,7 @@ form.wrapper {
   }
 
   to {
-    background-color: #ddd8;
+    background-color: var(--formOverlay);
   }
 }
 

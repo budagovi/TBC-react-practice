@@ -38,7 +38,7 @@ const RootLayout = async ({ params: { locale }, children }: IProps) => {
   const isLoggedIn = await getSession();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} data-theme='light'>
       <body className={inter.className} id="root">
         <I18nProviderClient locale={locale}>
             <AntdApp>

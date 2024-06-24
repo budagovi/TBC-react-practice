@@ -13,8 +13,11 @@ import { ChangeEvent, FormEvent, useCallback, useState, useTransition } from 're
 import { emailValidator, isRequiredFieldString, mobileValidator } from '@/src/lib/validators';
 // --- types
 import { IContactFormData } from '@/src/lib/types/forms';
+// --- utils
 import isContactFormValid from '@/src/utilities/checkers/isContactFormValid';
 import formatPhoneNumber from '@/src/utilities/helpers/formatPhoneNumber';
+// --- antd
+import { App } from 'antd';
 
 const initialFormValue: IContactFormData = {
   name: '',
@@ -33,6 +36,8 @@ const ContactForm = () => {
 
   const [values, setValues] = useState(initialFormValue);
   const [isPending, startTransition] = useTransition();
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [reset, setReset] = useState(false);
 
   const changeHandler = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -44,6 +49,8 @@ const ContactForm = () => {
     ));
   }, []);
 
+  const { message } = App.useApp();
+
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -52,14 +59,33 @@ const ContactForm = () => {
       // check form validity
       if (!isContactFormValid(values))
         return;
+      setIsSubmitting(true)
+      const key = 'random key';
+      message.open({
+        type: 'loading',
+        content: 'proceccing',
+        duration: 3,
+        key
+      })
 
-      // open email client
+      setTimeout(() => {
+        message.open({
+          type: 'success',
+          content: 'email received',
+          duration: 2,
+          key
+        })
+        setIsSubmitting(false)
+        setValues(initialFormValue)
+        setReset(true);
+        setTimeout(() => setReset(false), 1);
+      }, 3000)
     })
-
   }
 
   return (
-    <form className={style.wrapper} onSubmit={submitHandler}>
+    <form className={`${style.wrapper} ${isSubmitting ? style.loading : ''}`} onSubmit={submitHandler}>
+
       <div className={style.textInputs}>
         <Input
           label={t('name')}
@@ -70,8 +96,9 @@ const ContactForm = () => {
           onChange={changeHandler}
           isRequired={true}
           validate={isRequiredFieldString('Name').validateFn}
-          errorMsgs={isRequiredFieldString('Name').errorMsgs(currLocale)}
+          errorMsgs={isRequiredFieldString(t('name')).errorMsgs(currLocale)}
           formSubmitted={isPending}
+          reset={reset}
         />
         <Input
           label={t('email')}
@@ -84,6 +111,7 @@ const ContactForm = () => {
           validate={emailValidator.validateFn}
           errorMsgs={emailValidator.errorMsgs(currLocale)}
           formSubmitted={isPending}
+          reset={reset}
         />
         <Input
           label={t('phone')}
@@ -96,6 +124,7 @@ const ContactForm = () => {
           validate={mobileValidator.validateFn}
           errorMsgs={mobileValidator.errorMsgs(currLocale)}
           formSubmitted={isPending}
+          reset={reset}
         />
       </div>
       <TextArea
@@ -106,9 +135,10 @@ const ContactForm = () => {
         value={values.message}
         onChange={changeHandler}
         isRequired={true}
-        validate={isRequiredFieldString('Phone number').validateFn}
-        errorMsgs={isRequiredFieldString('Phone number').errorMsgs(currLocale)}
+        validate={isRequiredFieldString('text').validateFn}
+        errorMsgs={isRequiredFieldString('text').errorMsgs(currLocale)}
         formSubmitted={isPending}
+        reset={reset}
       />
       <Button type='submit'>{t('msg')}</Button>
     </form>

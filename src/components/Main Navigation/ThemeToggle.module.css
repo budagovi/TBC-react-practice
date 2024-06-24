@@ -14,4 +14,10 @@
 .toggle svg {
 	display: block;
 	position: relative;
+	fill: var(--greenFore);
+	transition: .2s ease-in-out;
+}
+
+.toggle.light svg {
+	fill: var(--fore);
 }

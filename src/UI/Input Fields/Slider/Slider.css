@@ -17,7 +17,7 @@
   background-color: var(--placeholderColor);
   border-radius: 2px;
   transition: background-color 0.2s;
-  transform: translateY(-1px);
+  transform: translateY(-0.5px);
 }
 
 :where(.css-dev-only-do-not-override-891z1r).ant-slider-horizontal {
@@ -75,7 +75,7 @@
   transition: inset-inline-start 0.2s, inset-block-start 0.2s, width 0.2s, height 0.2s, box-shadow 0.2s;
 }
 
-:root[data-theme='dark'] :where(.css-dev-only-do-not-override-1a9ks5f).ant-slider .ant-slider-handle::after,
+:root[data-theme='dark']:where(.css-dev-only-do-not-override-1a9ks5f).ant-slider .ant-slider-handle::after,
 .ant-slider .ant-slider-handle::after {
-  background-color: #888888;
+  background-color: var(--body);
 }

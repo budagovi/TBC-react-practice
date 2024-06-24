@@ -8,6 +8,10 @@
   height: fit-content;
 }
 
+.wrapper *:not(button) {
+  color: var(--black);
+}
+
 .wrapper > span {
   font-weight: 700;
   font-size: 26px;

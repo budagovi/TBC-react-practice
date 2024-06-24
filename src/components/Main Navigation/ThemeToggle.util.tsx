@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import style from './ThemeToggle.module.css'
 import Script from "next/script"
+import { usePathname } from "next/navigation"
 
 export default function ThemeToggle() {
 
@@ -28,6 +29,9 @@ export default function ThemeToggle() {
     return themeLocalStorage ?? themeSystem
   }
 
+  const pathname = usePathname();
+  const isLight = pathname === '/' || pathname === '/sign-in' || pathname === '/sign-up';
+
   useEffect(() => {
 
     if (!theme) return setTheme(maybeTheme())
@@ -42,18 +46,18 @@ export default function ThemeToggle() {
 
   return (
     <div>
-      <Script id="theme.util.jsx" strategy="beforeInteractive" >
+      <Script id="ThemeToggle.util.jsx" strategy="beforeInteractive" >
         {`
-                let themeLocalStorage   = localStorage.getItem('theme')
-                let themeSystem         = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-                document.querySelector(':root').dataset.theme = themeLocalStorage ?? themeSystem
-                `}
+          let themeLocalStorage   = localStorage.getItem('theme')
+          let themeSystem         = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          document.querySelector(':root').dataset.theme = themeLocalStorage ?? themeSystem
+        `}
       </Script>
       <button
         key="themeToggle"
         onClick={toggleTheme}
         data-theme={theme}
-        className={style.toggle}
+        className={`${style.toggle} ${isLight ? style.light : ''}`}
       >
         {buttonIcon(theme)}
       </button>

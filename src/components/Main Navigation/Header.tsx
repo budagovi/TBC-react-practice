@@ -5,7 +5,7 @@ import style from './Header.module.css';
 import LocalSwitcher from './LocaleSwitcher';
 import ProfileDropDown from './ProfileDropDown';
 import CartIcon from './CartIcon';
-import ThemeToggle from './ThemeToggle';
+import ThemeToggle from './ThemeToggle.util';
 // --- UI
 import Button from '@/src/UI/Button/Button';
 // --- next/react api

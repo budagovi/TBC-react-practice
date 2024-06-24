@@ -9,8 +9,8 @@
 
 .wrapper>form {
   display: flex;
-  background-color: var(--bodyBg);
   flex-direction: column;
+  background-color: transparent;
   gap: 1rem;
   padding: 1.5rem 1rem 3rem;
   border-radius: 0.25rem;
@@ -95,6 +95,11 @@ form.wrapper span {
   color: var(--grey);
 }
 
+:root[data-theme='dark'] .arrowBtn:disabled span,
+:root[data-theme='dark'] .arrowBtn:disabled .arrow {
+  color: var(--foreDark);
+}
+
 .arrowBtn span {
   color: var(--greenFore);
   font-weight: 700;
@@ -106,7 +111,7 @@ form.wrapper span {
 }
 
 
-.slideShown > button {
+.slideShown>button {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -119,7 +124,7 @@ form.wrapper span {
   padding-top: 1.4rem;
 }
 
-.slideShown > button > svg {
+.slideShown>button>svg {
   --size: 18px;
   width: var(--size);
   height: var(--size);

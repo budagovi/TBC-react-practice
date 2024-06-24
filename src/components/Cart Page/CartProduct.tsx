@@ -52,6 +52,7 @@ const CartProduct = ({ item }: IProps) => {
   return (
     <div className={style.wrapper}>
       <div className={style.imgWrapper} onClick={() => router.push('/store/' + formatProductPathSegment(name, id))}>
+        <div className={style.overlay}></div>
         <img src={imgUrl} alt={name} />
       </div>
       <div className={style.nameHolder}>

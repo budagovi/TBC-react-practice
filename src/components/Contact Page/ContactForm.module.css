@@ -6,6 +6,10 @@ form.wrapper {
   gap: 2rem;
 }
 
+form.wrapper * {
+  transition: .15s ease-in-out;
+}
+
 .wrapper .textInputs {
   display: flex;
   gap: 1rem;
@@ -13,4 +17,9 @@ form.wrapper {
 
 .wrapper button {
   align-self: flex-end;
+}
+
+form.loading * {
+  opacity: 0.7;
+  pointer-events: none;
 }

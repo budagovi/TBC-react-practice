@@ -12,6 +12,7 @@
 
 .counter span {
   padding-inline: 0.7rem;
+  color: var(--black);
 }
 
 .counter button {
@@ -24,6 +25,7 @@
   border-radius: 0.2rem;
   cursor: pointer;
   transition: .1s ease-in-out;
+  color: var(--black);
 }
 
 

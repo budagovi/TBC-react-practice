@@ -48,7 +48,7 @@ input[type="radio"]+span {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid #ccc;
+  border: 2px solid var(--black);
   cursor: pointer;
   position: relative;
   transition: .15s ease-in;
@@ -56,8 +56,8 @@ input[type="radio"]+span {
 
 /* Custom radio button checked state */
 input[type="radio"]:checked+span {
-  border-color: var(--greenBg);
-  background-color: var(--greenBg);
+  border-color: var(--greenFore);
+  background-color: var(--greenFore);
   transition: 0;
 }
 
@@ -65,13 +65,13 @@ input[type="radio"]:checked+span {
 input[type="radio"]:checked+span::before {
   content: '';
   display: block;
-  width: 15px;
-  height: 15px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--bodyBg);
   position: absolute;
-  top: 1px;
-  left: 1px;
+  top: 4px;
+  left: 4px;
 }
 
 /* -=- Color Palletes -=- */
@@ -88,6 +88,7 @@ input[type="radio"]:checked+span::before {
   --grey: #808080;
   --darkGrey: #5a5a5a;
   --placeholderColor: #9ca09d;
+  --formOverlay: rgba(93, 93, 93, 0.349);
 
   --fore: #f0f0f0;
   --foreHover: #cacaca;
@@ -103,7 +104,7 @@ input[type="radio"]:checked+span::before {
   --greenFore: #9a9a9a;
   --green: #26a778;
   --greyshGreen: #4e4e4e;
-
+  --formOverlay: rgba(78, 78, 78, 0.286);
   --placeholderColor: #878787;
 
   --red: #db4444;

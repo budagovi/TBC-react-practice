@@ -9,12 +9,13 @@ interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   validate?: (value: string) => number,
   formSubmitted?: boolean,
   isRequired?: boolean,
+  reset?: boolean
 }
 
 /**
  * Custom textarea element (can be validated and display error messages after touch)
  */
-const TextArea = ({ label, name, placeholder, rows, errorMsgs, validate, formSubmitted, isRequired, value, onChange, onBlur }: Props) => {
+const TextArea = ({ label, name, placeholder, rows, errorMsgs, validate, formSubmitted, isRequired, value, onChange, onBlur, reset }: Props) => {
 
   value = value as string
   const [wrapperClasses, setWrapperClasses] = useState(`${style.invalid} ${style.shaking}`);
@@ -36,6 +37,14 @@ const TextArea = ({ label, name, placeholder, rows, errorMsgs, validate, formSub
       clearTimeout(timer);
     }
   }
+
+  useEffect(() => {
+    if (reset) {
+      console.log('reset')
+      setIsTouched(false);
+    }
+  }, [reset])
+
 
   // validate on form submission (for required fields, to check if they are empty)
   useEffect(() => {

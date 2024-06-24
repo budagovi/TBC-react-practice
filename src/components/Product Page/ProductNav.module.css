@@ -17,12 +17,12 @@
 }
 
 .wrapper li.active {
-  border-top: 2px solid var(--greenFore);
+  border-top: 4px solid var(--greenFore);
   color: var(--greenFore);
 }
 
 .wrapper li {
-  border-top: 2px solid transparent;
+  border-top: 4px solid transparent;
   transform: translateY(-1px);
   padding: 0.4rem 1rem;
   font-weight: 800;
@@ -41,4 +41,5 @@
 .description {
   width: 80%;
   padding: 1rem 0.5rem;
+  color: var(--black);
 }

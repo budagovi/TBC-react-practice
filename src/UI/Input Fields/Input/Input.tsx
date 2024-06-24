@@ -13,6 +13,7 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   validate?: (value: string) => number,
   formSubmitted?: boolean,
   isRequired?: boolean,
+  reset?: boolean,
 }
 
 /**
@@ -32,7 +33,8 @@ const Input = memo(
       errorMsgs,
       validate,
       formSubmitted,
-      isRequired
+      isRequired,
+      reset
     }: IProps
   ) {
 
@@ -56,6 +58,13 @@ const Input = memo(
         clearTimeout(timer);
       }
     }
+
+    useEffect(() => {
+      if (reset) {
+        console.log('reset')
+        setIsTouched(false);
+      }
+    }, [reset])
 
     // validate on form submission (for required fields, to check if they are empty)
     useEffect(() => {

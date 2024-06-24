@@ -26,6 +26,7 @@
   border-radius: 0.3rem;
   background-color: transparent;
 }
+
 .ant-modal-content {
   padding: 0 !important;
   overflow: hidden;
@@ -42,9 +43,22 @@
 }
 
 /* Steps */
+.ant-steps * {
+  color: var(--black) !important;
+}
+
 
 :where(.css-dev-only-do-not-override-6688ir).ant-steps .ant-steps-item-finish .ant-steps-item-icon,
 .ant-steps .ant-steps-item-finish .ant-steps-item-icon {
   background-color: #dce1de !important;
   border-color: #dce1de !important;
+}
+
+:where(.css-dev-only-do-not-override-6688ir).ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title,
+.ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+  color: var(--fore) !important;
+}
+
+.ant-steps svg {
+  fill: var(--green) !important;
 }
