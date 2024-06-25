@@ -1,46 +1,26 @@
-'use client';
 // -- style
 import style from './FeaturedProducts.module.css';
 // --- UI
 import SliderSection from '@/src/UI/Slider Section/SliderSection';
 import SectionLabel from '@/src/UI/Section Label/SectionLabel';
-// --- react api
-import { useState, useEffect } from "react";
 // types
 import { IProduct } from "@/src/lib/types/entities";
 // --- components
 import ProductCard from '../Store Page/ProductCard';
 // --- next-internationalization
-import { useScopedI18n } from '@/src/lib/next-internationalization/client';
+import { getScopedI18n } from '@/src/lib/next-internationalization/server';
 
 // for filtering section
-interface IProps { }
+interface IProps {
+  products: IProduct[]
+}
 
 /**
  * Featured products component
  */
-const FeaturedProducts = ({ }: IProps) => {
+const FeaturedProducts = async ({ products }: IProps) => {
 
-  const t = useScopedI18n('/');
-
-  const [products, setProducts] = useState<IProduct[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/products');
-        if (response.ok) {
-          const data = await response.json();
-          setProducts(data);
-        }
-      } catch (err) {
-        setProducts([]);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+  const t = await getScopedI18n('/');
 
   return (
     <div className={style.wrapper}>

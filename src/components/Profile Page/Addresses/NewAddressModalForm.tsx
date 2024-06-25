@@ -129,7 +129,7 @@ const NewAddressModaForm = ({ user, onAddAddress }: IProps) => {
 
   return (
     <div className={style.wrapper}>
-      <button onClick={toggleModal}><FiPlus />{t('add address')}</button>
+      <button onClick={toggleModal} type='button'><FiPlus />{t('add address')}</button>
       <Modal
         open={isModalOpen}
         onOk={toggleModal}

@@ -103,7 +103,7 @@ const EditProfileForm = ({ user }: IProps) => {
               key,
               type: 'success',
               content: t('success message'),
-              duration: 5
+              duration: 2
             })
 
             await updateUserSession(editedUser)

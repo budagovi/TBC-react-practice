@@ -10,6 +10,10 @@ import { setStaticParamsLocale } from "next-international/server";
 import { getStaticParams } from '@/src/lib/next-internationalization/server';
 // --- next api
 import { Metadata } from "next";
+// --- types
+import type { IProduct } from "@/src/lib/types/entities";
+// --- server actions
+import getProducts from "@/src/server actions/getProducts";
 
 export function generateStaticParams() {
   return getStaticParams()
@@ -26,7 +30,7 @@ export async function generateMetadata({ params }: { params: { locale: Locale } 
 
   return {
     title: "მთავარი - Aurora Plants",
-    description: "აღმოაჩინეთ სხვადასხვა უნიკალური მცენარე ავრორას გალერეაში. შეიძინეთ მხოლოდ მაღალი ხარისხის პროდუქტები აქ."    
+    description: "აღმოაჩინეთ სხვადასხვა უნიკალური მცენარე ავრორას გალერეაში. შეიძინეთ მხოლოდ მაღალი ხარისხის პროდუქტები აქ."
   }
 }
 
@@ -39,14 +43,21 @@ interface IProps {
   }
 }
 
-const App = ({ params: { locale } }: IProps) => {
+const App = async ({ params: { locale } }: IProps) => {
 
   // static rendering for both languages on build-time
   setStaticParamsLocale(locale)
 
+  // get data
+  const response = await getProducts();
+  let products: IProduct[] = [];
+  if (response.success) {
+    products = response.payload.data;
+  }
+
   return (
     <>
-      <FeaturedProducts />
+      <FeaturedProducts products={products} />
       <PlantsCategories />
       <Services />
       <ScrollUp />
