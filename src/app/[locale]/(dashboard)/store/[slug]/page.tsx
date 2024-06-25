@@ -69,6 +69,7 @@ export async function generateStaticParams() {
   return params;
 }
 
+export const dynamic = 'force-static';
 export const dynamicParams = false;
 
 interface IProps {
