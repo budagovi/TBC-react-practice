@@ -62,3 +62,8 @@
 .ant-steps svg {
   fill: var(--green) !important;
 }
+
+/* Image */
+.ant-image {
+  width: 100% !important;
+}
