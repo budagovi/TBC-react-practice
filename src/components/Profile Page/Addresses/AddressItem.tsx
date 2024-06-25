@@ -3,7 +3,7 @@ import style from './AddressItem.module.css';
 // --- types
 import type { IAddress } from '@/src/lib/types/entities';
 // --- next-internationalization
-import { useScopedI18n } from '@/src/lib/next-internationalization/client';
+import { getScopedI18n } from '@/src/lib/next-internationalization/server';
 
 interface IProps {
   address: IAddress,
@@ -14,9 +14,9 @@ interface IProps {
  * Individual Addres Component
  * @param IAddress I
  */
-const AddressItem = ({ address }: IProps) => {
+const AddressItem = async ({ address }: IProps) => {
 
-  const t = useScopedI18n('/profile.addresses');
+  const t = await getScopedI18n('/profile.addresses');
 
   return (
     <div className={style.wrapper}>

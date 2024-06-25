@@ -213,7 +213,14 @@ export default {
       'remove': 'Remove',
       'contact': 'contact',
       'add address': 'Add New Address',
-      'no addresses': 'No active address found'
+      'no addresses': 'No active address found',
+      'city': ['City', 'Telavi'],
+      'address': ['Address', 'D. Aghmashenebeli, 153'],
+      'tag': ['Tag', 'Home, Office ...'],
+      'add btn': 'save address',
+      'loading msg': 'processing data',
+      'success msg': 'address saved!',
+      'failure msg': 'could not save address..'
     }
   }
 

@@ -71,7 +71,7 @@ const Header = ({ isLoggedIn }: IProps) => {
             className={style.textLink}>
             {t('contact')}
           </Link>
-          <CartIcon />
+          <CartIcon isLoggedIn={isLoggedIn} />
           {isLoggedIn ?
             <ProfileDropDown currentPath={pathname} /> :
             <Button

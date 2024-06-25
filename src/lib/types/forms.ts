@@ -31,16 +31,16 @@ export type ICheckoutFormData = {
   paymentMethod: string | number | readonly string[] | undefined,
 }
 
-export type INewAddressForm = {
-  city: string,
-  address: string,
-  tag: string
-}
-
 export type IProfileEditFormData = {
   firstname: string,
   lastname: string,
   gender: string | null,
   dobMilSecs: number | null,
   mobile: string,
+}
+
+export type INewAddressForm = {
+  city: string,
+  address: string,
+  tag: string
 }

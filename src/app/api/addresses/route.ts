@@ -82,4 +82,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error }, { status: 501 })
   }
 }
+
 export const revalidate = 0;

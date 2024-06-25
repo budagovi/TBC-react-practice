@@ -1,4 +1,3 @@
-'use client'
 // --- style
 import style from './ProfileAddresses.module.css';
 // --- react api
@@ -8,8 +7,8 @@ import type { IAddress, IUser } from '@/src/lib/types/entities';
 // --- components
 import AddressItem from './AddressItem';
 // --- react-icons
-import { FiPlus } from 'react-icons/fi';
-import { useScopedI18n } from '@/src/lib/next-internationalization/client';
+import { getScopedI18n } from '@/src/lib/next-internationalization/server';
+import NewAddressModaForm from './NewAddressModalForm';
 
 interface IProps {
   addresses: IAddress[],
@@ -19,12 +18,13 @@ interface IProps {
 /**
  * User's address book
  */
-const ProfileAddresses = memo(function
+const ProfileAddresses = memo(async function
   ProfileAddresses({
-    addresses
+    addresses,
+    user
   }: IProps) {
 
-  const t = useScopedI18n('/profile.addresses')
+  const t = await getScopedI18n('/profile.addresses')
 
   return (
     <div className={style.wrapper}>
@@ -37,7 +37,7 @@ const ProfileAddresses = memo(function
           />)
         : <span>{t('no addresses')}</span>
       }
-            <button><FiPlus />{t('add address')}</button>
+      <NewAddressModaForm user={user} />
     </div>
   )
 })

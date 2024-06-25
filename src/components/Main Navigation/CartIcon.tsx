@@ -21,7 +21,7 @@ import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 /**
  * Cart icon that shows total amoun of cart items and onClick opens drawer from right
  */
-const CartIcon = () => {
+const CartIcon = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 
   const t = useScopedI18n('header');
   // get total amount of cart items and render with no SSR
@@ -68,7 +68,7 @@ const CartIcon = () => {
             <span>${total.toFixed(2)}</span>
           </div>
           <div className={style.actions}>
-            {ctx.items.length > 0 && <NavigateToCartButton closeDrawer={toggleDrawer} />}
+            {ctx.items.length > 0 && <NavigateToCartButton closeDrawer={toggleDrawer} isLogged={isLoggedIn} />}
             {ctx.items.length === 0 && <Button onClick={() => { router.push('/store'); toggleDrawer() }}>{t('start shopping')}</Button>}
           </div>
         </div>
