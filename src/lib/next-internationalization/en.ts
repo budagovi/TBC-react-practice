@@ -150,6 +150,7 @@ export default {
   },
   '/checkout': {
     'contacts': 'Contact Details',
+    'no addresses': 'No active address found',
     'shipping': 'Shipping',
     'free': 'Free',
     'regular': 'Regular Shipping',

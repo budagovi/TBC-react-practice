@@ -147,6 +147,7 @@ export default {
   },
   '/checkout': {
     'contacts': 'საკონტაქტო დეტალები',
+    'no addresses': 'მისამართი არ მოიძებნა',
     'shipping': 'მიტანის სერვისი',
     'free': 'უფასო',
     'regular': 'სტანდარტული სერვისი',

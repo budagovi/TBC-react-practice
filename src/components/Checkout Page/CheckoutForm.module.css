@@ -49,12 +49,19 @@ form.wrapper span {
 .slideShown {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 1.5rem;
   margin-bottom: var(--margin-bottom);
   padding: 0 0.2rem;
   transition: .5s ease-in-out;
   opacity: 0;
+}
+
+.slideShown label {
+  cursor: pointer;
+}
+.slideShown label:has(input:checked)>div {
+  background-color: var(--greyshGreen);
+  transition: background-color .15s ease-in;
 }
 
 .slideHidden {
@@ -108,26 +115,6 @@ form.wrapper span {
 
 .arrow {
   color: var(--greenFore);
-}
-
-
-.slideShown>button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  line-height: 2rem;
-  font-weight: 600;
-  font-size: 15px;
-  color: var(--greenFore);
-  width: 100%;
-  border-top: 1px solid var(--greyshGreen);
-  padding-top: 1.4rem;
-}
-
-.slideShown>button>svg {
-  --size: 18px;
-  width: var(--size);
-  height: var(--size);
 }
 
 /* Form Carousel */

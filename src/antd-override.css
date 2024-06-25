@@ -43,7 +43,7 @@
 }
 
 /* Steps */
-.ant-steps * {
+:root[data-theme='dark'] .ant-steps * {
   color: var(--black) !important;
 }
 

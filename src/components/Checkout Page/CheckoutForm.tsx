@@ -59,6 +59,7 @@ const CheckoutForm = ({ user, addresses, creditCards }: IProps) => {
       ...prevState,
       [name]: value,
     }));
+    
   }, []);
 
   const submitHandler = async () => {
@@ -174,7 +175,7 @@ const CheckoutForm = ({ user, addresses, creditCards }: IProps) => {
               currSlide={slideNum}
               changeHandler={changeHandler}
               addresses={addresses}
-              userId={user.id}
+              user={user}
             />
 
             {/* Slide 2 - Shipping Details */}
