@@ -13,6 +13,7 @@ import fetchAllProductIdAndNames from "@/src/app/api/_queries/fetchAllProductIdA
 // --- components
 import ProductDetails from "@/src/components/Product Page/ProductDetails";
 import ProductNav from "@/src/components/Product Page/ProductNav";
+// --- next api
 import { Metadata } from "next";
 
 
@@ -53,6 +54,7 @@ export async function generateStaticParams() {
     segments = productNameAndIds.map(record => formatProductPathSegment(record.name, record.id))
   }
 
+
   const localeParams = getStaticParams();
 
   for (const localeParam of localeParams) {
@@ -66,6 +68,8 @@ export async function generateStaticParams() {
 
   return params;
 }
+
+export const dynamicParams = false;
 
 interface IProps {
   params: {
