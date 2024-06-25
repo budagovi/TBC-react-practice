@@ -28,7 +28,7 @@ const PathSegment = () => {
               <Link
                 href={formatRoute(pathnames, idx)}
               >
-                {isStore && idx == 1 ? path.slice(0, -4).replace('-', ' ') : path}
+                {isStore && idx == 1 ? path.slice(0, -4).replace('-', ' ') : path.replace('-', ' ')}
               </Link>
             </span>
           )

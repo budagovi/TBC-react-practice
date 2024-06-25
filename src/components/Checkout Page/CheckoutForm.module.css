@@ -17,19 +17,14 @@
   color: var(--grey);
   --margin-bottom: 0.6rem;
   position: relative;
+  opacity: 1;
+  transition: opacity .15s ease-in;
 }
 
-.overlay {
-  border-radius: 0.25rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: red;
-  z-index: 4;
+.wrapper.loading {
+  opacity: 0.6;
+  pointer-events: none;
   cursor: not-allowed;
-  animation: fade .1s ease-in forwards;
 }
 
 @keyframes fade {
@@ -54,14 +49,6 @@ form.wrapper span {
   padding: 0 0.2rem;
   transition: .5s ease-in-out;
   opacity: 0;
-}
-
-.slideShown label {
-  cursor: pointer;
-}
-.slideShown label:has(input:checked)>div {
-  background-color: var(--greyshGreen);
-  transition: background-color .15s ease-in;
 }
 
 .slideHidden {

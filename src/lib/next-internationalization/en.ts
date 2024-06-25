@@ -164,7 +164,9 @@ export default {
     'no payments': 'No active payment method found',
     'loading msg': 'Order is Proccessing',
     'success msg': 'Order successfully submitted',
-    'error msg': 'Something went wring, try later'
+    'error msg': 'Something went wring, try later',
+    'expiry': 'Expiry Date',
+    'card number': 'Card Number'
   },
   '/contact': {
     'form': {

@@ -1,20 +1,23 @@
 // --- style
-import style from '../CheckoutForm.module.css';
+import parentStyle from '../CheckoutForm.module.css';
+import style from './Payments.module.css';
 // --- react api
-import { ChangeEvent, memo } from 'react';
-// --- react-icons
-import { FiPlus } from 'react-icons/fi';
-// --- components
-import PaymentItem from '../PaymentItem';
-// --- types
-import type { ICreditCard } from '@/src/lib/types/entities';
+import { ChangeEvent, Dispatch, SetStateAction, memo, useCallback, useState } from 'react';
 // --- next-internationalization
 import { useScopedI18n } from '@/src/lib/next-internationalization/client';
+// --- utils
+import { formatCVC, formatCardNumber, formatExpiryDate } from '@/src/utilities/helpers/cardFormatters';
+import { ICheckoutFormData } from '@/src/lib/types/forms';
+
+const initialState = {
+  cardNum: '',
+  expiry: '',
+  cvc: ''
+}
 
 interface IProps {
   currSlide: number,
-  changeHandler: (e: ChangeEvent<HTMLInputElement>) => void,
-  creditCards: ICreditCard[]
+  setIsValid: Dispatch<SetStateAction<ICheckoutFormData>>
 }
 
 /**
@@ -24,29 +27,86 @@ interface IProps {
 const Payments = memo(function
   Payments({
     currSlide,
-    changeHandler,
-    creditCards: cards
+    setIsValid
   }: IProps) {
 
   const t = useScopedI18n('/checkout');
 
+  const [values, setValues] = useState(initialState)
+  const cardChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    let newValue = value;
+    if (name === 'cvc')
+      newValue = formatCVC(value);
+    else if (name === 'cardNum')
+      newValue = formatCardNumber(value)
+    else if (name === 'expiry')
+      newValue = formatExpiryDate(value);
+
+    setValues((prevState) => ({
+      ...prevState,
+      [name]: newValue,
+    }));
+
+
+  }, []);
+
+  setIsValid(prevState => ({ ...prevState, cardIsValid: values.cardNum.length === 16 && values.cvc.length === 3 && values.expiry.length === 5 }))
+
+
+
+
+  // const elements = useElements();
+
   return (
     <div className={`
-      ${style.slideShown} 
-      ${currSlide === 2 ? style.slideHidden : null} 
-      ${style.embla__slide}
+      ${parentStyle.slideShown} 
+      ${currSlide === 2 ? parentStyle.slideHidden : null} 
+      ${parentStyle.embla__slide}
     `}>
-      {cards.length > 0 ?
-        cards.map((card, idx) =>
-          <PaymentItem
-            key={idx}
-            card={card}
-            id={idx.toString()}
-            changeHandler={changeHandler}
-          />)
-        : <span>{t('no payments')}</span>
-      }
-      <button><FiPlus />{t('add payment')}</button>
+      <div className={style.wrapper}>
+        <div className={style.inputWrapper}>
+          <label className={style.label} htmlFor="cardNumber">{t('card number')}</label>
+          <input
+            className={style.input}
+            name="cardNum"
+            type="text"
+            value={values.cardNum}
+            onChange={cardChangeHandler}
+            placeholder="Card Number"
+            maxLength={16}
+            required
+          />
+        </div>
+        <div className={style.twoInputs}>
+          <div className={style.inputWrapper}>
+            <label className={style.label} htmlFor="expiry">{t('expiry')}</label>
+            <input
+              className={style.input}
+              name="expiry"
+              type="text"
+              value={values.expiry}
+              onChange={cardChangeHandler}
+              placeholder="MM/YY"
+              required
+            />
+          </div>
+          <div className={style.inputWrapper}>
+            <label className={style.label} htmlFor="cvc">CVC</label>
+            <input
+              className={style.input}
+              name="cvc"
+              type="text"
+              value={values.cvc}
+              onChange={cardChangeHandler}
+              placeholder="CVC"
+              maxLength={3}
+              required
+            />
+          </div>
+        </div>
+      </div>
     </div>
   )
 })

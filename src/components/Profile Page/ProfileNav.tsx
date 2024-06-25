@@ -17,8 +17,8 @@ const ProfileNav = async () => {
       <span>{t('manage my accaunt')}</span>
       <ul>
         <li><Link href='/profile'>{t('my profile')}</Link></li>
-        <li><Link href='/profile/addresses'>{t('address book')}</Link></li>
-        <li><Link href='/profile/payments'>{t('my payment options')}</Link></li>
+        <li><Link href='/profile/address-book'>{t('address book')}</Link></li>
+        <li><Link href='/profile/payment-methods'>{t('my payment options')}</Link></li>
       </ul>
       <span>{t('my orders')}</span>
       <ul>

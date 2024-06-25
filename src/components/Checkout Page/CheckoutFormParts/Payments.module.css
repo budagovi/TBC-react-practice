@@ -1,0 +1,53 @@
+/* CreditCardForm.module.css */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--greyshGreen);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid transparent;
+}
+
+:root[data-theme='dark'] .wrapper {
+  background-color: transparent;
+  border: 1px solid var(--greyshGreen);
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.twoInputs {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.twoInputs > .inputWrapper {
+  margin-top: auto;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.input {
+  outline: none;
+  padding: 0.75rem;
+  border: 1px solid var(--greyshGreen);
+  background-color: var(--bodyBg);
+  color: var(--black);
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+}

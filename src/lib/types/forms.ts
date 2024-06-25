@@ -28,7 +28,7 @@ export type IContactFormData = {
 export type ICheckoutFormData = {
   address: string | number | readonly string[] | undefined,
   shippingMethod: string | number | readonly string[] | undefined,
-  paymentMethod: string | number | readonly string[] | undefined,
+  cardIsValid: boolean
 }
 
 export type IProfileEditFormData = {

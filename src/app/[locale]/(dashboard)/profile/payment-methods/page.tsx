@@ -1,5 +1,3 @@
-// --- components
-import ProfileAddresses from "@/src/components/Profile Page/Profile/Addresses/ProfileAddresses";
 // --- next-internationalization api
 import { Locale } from "@/src/lib/next-internationalization/i18n.config";
 import { setStaticParamsLocale } from "next-international/server";
@@ -21,13 +19,13 @@ export async function generateMetadata({ params }: { params: { locale: Locale } 
 
   if (params.locale === 'en')
     return {
-      title: "Addresses - Aurora Plants",
-      description: "User Addresses - Manage your address book on Aurora Plants",
+      title: "Payment methods - Aurora Plants",
+      description: "Make sure to add suitable payment methods for you, to be able to purchase our products online",
     }
 
   return {
-    title: "მისამართები - Aurora Plants",
-    description: "მომხმარებლის ანგარიში - დაარედაქტირეთ თქვენი მისამართების სია, რათა შევძლოთ მყისიერი უკუკავშირი"
+    title: "გადახდის მეთოდები - Aurora Plants",
+    description: "დაამატეთ თქვენთვის მოსახერხებელი გადახდის მეთოდი, რათა შეძლოთ შეკვეთების წარმატეებულად გაფორმება."
   }
 }
 
@@ -37,7 +35,7 @@ interface Props {
   }
 }
 
-const ProfileAddressesPage = async ({ params: { locale } }: Props) => {
+const ProfilePaymentsPage = async ({ params: { locale } }: Props) => {
 
   // static rendering for both languages on build
   setStaticParamsLocale(locale)
@@ -51,7 +49,7 @@ const ProfileAddressesPage = async ({ params: { locale } }: Props) => {
     addresses = addressesResponse.payload.data;
   }
 
-  return <ProfileAddresses user={user} addresses={addresses} />
+  return <></>
 }
 
-export default ProfileAddressesPage;
+export default ProfilePaymentsPage;

@@ -50,12 +50,12 @@
 
 :where(.css-dev-only-do-not-override-6688ir).ant-steps .ant-steps-item-finish .ant-steps-item-icon,
 .ant-steps .ant-steps-item-finish .ant-steps-item-icon {
-  background-color: #dce1de !important;
-  border-color: #dce1de !important;
+  background-color: var(--greyshGreen) !important;
+  border-color: var(--greyshGreen) !important;
 }
 
-:where(.css-dev-only-do-not-override-6688ir).ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title,
-.ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+:root[data-theme='dark']:where(.css-dev-only-do-not-override-6688ir).ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title,
+:root[data-theme='dark'] .ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
   color: var(--fore) !important;
 }
 

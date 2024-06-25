@@ -1,13 +1,14 @@
 'use client'
 // --- style
-import style from '../CheckoutForm.module.css';
+import parentStyle from '../CheckoutForm.module.css';
+import style from './AddressDetails.module.css';
 // --- react api
 import { ChangeEvent, memo, useState } from 'react';
 // --- types
 import type { IAddress, IUser } from '@/src/lib/types/entities';
 // --- components
-import AddressItem from '../../Profile Page/Addresses/AddressItem';
-import NewAddressModaForm from '../../Profile Page/Addresses/NewAddressModalForm';
+import AddressItem from '@/src/components/Profile Page/Addresses/AddressItem'
+import NewAddressModaForm from '@/src/components/Profile Page/Addresses/NewAddressModalForm';
 // --- next-internationalization
 import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 
@@ -44,13 +45,13 @@ const AddressDetails = memo(function
 
   return (
     <div className={`
-      ${style.slideShown} 
-      ${currSlide === 0 ? style.slideHidden : null} 
-      ${style.embla__slide}
+      ${parentStyle.slideShown} 
+      ${currSlide === 0 ? parentStyle.slideHidden : null} 
+      ${parentStyle.embla__slide}
     `}>
       {addresses.length > 0 ?
         addresses.map((address) =>
-          <label htmlFor={address.id + 'ad'} key={address.id}>
+          <label htmlFor={address.id + 'ad'} key={address.id} className={style.wrapper}>
             <input
               type="radio"
               name='address'

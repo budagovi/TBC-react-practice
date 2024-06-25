@@ -1,7 +1,7 @@
 'use client'
 // --- style
-import style from '../CheckoutForm.module.css';
-import shippingStyle from './Shippings.module.css';
+import parentStyle from '../CheckoutForm.module.css';
+import style from './Shippings.module.css';
 // --- react api
 import { ChangeEvent, memo } from 'react';
 // --- next-internationalization
@@ -26,11 +26,11 @@ const Shippings = memo(function
 
   return (
     <div className={`
-      ${style.slideShown} 
-      ${currSlide === 1 ? style.slideHidden : null} 
-      ${style.embla__slide}
+      ${parentStyle.slideShown} 
+      ${currSlide === 1 ? parentStyle.slideHidden : null} 
+      ${parentStyle.embla__slide}
     `}>
-      <label htmlFor="free" className={shippingStyle.itemWrapper}>
+      <label htmlFor="free" className={style.itemWrapper}>
         <input
           type="radio"
           name="shippingMethod"
@@ -42,7 +42,7 @@ const Shippings = memo(function
         <span>{t('free')}</span>
         <span>{t('regular')}</span>
       </label>
-      <label htmlFor="priority" className={shippingStyle.itemWrapper}>
+      <label htmlFor="priority" className={style.itemWrapper}>
         <input
           type="radio"
           name="shippingMethod"

@@ -19,14 +19,17 @@ import { App } from 'antd';
 import type { ICheckoutFormData } from '@/src/lib/types/forms';
 // --- validators
 import CheckoutSteps from './CheckoutSteps';
+// --- context
 import useCartContext from '@/src/hooks/useCartContext';
+// --- next api
 import { useRouter } from 'next/navigation';
-import { IAddress, ICreditCard, IOrder, IUser } from '@/src/lib/types/entities';
+// --- tyoes
+import type { IAddress, ICreditCard, IOrder, IUser } from '@/src/lib/types/entities';
 
 const initialFormValue: ICheckoutFormData = {
   address: undefined,
   shippingMethod: undefined,
-  paymentMethod: undefined
+  cardIsValid: false,
 }
 
 interface IProps {
@@ -38,7 +41,7 @@ interface IProps {
 /**
  * Checkout sliding form custom component (using emblda Carousel)
  */
-const CheckoutForm = ({ user, addresses, creditCards }: IProps) => {
+const CheckoutForm = ({ user, addresses }: IProps) => {
   // -=-=-=- Internationalization -=-=-=-
 
   const t = useScopedI18n('/checkout')
@@ -59,7 +62,7 @@ const CheckoutForm = ({ user, addresses, creditCards }: IProps) => {
       ...prevState,
       [name]: value,
     }));
-    
+
   }, []);
 
   const submitHandler = async () => {
@@ -134,7 +137,7 @@ const CheckoutForm = ({ user, addresses, creditCards }: IProps) => {
     else if (slideNum === 1)
       setIsNextBtnDisabled(values.shippingMethod === undefined)
     else if (slideNum === 2)
-      setIsNextBtnDisabled(values.paymentMethod === undefined)
+      setIsNextBtnDisabled(values.cardIsValid === false)
   }, [values, setIsNextBtnDisabled, slideNum])
 
   const scrollPrev = useCallback(() => {
@@ -156,14 +159,9 @@ const CheckoutForm = ({ user, addresses, creditCards }: IProps) => {
   }, [emblaApi, isNextBtnDisabled, slideNum])
 
   return (
-    <div className={style.wrapper}>
+    <div className={`${style.wrapper} ${isSubmitting ? style.loading : ''}`}>
       <CheckoutSteps current={slideNum} />
       <form className={style.wrapper}>
-
-
-        {/*   -=-=-=- Form Overlay (on pending) -=-=-=-   */}
-
-        {isSubmitting && <div className={style.overlay}></div>}
 
         {/*   -=-=-=- Form Inputs (Carousel) -=-=-=-   */}
 
@@ -187,8 +185,7 @@ const CheckoutForm = ({ user, addresses, creditCards }: IProps) => {
             {/* Slide 3 - Payment Details */}
             <Payments
               currSlide={slideNum}
-              changeHandler={changeHandler}
-              creditCards={creditCards}
+              setIsValid={setValues}
             />
 
           </div>
@@ -226,3 +223,5 @@ const CheckoutForm = ({ user, addresses, creditCards }: IProps) => {
 }
 
 export default CheckoutForm;
+
+

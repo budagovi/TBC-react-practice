@@ -1,0 +1,8 @@
+label.wrapper {
+  cursor: pointer;
+}
+
+label.wrapper:has(input:checked)>div {
+  background-color: var(--greyshGreen);
+  transition: background-color .15s ease-in;
+}
