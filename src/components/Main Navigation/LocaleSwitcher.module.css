@@ -57,3 +57,9 @@
 .wrapper:hover button:nth-of-type(2) {
   opacity: 1;
 }
+
+@media (max-width: 870px) {
+  .wrapper.light::after {
+    background-color: var(--greenFore)
+  }
+}

@@ -48,7 +48,7 @@
 }
 
 .icon {
-  --size: 24px;
+  --size: clamp(20px, 3.4vw, 24px);
   width: var(--size);
   height: var(--size);
   cursor: pointer;
@@ -57,4 +57,10 @@
 
 .icon:hover {
   color: var(--foreHover);
+}
+
+@media (max-width: 870px) {
+  .iconWrapper {
+    margin-right: calc(var(--navWrapperGap)/-2);
+  }
 }

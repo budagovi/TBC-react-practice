@@ -37,15 +37,16 @@
 }
 
 .banner .bannerText p {
-  font-size: 16px;
+  font-size: clamp(11px, 2.2vw, 16px);
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .banner .bannerText span {
-  font-size: 72px;
+  font-size: clamp(32px,6vw, 72px);
   text-transform: capitalize;
   font-weight: 400;
+  margin-inline: 1rem;
 }
 
 /* Header appearence on other routes */
@@ -72,7 +73,7 @@
 .head section {
   display: flex;
   justify-content: center;
-  font-size: 13px;
+  font-size: clamp(9px, 2.2vw, 13px);
   padding-block: 0.3rem;
 }
 
@@ -85,11 +86,14 @@
 .navWrapper {
   display: flex;
   justify-content: space-between;
+  --headerGap: 0.6rem;
+  gap: var(--headerGap);
   align-items: center;
   padding-block: 0.8rem;
 }
 
 .navWrapper h1 {
+  font-size: clamp(28px, 5.1vw, 40px);
   cursor: pointer;
 }
 
@@ -98,22 +102,27 @@
   color: var(--foreHover);
 }
 
-nav.links {
+.actions {
   display: flex;
   align-items: center;
-  --navWrapperGap: 2rem;
-  gap: var(--navWrapperGap);
+  gap: var(--headerGap);
 }
 
-nav.links a,
-nav.links span {
-  text-transform: capitalize;
-  text-decoration: none;
-  text-transform: capitalize;
-  transition: var(--textHoverTransition);
-  font-weight: 700;
+.icons {
+  display: flex;
+  gap: var(--headerGap);
 }
 
-nav.links>span {
-  cursor: pointer;
+@media (max-width: 870px) {
+
+  .actions {
+    flex-direction: row-reverse;
+  }
+}
+
+
+@media (max-width: 520px) {
+  .banner .bannerText span {
+    margin-inline: 1rem;
+  }
 }

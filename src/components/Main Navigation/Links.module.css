@@ -1,0 +1,39 @@
+nav.links {
+  display: flex;
+  align-items: center;
+  --navWrapperGap: 1.6rem;
+  gap: var(--navWrapperGap);
+  margin-left: auto;
+}
+
+nav.links a,
+nav.links span {
+  text-transform: capitalize;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: var(--textHoverTransition);
+  font-weight: 700;
+}
+
+nav.links>span {
+  cursor: pointer;
+}
+
+.burger {
+  display: none;
+  --size: clamp(20px, 3.4vw, 24px);
+  height: var(--size);
+  width: var(--size);
+}
+
+@media (max-width: 870px) {
+
+  .burger {
+    display: block;
+  }
+
+  nav.links {
+    display: none;
+  }
+
+}

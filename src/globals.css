@@ -146,7 +146,7 @@ input[type="radio"]:checked+span::before {
 .gl-max-width {
   width: min(100%, 1380px);
   margin: 0 auto;
-  padding-inline: 1rem;
+  padding-inline: min(2.7vw, 1rem);
 }
 
 

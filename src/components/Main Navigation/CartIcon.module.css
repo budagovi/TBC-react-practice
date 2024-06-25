@@ -1,6 +1,5 @@
 .cartIconWrapper {
   position: relative;
-  margin-right: calc(var(--navWrapperGap)/-2);
   display: flex;
   align-items: center;
   transition: .2s ease-in-out;
@@ -8,7 +7,7 @@
 }
 
 .cartIcon {
-  --navIconSize: 26px;
+  --navIconSize: clamp(20px, 3.4vw, 24px);
   width: var(--navIconSize);
   height: var(--navIconSize);
   transition: inherit;
@@ -21,7 +20,7 @@
 
 .cartIconWrapper>div {
   aspect-ratio: 1/1;
-  width: 19px;
+  width: clamp(14px, 2vw, 19px);
   position: absolute;
   display: flex;
   justify-content: center;

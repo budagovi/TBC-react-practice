@@ -21,3 +21,9 @@
 .toggle.light svg {
 	fill: var(--fore);
 }
+
+@media (max-width: 870px) {
+	.wrapper {
+		justify-self: flex-end;
+	}
+}

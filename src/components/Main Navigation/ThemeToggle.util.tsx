@@ -45,7 +45,7 @@ export default function ThemeToggle() {
   }, [theme])
 
   return (
-    <div>
+    <div className={style.wrapper}>
       <Script id="ThemeToggle.util.jsx" strategy="beforeInteractive" >
         {`
           let themeLocalStorage   = localStorage.getItem('theme')

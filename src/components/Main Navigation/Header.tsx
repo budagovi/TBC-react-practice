@@ -2,19 +2,16 @@
 // --- style
 import style from './Header.module.css';
 // --- Components
-import LocalSwitcher from './LocaleSwitcher';
 import ProfileDropDown from './ProfileDropDown';
 import CartIcon from './CartIcon';
-import ThemeToggle from './ThemeToggle.util';
 // --- UI
 import Button from '@/src/UI/Button/Button';
 // --- next/react api
 import { usePathname, useRouter } from 'next/navigation';
-import { Suspense } from 'react';
 import Link from 'next/link';
 // --- next-internationalization api
 import { useScopedI18n } from '@/src/lib/next-internationalization/client';
-
+import Links from './Links';
 
 interface IProps {
   isLoggedIn: boolean
@@ -52,38 +49,22 @@ const Header = ({ isLoggedIn }: IProps) => {
 
       <div className={`${style.navWrapper} gl-max-width`}>
         {!isRootPage ? <Link href={'/'}><h1>Aurora Plants</h1></Link> : <h1>Aurora Plants</h1>}
-        <nav className={style.links}>
-          <Suspense>
-            <LocalSwitcher currentPath={pathname} />
-          </Suspense>
-          <Link
-            href={`/store`}
-            className={style.textLink}>
-            {t('store')}
-          </Link>
-          <Link
-            href={`/blogs`}
-            className={style.textLink}>
-            {t('blogs')}
-          </Link>
-          <Link
-            href={`/contact`}
-            className={style.textLink}>
-            {t('contact')}
-          </Link>
-          <CartIcon isLoggedIn={isLoggedIn} />
-          {isLoggedIn ?
-            <ProfileDropDown currentPath={pathname} /> :
-            <Button
-              light={isAuth || isRootPage ? true : undefined}
-              style={{ padding: "0.5rem 0.8rem", transition: '.2s ease-in' }}
-              onClick={() => router.push('/sign-in')}
-            >
-              {t('sign in')}
-            </Button>
-          }
-          <ThemeToggle />
-        </nav>
+        <div className={style.actions}>
+          <Links />
+          <div className={style.icons}>
+            <CartIcon isLoggedIn={isLoggedIn} />
+            {isLoggedIn ?
+              <ProfileDropDown currentPath={pathname} /> :
+              <Button
+                light={isAuth || isRootPage ? true : undefined}
+                style={{ padding: "0.5rem 0.8rem", transition: '.2s ease-in' }}
+                onClick={() => router.push('/sign-in')}
+              >
+                {t('sign in')}
+              </Button>
+            }
+          </div>
+        </div>
       </div>
 
       {/*   -=-=-=- Banner (visible only on home route) -=-=-=-   */}
