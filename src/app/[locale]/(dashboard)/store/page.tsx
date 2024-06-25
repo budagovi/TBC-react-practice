@@ -11,9 +11,25 @@ import type { IProduct } from '@/src/lib/types/entities';
 import type { IStoreTag } from '@/src/hooks/useStoreQueryParams';
 // --- utils/checkers
 import isStoreTag from '@/src/utilities/checkers/isStoreTag';
+// --- next api
+import { Metadata } from 'next';
 
 export function generateStaticParams() {
   return getStaticParams()
+}
+
+export async function generateMetadata({ params }: { params: { locale: Locale } }): Promise<Metadata> {
+
+  if (params.locale === 'en')
+    return {
+      title: "Store - Aurora Plants",
+      description: "Browse and shop for plants online at Aurora Plants",
+    }
+
+  return {
+    title: "პროდუქტები - Aurora Plants",
+    description: "აღმოაჩინეთ სასურველი პროდუქტები ავრორას დიდ გალერეაში. გაფილტრეთ, დაასორტირეთ ან ძიების ფუნქციონალის გამოყენებით"
+  }
 }
 
 interface IProps {

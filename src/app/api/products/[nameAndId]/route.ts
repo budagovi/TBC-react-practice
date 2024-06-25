@@ -10,7 +10,6 @@ import { ICustomApiResponse } from "@/src/lib/types/responses";
 // --- query
 import fetchProductByIdAndName from "../../_queries/fetchProductByIdAndName";
 
-
 interface IProps {
   params: {
     nameAndId: string

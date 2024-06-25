@@ -39,7 +39,7 @@ const getProduct = async (nameAndId: string): Promise<IActionResponse> => {
 
   } catch (error: any) {
 
-    console.error("[Error in getProduct()]:", error.message);
+    console.error("[Error in getProduct()]:", error);
     return {
       success: false,
       message: error.message || 'failed to fetch data ',

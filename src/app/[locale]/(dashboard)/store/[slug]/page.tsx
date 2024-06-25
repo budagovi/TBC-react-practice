@@ -13,6 +13,36 @@ import fetchAllProductIdAndNames from "@/src/app/api/_queries/fetchAllProductIdA
 // --- components
 import ProductDetails from "@/src/components/Product Page/ProductDetails";
 import ProductNav from "@/src/components/Product Page/ProductNav";
+import { Metadata } from "next";
+
+
+export async function generateMetadata({ params }: { params: { slug: string, locale: Locale } }): Promise<Metadata> {
+
+  const productsResponse = await getProduct(params.slug);
+
+  if (productsResponse.success) {
+    const product = productsResponse.payload.data;
+
+    if (params.locale === 'en') {
+
+      return {
+        title: product.name + ' - Aurora Plants',
+        description: 'Explore and buy ' + product.name + ' at Aurora Plants'
+      }
+    }
+    else {
+      return {
+        title: product.nameGe + ' - Aurora Plants',
+        description: 'შეიძინეთ ' + product.nameGe + ' ავრორას ყვავილებში'
+      }
+    }
+  }
+  else
+    return {
+      title: 'Aurora Plants',
+      description: 'Explore and purchase high-quality plants at Aurora Plants'
+    };
+}
 
 export async function generateStaticParams() {
   const params = [];
@@ -25,12 +55,11 @@ export async function generateStaticParams() {
 
   const localeParams = getStaticParams();
 
-
   for (const localeParam of localeParams) {
     for (const segment of segments) {
       params.push({
         ...localeParam,
-        productSegment: segment
+        slug: segment
       });
     }
   }
@@ -40,17 +69,17 @@ export async function generateStaticParams() {
 
 interface IProps {
   params: {
-    productSegment: string,
+    slug: string,
     locale: Locale
   }
 }
 
-const ProductPage = async ({ params: { productSegment, locale } }: IProps) => {
+const ProductPage = async ({ params: { slug, locale } }: IProps) => {
 
   // static rendering for both languages on build-time
   setStaticParamsLocale(locale)
 
-  const response = await getProduct(productSegment);
+  const response = await getProduct(slug);
   let product = {} as IProduct;
   if (response.success) {
     product = response.payload.data;
