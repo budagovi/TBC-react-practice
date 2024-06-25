@@ -187,7 +187,7 @@ export default {
       'emails': 'Emails'
     }
   },
-  'profile page': {
+  '/profile': {
     'profile nav': {
       'manage my accaunt': 'manage my account',
       'my profile': 'my profile',
@@ -199,11 +199,17 @@ export default {
     },
     'edit form': {
       'title': 'Edit Your Profile',
-      'firstname': ['First Name', 'John'],
-      'lastname': ['Last Name', 'Smit'],
-      'email': 'Email',
-      'address': ['Address', 'City, Street'],
-      'password': ['Password Changes', 'Current Password', 'New Password', 'Confirm New Password'],
+      'firstname': 'First Name',
+      'lastname': 'Last Name',
+      'gender': 'Gender',
+      'male': 'male',
+      'female': 'female',
+      'mobile': 'Mobile',
+      'dob': 'Date of Birth',
+      'loading message': 'Processing',
+      'success message': 'Changes Saved!',
+      'failure message': 'Could not submit changes..',
+      'password': ['Change Password', 'Current Password', 'New Password', 'Confirm New Password', 'change'],
       'cancel': 'Cancel',
       'save': 'Save Changes'
     }

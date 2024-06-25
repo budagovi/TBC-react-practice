@@ -63,7 +63,8 @@ const SignUpForm = () => {
 
   const formIsValid = isSignUpFormValid(values)
 
-  const { message } = App.useApp()
+  const { message } = App.useApp();
+  
   const changeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     const newValue = (name === 'mobile') ? formatPhoneNumber(value) : value;

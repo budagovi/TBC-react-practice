@@ -3,7 +3,7 @@ import { useState } from 'react';
 // --- style
 import style from './ProductImage.module.css';
 // --- antd
-import { Modal } from 'antd';
+import { Image } from 'antd';
 
 interface IProps {
   imgUrl: string,
@@ -15,9 +15,10 @@ interface IProps {
  */
 const ProductImage = ({ imgUrl, name }: IProps) => {
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleModal = () => {
-    setIsModalOpen(prevState => !prevState);
+  const [isPreviewlOpen, setIsPreviewlOpen] = useState(false);
+
+  const togglePreview = () => {
+    setIsPreviewlOpen(prevState => !prevState);
   };
 
 
@@ -52,33 +53,17 @@ const ProductImage = ({ imgUrl, name }: IProps) => {
       onMouseLeave={() => setImageHovered(false)}
       onMouseMove={handleMouseMove}
     >
-      <button onClick={toggleModal}>
+      <button onClick={togglePreview}>
         <div className={style.overlay}></div>
-        <img
+        <Image
           src={imgUrl}
           alt={name}
           style={{
-            transform: imageHovered && !isModalOpen
+            transform: imageHovered && !isPreviewlOpen
               ? `scale(1.4) translate(${position.x}px, ${position.y}px)`
               : 'scale(1)',
           }} />
       </button>
-
-      <Modal
-        open={isModalOpen}
-        onOk={toggleModal}
-        onCancel={toggleModal}
-        cancelText=''
-        footer=''
-        closable={false}
-        className={style.modal}
-      >
-        <img
-          src={imgUrl}
-          alt={name}
-          className={style.modalImg}
-        />
-      </Modal>
     </div>
   )
 }

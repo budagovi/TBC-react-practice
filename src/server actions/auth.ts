@@ -8,6 +8,7 @@ import { ICustomApiResponse, IActionResponse } from "@/src/lib/types/responses";
 import { ISignInFormData } from "@/src/lib/types/forms";
 // --- constancts
 import { AUTH_COOKIE_KEY, BASE_URL } from "@/src/lib/constants";
+import { IUser } from "../lib/types/entities";
 
 /**
  * Server Action, creates session token and stores it in cookies if the authorization proccess was successful
@@ -32,7 +33,7 @@ export async function login(formData: ISignInFormData): Promise<IActionResponse>
         ...formData
       })
     })
-    
+
     if (!response.ok) {
       const data: ICustomApiResponse = await response.json();
 
@@ -43,7 +44,7 @@ export async function login(formData: ISignInFormData): Promise<IActionResponse>
     }
 
     // get user
-    const user = await response.json();
+    const user: IUser = await response.json();
 
     // create the session
     const expires = new Date(Date.now() + 60 * 60 * 24 * 1000); // 1 day
@@ -70,4 +71,16 @@ export async function logout() {
   // Destroy the session
   console.log('delete session')
   cookies().set(AUTH_COOKIE_KEY, "", { expires: new Date(0) });
+}
+
+/**
+ * Updates the user information in session token (executed when user edits fields on profile page)
+ * @param user 
+ */
+export async function updateUserSession(user: IUser) {
+  const expires = new Date(Date.now() + 60 * 60 * 24 * 1000); // 1 day
+  const session = await encrypt({ user, expires });
+
+  // Save the session in a cookie and return successful message
+  cookies().set(AUTH_COOKIE_KEY, session, { expires, httpOnly: true });
 }

@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  gap: 2rem;
+}
+
+.avatarWrapper {
+  --size: 150px;
+  width: var(--size);
+  height: var(--size);
+  border: 0.5rem solid var(--placeholderColor);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatarWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wrapper .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wrapper .text span {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--greenFore);
+  text-transform: capitalize;
+}
+
+.wrapper .text p {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--grey);
+}

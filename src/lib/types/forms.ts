@@ -36,3 +36,11 @@ export type INewAddressForm = {
   address: string,
   tag: string
 }
+
+export type IProfileEditFormData = {
+  firstname: string,
+  lastname: string,
+  gender: string | null,
+  dobMilSecs: number | null,
+  mobile: string,
+}

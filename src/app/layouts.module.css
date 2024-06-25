@@ -57,8 +57,44 @@
   background-color: #00000086;
 }
 
+/* -=-=-=-=-=- Cart Layout -=-=-=-=-=- */
 .cart_layout {
   display: grid;
   grid-template-columns: 1fr 380px;
   gap: 5rem;
+}
+
+
+/* -=-=-=-=-=- Profile Layout -=-=-=-=-=- */
+.profile_layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profile_content {
+  display: flex;
+  justify-content: space-between;
+  --profile-gap: 3rem;
+  gap: var(--profile-gap);
+}
+
+.profile_layout section {
+  padding: 0rem 5rem;
+  flex-grow: 1;
+  position: relative;
+}
+
+.profile_layout section:before {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 1px;
+  border-radius: 1rem;
+  background-color: var(--greenFore);
+  left: calc(var(--profile-gap)/2);
+}
+
+.profile_layout section h3 {
+  color: var(--greenFore);
 }

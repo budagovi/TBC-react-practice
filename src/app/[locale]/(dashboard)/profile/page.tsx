@@ -6,6 +6,10 @@ import { setStaticParamsLocale } from "next-international/server";
 import { getStaticParams } from '@/src/lib/next-internationalization/server';
 // --- next api
 import { Metadata } from 'next';
+// --- jose-auth
+import { getSession } from '@/src/lib/jose-auth/auth';
+// --- types
+import type { IUser } from '@/src/lib/types/entities';
 
 export function generateStaticParams() {
   return getStaticParams()
@@ -31,12 +35,14 @@ interface Props {
   }
 }
 
-const ProfilePage = ({ params: { locale } }: Props) => {
+const ProfilePage = async ({ params: { locale } }: Props) => {
 
   // static rendering for both languages on build
   setStaticParamsLocale(locale)
 
-  return <Profile />
+  const { user }: { user: IUser } = await getSession();
+
+  return <Profile user={user} />
 
 }
 

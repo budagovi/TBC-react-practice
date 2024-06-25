@@ -1,45 +1,19 @@
-/* -=- Profile Page Content -=- */
-
+/* -=- Edit Profile Form -=- */
 .wrapper {
-  display: flex;
-  justify-content: space-between;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  padding: 1rem 0 0;
 }
 
-/* -=- Profile Page Navigation -=- */
-.wrapper aside {
+.wrapper:has(form[data-state='pending']) * {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.wrapper form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.wrapper aside span {
-  font-weight: 600;
-}
-
-.wrapper aside ul {
-  list-style: none;
-  padding-inline: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--grey);
-}
-
-.wrapper aside ul li {
-  font-weight: 400;
-}
-
-/* -=- Profile Page Card -=- */
-
-.wrapper section {
-  padding: 2.5rem 5rem;
-  box-shadow: var(--cardShadow);
-  border-radius: 0.25rem;
-  flex-grow: 1;
-}
-
-.wrapper section h3 {
-  color: var(--greenFore);
 }

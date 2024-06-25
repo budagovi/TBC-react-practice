@@ -8,7 +8,6 @@
 
 .gridCell {
   border-radius: 0.25rem;
-  box-shadow: var(--cardShadow);
   padding: 2.5rem 2rem;
 }
 

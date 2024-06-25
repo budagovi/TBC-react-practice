@@ -1,4 +1,7 @@
+import { IUser } from "@/src/lib/types/entities";
+import { IProfileEditFormData } from "@/src/lib/types/forms";
 import { sql } from "@vercel/postgres";
+import dayjs from 'dayjs'
 import { NextRequest, NextResponse } from "next/server";
 
 interface SearchParams {
@@ -23,29 +26,43 @@ export async function GET({ }: NextRequest, { params }: SearchParams) {
 }
 
 // edit id-specified user
-export async function PUT(request: NextRequest) {
+export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
 
-  const data = await request.json()
+  const data: IProfileEditFormData = await request.json()
 
-  const { id, firstname, lastname, dob, gender, email, password, mobile, address, role } = data;
+  const { firstname, lastname, dobMilSecs, gender, mobile } = data;
 
+  const dateISOString = dayjs(dobMilSecs).add(1, 'day').toDate().toISOString().split('T')[0]
   try {
-    await sql`UPDATE users
-      SET
-        firstname = ${firstname},
-        lastname = ${lastname},
-        dob = ${dob},
-        gender = ${gender},
-        email = ${email},
-        password = ${password},
-        mobile = ${mobile},
-        address = ${address},
-        role = ${role}
-      WHERE id = ${id};`;
-     
-    return NextResponse.json({ data }, { status: 200 })
+    const updatedRecord = await sql`
+    UPDATE users
+    SET
+      firstname = ${firstname},
+      lastname = ${lastname},
+      dob = ${dateISOString},
+      gender = ${gender},
+      mobile = ${mobile}
+    WHERE 
+      id = ${params.id}
+    RETURNING
+      id,
+      firstname,
+      lastname,
+      dob,
+      gender,
+      email,
+      mobile,
+      is_admin as "isAdmin",
+      image
+    ;
+  `;
+
+    const updatedUser = updatedRecord.rows[0] as IUser
+
+    return NextResponse.json({ ...updatedUser }, { status: 200 })
 
   } catch (error) {
+    console.log(error)
     return NextResponse.json({ error }, { status: 500 })
   }
 }
