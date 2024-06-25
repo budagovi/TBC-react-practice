@@ -28,6 +28,7 @@ export async function GET(request: NextRequest) {
 
     const queryResult = await sql`
       SELECT 
+        a.id,
         address,
         city,
         tag,
@@ -71,11 +72,19 @@ export async function POST(request: NextRequest) {
 
     const { userId, address, city, tag } = data;
 
-    const query = await sql`
+    const queryResult = await sql`
       INSERT INTO addresses (user_id, address, city, tag)
-      VALUES (${userId}, ${address}, ${city}, ${tag})`;
+      VALUES (${userId}, ${address}, ${city}, ${tag})
+      RETURNING
+        id,
+        user_id as "userId",
+        address,
+        city,
+        tag
+      `
+    const newAddress = queryResult.rows[0];
 
-    return NextResponse.json(query, { status: 200 })
+    return NextResponse.json({ ...newAddress, mobile: data.mobile }, { status: 200 })
   }
   catch (error) {
     console.log(error)

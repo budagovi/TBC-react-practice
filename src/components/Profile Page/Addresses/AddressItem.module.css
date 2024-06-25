@@ -59,38 +59,15 @@
 }
 
 .actions {
-  display: flex;
-  --gap: 1.5rem;
-  gap: var(--gap);
-}
-
-.actions button {
   font-size: 16px;
   position: relative;
   line-height: 1.6rem;
   font-weight: 400;
   cursor: pointer;
-  color: var(--green);
+  color: var(--red);
   opacity: 0.75;
 }
 
-.actions button:hover {
+.actions:hover {
   opacity: 1;
-}
-
-.actions button:nth-of-type(1)::after {
-  display: block;
-  content: '';
-  width: 1px;
-  height: 100%;
-  border-radius: 1rem;
-  position: absolute;
-  background-color: var(--placeholderColor);
-  top: 0;
-  right: calc(var(--gap)/-2);
-
-}
-
-.actions button:nth-of-type(2) {
-  color: var(--red);
 }

@@ -10,10 +10,13 @@ import { App, Modal } from 'antd';
 import { ChangeEvent, FormEvent, useCallback, useState, useTransition } from 'react';
 // --- react-icons
 import { FiPlus } from 'react-icons/fi';
-import { INewAddressForm } from '@/src/lib/types/forms';
+// --- types
+import type { INewAddressForm } from '@/src/lib/types/forms';
+import type { IAddress, IUser } from '@/src/lib/types/entities';
+// --- utils
 import { addressValidator, cityValidator, isRequiredFieldString } from '@/src/lib/validators';
+// --- UI
 import Button from '@/src/UI/Button/Button';
-import { IUser } from '@/src/lib/types/entities';
 
 const initialValue: INewAddressForm = {
   city: '',
@@ -22,11 +25,12 @@ const initialValue: INewAddressForm = {
 }
 
 interface IProps {
-  user: IUser
+  user: IUser,
+  onAddAddress: (newAddress: IAddress) => void
 }
 
 
-const NewAddressModaForm = ({ user }: IProps) => {
+const NewAddressModaForm = ({ user, onAddAddress }: IProps) => {
 
   const t = useScopedI18n('/profile.addresses');
   const locale = useCurrentLocale();
@@ -36,6 +40,7 @@ const NewAddressModaForm = ({ user }: IProps) => {
   const [values, setValues] = useState(initialValue);
   const [isPending, startTransition] = useTransition();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [reset, setReset] = useState(false);
 
   const changeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -78,14 +83,17 @@ const NewAddressModaForm = ({ user }: IProps) => {
           })
 
           if (response.ok) {
-            await response.json();
+            const newAddress = await response.json();
             message.open({
               key,
               type: 'success',
               content: t('success msg'),
               duration: 3
             })
+
+            onAddAddress(newAddress)
             toggleModal();
+            setValues(initialValue)
             return;
           }
 
@@ -110,6 +118,12 @@ const NewAddressModaForm = ({ user }: IProps) => {
   // modal functionality
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => {
+
+    if (isModalOpen) {
+      setReset(true);
+      setTimeout(() => setReset(false), 1000);
+      console.log('test')
+    }
     setIsModalOpen(prevState => !prevState);
   };
 
@@ -146,6 +160,7 @@ const NewAddressModaForm = ({ user }: IProps) => {
               errorMsgs={cityValidator.errorMsgs(locale)}
               isRequired={true}
               formSubmitted={isPending}
+              reset={reset}
             />
 
             {/* -=-=-=- Address Field -=-=-=- */}
@@ -162,6 +177,7 @@ const NewAddressModaForm = ({ user }: IProps) => {
               errorMsgs={addressValidator.errorMsgs(locale)}
               isRequired={true}
               formSubmitted={isPending}
+              reset={reset}
             />
 
             {/* -=-=-=- Tag Field -=-=-=- */}
@@ -178,6 +194,7 @@ const NewAddressModaForm = ({ user }: IProps) => {
               errorMsgs={isRequiredFieldString(t('tag.0')).errorMsgs(locale)}
               isRequired={true}
               formSubmitted={isPending}
+              reset={reset}
             />
 
             <Button type='submit'>Add</Button>

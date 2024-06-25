@@ -1,14 +1,15 @@
+'use client'
 // --- style
 import style from './ProfileAddresses.module.css';
 // --- react api
-import { memo } from 'react';
+import { memo, useState } from 'react';
 // --- types
 import type { IAddress, IUser } from '@/src/lib/types/entities';
 // --- components
 import AddressItem from './AddressItem';
-// --- react-icons
-import { getScopedI18n } from '@/src/lib/next-internationalization/server';
 import NewAddressModaForm from './NewAddressModalForm';
+// --- next-international
+import { useScopedI18n } from '@/src/lib/next-internationalization/client';
 
 interface IProps {
   addresses: IAddress[],
@@ -18,26 +19,35 @@ interface IProps {
 /**
  * User's address book
  */
-const ProfileAddresses = memo(async function
+const ProfileAddresses = memo(function
   ProfileAddresses({
-    addresses,
+    addresses: a,
     user
   }: IProps) {
 
-  const t = await getScopedI18n('/profile.addresses')
+  const t = useScopedI18n('/profile.addresses')
+  const [addresses, setAddresses] = useState(a)
+
+  const addAddress = (newAddress: IAddress) => {
+    setAddresses(prevState => prevState.concat(newAddress))
+  }
+
+  const removeAddress = (id: number) => {
+    setAddresses(prevState => prevState.filter(a => a.id != id))
+  }
 
   return (
     <div className={style.wrapper}>
       {addresses.length > 0 ?
-        addresses.map((address, idx) =>
+        addresses.map((address) =>
           <AddressItem
-            key={idx}
+            key={address.id}
             address={address}
-            id={idx.toString()}
+            onRemoveAddress={removeAddress}
           />)
         : <span>{t('no addresses')}</span>
       }
-      <NewAddressModaForm user={user} />
+      <NewAddressModaForm user={user} onAddAddress={addAddress} />
     </div>
   )
 })

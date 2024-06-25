@@ -22,13 +22,13 @@ export async function generateMetadata({ params }: { params: { locale: Locale } 
 
   if (params.locale === 'en')
     return {
-      title: "Profile - Aurora Plants",
-      description: "User Profile - Manage your account on Aurora Plants",
+      title: "Addresses - Aurora Plants",
+      description: "User Addresses - Manage your address book on Aurora Plants",
     }
 
   return {
-    title: "პროფილი - Aurora Plants",
-    description: "მომხმარებლის ანგარიში - დაარედაქტირეთ ინდივიდუალური ინფორმაცია საჭიროებისამებრ ან/და გადახედეთ აქტივობის ისტორიას ჩვენს პლატფორმაზე"
+    title: "მისამართები - Aurora Plants",
+    description: "მომხმარებლის ანგარიში - დაარედაქტირეთ თქვენი მისამართების სია, რათა შევძლოთ მყისიერი უკუკავშირი"
   }
 }
 
@@ -51,7 +51,6 @@ const ProfileAddressesPage = async ({ params: { locale } }: Props) => {
   if (addressesResponse.success) {
     addresses = addressesResponse.payload.data;
   }
-
 
   return <ProfileAddresses user={user} addresses={addresses} />
 }

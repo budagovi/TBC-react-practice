@@ -220,7 +220,10 @@ export default {
       'add btn': 'save address',
       'loading msg': 'processing data',
       'success msg': 'address saved!',
-      'failure msg': 'could not save address..'
+      'failure msg': 'could not save address..',
+      'loading msg delete': 'deleting address',
+      'success msg delete': 'address deleted!',
+      'failure msg delete': 'could not delete address..'
     }
   }
 

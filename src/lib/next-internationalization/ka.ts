@@ -217,7 +217,10 @@ export default {
       'add btn': 'მისამართის დამატება',
       'loading msg': 'მონაცემების დამუშავება',
       'success msg': 'მისამართ შენახულია!',
-      'failure msg': 'მისამათის დამატება ვერ მოხერხდა..'
+      'failure msg': 'მისამათის დამატება ვერ მოხერხდა..',
+      'loading msg delete': 'მისამართის წაშლა',
+      'success msg delete': 'მისამართი წაშლილია!',
+      'failure msg delete': 'ვერ მოხერხდა მისამართის წაშლა'
     }
 
   }

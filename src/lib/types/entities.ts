@@ -28,6 +28,7 @@ export type IProduct = {
 }
 
 export type IAddress = {
+  id: number,
   userId: number,
   address: string,
   city: string,
