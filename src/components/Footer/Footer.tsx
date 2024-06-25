@@ -19,7 +19,7 @@ const Footer = async () => {
   const t = await getScopedI18n('footer')
 
   return (
-    <footer className={style.footer}>
+    <footer className={style.footer} style={{ display: 'none' }}>
       <div className={`${style.wrapper} gl-max-width`}>
 
         {/*   -=-=-=- Support -=-=-=-   */}

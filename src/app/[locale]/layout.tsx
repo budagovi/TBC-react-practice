@@ -45,10 +45,10 @@ const RootLayout = async ({ params: { locale }, children }: IProps) => {
               <CartContextProvider>
                 <div id="overlay"></div>
                 <Header isLoggedIn={isLoggedIn} />
-                {/* <div className={`${style.root_layout} gl-max-width`}>
+                <div className={`${style.root_layout} gl-max-width`} style={{display: 'none'}}>
                   {children}
                 </div>
-                <Footer /> */}
+                <Footer />
               </CartContextProvider>
             </AntdApp>
         </I18nProviderClient>
