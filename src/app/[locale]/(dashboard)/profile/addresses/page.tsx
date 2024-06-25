@@ -1,5 +1,5 @@
-// --- Components
-import Profile from '@/src/components/Profile Page/Profile/Profile';
+// --- components
+
 // --- next-internationalization api
 import { Locale } from "@/src/lib/next-internationalization/i18n.config";
 import { setStaticParamsLocale } from "next-international/server";
@@ -9,7 +9,10 @@ import { Metadata } from 'next';
 // --- jose-auth
 import { getSession } from '@/src/lib/jose-auth/auth';
 // --- types
-import type { IUser } from '@/src/lib/types/entities';
+import type { IAddress, IUser } from '@/src/lib/types/entities';
+// --- server actions
+import getAddresses from "@/src/server actions/getAddresses";
+import ProfileAddresses from "@/src/components/Profile Page/Addresses/ProfileAddresses";
 
 export function generateStaticParams() {
   return getStaticParams()
@@ -35,15 +38,22 @@ interface Props {
   }
 }
 
-const ProfilePage = async ({ params: { locale } }: Props) => {
+const ProfileAddressesPage = async ({ params: { locale } }: Props) => {
 
   // static rendering for both languages on build
   setStaticParamsLocale(locale)
 
   const { user }: { user: IUser } = await getSession();
 
-  return <Profile user={user} />
+  // fetch addresses
+  let addresses: IAddress[] = [];
+  const addressesResponse = await getAddresses(user.id)
+  if (addressesResponse.success) {
+    addresses = addressesResponse.payload.data;
+  }
 
+
+  return <ProfileAddresses user={user} addresses={addresses} />
 }
 
-export default ProfilePage;
+export default ProfileAddressesPage;

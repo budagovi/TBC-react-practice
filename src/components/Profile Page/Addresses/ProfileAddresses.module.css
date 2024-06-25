@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.3rem;
+}
+
+.wrapper>button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--greenFore);
+  width: 100%;
+  padding-top: 1.4rem;
+  opacity: 0.7;
+  transition: .15s ease-in-out;
+  cursor: pointer;
+}
+
+.wrapper>button:hover {
+  opacity: 1;
+}
+
+.wrapper>button>svg {
+  --size: 18px;
+  width: var(--size);
+  height: var(--size);
+}
+
+.wrapper > div {
+  background-color: var(--bodyBg);
+  box-shadow: var(--cardShadow);
+  padding: 0.5rem 1rem;
+}

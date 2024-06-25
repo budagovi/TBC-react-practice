@@ -26,6 +26,9 @@ interface IProps {
   user: IUser
 }
 
+/**
+ * Form allowing edit profile details
+ */
 const EditProfileForm = ({ user }: IProps) => {
 
   const t = useScopedI18n('/profile.edit form')

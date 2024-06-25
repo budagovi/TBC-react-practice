@@ -9,6 +9,9 @@ interface IProps {
   user: IUser
 }
 
+/**
+ * Banner of the all Profile route segments (image and fullname)
+ */
 const ProfileBanner = async ({ user }: IProps) => {
 
   if(!user)

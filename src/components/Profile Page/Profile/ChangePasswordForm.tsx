@@ -12,6 +12,9 @@ interface IProps {
   user: IUser
 }
 
+/**
+ * Form allowing to change password
+ */
 const ChangePasswordForm = ({ user }: IProps) => {
 
   const t = useScopedI18n('/profile.edit form');

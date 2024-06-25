@@ -150,9 +150,6 @@ export default {
   },
   '/checkout': {
     'contacts': 'Contact Details',
-    'edit': 'Edit',
-    'remove': 'Remove',
-    'add address': 'Add New Address',
     'shipping': 'Shipping',
     'free': 'Free',
     'regular': 'Regular Shipping',
@@ -163,9 +160,7 @@ export default {
     'continue': 'continue',
     'back': 'back',
     'submit': 'submit',
-    'no addresses': 'No active address found',
     'no payments': 'No active payment method found',
-    'contact': 'contact',
     'loading msg': 'Order is Proccessing',
     'success msg': 'Order successfully submitted',
     'error msg': 'Something went wring, try later'
@@ -212,8 +207,14 @@ export default {
       'password': ['Change Password', 'Current Password', 'New Password', 'Confirm New Password', 'change'],
       'cancel': 'Cancel',
       'save': 'Save Changes'
+    },
+    'addresses': {
+      'edit': 'Edit',
+      'remove': 'Remove',
+      'contact': 'contact',
+      'add address': 'Add New Address',
+      'no addresses': 'No active address found'
     }
-
   }
 
 } as const

@@ -5,6 +5,9 @@ import Link from 'next/link';
 // --- next-internationalization api
 import { getScopedI18n } from '@/src/lib/next-internationalization/server';
 
+/**
+ * Navigation list for Profile route segment
+ */
 const ProfileNav = async () => {
 
   const t = await getScopedI18n('/profile.profile nav')
