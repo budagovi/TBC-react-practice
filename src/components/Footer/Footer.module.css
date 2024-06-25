@@ -3,14 +3,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
-  padding: 4rem 0 1rem;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding: clamp(2rem, 3vw, 4rem) 0 1rem;
   background-color: var(--greenBg);
 }
 
 .wrapper {
   display: flex;
-  gap: 3.5rem;
+  justify-content: space-around;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
   color: var(--fore);
   font-size: 14px;
 }
@@ -18,7 +19,6 @@
 /* -=- Section Styling -=- */
 
 section.links {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -30,10 +30,10 @@ section.links:not(:nth-child(1)) {
 
 section.links span {
   text-transform: capitalize;
-  font-size: 20px;
+  font-size: clamp(16px, 4vw, 20px);
   font-weight: 600;
   color: var(--fore);
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.1rem, 1.4vw, 1rem);
 }
 
 /* -=- Group of Icon and Text -=- */
@@ -61,7 +61,7 @@ section.links span {
 
 section.links a,
 section.links p {
-  font-size: 16px;
+  font-size: clamp(14px, 3vw, 16px);
   text-decoration: none;
   transition: var(--textHoverTransition);
   color: var(--foreHover);
@@ -78,11 +78,11 @@ section.links a:hover,
   display: flex;
   gap: 0.25rem;
   color: var(--foreHover);
-  font-size: 13px;
+  font-size: clamp(11px, 2vw, 13px);
 }
 
 .copyRightIcon {
-  --size: 14px;
+  --size: clamp(12px, 2vw, 14px);
   width: var(--size);
   height: var(--size);
   transform: translateY(1px);
@@ -96,7 +96,7 @@ section.links a:hover,
 }
 
 .logo {
-  --size: 25px;
+  --size: clamp(22px, 3vw, 25px);
   height: var(--size);
   width: var(--size);
   color: var(--foreHover);
@@ -107,4 +107,26 @@ section.links a:hover,
 
 .logo:hover {
   color: var(--fore);
+}
+
+
+@media (max-width: 770px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contactLine {
+    justify-content: center;
+  }
+
 }
