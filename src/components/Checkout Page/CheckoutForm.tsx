@@ -81,6 +81,7 @@ const CheckoutForm = ({ user, addresses }: IProps) => {
       const total = ctx.items.reduce((acc, curr) => acc + curr.qty * curr.price, 0)
 
       const data: IOrder = {
+        id: 0,
         userId: user.id,
         totalAmount: ctx.totalAmount,
         items: ctx.items,
