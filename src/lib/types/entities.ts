@@ -49,3 +49,12 @@ export type IOrder = {
   items: ICartItem[];
   created: string;
 }
+
+export type IBlog = {
+  id: number;
+  userId: number;
+  created: Date;
+  thumbnail: string;
+  title: string;
+  text: string;
+}

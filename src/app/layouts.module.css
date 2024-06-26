@@ -5,6 +5,7 @@
   align-items: center;
   padding-block: 3rem clamp(5rem, 5vw, 9rem);
   flex: 1;
+  flex-grow: 1;
 }
 
 /* -=-=-=-=-=- Dashboard Layout -=-=-=-=-=- */

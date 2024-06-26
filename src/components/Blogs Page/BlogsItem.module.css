@@ -1,0 +1,37 @@
+.wrapper {
+  width: 100%;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--cardShadow);
+  background-color: var(--bodyBg);
+}
+
+.wrapper .imgWrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.wrapper img {
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1;
+  padding: 0.3rem 0.5rem;
+  color: var(--black);
+}
+
+.title span:nth-of-type(1) {
+  font-weight: 800;
+}
+
+.title span:nth-of-type(2) {
+  align-self: flex-end;
+}
