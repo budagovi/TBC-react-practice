@@ -42,6 +42,7 @@ export type ICreditCard = {
 }
 
 export type IOrder = {
+  id: number,
   userId: number;
   totalAmount: number;
   totalPrice: number;

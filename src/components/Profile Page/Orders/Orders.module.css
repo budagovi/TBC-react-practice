@@ -1,0 +1,32 @@
+.wrapper {
+  width: 100%;
+  color: var(--black);
+}
+
+.wrapper * {
+  transition: .01s ease-in-out;
+}
+
+.wrapper table {
+  width: 100%;
+  border-radius: 0.25rem;
+  overflow-y: scroll;
+}
+
+.wrapper table tr th,
+.wrapper table tr td {
+  padding: 0.3rem 0.6em;
+}
+
+.wrapper table th {
+  text-align: left;
+}
+
+.wrapper table td:nth-of-type(2n) {
+  background-color: var(--greyshGreen);
+}
+
+.wrapper table thead {
+  background-color: var(--greenBg);
+  color: var(--fore);
+}

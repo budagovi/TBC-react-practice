@@ -22,7 +22,6 @@ const ProfileNav = async () => {
       <span>{t('my orders')}</span>
       <ul>
         <li><Link href='/profile/orders'>{t('my returns')}</Link></li>
-        <li><Link href='/profile/cancelations'>{t('my cancelations')}</Link></li>
       </ul>
     </aside>
   )

@@ -191,9 +191,8 @@ export default {
       'my profile': 'my profile',
       'address book': 'address book',
       'my payment options': 'my payment options',
-      'my orders': 'my orders',
-      'my returns': 'my returns',
-      'my cancelations': 'my cancelations'
+      'my orders': 'manage orders',
+      'my returns': 'my orders'
     },
     'edit form': {
       'title': 'Edit Your Profile',
@@ -227,6 +226,18 @@ export default {
       'loading msg delete': 'deleting address',
       'success msg delete': 'address deleted!',
       'failure msg delete': 'could not delete address..'
+    },
+    'orders': {
+      'remove': 'Remove',
+      'no orders': 'No active orders found',
+      'loading msg delete': 'canceling order',
+      'success msg delete': 'order canceled!',
+      'failure msg delete': 'could not cancel order..',
+      'orderNum': 'order N#',
+      'price': 'Total Price',
+      'items': 'Items Total',
+      'date': 'Date',
+      'qty': ['item', 'items']
     }
   }
 

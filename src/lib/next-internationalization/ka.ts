@@ -188,9 +188,8 @@ export default {
       'my profile': 'ჩემი პროფილი',
       'address book': 'საკონტაქტო დეტალები',
       'my payment options': 'გადახდის მეთოდები',
-      'my orders': 'ჩემი შეკვეთები',
-      'my returns': 'დაბრუნებული შეკვეთები',
-      'my cancelations': 'გაუქმებული შეკვეთები'
+      'my orders': 'შეკვეთები',
+      'my returns': 'ჩემი შეკვეთები',
     },
     'edit form': {
       'title': 'პროფილის რედაქტირება',
@@ -224,6 +223,18 @@ export default {
       'loading msg delete': 'მისამართის წაშლა',
       'success msg delete': 'მისამართი წაშლილია!',
       'failure msg delete': 'ვერ მოხერხდა მისამართის წაშლა'
+    },
+    'orders': {
+      'remove': 'წაშლა',
+      'no orders': 'აქტიური შეკვეთები ვერ მოიძებნა',
+      'loading msg delete': 'შეკვეთის გაუქმება',
+      'success msg delete': 'შეკვეტა გაუქმებულია!',
+      'failure msg delete': 'ვერ მოხერხდა შეკვეთის გაუქმება',
+      'orderNum': 'შეკვეთის N#',
+      'price': 'ჯამური ფასი',
+      'items': 'პროდუქტების რაოდენობაბა',
+      'date': 'თარიღი',
+      'qty': ['ცალი', 'ცალი']
     }
 
   }

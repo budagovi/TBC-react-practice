@@ -1,0 +1,8 @@
+.row button {
+  width: 100%;
+  text-align: center;
+  color: var(--red);
+  display: inline-block;
+  margin: 0 auto;
+  cursor: pointer;
+}
