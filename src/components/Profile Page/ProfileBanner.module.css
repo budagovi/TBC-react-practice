@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   gap: clamp(0.8rem, 2vw, 2rem);
+  position: relative;
 }
 
 .avatarWrapper {
@@ -35,4 +36,8 @@
   font-size: clamp(14px, 2.4vw, 16px);
   font-weight: 500;
   color: var(--grey);
+}
+
+.wrapper form {
+  position: absolute;
 }
