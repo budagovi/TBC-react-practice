@@ -75,7 +75,7 @@
   background-color: var(--greyshGreen);
 }
 
-.actionsWrapper > button {
+.actionsWrapper>button {
   color: var(--red);
   font-size: 16px;
   font-weight: 400;
@@ -86,7 +86,7 @@
 
 }
 
-.actionsWrapper > button:hover {
+.actionsWrapper>button:hover {
   background-color: var(--red);
   color: var(--fore);
   opacity: 0.4;
@@ -108,4 +108,10 @@
   text-decoration: line-through;
   color: var(--red);
   font-size: 14px;
+}
+
+@media (max-width: 460px) {
+  .wrapper img {
+    display: none;
+  }
 }
