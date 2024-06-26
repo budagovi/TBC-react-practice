@@ -14,13 +14,14 @@ interface IProps {
  */
 const ProfileBanner = async ({ user }: IProps) => {
 
+  const imgPlaceholder = user.image ? user.image : "https://st3.depositphotos.com/13159112/17145/v/450/depositphotos_171453724-stock-illustration-default-avatar-profile-icon-grey.jpg"
   if(!user)
     redirect('/sign-in')
 
   return (
     <div className={style.wrapper}>
       <div className={style.avatarWrapper}>
-        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?cs=srgb&dl=pexels-simon-robben-55958-614810.jpg&fm=jpg" alt="avatar" />
+        <img src={imgPlaceholder} alt="avatar" />
       </div>
       <div className={style.text}>
         <span>{user.lastname}  {user.firstname}</span>

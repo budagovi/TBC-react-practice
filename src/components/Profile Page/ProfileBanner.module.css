@@ -1,10 +1,10 @@
 .wrapper {
   display: flex;
-  gap: 2rem;
+  gap: clamp(0.8rem, 2vw, 2rem);
 }
 
 .avatarWrapper {
-  --size: 150px;
+  --size: clamp(100px, 5vw, 150px);
   width: var(--size);
   height: var(--size);
   border: 0.5rem solid var(--placeholderColor);
@@ -25,14 +25,14 @@
 }
 
 .wrapper .text span {
-  font-size: 24px;
+  font-size: clamp(20px, 3.4vw, 24px);
   font-weight: 800;
   color: var(--greenFore);
   text-transform: capitalize;
 }
 
 .wrapper .text p {
-  font-size: 16px;
+  font-size: clamp(14px, 2.4vw, 16px);
   font-weight: 500;
   color: var(--grey);
 }

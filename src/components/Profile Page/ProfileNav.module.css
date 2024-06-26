@@ -27,3 +27,9 @@
 .wrapper ul li a:hover {
   color: var(--black);
 }
+
+@media (max-width: 850px) {
+  .wrapper {
+    display: none;
+  }
+}

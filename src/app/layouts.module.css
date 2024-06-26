@@ -98,3 +98,17 @@
 .profile_layout section h3 {
   color: var(--greenFore);
 }
+
+@media (max-width:850px) {
+  .profile_layout section:before {
+    display: none;
+  }
+}
+
+@media (max-width:700px) {
+  .profile_layout section {
+    padding: 0rem clamp(1rem, 1vw, 5rem) 2rem;
+    flex-grow: 1;
+    position: relative;
+  }
+}
