@@ -93,7 +93,7 @@
 }
 
 .navWrapper h1 {
-  font-size: clamp(28px, 5.1vw, 40px);
+  font-size: clamp(26px, 5.1vw, 40px);
   cursor: pointer;
 }
 

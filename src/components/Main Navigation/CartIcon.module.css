@@ -25,8 +25,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -40%;
-  right: -30%;
+  transform: translate(70%, -70%);
   font-size: 11px;
   background-color: var(--red);
   color: var(--fore);
