@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TBC x USAID ფინალური პროექტი
+პროექტი მოიცავს TBC x USAIDის პროგრამის ფარგლებში გათვალისწინებულ საფინალო დავალებას, კერძოდ იქომერს ტიპის ვებსაიტს.
 
-## Getting Started
+## ძირითადი მახასიათებლები
+### ავტორიზაცია
+- ვებ-გვერდზე შესაძლებელია ავტორიზაცია/რეგისტრაცია, ასევე აქტიური ანგარიშიდან გამოსვლა.
+- ავტორიზაცია/რეგისტრაციის ფორმების ყველა შესავსებ ველს გაწერილი აქვს ვალიდაციები, შესაბამისი ერორ მესიჯებით. (ერთ ველს შესაძლოა ჰქონდეს რამოდენიმე ერორ მესიჯი)
+- ვებ-გვერდზე საჯაროდ წვდომადი გვერდების გარდა, სხვა დანარჩენი საჭიროებს ავტორიზაციას (არა-ავტორიზირებული მომხმარებელი გადამისამართდება ლოგინის გვერდზე)
+- აქტიური სესიისთვის გამოიყენება JWT
 
-First, run the development server:
+### ინტერფეისის ენები
+- ქართული
+- ინგლისური
+- ენის შეცვლა შესაძლებელია ნებისმიერი გვერდიდან.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### ინტერფეისის თემები
+- ღია
+- მუქი
+- თემის შეცვლა შესაძლებელია ნებისმიერი გვერდიდან.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### SEO
+- აპლიკაცია გაშვებულია საჯარო ბმულზე.
+- ყველა გვერდს აქვს შესაბამისი სათაური და აღწერა (ორივე ენაზე)
+- აპლიკაციას აქვს საკუტარი ფავიკონი
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### პროფილი
+- ავტორიზირებულ მომხმარებელს შეუძლია საკუტარი მონაცემების რედაქტირება
+- ავტორიზირებულ მომხმარებელს შეუძლია ერთზე მეტი მისამართის მითითება address book-ში
+- ავტორიზირებულ მომხმარებელს წვდომა აქვს შეკვეთების ისტორიასთან (შეუძლია გააუქმოს მოქმედი შეკვეთაც)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### კონტაქტი
+- სტატიკური საკონტაქტო ინფორმცაია
+- საკონტაქტო ფორმა, რომლის შევსების შემდეგ იგზავნება მეილი
 
-## Learn More
+### სტატიები
+- ვებ-საიტის თემატიკასთან დაკავშირებული სტატიების ჩამონათვალი.
+- ძებნის ფუნქციონალი
 
-To learn more about Next.js, take a look at the following resources:
+### პროდუქტები
+- პროდუქტების სია
+- კალათაში დამატების ფუნქცია
+- ძებნის/გაფილტვრის/სორტირების ფუნქციონალი
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### პროდუქტის ინდივიდუალური გვერდი
+- პროდუქტის აღწერა
+- ფოტოს გადიდების შესაძლებლობა
+- განსაზღვრული რაოდენობით კალათაში დამატების ფუნქციონალი
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### კალათა
+- არჩეული პროდუქტების ჩამონათვალი
+- შეკვეთის შესახებ ინფორმაცია
+- პროდუქტების რაოდენობის შეცვლა
+- პროდუქტის ამოშლა
 
-## Deploy on Vercel
+### ჩექაუთი
+- 3 ეტაპიანი შესავსები ფორმა
+- მისამართის არჩევა მომხმარებლის address book-იდან
+- მიტანის სერვისის არჩევა
+- ბარათის მონაცემების შეყვანა, ერთჯერადი გადახდის გასაფორმებლად
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## პროექტის სტრუქტურა
+პროექტის ფოლდერი მოიცავს შემდეგს:
+- assets - დანართების საქაღალდე (.webp ფაილები)
+- index.html - ვებ-გვერდის სტრუქტურა
+- style.css - ვებ-გვერდის ძირითადი სტილი
+- side-nav.css - ანიმირებული გვერდითი ნავიგაციის სტილი (გამოყოფილია მთავარი css ფაილისგან, კოდის სისუფთავის დასაცავად)
+- app.js - ვებ-გვერდის ლოგიკა
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## გამოყენებული ტექნოლოგიები
+- Next.js 14 App Router - პროექტის სტრუქტურის, ფუნქციონალის და ნავიგაციის ასაწყობად.
+- CSS Modules - პროექტის სტილის გასაწერად.
+- vercel/blob - მედია ფაილების შესანახად.
+- vercel/postgres - ბაზასთან დასაკავშირებლად
+- antd - მზა ფუნქციონალის მქონე კომპონენტების ბიბლიოთეკა
+- embla-carousel-react - სლაიდერი. (ძირითადად კომპლექსური ფორმების გასაფორმებლად)
+- jose auth - ავოტრიცახიის ბიბლიოთეკა
+- next-international - i18n
+
+(დამატებითი ბიბლიოთეკები არ არის გამოყენებული)
+
+## პროექტის გაშვება
+პროექტის სანახავად ეწვიედთ შემდეგ [ბმულს]((https://git-scm.com/download/win))
