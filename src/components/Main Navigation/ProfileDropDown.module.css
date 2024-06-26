@@ -1,8 +1,10 @@
 .overlay a,
-.overlay button {
+.overlay button
+.overlay ul li .itemIcon {
   color: var(--greenFore);
   font-size: 13px;
   font-weight: 500;
+  transition: .15s ease-in-out;
 }
 
 .overlay ul li:hover a,
@@ -38,7 +40,7 @@
   --size: 19px;
   width: var(--size);
   height: var(--size);
-  transition: color 0.3s;
+  transition: color 0.07s;
 }
 
 .iconWrapper {

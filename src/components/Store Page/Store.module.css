@@ -1,23 +1,23 @@
 .wrapper {
   --columnGap: 4rem;
-  display: grid;
+  display: flex;
   column-gap: var(--columnGap);
-  grid-template-columns: 320px 1fr;
-}
-
-.wrapper>div:nth-of-type(1) {
   position: relative;
 }
 
-.wrapper>div:nth-of-type(1):after {
+.wrapper>div:nth-of-type(2) {
+  position: relative;
+}
+
+.wrapper>div:nth-of-type(2):after {
   position: absolute;
   content: '';
   display: block;
   height: 100%;
   width: 2px;
   background-color: var(--greyshGreen);
-  right: 0;
-  transform: translateX(calc(var(--columnGap)/2));
+  left: 0;
+  transform: translateX(calc(var(--columnGap)/-2));
 }
 
 .store {

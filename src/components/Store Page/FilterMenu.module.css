@@ -88,3 +88,9 @@
 .wrapper>button {
   align-self: flex-start;
 }
+
+@media (max-width: 1000px) {
+  .wrapper {
+    display: none;
+  }
+}

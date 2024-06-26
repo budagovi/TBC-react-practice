@@ -26,6 +26,11 @@ nav.links>span {
   width: var(--size);
 }
 
+.links .textLink:hover,
+.links button:hover {
+  color: var(--foreHover);
+}
+
 @media (max-width: 870px) {
 
   .burger {
