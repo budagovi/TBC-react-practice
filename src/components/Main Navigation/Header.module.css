@@ -43,7 +43,7 @@
 }
 
 .banner .bannerText span {
-  font-size: clamp(32px,6vw, 72px);
+  font-size: clamp(32px, 8vw, 72px);
   text-transform: capitalize;
   font-weight: 400;
   margin-inline: 1rem;

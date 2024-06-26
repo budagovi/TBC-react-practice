@@ -45,7 +45,7 @@ const RootLayout = async ({ params: { locale }, children }: IProps) => {
               <CartContextProvider>
                 <div id="overlay"></div>
                 <Header isLoggedIn={isLoggedIn} />
-                <div className={`${style.root_layout} gl-max-width`} style={{display: 'none'}}>
+                <div className={`${style.root_layout} gl-max-width`}>
                   {children}
                 </div>
                 <Footer />

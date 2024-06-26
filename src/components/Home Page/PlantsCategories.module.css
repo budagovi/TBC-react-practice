@@ -3,7 +3,7 @@
   margin: 3rem 0;
   height: clamp(100px, 50vw, 750px);
   display: grid;
-  gap: 2rem;
+  gap: clamp(0.8rem, 2.3vw, 2rem);
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas:
@@ -28,7 +28,7 @@
   line-height: 1.4em;
   color: var(--fore);
   font-weight: 700;
-  font-size: 2rem;
+  font-size: clamp(1rem, 3vw, 2rem);
   transition: var(--textHoverTransition);
   position: relative;
   transform-origin: bottom left;
@@ -87,7 +87,7 @@
   background-color: rgba(6, 34, 7, 0.333);
   display: flex;
   align-items: flex-end;
-  padding: 2em;
+  padding: clamp(0.8rem, 2vw, 2rem);
   transition: .3s ease-in-out;
 }
 
@@ -95,14 +95,19 @@
   background-color: rgba(1, 4, 1, 0.438);
 }
 
-@media (max-width: 900px) {
-  .grid {
+@media (max-width: 600px) {
+  .wrapper {
     display: flex;
     flex-direction: column;
     height: fit-content;
   }
 
   .item {
-    padding: 25vw 0 0.7vw 2vw;
+    padding: 50vw 0 0.7vw 2vw;
+  }
+
+
+  .item span {
+    font-size: 1.5rem;
   }
 }

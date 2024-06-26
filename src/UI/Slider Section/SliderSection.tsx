@@ -21,7 +21,7 @@ interface Props {
  */
 const SliderSection = ({ title, btnText = '', children, linkTo }: Props) => {
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, slidesToScroll: 3 });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, slidesToScroll: 1 });
   const router = useRouter();
 
   const scrollPrev = useCallback(() => {
